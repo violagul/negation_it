@@ -4,17 +4,19 @@ os.environ['CUDA_VISIBLE_DEVICES'] = "1" # usa una sola GPU, la num 1 (0,1); da 
 from joblib import load, dump # x salvare e recuperare roba da e su cartelle, vd dump
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 import torch # lib x mod ML, calcoli su vettor/tensori
-
-from build_array import build_array, build_hypo, build_masked_context
-from mask_prediction import make_and_encode_batch
 from random import random, seed, shuffle
-#from TG_comm import launchFct
-from chech_conjug import check_conjugation
+
+
+from tools.build_array import build_array, build_hypo, build_masked_context
+from tools.mask_prediction import make_and_encode_batch
+
+from tools.chech_conjug import check_conjugation
 
 
 
 
-path = r"C:\Users\Viola\Desktop\Scambio_Poibeau\Esperimento_neg_eval\inputs"
+#path = r"C:\Users\Viola\Desktop\Scambio_Poibeau\Esperimento_neg_eval\inputs"
+path = r"../Inputs"
 fName_file_path = f"{path}\100_names_f.txt"
 mName_file_path = f"{path}\100_names_m.txt"
 fProf_file_path = f"{path}\100_mestieri_f.txt"
@@ -178,9 +180,6 @@ def main():
 
 
 if __name__ == '__main__':
-
-    #complete_check = True
-    #launchFct(main)
     main()
 
 
