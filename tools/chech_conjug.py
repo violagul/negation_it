@@ -28,7 +28,7 @@ def check_conjugation(verb, conjugation):
         return False
 
 
-    return (('Indicativo', 'Indicativo presente', 'egli/ella', conjugation) in verb_conjs)
+    return (('Indicativo', 'Indicativo presente', '3s', conjugation) in verb_conjs)
 
 
 
@@ -46,7 +46,7 @@ def get_conj(verb):
     verb_conjs = conjugator.conjugate(verb).iterate()
 
     for verb_conj in verb_conjs:
-        if verb_conj[0] == "Indicatif" and verb_conj[1] == "Présent" and verb_conj[2] == "3s":
+        if verb_conj[0] == "Indicativo" and verb_conj[1] == "Indicativo presente" and verb_conj[2] == "3s":
             return verb_conj[3]
 
     return None
