@@ -123,8 +123,8 @@ def main():
 '''
 
             current_hypo_sentence = hypo_sentence_cons # senza la distinz x vb con vocale o consonante
-            masked_sentence = build_masked_sentences(current_hypo_sentence, name_available, profession_available,verb_available,
-                                                  current_pronouns_maj, current_pronoun, mask_token)
+            masked_sentence = build_masked_sentences(current_hypo_sentence, name_available, profession_available,verb_available, 
+                                                     current_pronouns_maj, current_pronoun, mask_token)
 
 
 
