@@ -16,19 +16,15 @@ from joblib import load
 
 path_sentences = "/home/dkletz/tmp/pycharm_project_99/2022-23/neg-eval-set/evaluation_script/Inputs"
 
-
-dico_base_n = {"flaubert/flaubert_base_cased" : {"Il" : "sait", "Elle" : "parlait"},
-            "camembert-base" : {"Il" : "pleut", "Elle" : "vient"},
-            "bert-base-multilingual-cased" : {"Il" : "fait", "Elle" : "fait"},
-            "camembert/camembert-large" : {"Il" : "pleut", "Elle" : "vient"},
-            "flaubert/flaubert_large_cased" : {"Il" : "venait", "Elle" : "venait"}}
+## verificare solo cosa sostituisce al mask se non metto il contesto
+dico_base_n = {"dbmdz/bert-base-italian-cased" : {"Lui" : "dorme", "Lei" : "dorme"},
+            "bert-base-multilingual-cased" : {"Lui" : "è", "Lei" : "è"},
+            "m-polignano-uniba/bert_uncased_L-12_H-768_A-12_italian_alb3rt0" : {"Lui" : "anche", "Lei" : "anche"}}
 
 
-dico_base_p = {"flaubert/flaubert_base_cased" : {"Il" : ",", "Elle" : ","},
-            "camembert-base" : {"Il" : "revient", "Elle" : "revient"},
-            "bert-base-multilingual-cased" : {"Il" : "fait", "Elle" : "fait"},
-            "camembert/camembert-large" : {"Il" : "mange", "Elle" : "pleure"},
-            "flaubert/flaubert_large_cased" : {"Il" : "est", "Elle" : "'"}}
+dico_base_p = {"dbmdz/bert-base-italian-cased" : {"Lui" : "lavora", "Lei" : "lavora"},
+            "bert-base-multilingual-cased" : {"Lui" : "è", "Lei" : "lei"},
+            "m-polignano-uniba/bert_uncased_L-12_H-768_A-12_italian_alb3rt0" : {"Lui" : "anche", "Lei" : "anche"}}
 
 results_repet_n = {model : 0 for model in dico_base_n.keys()}
 results_repet_p = {model : 0 for model in dico_base_p.keys()}
@@ -68,6 +64,8 @@ def main():
         hypo_sentence_cons = "NOM è MET che ha l'abitudine di ACTION. PRON_maj non MASK molto spesso."
         #hypo_sentence_cons = "NOM è MET che non ha l'abitudine di ACTION. PRON_maj MASK molto spesso."
         #hypo_sentence_cons = "NOM è MET che non ha l'abitudine di ACTION. PRON_maj non MASK molto spesso."
+
+        # frase doppia neg?
         #hypo_sentence_cons = "NOM è MET che ha l'abitudine di ACTION. PRON_maj MASK davvero molto spesso."
         #hypo_sentence_cons = "PRON_maj MASK molto spesso."
 
