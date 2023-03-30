@@ -39,8 +39,10 @@ def main():
     # dump(listverb, "path\*.joblib")
     # load x richiamare
 
+    #for model_name in ["dbmdz/bert-base-italian-cased", "bert-base-multilingual-cased",
+    #                   "m-polignano-uniba/bert_uncased_L-12_H-768_A-12_italian_alb3rt0"]:
+    for model_name in ["Musixmatch/umberto-commoncrawl-cased-v1"]:
 
-    for model_name in ["dbmdz/bert-base-italian-cased", "bert-base-multilingual-cased", "m-polignano-uniba/bert_uncased_L-12_H-768_A-12_italian_alb3rt0"]:
         seed(42)
 
         if model_name in ["dbmdz/bert-base-italian-cased"]:
