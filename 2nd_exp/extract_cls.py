@@ -10,9 +10,9 @@ Original file is located at
 #import os
 #os.environ['CUDA_VISIBLE_DEVICES'] = "1"
 import torch
-from transformers import AutoTokenizer, AutoModelForMaskedLM
+from transformers import AutoTokenizer, AutoModel
 
-model = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased')
+model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased')
 tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 
 sentences = ["Mario non è ancora arrivato.","Sono in ritardo."] # list of sentences
@@ -20,7 +20,6 @@ sentences = ["Mario non è ancora arrivato.","Sono in ritardo."] # list of sente
 batch_encoded = tokenizer.batch_encode_plus(sentences, padding=True, add_special_tokens=True, return_tensors="pt")
 
 with torch.no_grad():
-  tokens_logits = model(**batch_encoded)
+  tokens_outputs = model(**batch_encoded)
 
-encodings = tokens_logits[0]
-cls_encoding = encodings[:, 0, :]
+cls_encodings = tokens_outputs.last_hidden_states[:,0,:]
