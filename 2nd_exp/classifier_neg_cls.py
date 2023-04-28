@@ -69,6 +69,8 @@ test = cls_encodings_pos[9000:]
 test = test.append(cls_encodings_neg[9000:])
 labels = np.empty(18000)
 labels = np.where(labels[:9000], 1, 0)
+test_lab = np.empty(2000)
+test_lab = np.where(test_lab[:1000], 0, 1)
 
 scaler = StandardScaler()
 scaler.fit(dati.values)
@@ -85,9 +87,14 @@ y = labels
 # solver : adam o sgd
 # hidden_layer_sizes : testare diverse
 # alpha : tra 1e-5 e 1e-2
-clf = MLPClassifier(solver = "adam", alpha = 1e-3,
-                    hidden_layer_sizes=(40, 2), random_state = 1)
+for hl in [(40,1), (100, 1), (150,1), (200, 1), (250, 1), (300, 1), (350, 1), (400,1), (450, 1), (40,2), (100, 2), (150,2), (200, 2), (250, 2), (300, 2), (350, 2), (400,2), (450, 2)]:
+  for a in [1e-2, 1e-3, 1e-4, 1e-5]:
+    for solv in ["adam", "sgd"]:
+      clf = MLPClassifier(solver = "adam", alpha = a,
+                    hidden_layer_sizes=hl, random_state = 1)
 
-clf.fit(X, y)
+      clf.fit(X, y)
 
-clf.predict(test)
+      clf.predict(test)
+      right_pred = clf.score(test, test_lab)
+      print(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n {right_pred}%\n\n")
