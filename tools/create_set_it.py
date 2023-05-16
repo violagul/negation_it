@@ -44,6 +44,7 @@ def main():
     #for model_name in ["Musixmatch/umberto-commoncrawl-cased-v1"]:
     for model_name in ["dbmdz/bert-base-italian-xxl-cased"]:
 
+
         seed(42)
 
         if model_name in ["dbmdz/bert-base-italian-cased"]:
