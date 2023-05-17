@@ -41,7 +41,9 @@ def main():
 
     #for model_name in ["dbmdz/bert-base-italian-cased", "bert-base-multilingual-cased",
     #                   "m-polignano-uniba/bert_uncased_L-12_H-768_A-12_italian_alb3rt0"]:
-    for model_name in ["Musixmatch/umberto-commoncrawl-cased-v1"]:
+    #for model_name in ["Musixmatch/umberto-commoncrawl-cased-v1"]:
+    for model_name in ["dbmdz/bert-base-italian-xxl-cased"]:
+
 
         seed(42)
 
@@ -54,6 +56,9 @@ def main():
         elif model_name in ["m-polignano-uniba/bert_uncased_L-12_H-768_A-12_italian_alb3rt0"]: #joblib
             list_verbs = load(f"{path}\alberto_verbs.joblib")
             #list_verbs = load(f"{path}/fake_monovalent_monotokenized_flaubert.joblib")
+
+        elif model_name in ["dbmdz/bert-base-italian-xxl-cased"]:
+            list_verbs = load(f"{path}/base_verbs.joblib")
 
         tokenizer = AutoTokenizer.from_pretrained(model_name)
         model = AutoModelForMaskedLM.from_pretrained(model_name)
