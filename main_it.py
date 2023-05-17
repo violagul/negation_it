@@ -33,7 +33,6 @@ results_repet_p = {model : 0 for model in dico_base_p.keys()}
 def main():
     for model_name in ["dbmdz/bert-base-italian-cased", "bert-base-multilingual-cased", 
                        "m-polignano-uniba/bert_uncased_L-12_H-768_A-12_italian_alb3rt0"]:
-        #for model_name in ["camembert-base"]:
 
         seed(42)
 
@@ -65,10 +64,7 @@ def main():
         #hypo_sentence_cons = "NOM è MET che non ha l'abitudine di ACTION. PRON_maj MASK molto spesso."
         #hypo_sentence_cons = "NOM è MET che non ha l'abitudine di ACTION. PRON_maj non MASK molto spesso."
 
-        # frase doppia neg?
-        #hypo_sentence_cons = "NOM è MET che ha l'abitudine di ACTION. PRON_maj MASK davvero molto spesso."
-        #hypo_sentence_cons = "PRON_maj MASK molto spesso."
-
+       
         #Cm_Tp = "NOM est MET qui n'a l'habitude de ACTION. PRON_maj MASK vraiment souvent."
 
         if "PRON_maj non MASK" in hypo_sentence_cons:
