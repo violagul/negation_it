@@ -1,9 +1,9 @@
 import os
 
-os.environ['CUDA_VISIBLE_DEVICES'] = "1" # usa una sola GPU, la num 1 (0,1); da mettere prim di import torch
-from joblib import load, dump # x salvare e recuperare roba da e su cartelle, vd dump
+os.environ['CUDA_VISIBLE_DEVICES'] = "1" 
+from joblib import load, dump
 from transformers import AutoTokenizer, AutoModelForMaskedLM
-import torch # lib x mod ML, calcoli su vettor/tensori
+import torch 
 from random import random, seed, shuffle
 
 
@@ -24,7 +24,7 @@ mProf_file_path = f"{path}\100_mestieri_m.txt"
 hypo_file_path = f"{path}\frasi_it.txt"
 
 
-size_batches = 100 # dimensione batch x ciclo di calcolo
+size_batches = 100
 
 def main():
 
@@ -67,9 +67,9 @@ def main():
         # with torch.no_grad():
             # tutte le cose del modello sotto questo comando e non salva niente
 
-        # controllare come si indica il carattere mask
+        # for current model, get the mask token
         mask_token = tokenizer.mask_token
-        print(f"Mask token: {mask_token}") # ti dà direttamente per il modello come quel modello indica il mask token
+        print(f"Mask token: {mask_token}") 
 
         fName_file = open(fName_file_path, "r")
         mName_file = open(mName_file_path, "r")
@@ -77,34 +77,33 @@ def main():
         mProf_file = open(mProf_file_path, "r")
 
 
-        professionsarray = {"f": build_array(fProf_file), "m": build_array(mProf_file)} # buildarray è def in un altro file .py, crea lista da file txt
+        # dictionaries of names, professions and pronouns indexed by gender for template construction
+        professionsarray = {"f": build_array(fProf_file), "m": build_array(mProf_file)} # buildarray is a function for creating lists from txt files     
         fnamearray = build_array(fName_file)
         mnamearray = build_array(mName_file)
-
-
         name_arrays = {"f": fnamearray, "m": mnamearray}
         pronouns_maj = {"f": "Lei", "m": "Lui"}
 
-        list_good_patterns_model = [] # quelli che nelle fr afferm ripetono il vb nel mask, triplette nome-mest-vb
+        # set up list for patterns that, for the CpTp setting, predict for the mask the same verb that was in the context
+        list_good_patterns_model = []
 
-        total_sentences = 0
-        tot_good_preds = 0
-        detail_verbs = {v : 0 for v in list_verbs} # vedere ogni vb qunte volt si ripete
+        total_sentences = 0 # counts tried sentences
+        tot_good_preds = 0 # counts sentences with repetition
+        detail_verbs = {v : 0 for v in list_verbs} # counts, for each verb, how many times it is repeated in the mask if present in context
 
 
-        for gender in ["f", "m"]:
-            # gender adaptations
+        for gender in ["f", "m"]: 
             current_pronouns_maj = pronouns_maj[gender]
 
-            for name_available in name_arrays[gender]:  # each of the top 100 names
+            for name_available in name_arrays[gender]: 
 
-                batch_sentences = [] # batch = x non mandare una frase alla volte alla gpu, ne prendo un mucchietto (batch) e faccio i calcoli per un gruppo alla volta
-                batch_verbs = []
+                batch_sentences = [] # batch of sentences to try in this cycle
+                batch_verbs = [] # batch of verbs to try in this cycle
                 for profession_available in professionsarray[gender]:
                     current_list_verbs = list_verbs.copy()
                     shuffle(current_list_verbs)
 
-                    found = False # quando ne trovo uno mi fermo
+                    found = False # to stop when a good verb is found
 
                     for verb_available in current_list_verbs:
                         #print(f"current verb : {verb_available}")
@@ -124,6 +123,7 @@ def main():
                         if total_sentences % 1000 == 0:
                             print(f"current : {total_sentences}, {len(list_good_patterns_model)}")
 
+                        # get the result at the end of the batch
                         if len(batch_sentences) == size_batches:
                             new_sentence, found, nb_good_pred, found_verbs = make_and_encode_batch(batch_sentences, tokenizer, model, device, batch_verbs, name_available, profession_available, current_pronouns_maj, found) # registra le frasi che vanno
                             tot_good_preds+=nb_good_pred
@@ -132,11 +132,11 @@ def main():
                             batch_sentences = []
                             batch_verbs = []
                             for found_verb in found_verbs:
-                                detail_verbs[found_verb] +=  1 # x ogni vb quante volte si ripete
+                                detail_verbs[found_verb] +=  1 # add one repetition to the count for the found verb
 
 
-
-                    if len(batch_sentences) > 0: # ripete nel caso il num di frasi non sia divis x 100
+                    # repetition for what is left out of the last batch
+                    if len(batch_sentences) > 0: 
                         new_sentence, found, nb_good_pred, found_verbs = make_and_encode_batch(batch_sentences, tokenizer, model, device, batch_verbs, name_available, profession_available, current_pronouns_maj, found)
 
                         tot_good_preds += nb_good_pred
