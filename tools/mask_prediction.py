@@ -48,25 +48,32 @@ def batch_mask_prediction(batch_sentences, tokenizer, model, device, size_batche
 
     return all_predictions
 
-### vedere bene:
+
+
+
 def make_and_encode_batch(current_batch, tokenizer, model, device, batch_verbs, name_available, profession_available, current_pronouns_maj, found):
-    current_found = found
+    current_found = found # true if the current batch contained good sentences
     good_pred = 0
     detail_verbs = []
 
+    # get the predicted tokens for the batch of sentences
     predictions = encode_batch(current_batch, tokenizer, model, device)
     new_sentence = None
 
+    # for each prediction, check if the model predicted the same verb that was in the context sentence 
     for i, prediction_available in enumerate(predictions):
-        good_verb = batch_verbs[i]
+        good_verb = batch_verbs[i] # the desired verb
 
         if check_conjugation(good_verb, prediction_available):
+            # outputs True value if the prediction is the 3rd person plural of the desired verb
             detail_verbs.append(good_verb)
             good_pred += 1
             good_dico = {"name_available": name_available, "profession_available": profession_available,
                          "verb": good_verb, "current_pronouns_maj": current_pronouns_maj}
 
             if not current_found:
+                # once a good sentence is found, the "found" value is set to true
+                # and the "new_sentence" value is the dictionary of all elements in the sentence
                 new_sentence = good_dico
 
                 current_found = True
@@ -74,22 +81,32 @@ def make_and_encode_batch(current_batch, tokenizer, model, device, batch_verbs, 
                 #    break
     return new_sentence, current_found, good_pred, detail_verbs
 
-### Guardare bene questo!!!!
+
+
+
 def encode_batch(current_batch, tokenizer, model, device):
 
     with torch.no_grad():
-        encoded_sentence = tokenizer.batch_encode_plus(current_batch,padding=True,  return_tensors="pt").to(device) # encode frasi
-        mask_tokens_index = torch.where(encoded_sentence['input_ids'] == tokenizer.mask_token_id) # recupero l'indice del mask nella frase x sapere quale token devo vedere
+        # encode sentences
+        encoded_sentence = tokenizer.batch_encode_plus(current_batch,padding=True,  return_tensors="pt").to(device)
+        # get the mask-token index in the sentence 
+        mask_tokens_index = torch.where(encoded_sentence['input_ids'] == tokenizer.mask_token_id) 
         #print(mask_tokens_index)
-        tokens_logits = model(**encoded_sentence) # recup vettori
+        # get logits vectors
+        tokens_logits = model(**encoded_sentence) 
         #print(tokens_logits)
         #print(tokens_logits['logits'].shape)
 
-        mask_tokens_logits = tokens_logits['logits'][ mask_tokens_index] # logits = token (prob x ogni parola del vocab), ne prendi solo quello con indice del mask
+        # get the mask-token logit
+        mask_tokens_logits = tokens_logits['logits'][ mask_tokens_index]
         #print(mask_tokens_logits.shape)
-        top_tokens = torch.topk(mask_tokens_logits, 1, dim=1).indices#.tolist() ### recup i k logit + alti
+
+        # get the k highest logits
+        top_tokens = torch.topk(mask_tokens_logits, 1, dim=1).indices#.tolist()        
         #print(top_tokens)
-        predicted_tokens = tokenizer.batch_decode(top_tokens) # decode il batch di token (indicati come indici in riferim al vocab)
+
+        # decode the batch of tokens, i.e. get the predicted tokens (each token is represented by an index in the vocabulary)
+        predicted_tokens = tokenizer.batch_decode(top_tokens) 
         #print(predicted_tokens)
 
     return predicted_tokens
