@@ -3,7 +3,7 @@ os.environ['CUDA_LAUNCH_BLOCKING'] = "0"
 
 import torch
 from joblib import load, dump
-from transformers import AutoTokenizer, AutoModel
+from transformers import AutoTokenizer, AutoModel, AutoModelForMaskedLM
 from sklearn.neural_network import MLPClassifier
 import numpy as np
 from sklearn.preprocessing import StandardScaler
@@ -244,6 +244,11 @@ y = labels
 
 
 
+model_mask = AutoModelforMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased') 
+
+
+
+
 # load names, professions and verbs for the templates
 path = r"../Inputs"
 fName_file_path = f"{path}\100_names_f.txt"
@@ -301,7 +306,7 @@ for gender in ["f", "m"]:
                 #    break
 
                 
-                current_sentence = build_masked_context(name_available, profession_available, verb_available, current_pronouns_maj, mask_token)
+                current_sentence = build_masked_context(name_available, profession_available, verb_available, current_pronouns_maj, mask_token = tokenizer.mask_token)
 
                 #print(current_sentence)
                 #quit()
@@ -315,7 +320,7 @@ for gender in ["f", "m"]:
 
                 # get the result at the end of the batch
                 if len(batch_sentences) == size_batches:
-                    new_sentence, found, nb_good_pred, found_verbs = make_and_encode_batch(batch_sentences, tokenizer, model, device, batch_verbs, name_available, profession_available, current_pronouns_maj, found) 
+                    new_sentence, found, nb_good_pred, found_verbs = make_and_encode_batch(batch_sentences, tokenizer, model_mask, device, batch_verbs, name_available, profession_available, current_pronouns_maj, found) 
                     tot_good_preds+=nb_good_pred
                     if new_sentence!= None:
                         list_good_patterns_model.append(new_sentence)
@@ -327,7 +332,7 @@ for gender in ["f", "m"]:
 
             # repetition for what is left out of the last batch
             if len(batch_sentences) > 0: 
-                new_sentence, found, nb_good_pred, found_verbs = make_and_encode_batch(batch_sentences, tokenizer, model, device, batch_verbs, name_available, profession_available, current_pronouns_maj, found)
+                new_sentence, found, nb_good_pred, found_verbs = make_and_encode_batch(batch_sentences, tokenizer, model_mask, device, batch_verbs, name_available, profession_available, current_pronouns_maj, found)
 
                 tot_good_preds += nb_good_pred
                 if new_sentence != None:
@@ -342,7 +347,7 @@ template_sentences_pos =[]
 for pattern in list_good_patterns_model:
   # build sentences putting the conjugated verb instead of the mask
   sent = build_masked_context(pattern["name_available"], pattern["profession_available"],
-                               pattern["verb_available"], pattern["current_pronouns_maj"], pattern["masked_prediction"])
+                               pattern["verb"], pattern["current_pronouns_maj"], pattern["masked_prediction"])
   template_sentences_pos.append(sent)
 
 # create the CnTn set
