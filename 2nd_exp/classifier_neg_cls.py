@@ -244,7 +244,7 @@ y = labels
 
 
 
-model_mask = AutoModelforMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased') 
+model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased')
 
 
 
