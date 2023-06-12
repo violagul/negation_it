@@ -464,3 +464,52 @@ for scores in paisa_result:
 print("TEMPLATE TEST\n\n")
 for scores in template_result:
    print(scores)
+
+
+
+
+
+
+
+
+
+
+########################################
+###CnTp and CpTn sentences from paisa###
+########################################
+
+
+# pattern for couples of sentences
+double_sent = r"(?<= )[A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\.(?= \b)"
+
+
+# patterns for "non" in context: in the first of two sentences or the second of two sentences
+negC_patt = r".*[Nn]on.*\..*\."
+negT_patt = r".*\..*[Nn]on.*\." 
+
+
+# extract couples of sentences
+sent = []
+for text in paisa_wiki:
+  found = re.findall(double_sent, text)
+  for elem in found:
+    if len(elem)>25:
+      sent.append(elem)
+
+# create two lists to store: 
+CnTp = [] # couples of sentences the first of which is negative
+CpTn = [] # couples of sentences the second of which is negative
+
+for s in sent:
+  found = re.findall(negC_patt, s)
+  for elem in found:
+    double = re.search(negT_patt, elem)
+    if not double: # exclude couples of sentences where both are negative
+      CnTp.append(elem)
+  found_2 = re.findall(negT_patt, s)
+  for elem in found:
+    double2 = re.search(negC_patt, elem)
+    if not double2:
+      CpTn.append(elem)
+
+
