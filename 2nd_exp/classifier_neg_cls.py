@@ -360,7 +360,11 @@ for sent in template_sentences_pos:
     sent_neg = re.sub(pair[0], pair[1], sent_neg)
   template_sentences_neg.append(sent_neg)
   
-   
+
+#############################
+### template set encoding ###
+#############################
+
 
 
 
@@ -405,66 +409,26 @@ cls_temp_neg = cls_temp_neg[:size_test]
 
 
 
-train_temp = np.concatenate((cls_encodings_pos[:train_size], cls_encodings_neg[:train_size]))
-train_temp_lab = np.concatenate((np.zeros(train_size), np.ones(train_size)))
-test_temp = np.concatenate((cls_encodings_pos[train_size:], cls_encodings_neg[train_size:]))
-test_temp_lab = np.concatenate((np.zeros(test_size), np.ones(test_size)))
+#train_temp = np.concatenate((cls_encodings_pos[:train_size], cls_encodings_neg[:train_size]))
+#train_temp_lab = np.concatenate((np.zeros(train_size), np.ones(train_size)))
+#test_temp = np.concatenate((cls_encodings_pos[train_size:], cls_encodings_neg[train_size:]))
+#test_temp_lab = np.concatenate((np.zeros(test_size), np.ones(test_size)))
 
 
-scaler.fit(train_temp)
-train = scaler.transform(train_temp)
+
+test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]))
+test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
+
+
+
+#scaler.fit(train_temp)
+#train = scaler.transform(train_temp)
+#test_2 = scaler.transform(test_temp)
+
+
+
+scaler.fit(test_temp)
 test_2 = scaler.transform(test_temp)
-
-
-
-
-
-
-
-
-########################################
-### classifier creation and training ###
-########################################
-
-
-
-
-
-paisa_result =[]
-template_result = []
-
-# set up the MLP classifier
-# solver : adam or sgd
-# hidden_layer_sizes : 40,40 or 350,350
-# alpha : between 1e-5 and 1e-2
-for hl in [(40,40), (350,350)]:
-  for a in [1e-2, 1e-3, 1e-4, 1e-5]:
-    for solv in ["adam", "sgd"]:
-      clf = MLPClassifier(solver = "adam", alpha = a,
-                    hidden_layer_sizes=hl, random_state = 1)
-
-      # train on data
-      clf.fit(X, y)
-
-      # see predictions on the dataset
-      clf.predict(test)
-      right_pred = clf.score(test, test_lab)
-      paisa_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n {right_pred}%\n\n")
-
-      clf.predict(test_2)
-      right_pred = clf.score(test_2, test_temp_lab)
-      template_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n {right_pred}%\n\n")
-
-
-
-print("PAISA' TEST\n\n")
-for scores in paisa_result:
-   print(scores)
-
-print("TEMPLATE TEST\n\n")
-for scores in template_result:
-   print(scores)
-
 
 
 
@@ -511,5 +475,144 @@ for s in sent:
     double2 = re.search(negC_patt, elem)
     if not double2:
       CpTn.append(elem)
+
+
+
+
+
+################################
+### CnTp - CpTn set encoding ###
+################################
+
+
+
+
+
+# encode the CnTp ad CpTn sentences
+for sent_list in [CpTn, CnTp]:
+  batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt")
+
+  # then extract only the outputs for each sentence
+  with torch.no_grad():
+    tokens_outputs = model(**batch_encoded )
+
+  # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
+  cls_encodings = tokens_outputs.last_hidden_state[:, 0, :]
+
+  cls_encodings = cls_encodings.cpu().numpy()
+
+  if sent_list == CnTp:
+    cls_CnTp = cls_encodings
+  elif sent_list == CpTn:
+    cls_CpTn = cls_encodings
+
+
+cls_CnTp.shuffle()
+cls_CpTn.shuffle()
+
+cls_CpTn = cls_CpTn[:size_test]
+cls_CnTp = cls_CnTp[:size_test]
+
+
+
+
+############################
+### CpTn - CnTp set test ###
+############################
+
+
+
+
+test_CnTp = np.array(cls_CnTp)
+test_CpTn = np.array(cls_CpTn)
+test_CnTp_lab = np.array(np.ones(size_test))
+test_CpTn_lab = np.array(np.ones(size_test))
+
+
+scaler.fit(test_CnTp)
+test_3 = scaler.transform(test_CnTp)
+scaler.fit(test_CpTn)
+test_4 = scaler.transform(test_CpTn)
+
+
+
+
+
+
+
+
+
+
+########################################
+### classifier creation and training ###
+########################################
+
+
+
+
+
+paisa_result =[]
+template_result = []
+CnTp_result = []
+CpTn_result = []
+
+
+# set up the MLP classifier
+# solver : adam or sgd
+# hidden_layer_sizes : 40,40 or 350,350
+# alpha : between 1e-5 and 1e-2
+for hl in [(40,40), (350,350)]:
+  for a in [1e-2, 1e-3, 1e-4, 1e-5]:
+    for solv in ["adam", "sgd"]:
+      clf = MLPClassifier(solver = "adam", alpha = a,
+                    hidden_layer_sizes=hl, random_state = 1)
+
+      # train on data
+      clf.fit(X, y)
+
+      # see predictions on the dataset
+      clf.predict(test)
+      right_pred = clf.score(test, test_lab)
+      paisa_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n {right_pred}%\n\n")
+
+      clf.predict(test_2)
+      right_pred = clf.score(test_2, test_temp_lab)
+      template_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n {right_pred}%\n\n")
+
+      clf.predict(test_3)
+      right_pred = clf.score(test_3, test_CnTp_lab)
+      CnTp_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n {right_pred}%\n\n")
+
+      clf.predict(test_4)
+      right_pred = clf.score(test_3, test_CpTn_lab)
+      CpTn_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n {right_pred}%\n\n")
+
+
+
+
+
+
+
+print("PAISA' TEST\n\n")
+for scores in paisa_result:
+   print(scores)
+
+print("TEMPLATE TEST\n\n")
+for scores in template_result:
+   print(scores)
+
+print("CnTp TEST\n\n")
+for scores in CnTp_result:
+   print(scores)
+
+print("CpTn TEST\n\n")
+for scores in CpTn_result:
+   print(scores)
+
+
+
+
+
+
 
 
