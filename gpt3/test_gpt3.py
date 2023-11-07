@@ -118,7 +118,7 @@ def build_masked_context(name_available, profession_available, verb, current_pro
 
 """##TESTS
 
-###1)CpTn
+###1)CnTp
 """
 
 pronouns_maj = {"f": "Lei", "m": "Lui"}
@@ -152,7 +152,7 @@ for uplet in data_test:
       response = openai.Completion.create(
                 model="text-davinci-003",
                 prompt= sentence,
-                suffix="molto spesso",
+                suffix=" molto spesso",
                 temperature=0,
                 max_tokens= max_tokens,
                 top_p=1,
@@ -160,13 +160,13 @@ for uplet in data_test:
                 presence_penalty=0)
 
       was_r = False
-      print(response)
-      if response["choices"][0]["text"] == nb_tokens[verb_available][1]:
+      print(get_conj(uplet[2]))
+      if response["choices"][0]["text"] == get_conj(uplet[2]):
         nb_repets += 1
         was_r = True
 
       print(was_r)
-      repeated.append([uplet, was_r])
+      repeated.append([uplet, was_r, response["choices"][0]["text"]])
 
 
 
@@ -176,10 +176,16 @@ dump(repeated, "results_gpt3_CnTp.joblib")
 
 print(nb_repets)
 
+a = load("results_gpt3_CnTp.joblib")
+for l in a:
+  print(f"{l[0][2]} \t {l[2]}")
+
+"""### 2) CpTn"""
+
 pronouns_maj = {"f": "Lei", "m": "Lui"}
 def build_mask_context_CpTn(uplet):
 
-    context_available = "NOM è MET che ha l'abitudine di ACTION. PRON_maj non"# it
+    context_available = "NOM è MET che ha l'abitudine di ACTION. PRON_maj non "# it
 
     new_context_sentence_available = context_available.replace('NOM', uplet[0])
     new_context_sentence_available = new_context_sentence_available.replace('MET', uplet[1])
@@ -207,7 +213,7 @@ for uplet in data_test:
       response = openai.Completion.create(
                 model="text-davinci-003",
                 prompt= sentence,
-                suffix="molto spesso",
+                suffix=" molto spesso",
                 temperature=0,
                 max_tokens= max_tokens,
                 top_p=1,
@@ -215,13 +221,13 @@ for uplet in data_test:
                 presence_penalty=0)
 
       was_r = False
-      print(response)
-      if response["choices"][0]["text"] == nb_tokens[verb_available][1]:
+
+      if response["choices"][0]["text"] == get_conj(uplet[2]):
         nb_repets += 1
         was_r = True
 
       print(was_r)
-      repeated.append([uplet, was_r])
+      repeated.append([uplet, was_r, response["choices"][0]["text"]])
 
 
 
@@ -231,10 +237,12 @@ dump(repeated, "results_gpt3_CpTn.joblib")
 
 print(nb_repets)
 
+"""###3) CnTn"""
+
 pronouns_maj = {"f": "Lei", "m": "Lui"}
 def build_mask_context_CnTn(uplet):
 
-    context_available = "NOM è MET che non ha l'abitudine di ACTION. PRON_maj non"# it
+    context_available = "NOM è MET che non ha l'abitudine di ACTION. PRON_maj non "# it
 
     new_context_sentence_available = context_available.replace('NOM', uplet[0])
     new_context_sentence_available = new_context_sentence_available.replace('MET', uplet[1])
@@ -262,7 +270,7 @@ for uplet in data_test:
       response = openai.Completion.create(
                 model="text-davinci-003",
                 prompt= sentence,
-                suffix="molto spesso",
+                suffix=" molto spesso",
                 temperature=0,
                 max_tokens= max_tokens,
                 top_p=1,
@@ -270,18 +278,75 @@ for uplet in data_test:
                 presence_penalty=0)
 
       was_r = False
-      print(response)
-      if response["choices"][0]["text"] == nb_tokens[verb_available][1]:
+
+      if response["choices"][0]["text"] == get_conj(uplet[2]):
         nb_repets += 1
         was_r = True
 
       print(was_r)
-      repeated.append([uplet, was_r])
+      repeated.append([uplet, was_r, response["choices"][0]["text"]])
 
 
 
 
 
 dump(repeated, "results_gpt3_CnTn.joblib")
+
+print(nb_repets)
+
+"""###4) CpTt"""
+
+pronouns_maj = {"f": "Lei", "m": "Lui"}
+def build_mask_context_CpTt(uplet):
+
+    context_available = "NOM è MET che ha l'abitudine di ACTION. PRON_maj "# it
+
+    new_context_sentence_available = context_available.replace('NOM', uplet[0])
+    new_context_sentence_available = new_context_sentence_available.replace('MET', uplet[1])
+    new_context_sentence_available = new_context_sentence_available.replace('ACTION', uplet[2])
+    gender = uplet[3]
+    new_context_sentence_available = new_context_sentence_available.replace('PRON_maj', pronouns_maj[gender])
+
+
+    return new_context_sentence_available
+
+data_test = load("gpt_3_CpTp_list_results.joblib")
+
+nb_repets = 0
+
+repeated = []
+
+
+for uplet in data_test:
+      sentence = build_mask_context_CnTn(uplet)
+      print(sentence)
+
+      max_tokens = uplet[4]
+
+
+      response = openai.Completion.create(
+                model="text-davinci-003",
+                prompt= sentence,
+                suffix=" davvero molto spesso",
+                temperature=0,
+                max_tokens= max_tokens,
+                top_p=1,
+                frequency_penalty=0,
+                presence_penalty=0)
+
+      was_r = False
+
+      if response["choices"][0]["text"] == get_conj(uplet[2]):
+        nb_repets += 1
+        was_r = True
+
+      print(was_r)
+      repeated.append([uplet, was_r, response["choices"][0]["text"]])
+
+
+
+
+
+dump(repeated, "results_gpt3_CpTt.joblib")
 
 print(nb_repets)
