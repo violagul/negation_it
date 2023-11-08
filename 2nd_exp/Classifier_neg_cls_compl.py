@@ -618,7 +618,3 @@ for scores in CpTn_result:
 
 
 
-
-
-
-
