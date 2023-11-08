@@ -119,7 +119,7 @@ def build_masked_context(name_available, profession_available, verb, current_pro
 import os
 import openai
 
-openai.api_key = "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"
+openai.api_key = []
 
 tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
 
