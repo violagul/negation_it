@@ -193,7 +193,7 @@ for sent_list in [sent_neg, sent_pos]:
 
   # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
   print(tokens_outputs)
-  cls_encodings = tokens_outputs.last_hidden_state
+  cls_encodings = tokens_outputs[0]
   print(cls_encodings.shape)
   cls_encodings = cls_encodings.cpu().numpy()
 
