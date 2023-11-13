@@ -128,13 +128,12 @@ tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 with open(r"../data/paisa.raw.utf8", encoding='utf8') as infile:
     paisa = infile.read()
 
-paisa = paisa[:1000]
-print(paisa)
+
 # from the corpus, select all texts containing "wiki" in their tag's url
-#wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n" 
-#paisa_wiki = re.findall(wiki_pattern, paisa)
+wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n" 
+paisa_wiki = re.findall(wiki_pattern, paisa)
 #print(f"Number of texts from a site containing 'wiki' in their URL: {len(paisa_wiki)}")
-paisa_wiki = paisa
+#paisa_wiki = paisa
 
 # pattern for finding whole sentences in the texts (defined by the capital letter in the beginning, the period at the end and a minimum length)
 sent = []
