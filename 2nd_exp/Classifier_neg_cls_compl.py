@@ -128,7 +128,7 @@ tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 with open(r"../data/paisa.raw.utf8", encoding='utf8') as infile:
     paisa = infile.read()
 
-paisa = paisa[:10000]
+paisa = paisa[:1000000]
 # from the corpus, select all texts containing "wiki" in their tag's url
 #wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n" 
 #paisa_wiki = re.findall(wiki_pattern, paisa)
