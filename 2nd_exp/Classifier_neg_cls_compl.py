@@ -128,12 +128,12 @@ tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 with open(r"../data/paisa.raw.utf8", encoding='utf8') as infile:
     paisa = infile.read()
 
-
+paisa = paisa[:10000]
 # from the corpus, select all texts containing "wiki" in their tag's url
-wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n" 
-paisa_wiki = re.findall(wiki_pattern, paisa)
+#wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n" 
+#paisa_wiki = re.findall(wiki_pattern, paisa)
 #print(f"Number of texts from a site containing 'wiki' in their URL: {len(paisa_wiki)}")
-
+paisa_wiki = paisa
 
 # pattern for finding whole sentences in the texts (defined by the capital letter in the beginning, the period at the end and a minimum length)
 sent = []
@@ -190,6 +190,7 @@ for sent_list in [sent_neg, sent_pos]:
     tokens_outputs = model(**batch_encoded, output_hidden_states = True)
 
   # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
+  print(tokens_outputs)
   cls_encodings = tokens_outputs.last_hidden_state[-1]
 
   cls_encodings = cls_encodings.cpu().numpy()
