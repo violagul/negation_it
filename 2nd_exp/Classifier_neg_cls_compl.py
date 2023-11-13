@@ -181,7 +181,7 @@ shuffle(sent_pos)
 sent_neg = sent_neg[:size_test]
 sent_pos = sent_pos[:size_test]
 
-print(sent_neg)
+
 ### extract CLS
 # for each set of sentences, we encode each sentence
 for sent_list in [sent_neg, sent_pos]:
@@ -189,12 +189,12 @@ for sent_list in [sent_neg, sent_pos]:
 
   # then extract only the outputs for each sentence
   with torch.no_grad():
-    tokens_outputs = model(**batch_encoded, output_hidden_states = True)
+    tokens_outputs = model(**batch_encoded)
 
   # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
   print(tokens_outputs)
-  cls_encodings = tokens_outputs[-1]
-
+  cls_encodings = tokens_outputs.last_hidden_state
+  print(cls_encodings.shape)
   cls_encodings = cls_encodings.cpu().numpy()
 
   if sent_list == sent_neg:
