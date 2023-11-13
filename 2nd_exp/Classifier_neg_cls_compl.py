@@ -19,7 +19,7 @@ from tools.chech_conjug import check_conjugation
 
 #from tools.chech_conjug import check_conjugation
 
-
+device = torch.device("cuda") if torch.cuda.is_available() else torch.devide("cpu")
 
 
 
@@ -120,7 +120,7 @@ def encode_batch(current_batch, tokenizer, model, device):
 size_test = 10000
 
 # select the italian model to test
-model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased') 
+model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 
 
@@ -159,6 +159,8 @@ sent_neg = []
 neg_patt = r"\b[Nn]on\b"  
 
 for s in sent:
+  if len(sent_neg) > 20 and len(sent_pos)>20:
+     break
   matches = re.search(neg_patt, s)
   if matches:
     sent_neg.append(s)
@@ -183,7 +185,7 @@ print(sent_neg)
 ### extract CLS
 # for each set of sentences, we encode each sentence
 for sent_list in [sent_neg, sent_pos]:
-  batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt")
+  batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
   # then extract only the outputs for each sentence
   with torch.no_grad():
@@ -191,7 +193,7 @@ for sent_list in [sent_neg, sent_pos]:
 
   # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
   print(tokens_outputs)
-  cls_encodings = tokens_outputs.last_hidden_state[-1]
+  cls_encodings = tokens_outputs[-1]
 
   cls_encodings = cls_encodings.cpu().numpy()
 
@@ -374,7 +376,7 @@ for sent in template_sentences_pos:
 # extract CLS for each template sentence
 # for each set of sentences, we encode each sentence
 for sent_list in [template_sentences_neg, template_sentences_pos]:
-  batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt")
+  batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
   # then extract only the outputs for each sentence
   with torch.no_grad():
@@ -493,7 +495,7 @@ for s in sent:
 
 # encode the CnTp ad CpTn sentences
 for sent_list in [CpTn, CnTp]:
-  batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt")
+  batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
   # then extract only the outputs for each sentence
   with torch.no_grad():
