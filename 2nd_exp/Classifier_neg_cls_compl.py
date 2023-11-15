@@ -193,9 +193,11 @@ for sent_list in [sent_neg, sent_pos]:
 
   # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
   print(tokens_outputs)
-  cls_encodings = tokens_outputs[0]
+  embeddings = tokens_outputs[0]
+  cls_encodings = embeddings[:, 0, :]
   print(cls_encodings.shape)
   cls_encodings = cls_encodings.cpu().numpy()
+  
 
   if sent_list == sent_neg:
     cls_encodings_neg = cls_encodings
@@ -210,7 +212,7 @@ for sent_list in [sent_neg, sent_pos]:
 
 # we use 90% of data as training and 10% as test
 train_size = round(size_test*0.9)
-train = np.concatenate((cls_encodings_pos[:train_size], cls_encodings_neg[:train_size]), 0)
+train = np.concatenate((cls_encodings_pos[:train_size], cls_encodings_neg[:train_size]), 0) # shape num_sent x 768
 labels = np.concatenate((np.zeros(train_size), np.ones(train_size)))
 test = np.concatenate((cls_encodings_pos[train_size:], cls_encodings_neg[train_size:]), 0)
 test_size = int(size_test - train_size)
