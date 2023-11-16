@@ -44,3 +44,5 @@ with torch.no_grad():
 
         # get the mask-token logit
         mask_tokens_logits = tokens_logits['logits'][ mask_tokens_index]
+        print(tokens_logits)
+        print(tokens_logits.shape)
