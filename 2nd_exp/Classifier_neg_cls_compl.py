@@ -1,5 +1,5 @@
 import os
-os.environ['CUDA_LAUNCH_BLOCKING'] = "0"
+os.environ['CUDA_VISIBLE_DEVICES'] = "0"
 
 import torch
 from joblib import load, dump
@@ -251,7 +251,7 @@ X, y = skshuffle(X, y, random_state=42)
 
 
 
-model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased')
+model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 
 
 
