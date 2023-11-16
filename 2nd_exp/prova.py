@@ -29,7 +29,7 @@ model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 
 
-current batch = "Sono una frase da analizzare"
+current_batch = "Sono una frase da analizzare"
 
 with torch.no_grad():
         # encode sentences
