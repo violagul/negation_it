@@ -41,8 +41,8 @@ with torch.no_grad():
         tokens_logits = model(**encoded_sentence) 
         #print(tokens_logits)
         #print(tokens_logits['logits'].shape)
-        print(tokens_logits)
-        print(tokens_logits.shape)
+        print(tokens_logits[0].shape)
+        print(tokens_logits[1].shape)
         # get the mask-token logit
         mask_tokens_logits = tokens_logits['logits'][ mask_tokens_index]
         
