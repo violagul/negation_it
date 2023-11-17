@@ -83,7 +83,7 @@ def encode_batch(current_batch, tokenizer, model, device):
         #print(tokens_logits['logits'].shape)
 
         # get the mask-token logit
-        mask_tokens_logits = tokens_logits['logits'][ mask_tokens_index]
+        mask_tokens_logits = tokens_logits[0][ mask_tokens_index]
         #print(mask_tokens_logits.shape)
 
         # get the k highest logits
@@ -192,10 +192,10 @@ for sent_list in [sent_neg, sent_pos]:
     tokens_outputs = model(**batch_encoded)
 
   # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
-  print(tokens_outputs)
+  #print(tokens_outputs)
   embeddings = tokens_outputs[0]
   cls_encodings = embeddings[:, 0, :]
-  print(cls_encodings.shape)
+  #print(cls_encodings.shape)
   cls_encodings = cls_encodings.cpu().numpy()
   
 
