@@ -289,17 +289,18 @@ for sent_list in [template_sentences_neg, template_sentences_pos]:
 print(f"FUNZIONA: DAVID?")
 #cls_temp_neg.shuffle()
 #cls_temp_pos.shuffle()
-print(f"prima: {cls_temp_pos[0]}")
+
 np.random.shuffle(cls_temp_neg)
 np.random.shuffle(cls_temp_pos)
-print(f"dopo: {cls_temp_pos[0]}")
+
 
 
 cls_temp_pos = cls_temp_pos[:size_test]
 cls_temp_neg = cls_temp_neg[:size_test]
 
 
-
+print(cls_temp_neg.shape)
+print(cls_temp_pos.shape)
 
 
 
