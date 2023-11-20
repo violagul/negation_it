@@ -104,9 +104,6 @@ def encode_batch(current_batch, tokenizer, model, device):
 
 
 
-
-
-
 ###size_test = 10000
 size_test = 1000
 
@@ -114,6 +111,10 @@ print(f"Downloading models...")
 # select the italian model to test
 model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
+
+
+
+
 
 
 
@@ -149,7 +150,7 @@ mName_file = open(mName_file_path, "r")
 fProf_file = open(fProf_file_path, "r")
 mProf_file = open(mProf_file_path, "r")
 
-list_verbs = load(f"{path}/base_verbs.joblib")
+list_verbs = load(f"{path}/base_verbs.joblib")[:20]
 
 
 
@@ -210,7 +211,7 @@ for gender in ["f", "m"]:
                 total_sentences += 1
 
                 #if total_sentences % 1000 == 0:
-                if total_sentences % 5000 == 0:
+                if total_sentences % 100 == 0:
                     print(f"current : {total_sentences}, {len(list_good_patterns_model)}, {current_sentence}")
 
                 # get the result at the end of the batch
@@ -237,8 +238,7 @@ for gender in ["f", "m"]:
                 for found_verb in found_verbs:
                     detail_verbs[found_verb] += 1
 
-print(f"{len(list_good_patterns_model)} matcher for the model")
-print(type(list_good_patterns_model))
+
 print(f"Splitting template sentences in neg and pos...")
 # create the CpTp set
 template_sentences_pos =[]
