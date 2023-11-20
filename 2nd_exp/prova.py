@@ -330,7 +330,7 @@ test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
 #test_2 = scaler.transform(test_temp)
 
 
-
+scaler = StandardScaler()
 scaler.fit(test_temp)
 test_2 = scaler.transform(test_temp)
 
