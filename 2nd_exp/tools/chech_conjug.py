@@ -28,7 +28,7 @@ def check_conjugation(verb, conjugation):
         return False
 
 
-    return (('Indicativo', 'Indicativo presente', '3s', conjugation) in verb_conjs)
+    return (('Indicativo', 'Indicativo presente', 'egli/ella', conjugation) in verb_conjs)
 
 
 
