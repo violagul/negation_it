@@ -112,14 +112,16 @@ size_test = 1000
 
 print(f"Downloading models...")
 # select the italian model to test
-model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
+#model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 
 model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 
 
-current_batch = ["Anna è una ballerina che ha l'abitudine di ballare. Lei [MASK] molto spesso.","Carlo è un barista che ha l'abitudine di cogliere. Lui [MASK] molto spesso.", "Fabio è un attore che ha l'abitudine di sparare. Lui [MASK] molto spesso.", "Francesco è un dottore che ha l'abitudine di cessare. Lui [MASK] molto spesso.","Gabriele è un albergatore che ha l'abitudine di nuotare. Lui [MASK] molto spesso.","Gerardo è un ingegnere che ha l'abitudine di dimostrare. Lui [MASK] molto spesso.","Leone è un gelataio che ha l'abitudine di servire. Lui [MASK] molto spesso.","Giulia è una pittrice che ha l'abitudine di disegnare. Lei [MASK] molto spesso."]
+#current_batch = ["Anna è una ballerina che ha l'abitudine di ballare. Lei [MASK] molto spesso.","Carlo è un barista che ha l'abitudine di cogliere. Lui [MASK] molto spesso.", "Fabio è un attore che ha l'abitudine di sparare. Lui [MASK] molto spesso.", "Francesco è un dottore che ha l'abitudine di cessare. Lui [MASK] molto spesso.","Gabriele è un albergatore che ha l'abitudine di nuotare. Lui [MASK] molto spesso.","Gerardo è un ingegnere che ha l'abitudine di dimostrare. Lui [MASK] molto spesso.","Leone è un gelataio che ha l'abitudine di servire. Lui [MASK] molto spesso.","Giulia è una pittrice che ha l'abitudine di disegnare. Lei [MASK] molto spesso."]
 
-predictions = encode_batch(current_batch, tokenizer, model, device)
-print(predictions)
+#predictions = encode_batch(current_batch, tokenizer, model, device)
+#print(predictions)
 tok = tokenizer.tokenize("Anna è una ballerina che ha l'abitudine di ballare.")
+for elem in tok:
+    print(elem)
