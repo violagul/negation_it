@@ -209,7 +209,7 @@ for sent_list in [sent_neg, sent_pos]:
     cls_encodings_pos = cls_encodings
 
 
-print(f"Training MLP...")
+
 #train = torch.zeros(cls_encodings_neg.shape[0]*2, cls_encodings_neg.shape[1])
 #train[cls_encodings_neg.shape[0]] = cls_encodings_neg[:9000]
 #train = train.append(cls_encodings_pos[:9000])
@@ -431,8 +431,6 @@ cls_temp_neg = cls_temp_neg[:size_test]
 
 
 
-
-
 #train_temp = np.concatenate((cls_encodings_pos[:train_size], cls_encodings_neg[:train_size]))
 #train_temp_lab = np.concatenate((np.zeros(train_size), np.ones(train_size)))
 #test_temp = np.concatenate((cls_encodings_pos[train_size:], cls_encodings_neg[train_size:]))
@@ -467,6 +465,7 @@ test_2 = scaler.transform(test_temp)
 ########################################
 
 
+print(f"Extracting couples of consecutive sentences from PAISA...")
 # pattern for couples of sentences
 double_sent = r"(?<= )[A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\.(?= \b)"
 
@@ -484,6 +483,7 @@ for text in paisa_wiki:
     if len(elem)>25:
       sent.append(elem)
 
+print(f"Extracting CnTp and CpTn types of sentences from PAISA...")
 # create two lists to store: 
 CnTp = [] # couples of sentences the first of which is negative
 CpTn = [] # couples of sentences the second of which is negative
@@ -511,7 +511,7 @@ for s in sent:
 
 
 
-
+print(f"Extracting the CLS encodings from CpTn/CnTp sentences from PAISA...")
 # encode the CnTp ad CpTn sentences
 for sent_list in [CpTn, CnTp]:
   batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
@@ -580,7 +580,7 @@ template_result = []
 CnTp_result = []
 CpTn_result = []
 
-
+print(f"Training and testing MLP...")
 # set up the MLP classifier
 # solver : adam or sgd
 # hidden_layer_sizes : 40,40 or 350,350
