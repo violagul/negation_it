@@ -129,3 +129,7 @@ for elem in tok:
 tok = tokenizer.tokenize("Anna è una ballerina che balla molto spesso.")
 for elem in tok:
     print(elem)
+
+current_batch = ["Anna è una ballerina che ha l'abitudine di ballare. Lei [MASK] molto spesso.","Anna è una ballerina che [MASK] molto spesso."]
+predictions = encode_batch(current_batch, tokenizer, model, device)
+print(predictions)
