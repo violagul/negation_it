@@ -276,7 +276,8 @@ for sent_list in [template_sentences_neg, template_sentences_pos]:
     tokens_outputs = model(**batch_encoded )
 
   # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
-  cls_encodings = tokens_outputs[0]
+  embeddings = tokens_outputs[0]
+  cls_encodings = embeddings[:,0,:]
 
   cls_encodings = cls_encodings.cpu().numpy()
   
