@@ -104,7 +104,7 @@ def encode_batch(current_batch, tokenizer, model, device):
 
 
 
-
+check_conjugation("ballare","balla")
 print(check_conjugation("ballare", "balla"))
 
 
