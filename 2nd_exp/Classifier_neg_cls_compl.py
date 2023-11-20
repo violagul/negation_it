@@ -278,7 +278,13 @@ list_verbs = load(f"{path}/base_verbs.joblib")[:10]
 
 
 # dictionaries of names, professions and pronouns indexed by gender for template construction
-professionsarray = {"f": build_array(fProf_file)[:10], "m": build_array(mProf_file)[10]} # buildarray is a function for creating lists from txt files        
+#professionsarray = {"f": build_array(fProf_file)[:10], "m": build_array(mProf_file)[10]} 
+# buildarray is a function for creating lists from txt files        
+fprofarray = build_array(fProf_file)[:10]
+mprofarray = build_array(mProf_file)[:10]
+for elem in mprofarray:
+   print(elem)
+professionsarray = {"f": fprofarray, "m": mprofarray}
 fnamearray = build_array(fName_file)[:10]
 mnamearray = build_array(mName_file)[:10]
 name_arrays = {"f": fnamearray, "m": mnamearray}
@@ -328,7 +334,7 @@ for gender in ["f", "m"]:
                 total_sentences += 1
 
                 #if total_sentences % 1000 == 0:
-                if total_sentences % 50 == 0:
+                if total_sentences % 200 == 0:
                     print(f"current : {total_sentences}, {len(list_good_patterns_model)}, {current_sentence}")
 
                 # get the result at the end of the batch
