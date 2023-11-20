@@ -210,7 +210,7 @@ for gender in ["f", "m"]:
                 total_sentences += 1
 
                 #if total_sentences % 1000 == 0:
-                if total_sentences % 2000 == 0:
+                if total_sentences % 5000 == 0:
                     print(f"current : {total_sentences}, {len(list_good_patterns_model)}, {current_sentence}")
 
                 # get the result at the end of the batch
