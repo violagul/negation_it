@@ -120,7 +120,7 @@ def encode_batch(current_batch, tokenizer, model, device):
 ###size_test = 10000
 size_test = 1000
 
-
+print(f"Downloading models...")
 # select the italian model to test
 model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
@@ -137,6 +137,8 @@ paisa_wiki = re.findall(wiki_pattern, paisa)
 #print(f"Number of texts from a site containing 'wiki' in their URL: {len(paisa_wiki)}")
 #paisa_wiki = paisa
 
+
+print(f"Extracting sentences from PAISA...")
 # pattern for finding whole sentences in the texts (defined by the capital letter in the beginning, the period at the end and a minimum length)
 sent = []
 pattern = r" [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. \b"  # finds kind of acceptable sentences
@@ -150,9 +152,9 @@ for text in paisa_wiki:
     break
 
 #print(f"Number of sentences: {len(sent)}")
-print(f"Sentences in PAISA: extracted")
 
 
+print(f"Extracting negative sentences from PAISA...")
 # splitting the sentences above into two lists:
 sent_pos = []
 sent_neg = []
@@ -169,7 +171,7 @@ for s in sent:
   else:
     sent_pos.append(s)
 
-print(f"Negative sentences in PAISA: extracted")
+
 
 
 size_test = min(size_test, len(sent_neg), len(sent_pos))
