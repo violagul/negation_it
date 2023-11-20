@@ -48,8 +48,11 @@ def make_and_encode_batch(current_batch, tokenizer, model, device, batch_verbs, 
     # for each prediction, check if the model predicted the same verb that was in the context sentence 
     for i, prediction_available in enumerate(predictions):
         good_verb = batch_verbs[i] # the desired verb
-
+        print(prediction_available)
+        print(good_verb)
+        print(check_conjugation(good_verb, prediction_available))
         if check_conjugation(good_verb, prediction_available):
+            
             # outputs True value if the prediction is the 3rd person plural of the desired verb
             detail_verbs.append(good_verb)
             good_pred += 1
@@ -102,7 +105,7 @@ def encode_batch(current_batch, tokenizer, model, device):
 
 
 
-
+print(check_conjugation("ballare", "balla"))
 
 
 
@@ -133,3 +136,7 @@ for elem in tok:
 current_batch = ["Anna è una ballerina che ha l'abitudine di ballare. Lei [MASK] molto spesso.","Anna è una ballerina che [MASK] molto spesso.","Carlo è un barista che ha l'abitudine di cogliere. Lui [MASK] molto spesso.", "Fabio è un attore che ha l'abitudine di sparare. Lui [MASK] molto spesso.", "Francesco è un dottore che ha l'abitudine di cessare. Lui [MASK] molto spesso.","Gabriele è un albergatore che ha l'abitudine di nuotare. Lui [MASK] molto spesso.","Gerardo è un ingegnere che ha l'abitudine di dimostrare. Lui [MASK] molto spesso.","Leone è un gelataio che ha l'abitudine di servire. Lui [MASK] molto spesso.","Giulia è una pittrice che ha l'abitudine di disegnare. Lei [MASK] molto spesso."]
 predictions = encode_batch(current_batch, tokenizer, model_mask, device)
 print(predictions)
+
+
+
+
