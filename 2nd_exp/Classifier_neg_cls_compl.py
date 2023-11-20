@@ -282,13 +282,13 @@ list_verbs = load(f"{path}/base_verbs.joblib")[:10]
 # dictionaries of names, professions and pronouns indexed by gender for template construction
 #professionsarray = {"f": build_array(fProf_file)[:10], "m": build_array(mProf_file)[10]} 
 # buildarray is a function for creating lists from txt files        
-fprofarray = build_array(fProf_file)[:10]
-mprofarray = build_array(mProf_file)[:10]
+fprofarray = build_array(fProf_file)[:30]
+mprofarray = build_array(mProf_file)[:30]
 for elem in mprofarray:
    print(elem)
 professionsarray = {"f": fprofarray, "m": mprofarray}
-fnamearray = build_array(fName_file)[:10]
-mnamearray = build_array(mName_file)[:10]
+fnamearray = build_array(fName_file)[:30]
+mnamearray = build_array(mName_file)[:30]
 name_arrays = {"f": fnamearray, "m": mnamearray}
 pronouns_maj = {"f": "Lei", "m": "Lui"}
 
