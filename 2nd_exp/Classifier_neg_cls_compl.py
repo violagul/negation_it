@@ -276,7 +276,7 @@ mName_file = open(mName_file_path, "r")
 fProf_file = open(fProf_file_path, "r")
 mProf_file = open(mProf_file_path, "r")
 
-list_verbs = load(f"{path}/base_verbs.joblib")[:10]
+list_verbs = load(f"{path}/base_verbs.joblib")[:20]
 
 
 
@@ -285,11 +285,11 @@ list_verbs = load(f"{path}/base_verbs.joblib")[:10]
 # dictionaries of names, professions and pronouns indexed by gender for template construction
 #professionsarray = {"f": build_array(fProf_file)[:10], "m": build_array(mProf_file)[10]} 
 # buildarray is a function for creating lists from txt files        
-fprofarray = build_array(fProf_file)[:30]
-mprofarray = build_array(mProf_file)[:30]
+fprofarray = build_array(fProf_file)[:20]
+mprofarray = build_array(mProf_file)[:20]
 professionsarray = {"f": fprofarray, "m": mprofarray}
-fnamearray = build_array(fName_file)[:30]
-mnamearray = build_array(mName_file)[:30]
+fnamearray = build_array(fName_file)[:20]
+mnamearray = build_array(mName_file)[:20]
 name_arrays = {"f": fnamearray, "m": mnamearray}
 pronouns_maj = {"f": "Lei", "m": "Lui"}
 
@@ -364,8 +364,7 @@ for gender in ["f", "m"]:
                 for found_verb in found_verbs:
                     detail_verbs[found_verb] += 1
 
-print(f"{len(list_good_patterns_model)} matcher for the model")
-print(type(list_good_patterns_model))
+
 print(f"Splitting template sentences in neg and pos...")
 # create the CpTp set
 template_sentences_pos =[]
