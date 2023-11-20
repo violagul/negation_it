@@ -125,3 +125,7 @@ model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased
 tok = tokenizer.tokenize("Anna è una ballerina che ha l'abitudine di ballare.")
 for elem in tok:
     print(elem)
+
+tok = tokenizer.tokenize("Anna è una ballerina che balla molto spesso.")
+for elem in tok:
+    print(elem)
