@@ -117,7 +117,9 @@ def encode_batch(current_batch, tokenizer, model, device):
 
 
 
-size_test = 10000
+###size_test = 10000
+size_test = 1000
+
 
 # select the italian model to test
 model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
@@ -269,18 +271,21 @@ mName_file = open(mName_file_path, "r")
 fProf_file = open(fProf_file_path, "r")
 mProf_file = open(mProf_file_path, "r")
 
-list_verbs = load(f"{path}/base_verbs.joblib")
+list_verbs = load(f"{path}/base_verbs.joblib")[:10]
 
 
 
 
 
 # dictionaries of names, professions and pronouns indexed by gender for template construction
-professionsarray = {"f": build_array(fProf_file), "m": build_array(mProf_file)} # buildarray is a function for creating lists from txt files        
-fnamearray = build_array(fName_file)
-mnamearray = build_array(mName_file)
+professionsarray = {"f": build_array(fProf_file)[:10], "m": build_array(mProf_file)[10]} # buildarray is a function for creating lists from txt files        
+fnamearray = build_array(fName_file)[:10]
+mnamearray = build_array(mName_file)[:10]
 name_arrays = {"f": fnamearray, "m": mnamearray}
 pronouns_maj = {"f": "Lei", "m": "Lui"}
+
+
+
 
 
 # set up list for patterns that, for the CpTp setting, predict for the mask the same verb that was in the context
@@ -322,8 +327,9 @@ for gender in ["f", "m"]:
                 batch_verbs.append(verb_available)
                 total_sentences += 1
 
-                if total_sentences % 1000 == 0:
-                    print(f"current : {total_sentences}, {len(list_good_patterns_model)}")
+                #if total_sentences % 1000 == 0:
+                if total_sentences % 50 == 0:
+                    print(f"current : {total_sentences}, {len(list_good_patterns_model)}, {current_sentence}")
 
                 # get the result at the end of the batch
                 if len(batch_sentences) == size_batches:
