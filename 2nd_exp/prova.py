@@ -211,7 +211,7 @@ for gender in ["f", "m"]:
                 total_sentences += 1
 
                 #if total_sentences % 1000 == 0:
-                if total_sentences % 100 == 0:
+                if total_sentences % 500 == 0:
                     print(f"current : {total_sentences}, {len(list_good_patterns_model)}, {current_sentence}")
 
                 # get the result at the end of the batch
@@ -276,16 +276,17 @@ for sent_list in [template_sentences_neg, template_sentences_pos]:
     tokens_outputs = model(**batch_encoded )
 
   # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
-  cls_encodings = tokens_outputs.last_hidden_state[:, 0, :]
+  cls_encodings = tokens_outputs[0]
 
   cls_encodings = cls_encodings.cpu().numpy()
+  
 
   if sent_list == template_sentences_neg:
     cls_temp_neg = cls_encodings
   elif sent_list == template_sentences_pos:
     cls_temp_pos = cls_encodings
 
-
+print(f"FUNZIONA: DAVID?")
 cls_temp_neg.shuffle()
 cls_temp_pos.shuffle()
 
