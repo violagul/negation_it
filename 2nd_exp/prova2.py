@@ -122,3 +122,4 @@ current_batch = ["Anna è una ballerina che ha l'abitudine di ballare. Lei [MASK
 
 predictions = encode_batch(current_batch, tokenizer, model, device)
 print(predictions)
+tok = tokenizer.word_tokenize("Anna è una ballerina che ha l'abitudine di ballare.")
