@@ -16,10 +16,8 @@ def check_conjugation(verb, conjugation):
         bool: Vrai si la forme est bien une flexion du verbe.
 
     """
-    print("prova")
     try:
         verb_conjs = conjugator.conjugate(verb).iterate()
-        print(verb_conjs)
 
     except:
         for k in range(10000):
@@ -48,7 +46,7 @@ def get_conj(verb):
     verb_conjs = conjugator.conjugate(verb).iterate()
 
     for verb_conj in verb_conjs:
-        if verb_conj[0] == "Indicativo" and verb_conj[1] == "Indicativo presente" and verb_conj[2] == "3s":
+        if verb_conj[0] == "Indicativo" and verb_conj[1] == "Indicativo presente" and verb_conj[2] == "egli/ella":
             return verb_conj[3]
 
     return None
