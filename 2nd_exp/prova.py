@@ -149,7 +149,7 @@ mName_file = open(mName_file_path, "r")
 fProf_file = open(fProf_file_path, "r")
 mProf_file = open(mProf_file_path, "r")
 
-list_verbs = load(f"{path}/base_verbs.joblib")[:10]
+list_verbs = load(f"{path}/base_verbs.joblib")
 
 
 
@@ -160,8 +160,6 @@ list_verbs = load(f"{path}/base_verbs.joblib")[:10]
 # buildarray is a function for creating lists from txt files        
 fprofarray = build_array(fProf_file)[:60]
 mprofarray = build_array(mProf_file)[:60]
-for elem in mprofarray:
-   print(elem)
 professionsarray = {"f": fprofarray, "m": mprofarray}
 fnamearray = build_array(fName_file)[:60]
 mnamearray = build_array(mName_file)[:60]
@@ -212,7 +210,7 @@ for gender in ["f", "m"]:
                 total_sentences += 1
 
                 #if total_sentences % 1000 == 0:
-                if total_sentences % 300 == 0:
+                if total_sentences % 800 == 0:
                     print(f"current : {total_sentences}, {len(list_good_patterns_model)}, {current_sentence}")
 
                 # get the result at the end of the batch
