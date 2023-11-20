@@ -130,7 +130,7 @@ tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 with open(r"../data/paisa.raw.utf8", encoding='utf8') as infile:
     paisa = infile.read()
 
-
+print(f"Extracting Wikipedia texts from PAISA...")
 # from the corpus, select all texts containing "wiki" in their tag's url
 wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n" 
 paisa_wiki = re.findall(wiki_pattern, paisa)
@@ -150,7 +150,7 @@ for text in paisa_wiki:
     break
 
 #print(f"Number of sentences: {len(sent)}")
-
+print(f"Sentences in PAISA: extracted")
 
 
 # splitting the sentences above into two lists:
@@ -169,7 +169,7 @@ for s in sent:
   else:
     sent_pos.append(s)
 
-
+print(f"Negative sentences in PAISA: extracted")
 
 
 size_test = min(size_test, len(sent_neg), len(sent_pos))
@@ -183,7 +183,7 @@ shuffle(sent_pos)
 sent_neg = sent_neg[:size_test]
 sent_pos = sent_pos[:size_test]
 
-
+print(f"Extracting CLS ecodings for PAISA sentences...")
 ### extract CLS
 # for each set of sentences, we encode each sentence
 for sent_list in [sent_neg, sent_pos]:
@@ -207,7 +207,7 @@ for sent_list in [sent_neg, sent_pos]:
     cls_encodings_pos = cls_encodings
 
 
-
+print(f"Training MLP...")
 #train = torch.zeros(cls_encodings_neg.shape[0]*2, cls_encodings_neg.shape[1])
 #train[cls_encodings_neg.shape[0]] = cls_encodings_neg[:9000]
 #train = train.append(cls_encodings_pos[:9000])
@@ -251,7 +251,7 @@ X, y = skshuffle(X, y, random_state=42)
 
 
 
-
+print(f"Building template sentences...")
 
 model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 
@@ -334,7 +334,7 @@ for gender in ["f", "m"]:
                 total_sentences += 1
 
                 #if total_sentences % 1000 == 0:
-                if total_sentences % 200 == 0:
+                if total_sentences % 100 == 0:
                     print(f"current : {total_sentences}, {len(list_good_patterns_model)}, {current_sentence}")
 
                 # get the result at the end of the batch
@@ -361,6 +361,8 @@ for gender in ["f", "m"]:
                 for found_verb in found_verbs:
                     detail_verbs[found_verb] += 1
 
+
+print(f"Splitting template sentences in neg and pos...")
 # create the CpTp set
 template_sentences_pos =[]
 for pattern in list_good_patterns_model:
@@ -386,7 +388,7 @@ for sent in template_sentences_pos:
 
 
 
-
+print(f"Extracting CLS encoding for template sentences...")
 # extract CLS for each template sentence
 # for each set of sentences, we encode each sentence
 for sent_list in [template_sentences_neg, template_sentences_pos]:
