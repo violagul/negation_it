@@ -18,6 +18,7 @@ def check_conjugation(verb, conjugation):
     """
     try:
         verb_conjs = conjugator.conjugate(verb).iterate()
+        print(verb_conjs)
 
     except:
         for k in range(10000):
