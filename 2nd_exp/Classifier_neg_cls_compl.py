@@ -336,8 +336,8 @@ for gender in ["f", "m"]:
                 batch_verbs.append(verb_available)
                 total_sentences += 1
 
-                #if total_sentences % 1000 == 0:
-                if total_sentences % 100 == 0:
+                
+                if total_sentences % 1000 == 0:
                     print(f"current : {total_sentences}, {len(list_good_patterns_model)}, {current_sentence}")
 
                 # get the result at the end of the batch
