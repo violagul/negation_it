@@ -16,6 +16,7 @@ def check_conjugation(verb, conjugation):
         bool: Vrai si la forme est bien une flexion du verbe.
 
     """
+    print("prova")
     try:
         verb_conjs = conjugator.conjugate(verb).iterate()
         print(verb_conjs)
