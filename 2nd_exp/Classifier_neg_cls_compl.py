@@ -139,7 +139,7 @@ wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n"
 paisa_wiki = re.findall(wiki_pattern, paisa)
 #print(f"Number of texts from a site containing 'wiki' in their URL: {len(paisa_wiki)}")
 #paisa_wiki = paisa
-
+print(f"num testi in paisa_wiki: {len(paisa_wiki)}")
 
 print(f"Extracting sentences from PAISA...")
 # pattern for finding whole sentences in the texts (defined by the capital letter in the beginning, the period at the end and a minimum length)
@@ -478,7 +478,11 @@ negT_patt = r".*\..*[Nn]on.*\."
 
 # extract couples of sentences
 sent = []
+num = 0
 for text in paisa_wiki:
+  num =+1
+  if num % 50 == 0:
+     print(f"{num} testi su {len(paisa_wiki)} fatti")
   found = re.findall(double_sent, text)
   for elem in found:
     if len(elem)>25:
