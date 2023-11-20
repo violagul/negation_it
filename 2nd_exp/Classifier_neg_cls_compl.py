@@ -287,8 +287,6 @@ list_verbs = load(f"{path}/base_verbs.joblib")[:10]
 # buildarray is a function for creating lists from txt files        
 fprofarray = build_array(fProf_file)[:30]
 mprofarray = build_array(mProf_file)[:30]
-for elem in mprofarray:
-   print(elem)
 professionsarray = {"f": fprofarray, "m": mprofarray}
 fnamearray = build_array(fName_file)[:30]
 mnamearray = build_array(mName_file)[:30]
