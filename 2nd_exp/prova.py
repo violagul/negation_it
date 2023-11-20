@@ -100,6 +100,26 @@ def encode_batch(current_batch, tokenizer, model, device):
 
 
 
+
+
+
+
+
+
+
+###size_test = 10000
+size_test = 1000
+
+print(f"Downloading models...")
+# select the italian model to test
+model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
+tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
+
+
+
+
+
+
 ###########################
 ### masked template set ###
 ###########################
