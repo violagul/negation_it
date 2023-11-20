@@ -364,6 +364,7 @@ for gender in ["f", "m"]:
                     detail_verbs[found_verb] += 1
 
 print(f"{len(list_good_patterns_model)} matcher for the model")
+print(type(list_good_patterns_model))
 print(f"Splitting template sentences in neg and pos...")
 # create the CpTp set
 template_sentences_pos =[]
