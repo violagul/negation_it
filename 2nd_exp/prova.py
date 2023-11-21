@@ -175,7 +175,7 @@ negT_patt = r".*\..*[Nn]on.*\."
 # extract couples of sentences
 sent = []
 num = 0
-for text in paisa_wiki[:6000]:
+for text in paisa_wiki[:2000]:
   num+=1
   found = re.findall(double_sent, text)
   for elem in found:
@@ -221,7 +221,8 @@ for s in sent:
 
 print(f"Extracting the CLS encodings from CpTn/CnTp sentences from PAISA...")
 # encode the CnTp ad CpTn sentences
-for sent_list in [CpTn, CnTp]:
+#for sent_list in [CpTn, CnTp]:
+for sent_list in [CnTp]:
   batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
   # then extract only the outputs for each sentence
@@ -240,8 +241,9 @@ for sent_list in [CpTn, CnTp]:
     cls_CpTn = cls_encodings
 
 
-cls_CnTp.shuffle()
-cls_CpTn.shuffle()
+
+np.random.shuffle(cls_CnTp)
+np.random.shuffle(cls_CpTn)
 
 cls_CpTn = cls_CpTn[:size_test]
 cls_CnTp = cls_CnTp[:size_test]
