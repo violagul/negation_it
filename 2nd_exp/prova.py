@@ -107,6 +107,13 @@ def encode_batch(current_batch, tokenizer, model, device):
 ###size_test = 10000
 size_test = 1000
 
+print(f"Downloading models...")
+# select the italian model to test
+model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
+tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
+
+
+
 
 
 
@@ -121,7 +128,7 @@ size_test = 1000
 
 
 
-
+print(f"Uploading PAISA corpus...")
 # upload the Italian corpus
 with open(r"../data/paisa.raw.utf8", encoding='utf8') as infile:
     paisa = infile.read()
@@ -133,4 +140,113 @@ paisa_wiki = re.findall(wiki_pattern, paisa)
 #print(f"Number of texts from a site containing 'wiki' in their URL: {len(paisa_wiki)}")
 #paisa_wiki = paisa
 print(f"num testi in paisa_wiki: {len(paisa_wiki)}")
+
+
+
+
+scaler = StandardScaler()
+model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
+
+
+
+
+
+
+
+
+
+
+
+########################################
+###CnTp and CpTn sentences from paisa###
+########################################
+
+
+print(f"Extracting couples of consecutive sentences from PAISA...")
+# pattern for couples of sentences
+double_sent = r"(?<= )[A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\.(?= \b)"
+
+
+# patterns for "non" in context: in the first of two sentences or the second of two sentences
+negC_patt = r".*[Nn]on.*\..*\."
+negT_patt = r".*\..*[Nn]on.*\." 
+
+
+# extract couples of sentences
+sent = []
+num = 0
+for text in paisa_wiki[:2000]:
+  num+=1
+  found = re.findall(double_sent, text)
+  for elem in found:
+    if len(elem)>25:
+      sent.append(elem)
+  if num % 20 == 0:
+     print(f"{num} of {len(paisa_wiki)} texts analysed")
+     print(f"Couples of sentences found: {len(sent)}")
+
+
+
+print(f"Extracting CnTp and CpTn types of sentences from PAISA...")
+# create two lists to store: 
+CnTp = [] # couples of sentences the first of which is negative
+CpTn = [] # couples of sentences the second of which is negative
+
+
+num = 0
+for s in sent:
+  num+=1
+  found = re.findall(negC_patt, s)
+  for elem in found:
+    double = re.search(negT_patt, elem)
+    if not double: # exclude couples of sentences where both are negative
+      CnTp.append(elem)
+  found_2 = re.findall(negT_patt, s)
+  for elem in found:
+    double2 = re.search(negC_patt, elem)
+    if not double2:
+      CpTn.append(elem)
+  if num % 100 == 0:
+     print(f"{num} sentences analysed")
+
+
+
+
+
+################################
+### CnTp - CpTn set encoding ###
+################################
+
+
+
+
+print(f"Extracting the CLS encodings from CpTn/CnTp sentences from PAISA...")
+# encode the CnTp ad CpTn sentences
+for sent_list in [CpTn, CnTp]:
+  batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+
+  # then extract only the outputs for each sentence
+  with torch.no_grad():
+    tokens_outputs = model(**batch_encoded )
+
+  # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
+  embeddings = tokens_outputs[0]
+  cls_encodings = embeddings[:, 0, :]
+
+  cls_encodings = cls_encodings.cpu().numpy()
+
+  if sent_list == CnTp:
+    cls_CnTp = cls_encodings
+  elif sent_list == CpTn:
+    cls_CpTn = cls_encodings
+
+
+cls_CnTp.shuffle()
+cls_CpTn.shuffle()
+
+cls_CpTn = cls_CpTn[:size_test]
+cls_CnTp = cls_CnTp[:size_test]
+
+
+
 
