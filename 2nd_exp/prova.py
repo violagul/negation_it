@@ -197,7 +197,7 @@ num = 0
 for s in sent:
   num+=1
   found_2 = re.findall(negT_patt, s)
-  for elem in found:
+  for elem in found_2:
     double2 = re.search(negC_patt, elem)
     if not double2:
       CpTn.append(elem)
@@ -221,8 +221,7 @@ for s in sent:
 
 print(f"Extracting the CLS encodings from CpTn/CnTp sentences from PAISA...")
 # encode the CnTp ad CpTn sentences
-#for sent_list in [CpTn, CnTp]:
-for sent_list in [CnTp]:
+for sent_list in [CpTn, CnTp]:
   batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
   # then extract only the outputs for each sentence
