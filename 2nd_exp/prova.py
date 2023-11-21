@@ -208,6 +208,7 @@ for s in sent:
       CpTn.append(elem)
   if num % 100 == 0:
      print(f"{num} sentences analysed")
+     print(f"CnTp : {len(CnTp)}\nCpTn : {len(CpTn)}")
 
 
 
