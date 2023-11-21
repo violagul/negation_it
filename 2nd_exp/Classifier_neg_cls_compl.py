@@ -111,6 +111,7 @@ print(f"Downloading models...")
 # select the italian model to test
 model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
+model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 
 
 
@@ -257,8 +258,6 @@ X, y = skshuffle(X, y, random_state=42)
 
 
 print(f"Building template sentences...")
-
-model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 
 
 
