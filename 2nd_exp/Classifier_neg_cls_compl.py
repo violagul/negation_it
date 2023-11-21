@@ -104,8 +104,7 @@ def encode_batch(current_batch, tokenizer, model, device):
 
 
 
-###size_test = 10000
-size_test = 1000
+size_test = 10000
 
 print(f"Downloading models...")
 # select the italian model to test
@@ -146,7 +145,7 @@ print(f"Extracting sentences from PAISA...")
 sent = []
 pattern = r" [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. \b"  # finds kind of acceptable sentences
 
-for text in paisa_wiki[:5000]:
+for text in paisa_wiki:
   found = re.findall(pattern, text)
   for elem in  found:
     if len(elem) > 25:
@@ -257,10 +256,6 @@ X, y = skshuffle(X, y, random_state=42)
 
 
 print(f"Building template sentences...")
-
-
-
-
 # load names, professions and verbs for the templates
 path = r"../Inputs"
 fName_file_path = f"{path}/100_names_f.txt"
@@ -274,7 +269,7 @@ mName_file = open(mName_file_path, "r")
 fProf_file = open(fProf_file_path, "r")
 mProf_file = open(mProf_file_path, "r")
 
-list_verbs = load(f"{path}/base_verbs.joblib")[:20]
+list_verbs = load(f"{path}/base_verbs.joblib")
 
 
 
@@ -283,11 +278,11 @@ list_verbs = load(f"{path}/base_verbs.joblib")[:20]
 # dictionaries of names, professions and pronouns indexed by gender for template construction
 #professionsarray = {"f": build_array(fProf_file)[:10], "m": build_array(mProf_file)[10]} 
 # buildarray is a function for creating lists from txt files        
-fprofarray = build_array(fProf_file)[:20]
-mprofarray = build_array(mProf_file)[:20]
+fprofarray = build_array(fProf_file)
+mprofarray = build_array(mProf_file)
 professionsarray = {"f": fprofarray, "m": mprofarray}
-fnamearray = build_array(fName_file)[:20]
-mnamearray = build_array(mName_file)[:20]
+fnamearray = build_array(fName_file)
+mnamearray = build_array(mName_file)
 name_arrays = {"f": fnamearray, "m": mnamearray}
 pronouns_maj = {"f": "Lei", "m": "Lui"}
 
@@ -335,8 +330,8 @@ for gender in ["f", "m"]:
                 total_sentences += 1
 
                 
-                if total_sentences % 1000 == 0:
-                    print(f"current : {total_sentences}, {len(list_good_patterns_model)}, {current_sentence}")
+                if total_sentences % 5000 == 0:
+                    print(f"current : {total_sentences}, found : {len(list_good_patterns_model)}")
 
                 # get the result at the end of the batch
                 if len(batch_sentences) == size_batches:
@@ -477,15 +472,15 @@ negT_patt = r".*\..*[Nn]on.*\."
 # extract couples of sentences
 sent = []
 num = 0
-for text in paisa_wiki[:2000]:
+for text in paisa_wiki:
   num+=1
   found = re.findall(double_sent, text)
   for elem in found:
     if len(elem)>25:
       sent.append(elem)
-  if num % 20 == 0:
-     print(f"{num} of {len(paisa_wiki)} texts analysed")
-     print(f"Couples of sentences found: {len(sent)}")
+  if num % 1000 == 0:
+     print(f"{num} of {len(paisa_wiki)} texts analysed, found : {len(sent)}")
+     
 
 
 
