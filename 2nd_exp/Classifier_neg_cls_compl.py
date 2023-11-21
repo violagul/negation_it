@@ -146,7 +146,7 @@ print(f"Extracting sentences from PAISA...")
 sent = []
 pattern = r" [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. \b"  # finds kind of acceptable sentences
 
-for text in paisa_wiki:
+for text in paisa_wiki[:5000]:
   found = re.findall(pattern, text)
   for elem in  found:
     if len(elem) > 25:
