@@ -479,14 +479,17 @@ negT_patt = r".*\..*[Nn]on.*\."
 # extract couples of sentences
 sent = []
 num = 0
-for text in paisa_wiki:
-  num =+1
-  if num % 50 == 0:
-     print(f"{num} testi su {len(paisa_wiki)} fatti")
+for text in paisa_wiki[:2000]:
+  num+=1
   found = re.findall(double_sent, text)
   for elem in found:
     if len(elem)>25:
       sent.append(elem)
+  if num % 20 == 0:
+     print(f"{num} of {len(paisa_wiki)} texts analysed")
+     print(f"Couples of sentences found: {len(sent)}")
+
+
 
 print(f"Extracting CnTp and CpTn types of sentences from PAISA...")
 # create two lists to store: 
