@@ -538,8 +538,8 @@ for sent_list in [CpTn, CnTp]:
     cls_CpTn = cls_encodings
 
 
-cls_CnTp.shuffle()
-cls_CpTn.shuffle()
+np.shuffle(cls_CnTp)
+np.shuffle(cls_CpTn)
 
 cls_CpTn = cls_CpTn[:size_test]
 cls_CnTp = cls_CnTp[:size_test]
