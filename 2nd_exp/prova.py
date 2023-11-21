@@ -196,21 +196,19 @@ CpTn = [] # couples of sentences the second of which is negative
 num = 0
 for s in sent:
   num+=1
-  found = re.findall(negC_patt, s)
-  for elem in found:
-    double = re.search(negT_patt, elem)
-    if not double: # exclude couples of sentences where both are negative
-      CnTp.append(elem)
   found_2 = re.findall(negT_patt, s)
   for elem in found:
     double2 = re.search(negC_patt, elem)
     if not double2:
       CpTn.append(elem)
+  found = re.findall(negC_patt, s)
+  for elem in found:
+    double = re.search(negT_patt, elem)
+    if not double: # exclude couples of sentences where both are negative
+      CnTp.append(elem)
   if num % 100 == 0:
      print(f"{num} sentences analysed")
      print(f"CnTp : {len(CnTp)}\nCpTn : {len(CpTn)}")
-
-
 
 
 
