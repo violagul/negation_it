@@ -175,7 +175,7 @@ negT_patt = r".*\..*[Nn]on.*\."
 # extract couples of sentences
 sent = []
 num = 0
-for text in paisa_wiki[:2000]:
+for text in paisa_wiki[:6000]:
   num+=1
   found = re.findall(double_sent, text)
   for elem in found:
