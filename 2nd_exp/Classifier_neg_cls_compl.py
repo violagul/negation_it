@@ -128,7 +128,7 @@ tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 
 
 
-
+print(f"Uploading PAISA corpus...")
 # upload the Italian corpus
 with open(r"../data/paisa.raw.utf8", encoding='utf8') as infile:
     paisa = infile.read()
