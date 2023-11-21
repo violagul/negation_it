@@ -501,7 +501,7 @@ for s in sent:
     if not double: # exclude couples of sentences where both are negative
       CnTp.append(elem)
   found_2 = re.findall(negT_patt, s)
-  for elem in found:
+  for elem in found_2:
     double2 = re.search(negC_patt, elem)
     if not double2:
       CpTn.append(elem)
