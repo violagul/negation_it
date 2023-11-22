@@ -26,6 +26,7 @@ device = torch.device("cuda") if torch.cuda.is_available() else torch.devide("cp
 
 
 
+
 ########################
 ### useful functions ###
 ########################
@@ -104,124 +105,161 @@ def encode_batch(current_batch, tokenizer, model, device):
 
 
 
-###size_test = 10000
-size_test = 1000
+size_test = 10000
 
 print(f"Downloading models...")
 # select the italian model to test
 model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
-
-
-
-
-
-
-
-
-
-##############################
-### paisa "non" extraction ###
-##############################
-
-
-
-
-
-print(f"Uploading PAISA corpus...")
-# upload the Italian corpus
-with open(r"../data/paisa.raw.utf8", encoding='utf8') as infile:
-    paisa = infile.read()
-
-print(f"Extracting Wikipedia texts from PAISA...")
-# from the corpus, select all texts containing "wiki" in their tag's url
-wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n" 
-paisa_wiki = re.findall(wiki_pattern, paisa)
-#print(f"Number of texts from a site containing 'wiki' in their URL: {len(paisa_wiki)}")
-#paisa_wiki = paisa
-print(f"num testi in paisa_wiki: {len(paisa_wiki)}")
-
-
-
-
-scaler = StandardScaler()
 model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 
 
+scaler = StandardScaler()
+
+
+
+###########################
+### masked template set ###
+###########################
 
 
 
 
 
 
+print(f"Building template sentences...")
+# load names, professions and verbs for the templates
+path = r"../Inputs"
+fName_file_path = f"{path}/100_names_f.txt"
+mName_file_path = f"{path}/100_names_m.txt"
+fProf_file_path = f"{path}/100_mestieri_f.txt"
+mProf_file_path = f"{path}/100_mestieri_m.txt"
+hypo_file_path = f"{path}/frasi_it.txt"
 
+fName_file = open(fName_file_path, "r")
+mName_file = open(mName_file_path, "r")
+fProf_file = open(fProf_file_path, "r")
+mProf_file = open(mProf_file_path, "r")
 
-
-########################################
-###CnTp and CpTn sentences from paisa###
-########################################
-
-
-print(f"Extracting couples of consecutive sentences from PAISA...")
-# pattern for couples of sentences
-double_sent = r"(?<= )[A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\.(?= \b)"
-
-
-# patterns for "non" in context: in the first of two sentences or the second of two sentences
-negC_patt = r".*[Nn]on.*\..*\."
-negT_patt = r".*\..*[Nn]on.*\." 
-
-
-# extract couples of sentences
-sent = []
-num = 0
-for text in paisa_wiki[:2000]:
-  num+=1
-  found = re.findall(double_sent, text)
-  for elem in found:
-    if len(elem)>25:
-      sent.append(elem)
-  if num % 20 == 0:
-     print(f"{num} of {len(paisa_wiki)} texts analysed")
-     print(f"Couples of sentences found: {len(sent)}")
-
-
-
-print(f"Extracting CnTp and CpTn types of sentences from PAISA...")
-# create two lists to store: 
-CnTp = [] # couples of sentences the first of which is negative
-CpTn = [] # couples of sentences the second of which is negative
-
-
-num = 0
-for s in sent:
-  num+=1
-  found_2 = re.findall(negT_patt, s)
-  for elem in found_2:
-    double2 = re.search(negC_patt, elem)
-    if not double2:
-      CpTn.append(elem)
-  found = re.findall(negC_patt, s)
-  for elem in found:
-    double = re.search(negT_patt, elem)
-    if not double: # exclude couples of sentences where both are negative
-      CnTp.append(elem)
-  if num % 100 == 0:
-     print(f"{num} sentences analysed")
-     print(f"CnTp : {len(CnTp)}\nCpTn : {len(CpTn)}")
-
-
-
-################################
-### CnTp - CpTn set encoding ###
-################################
+list_verbs = load(f"{path}/base_verbs.joblib")
 
 
 
 
-print(f"Extracting the CLS encodings from CpTn/CnTp sentences from PAISA...")
-# encode the CnTp ad CpTn sentences
-for sent_list in [CpTn, CnTp]:
+
+# dictionaries of names, professions and pronouns indexed by gender for template construction
+#professionsarray = {"f": build_array(fProf_file)[:10], "m": build_array(mProf_file)[10]} 
+# buildarray is a function for creating lists from txt files        
+fprofarray = build_array(fProf_file)
+mprofarray = build_array(mProf_file)
+professionsarray = {"f": fprofarray, "m": mprofarray}
+fnamearray = build_array(fName_file)
+mnamearray = build_array(mName_file)
+name_arrays = {"f": fnamearray, "m": mnamearray}
+pronouns_maj = {"f": "Lei", "m": "Lui"}
+
+
+
+
+
+# set up list for patterns that, for the CpTp setting, predict for the mask the same verb that was in the context
+list_good_patterns_model = []
+
+total_sentences = 0 # counts tried sentences
+tot_good_preds = 0 # counts sentences with repetition
+detail_verbs = {v : 0 for v in list_verbs} # counts, for each verb, how many times it is repeated in the mask if present in context
+
+
+size_batches = 8
+
+for gender in ["f", "m"]:
+    current_pronouns_maj = pronouns_maj[gender]
+
+    for name_available in name_arrays[gender]:
+        batch_sentences = [] # batch of sentences to try in this cycle
+        batch_verbs = [] # batch of verbs to try in this cycle
+        
+        for profession_available in professionsarray[gender]:
+            
+            current_list_verbs = list_verbs.copy()
+            shuffle(current_list_verbs)
+
+            found = False # to stop when a good verb is found
+
+            for verb_available in current_list_verbs:
+                #print(f"current verb : {verb_available}")
+                #if not complete_check and found:
+                #    break
+
+                
+                current_sentence = build_masked_context(name_available, profession_available, verb_available, current_pronouns_maj, mask_token = tokenizer.mask_token)
+
+                #print(current_sentence)
+                #quit()
+
+                batch_sentences.append(current_sentence)
+                batch_verbs.append(verb_available)
+                total_sentences += 1
+
+                
+                if total_sentences % 5000 == 0:
+                    print(f"current : {total_sentences}, found : {len(list_good_patterns_model)}")
+
+                # get the result at the end of the batch
+                if len(batch_sentences) == size_batches:
+                    new_sentence, found, nb_good_pred, found_verbs = make_and_encode_batch(batch_sentences, tokenizer, model_mask, device, batch_verbs, name_available, profession_available, current_pronouns_maj, found) 
+                    tot_good_preds+=nb_good_pred
+                    if new_sentence!= None:
+                        list_good_patterns_model.append(new_sentence)
+                    batch_sentences = []
+                    batch_verbs = []
+                    for found_verb in found_verbs:
+                        detail_verbs[found_verb] +=  1 # add one repetition to the count for the found verb
+
+
+            # repetition for what is left out of the last batch
+            if len(batch_sentences) > 0: 
+                new_sentence, found, nb_good_pred, found_verbs = make_and_encode_batch(batch_sentences, tokenizer, model_mask, device, batch_verbs, name_available, profession_available, current_pronouns_maj, found)
+
+                tot_good_preds += nb_good_pred
+                if new_sentence != None:
+                    list_good_patterns_model.append(new_sentence)
+                batch_sentences = []
+                batch_verbs = []
+                for found_verb in found_verbs:
+                    detail_verbs[found_verb] += 1
+
+
+print(f"Splitting template sentences in neg and pos...")
+# create the CpTp set
+template_sentences_pos =[]
+for pattern in list_good_patterns_model:
+  # build sentences putting the conjugated verb instead of the mask
+  sent = build_masked_context(pattern["name_available"], pattern["profession_available"],
+                               pattern["verb"], pattern["current_pronouns_maj"], pattern["masked_prediction"])
+  template_sentences_pos.append(sent)
+
+# create the CnTn set
+template_sentences_neg = []
+pat_and_repl = [[r"che ha","che non ha"],[r" Lei ", " Lei non "],[r" Lui "," Lui non "]]
+
+for sent in template_sentences_pos:
+  sent_neg = sent
+  for pair in pat_and_repl:
+    sent_neg = re.sub(pair[0], pair[1], sent_neg)
+  template_sentences_neg.append(sent_neg)
+  
+
+#############################
+### template set encoding ###
+#############################
+
+
+
+print(f"Extracting CLS encoding for template sentences...")
+# extract CLS for each template sentence
+# for each set of sentences, we encode each sentence
+for sent_list in [template_sentences_neg, template_sentences_pos]:
   batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
   # then extract only the outputs for each sentence
@@ -230,22 +268,57 @@ for sent_list in [CpTn, CnTp]:
 
   # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
   embeddings = tokens_outputs[0]
-  cls_encodings = embeddings[:, 0, :]
+  cls_encodings = embeddings[:,0,:]
 
   cls_encodings = cls_encodings.cpu().numpy()
 
-  if sent_list == CnTp:
-    cls_CnTp = cls_encodings
-  elif sent_list == CpTn:
-    cls_CpTn = cls_encodings
+  if sent_list == template_sentences_neg:
+    cls_temp_neg = cls_encodings
+  elif sent_list == template_sentences_pos:
+    cls_temp_pos = cls_encodings
+
+
+np.random.shuffle(cls_temp_neg)
+np.random.shuffle(cls_temp_pos)
+
+cls_temp_pos = cls_temp_pos[:size_test]
+cls_temp_neg = cls_temp_neg[:size_test]
 
 
 
-np.random.shuffle(cls_CnTp)
-np.random.shuffle(cls_CpTn)
 
-cls_CpTn = cls_CpTn[:size_test]
-cls_CnTp = cls_CnTp[:size_test]
+
+
+
+############################
+### masked template test ###
+############################
+
+
+
+
+#train_temp = np.concatenate((cls_encodings_pos[:train_size], cls_encodings_neg[:train_size]))
+#train_temp_lab = np.concatenate((np.zeros(train_size), np.ones(train_size)))
+#test_temp = np.concatenate((cls_encodings_pos[train_size:], cls_encodings_neg[train_size:]))
+#test_temp_lab = np.concatenate((np.zeros(test_size), np.ones(test_size)))
+
+
+
+test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]))
+test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
+
+
+
+#scaler.fit(train_temp)
+#train = scaler.transform(train_temp)
+#test_2 = scaler.transform(test_temp)
+
+
+
+scaler.fit(test_temp)
+test_2 = scaler.transform(test_temp)
+
+
 
 
 
