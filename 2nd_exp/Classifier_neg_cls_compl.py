@@ -298,7 +298,7 @@ tot_good_preds = 0 # counts sentences with repetition
 detail_verbs = {v : 0 for v in list_verbs} # counts, for each verb, how many times it is repeated in the mask if present in context
 
 
-size_batches = 100
+size_batches = 8
 
 for gender in ["f", "m"]:
     current_pronouns_maj = pronouns_maj[gender]
@@ -586,9 +586,9 @@ print(f"Training and testing MLP...")
 # set up the MLP classifier
 # solver : adam or sgd
 # hidden_layer_sizes : 40,40 or 350,350
-# alpha : between 1e-5 and 1e-2
-for hl in [(40,40), (350,350)]:
-  for a in [1e-2, 1e-3, 1e-4, 1e-5]:
+# alpha : between 1e-5 and 1e-3
+for hl in [(350,350),(40,40)]:
+  for a in [1e-5, 1e-4, 1e-3]:
     for solv in ["adam", "sgd"]:
       clf = MLPClassifier(solver = "adam", alpha = a,
                     hidden_layer_sizes=hl, random_state = 1)
