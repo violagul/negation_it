@@ -138,7 +138,7 @@ dump(paisa_wiki, "../Inputs/paisa_wiki.joblib")
 #print(f"Number of texts from a site containing 'wiki' in their URL: {len(paisa_wiki)}")
 #paisa_wiki = paisa
 
-print(f"Extracting sentences from PAISA...")
+print(f"Extracting sentences from paisa_wiki...")
 # pattern for finding whole sentences in the texts (defined by the capital letter in the beginning, the period at the end and a minimum length)
 sent = []
 pattern = r" [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. \b"  # finds kind of acceptable sentences
@@ -154,7 +154,7 @@ for text in paisa_wiki:
 #print(f"Number of sentences: {len(sent)}")
 
 
-print(f"Extracting negative sentences from PAISA...")
+print(f"Extracting negative sentences from paisa_wiki...")
 # splitting the sentences above into two lists:
 sent_pos = []
 sent_neg = []
@@ -185,9 +185,12 @@ shuffle(sent_pos)
 sent_neg = sent_neg[:size_test]
 sent_pos = sent_pos[:size_test]
 
-print(f"Extracting CLS ecodings for PAISA sentences...")
+print(f"Extracting CLS encodings for PAISA sentences...")
 ### extract CLS
 # for each set of sentences, we encode each sentence
+
+cls_encodings_neg = []
+cls_encodings_pos = []
 for sent_list in [sent_neg, sent_pos]:
   batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
@@ -259,22 +262,22 @@ for hl in [(350,350),(40,40)]:
   for a in [1e-5, 1e-4, 1e-3]:
     for solv in ["adam", "sgd"]:
       n+=1
-      clf = MLPClassifier(solver = "adam", alpha = a,
+      clf = MLPClassifier(solver = solv, alpha = a,
                     hidden_layer_sizes=hl, random_state = 1)
 
       # train on data
-      clf.fit(X, y)
+      clf = clf.fit(X, y)
 
       # see predictions on the dataset
       predicted = clf.predict(test)
       right_pred = clf.score(test, test_lab)
       tn, fp, fn, tp = confusion_matrix(test_lab, predicted).ravel()
-      paisa_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n {right_pred}%\n\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}")
+      paisa_result.append(f"Method: {solv}\nNb hidden layers: {str(hl)}\nAlpha: {str(a)}\n {right_pred}%\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}\n\n")
 
      
       dump(clf, f"../Inputs/non_classifier_{n}.joblib")
     
 
-print("PAISA' TEST\n\n")
+print("PAISA' TEST\n")
 for scores in paisa_result:
    print(scores)
