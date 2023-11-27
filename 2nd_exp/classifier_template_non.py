@@ -109,6 +109,7 @@ print(f"Downloading models...")
 # select the italian model to test
 tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
+model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 
 
 
