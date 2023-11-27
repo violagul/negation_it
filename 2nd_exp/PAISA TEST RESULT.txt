@@ -1,0 +1,41 @@
+PAISA TEST
+
+Method: adam    Nb hidden layers: (350, 350)    Alpha: 1e-05                                                                          1.0%                                                                                                                                                                                                                                                                     True neg = 2                                                                                                                         False pos = 0                                                                                                                        False neg = 0                                                                                                                        True pos = 2
+                                                                                                                         Method: sgd     Nb hidden layers: (350, 350)    Alpha: 1e-05                                                                          1.0%                                                                                                                                                                                                                                                                     True neg = 2                                                                                                                         False pos = 0                                                                                                                        False neg = 0                                                                                                                        True pos = 2                                                                                                                         
+
+Method: adam    Nb hidden layers: (350, 350)    Alpha: 0.0001                                                                         1.0%                                                                                                                                                                                                                                                                     True neg = 2                                                                                                                         False pos = 0                                                                                                                        False neg = 0                                                                                                                        True pos = 2
+                                                                                                                         Method: sgd     Nb hidden layers: (350, 350)    Alpha: 0.0001                                                                         1.0%                                                                                                                                                                                                                                                                     True neg = 2                                                                                                                         False pos = 0 
+False neg = 0                                                                                                               True pos = 2
+                                                                                                                         Method: adam    Nb hidden layers: (350, 350)    Alpha: 0.001                                                                          1.0%                                                                                                                                                                                                                                                                     True neg = 2                                                                                                                         False pos = 0                                                                                                                        False neg = 0                                                                                                                        True pos = 2 
+                                                                                                                        Method: sgd     Nb hidden layers: (350, 350)    Alpha: 0.001                                                                          1.0%                                                                                                                                                                                                                                                                     True neg = 2                                                                                                                         False pos = 0                                                                                                                        False neg = 0                                                                                                                        True pos = 2
+                                                                                                                         Method: adam    Nb hidden layers: (40, 40)      Alpha: 1e-05                                                                          1.0%                                                                                                                                                                                                                                                                     True neg = 2                                                                                                                         False pos = 0                                                                                                                        False neg = 0                                                                                                                        True pos = 2
+                                                                                                                         Method: sgd     Nb hidden layers: (40, 40)      Alpha: 1e-05                                                                          1.0%                                                                                                                                                                                                                                                                     True neg = 2                                                                                                                         False pos = 0 
+False neg = 0                                                                                                                True pos = 2
+
+Method: adam    Nb hidden layers: (40, 40)      Alpha: 0.0001
+ 1.0%
+True neg = 2
+False pos = 0
+False neg = 0
+True pos = 2
+
+Method: sgd     Nb hidden layers: (40, 40)      Alpha: 0.0001
+ 1.0%
+True neg = 2
+False pos = 0
+False neg = 0
+True pos = 2
+
+Method: adam    Nb hidden layers: (40, 40)      Alpha: 0.001
+ 1.0%
+True neg = 2
+False pos = 0
+False neg = 0
+True pos = 2
+
+Method: sgd     Nb hidden layers: (40, 40)      Alpha: 0.001
+ 1.0%
+True neg = 2
+False pos = 0
+False neg = 0
+True pos = 2
