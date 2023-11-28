@@ -254,16 +254,38 @@ for sent in template_sentences_pos:
 print(f"Extracting CLS encoding for template sentences...")
 # extract CLS for each template sentence
 # for each set of sentences, we encode each sentence
+batch_sent = []
+batch_cls = []
+cls_encodings = []
 for sent_list in [template_sentences_neg, template_sentences_pos]:
-  batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+  for sent in sent_list:
+    batch_sent.append(sent)
+    if len(batch_sent) == 8:
+      batch_encoded = tokenizer.batch_encode_plus(batch_sent, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+      # then extract only the outputs for each sentence
+      with torch.no_grad():
+        tokens_outputs = model(**batch_encoded )
 
-  # then extract only the outputs for each sentence
-  with torch.no_grad():
-    tokens_outputs = model(**batch_encoded )
+      # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
+      embeddings = tokens_outputs[0]
+      batch_cls = embeddings[:,0,:]
+      for elem in batch_cls:
+        cls_encodings.append(elem)
+      batch_sent = []
 
-  # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
-  embeddings = tokens_outputs[0]
-  cls_encodings = embeddings[:,0,:]
+  if len(batch_sent) > 0:
+    batch_encoded = tokenizer.batch_encode_plus(batch_sent, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+    # then extract only the outputs for each sentence
+    with torch.no_grad():
+      tokens_outputs = model(**batch_encoded )
+
+    # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
+    embeddings = tokens_outputs[0]
+    batch_cls = embeddings[:,0,:]
+    for elem in batch_cls:
+      cls_encodings.append(elem)
+    batch_sent = []
+    
 
   cls_encodings = cls_encodings.cpu().numpy()
 
