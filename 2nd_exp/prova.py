@@ -276,9 +276,9 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
     cls_encodings = cls_encodings.cpu().numpy()
     all_cls_encodings.append(cls_encodings)
    if templ_list == template_sentences_neg:
-      cls_temp_neg = cls_encodings
+      cls_temp_neg = all_cls_encodings
    elif templ_list == template_sentences_pos:
-      cls_temp_pos = cls_encodings
+      cls_temp_pos = all_cls_encodings
 
 print(cls_temp_pos)
 
