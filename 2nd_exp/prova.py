@@ -279,7 +279,8 @@ for sent_list in all_sent_list:
     cls_temp_neg = cls_encodings
   elif sent_list == template_sentences_pos:
     cls_temp_pos = cls_encodings
- print(all_cls_encodings[0])
+
+print(all_cls_encodings[0])
 
 np.random.shuffle(cls_temp_neg)
 np.random.shuffle(cls_temp_pos)
