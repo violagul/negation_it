@@ -290,11 +290,11 @@ for sent_list in [template_sentences_neg, template_sentences_pos]:
     for elem in batch_cls:
       m+=1
       if m == 1:
-        print(elem)
+        #print(elem)
       cls_encodings.append(elem)
     batch_sent = []
     
-  print(cls_encodings)  
+  #print(cls_encodings)  
   cls_encodings = cls_encodings.cpu().numpy()
   
 
