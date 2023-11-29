@@ -314,7 +314,7 @@ cls_temp_neg = cls_temp_neg[:size_test]
 
 test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]))
 test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
-
+print(test_temp)
 
 
 #scaler.fit(train_temp)
