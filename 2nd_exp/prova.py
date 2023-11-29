@@ -289,7 +289,7 @@ for sent_list in [template_sentences_neg, template_sentences_pos]:
     m = 0
     for elem in batch_cls:
       m+=1
-      if m == 1:
+      #if m == 1:
         #print(elem)
       cls_encodings.append(elem)
     batch_sent = []
