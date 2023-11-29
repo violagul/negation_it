@@ -260,7 +260,7 @@ cls_encodings = []
 for sent_list in [template_sentences_neg, template_sentences_pos]:
   for sent in sent_list:
     batch_sent.append(sent)
-    if len(batch_sent) == 8:
+    if len(batch_sent) == size_batches:
       batch_encoded = tokenizer.batch_encode_plus(batch_sent, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
       # then extract only the outputs for each sentence
       with torch.no_grad():
