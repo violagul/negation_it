@@ -136,7 +136,7 @@ mName_file = open(mName_file_path, "r")
 fProf_file = open(fProf_file_path, "r")
 mProf_file = open(mProf_file_path, "r")
 
-list_verbs = load(f"{path}/base_verbs.joblib")[10]
+list_verbs = load(f"{path}/base_verbs.joblib")
 
 
 
