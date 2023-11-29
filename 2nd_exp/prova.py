@@ -285,7 +285,6 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
    all_cls_encodings = []   
 
 
-print(cls_temp_pos[0])
 
 np.random.shuffle(cls_temp_neg)
 np.random.shuffle(cls_temp_pos)
