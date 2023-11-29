@@ -259,6 +259,7 @@ all_cls_encodings = []
 all_sent_list = template_sentences_neg
 all_sent_list.extend(template_sentences_pos)
 for templ_list in [template_sentences_neg, template_sentences_pos]:
+
    for sent_list in templ_list:
     batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
@@ -274,12 +275,10 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
 
     cls_encodings = cls_encodings.cpu().numpy()
     all_cls_encodings.append(cls_encodings)
-    
-
-  if templ_list == template_sentences_neg:
-    cls_temp_neg = cls_encodings
-  elif templ_list == template_sentences_pos:
-    cls_temp_pos = cls_encodings
+   if templ_list == template_sentences_neg:
+      cls_temp_neg = cls_encodings
+   elif templ_list == template_sentences_pos:
+      cls_temp_pos = cls_encodings
 
 print(cls_temp_pos[0])
 
