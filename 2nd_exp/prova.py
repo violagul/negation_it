@@ -256,7 +256,7 @@ print(f"Extracting CLS encoding for template sentences...")
 # for each set of sentences, we encode each sentence
 
 
-all_sent = [template_sentences_neg]
+all_sent = template_sentences_neg
 all_sent = all_sent.extend(template_sentences_pos)
 print[all_sent[:200]]
 for sent_list in all_sent:
