@@ -280,7 +280,7 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
    elif templ_list == template_sentences_pos:
       cls_temp_pos = cls_encodings
 
-print(cls_temp_pos[0])
+print(cls_temp_pos)
 
 np.random.shuffle(cls_temp_neg)
 np.random.shuffle(cls_temp_pos)
