@@ -256,8 +256,8 @@ print(f"Extracting CLS encoding for template sentences...")
 # for each set of sentences, we encode each sentence
 
 all_cls_encodings = []
-all_sent_list = template_sentences_neg
-all_sent_list.extend(template_sentences_pos)
+#all_sent_list = template_sentences_neg
+#all_sent_list.extend(template_sentences_pos)
 for templ_list in [template_sentences_neg, template_sentences_pos]:
 
    for sent_list in templ_list:
@@ -275,6 +275,9 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
 
     cls_encodings = cls_encodings.cpu().numpy()
     all_cls_encodings.append(cls_encodings)
+    
+   
+   all_cls_encodings = np.array(all_cls_encodings)
    if templ_list == template_sentences_neg:
       cls_temp_neg = all_cls_encodings
    elif templ_list == template_sentences_pos:
