@@ -257,7 +257,7 @@ print(f"Extracting CLS encoding for template sentences...")
 
 
 all_sent = template_sentences_neg
-all_sent = all_sent.extend(template_sentences_pos)
+all_sent.extend(template_sentences_pos)
 print[all_sent[:200]]
 for sent_list in all_sent:
   batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
