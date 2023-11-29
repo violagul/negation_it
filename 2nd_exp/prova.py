@@ -257,14 +257,13 @@ print(f"Extracting CLS encoding for template sentences...")
 batch_sent = []
 batch_cls = []
 cls_encodings = []
-n = 0
+
 for sent_list in [template_sentences_neg, template_sentences_pos]:
   for sent in sent_list:
     batch_sent.append(sent)
     if len(batch_sent) == size_batches:
-      n+=1
-      if n == 1:
-         print(batch_sent)
+      
+      
       batch_encoded = tokenizer.batch_encode_plus(batch_sent, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
       # then extract only the outputs for each sentence
       with torch.no_grad():
@@ -289,8 +288,8 @@ for sent_list in [template_sentences_neg, template_sentences_pos]:
     m = 0
     for elem in batch_cls:
       m+=1
-      #if m == 1:
-        #print(elem)
+      if m == 1:
+        print(elem)
       cls_encodings.append(elem)
     batch_sent = []
     
