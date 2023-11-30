@@ -277,7 +277,7 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
     all_cls_encodings.append(cls_encodings)
     
    
-   all_cls_encodings = np.array(all_cls_encodings)
+   #all_cls_encodings = np.array(all_cls_encodings)
    if templ_list == template_sentences_neg:
       cls_temp_neg = all_cls_encodings
    elif templ_list == template_sentences_pos:
@@ -286,8 +286,11 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
 
 
 
-np.random.shuffle(cls_temp_neg)
-np.random.shuffle(cls_temp_pos)
+#np.random.shuffle(cls_temp_neg)
+#np.random.shuffle(cls_temp_pos)
+shuffle(cls_temp_neg)
+shuffle(cls_temp_pos)
+
 
 cls_temp_pos = cls_temp_pos[:size_test]
 cls_temp_neg = cls_temp_neg[:size_test]
