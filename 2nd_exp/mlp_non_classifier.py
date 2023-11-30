@@ -195,7 +195,7 @@ m = 0
 for sent_list in [sent_neg, sent_pos]:
   for sentence in sent_list:
     sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
-    if m = 0:
+    if m == 0:
       print(sentence)
 
     # then extract only the outputs for each sentence
