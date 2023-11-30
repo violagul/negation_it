@@ -254,13 +254,12 @@ for sent in template_sentences_pos:
 print(f"Extracting CLS encoding for template sentences...")
 # extract CLS for each template sentence
 # for each set of sentences, we encode each sentence
+print(f"Extracting CLS encoding for template sentences...")
+# extract CLS for each template sentence
+# for each set of sentences, we encode each sentence
+for sent_list in [template_sentences_neg, template_sentences_pos]:
+  batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
-all_cls_encodings = []
-#all_sent_list = template_sentences_neg
-#all_sent_list.extend(template_sentences_pos)
-for templ_list in [template_sentences_neg, template_sentences_pos]:
-  batch_encoded = tokenizer.batch_encode_plus(templ_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
-  
   # then extract only the outputs for each sentence
   with torch.no_grad():
     tokens_outputs = model(**batch_encoded )
@@ -269,26 +268,16 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
   embeddings = tokens_outputs[0]
   cls_encodings = embeddings[:,0,:]
 
-  
-
   cls_encodings = cls_encodings.cpu().numpy()
-    
-    
-   
-   
-  if templ_list == template_sentences_neg:
-    cls_temp_neg = all_cls_encodings
-  elif templ_list == template_sentences_pos:
-     cls_temp_pos = all_cls_encodings
-   
 
+  if sent_list == template_sentences_neg:
+    cls_temp_neg = cls_encodings
+  elif sent_list == template_sentences_pos:
+    cls_temp_pos = cls_encodings
 
 
 np.random.shuffle(cls_temp_neg)
 np.random.shuffle(cls_temp_pos)
-#shuffle(cls_temp_neg)
-#shuffle(cls_temp_pos)
-
 print(str(cls_temp_neg)[:200])
 cls_temp_pos = cls_temp_pos[:size_test]
 cls_temp_neg = cls_temp_neg[:size_test]
