@@ -102,7 +102,6 @@ def encode_batch(current_batch, tokenizer, model, device):
 
 
 
-
 size_test = 200
 
 print(f"Downloading models...")
@@ -263,7 +262,7 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
 
    for sent_list in templ_list:
     
-    batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+    batch_encoded = tokenizer.encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
     # then extract only the outputs for each sentence
     with torch.no_grad():
