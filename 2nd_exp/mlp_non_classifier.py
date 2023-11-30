@@ -175,6 +175,7 @@ for s in sent:
 
 
 size_test = min(size_test, len(sent_neg), len(sent_pos))
+print(f"size test {size_test}")
 
 shuffle(sent_neg)
 shuffle(sent_pos)
@@ -219,11 +220,12 @@ for sent_list in [sent_neg, sent_pos]:
 
 # we use 90% of data as training and 10% as test
 train_size = round(size_test*0.9)
+print(f"train size {train_size}")
 train = np.concatenate((cls_encodings_pos[:train_size], cls_encodings_neg[:train_size]), 0) # shape num_sent x 768
 labels = np.concatenate((np.zeros(train_size), np.ones(train_size)))
 test = np.concatenate((cls_encodings_pos[train_size:], cls_encodings_neg[train_size:]), 0)
 test_size = int(size_test - train_size)
-print(test_size)
+print(f"train size {test_size}")
 test_lab = np.concatenate((np.zeros(test_size), np.ones(test_size)))
 
 
