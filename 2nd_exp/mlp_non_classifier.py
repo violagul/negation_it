@@ -163,8 +163,6 @@ sent_neg = []
 neg_patt = r"\b[Nn]on\b"  
 
 for s in sent:
-  if len(sent_neg) > 20 and len(sent_pos)>20:
-     break
   matches = re.search(neg_patt, s)
   if matches:
     sent_neg.append(s)
