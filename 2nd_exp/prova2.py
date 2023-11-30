@@ -135,7 +135,7 @@ print(f"Extracting Wikipedia texts from PAISA...")
 # from the corpus, select all texts containing "wiki" in their tag's url
 wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n" 
 paisa_wiki = re.findall(wiki_pattern, paisa)
-dump(paisa_wiki, "../Inputs/paisa_wiki.joblib")
+#dump(paisa_wiki, "../Inputs/paisa_wiki.joblib")
 #print(f"Number of texts from a site containing 'wiki' in their URL: {len(paisa_wiki)}")
 #paisa_wiki = paisa
 
@@ -290,7 +290,7 @@ for hl in [(350,350),(40,40)]:
       paisa_result.append(f"Method: {solv}\nNb hidden layers: {str(hl)}\nAlpha: {str(a)}\nScore : {right_pred}\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}\n\n")
 
      
-      dump(clf, f"../Inputs/non_classifier_{n}.joblib")
+      #dump(clf, f"../Inputs/non_classifier_{n}.joblib")
     
 
 print("PAISA' TEST\n")
