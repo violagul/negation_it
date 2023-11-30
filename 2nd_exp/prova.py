@@ -274,6 +274,8 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
   
 
     cls_encodings = cls_encodings.cpu().numpy()
+    print(str(cls_encodings)[:300])
+    print(cls_encodings.shape)
     all_cls_encodings.append(cls_encodings)
     
    
@@ -316,9 +318,7 @@ cls_temp_neg = cls_temp_neg[:size_test]
 
 
 test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]))
-print(str(test_temp)[:2000])
-print(test_temp.shape)
-print(cls_temp_neg.shape)
+
 test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
 
 
