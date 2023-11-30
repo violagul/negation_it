@@ -276,13 +276,13 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
     m+=1
     cls_encodings = cls_encodings.cpu().numpy()
     if m == 1:
-        print(sent_list)
-        print(str(cls_encodings)[:300])
         print(cls_encodings.shape)
-    all_cls_encodings.append(cls_encodings)
+    all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
+    if m == 2 :
+        print(all_cls_encodings.shape)
     
    
-   all_cls_encodings = np.array(all_cls_encodings)
+   
    if templ_list == template_sentences_neg:
       cls_temp_neg = all_cls_encodings
    elif templ_list == template_sentences_pos:
@@ -321,6 +321,7 @@ print(cls_temp_neg.shape)
 
 
 test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]))
+print(test_temp.shape)
 
 test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
 
