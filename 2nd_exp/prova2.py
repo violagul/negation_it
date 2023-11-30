@@ -232,8 +232,10 @@ for sent_list in [sent_neg, sent_pos]:
 # we use 90% of data as training and 10% as test
 train_size = round(size_test*0.9)
 train = np.concatenate((cls_encodings_pos[:train_size], cls_encodings_neg[:train_size]), 0) # shape num_sent x 768
+print(f"train shape : {train.shape}")
 labels = np.concatenate((np.zeros(train_size), np.ones(train_size)))
 test = np.concatenate((cls_encodings_pos[train_size:], cls_encodings_neg[train_size:]), 0)
+print(f"Test shape : {test.shape}")
 test_size = int(size_test - train_size)
 test_lab = np.concatenate((np.zeros(test_size), np.ones(test_size)))
 
@@ -242,7 +244,7 @@ test_lab = np.concatenate((np.zeros(test_size), np.ones(test_size)))
 scaler = StandardScaler()
 scaler.fit(train)
 dati_scaled = scaler.transform(train)
-dump(scaler, f"../Inputs/scaler.joblib")
+#dump(scaler, f"../Inputs/scaler.joblib")
 
 
 X = dati_scaled 
