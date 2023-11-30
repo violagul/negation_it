@@ -262,11 +262,11 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
 
    for sent_list in templ_list:
     
-    batch_encoded = tokenizer.encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+    sentence_encoded = tokenizer.encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
     # then extract only the outputs for each sentence
     with torch.no_grad():
-        tokens_outputs = model(**batch_encoded )
+        tokens_outputs = model(**sentence_encoded )
 
     # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
     embeddings = tokens_outputs[0]
