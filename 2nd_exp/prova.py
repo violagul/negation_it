@@ -279,7 +279,7 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
         print(cls_encodings.shape)
         all_cls_encodings = cls_encodings
     elif m > 1:
-    all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
+        all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
     if m == 2 :
         print(all_cls_encodings.shape)
     
