@@ -262,7 +262,7 @@ m = 0
 for templ_list in [template_sentences_neg, template_sentences_pos]:
 
    for sent_list in templ_list:
-    print(sent_list)
+    
     batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
     # then extract only the outputs for each sentence
@@ -277,6 +277,7 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
     m+=1
     cls_encodings = cls_encodings.cpu().numpy()
     if m == 1:
+        print(sent_list)
         print(str(cls_encodings)[:300])
         print(cls_encodings.shape)
     all_cls_encodings.append(cls_encodings)
