@@ -198,7 +198,7 @@ for sent_list in [sent_neg, sent_pos]:
 
     # then extract only the outputs for each sentence
     with torch.no_grad():
-      tokens_outputs = model(**batch_encoded)
+      tokens_outputs = model(**sentence_encoded)
 
 
     # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
