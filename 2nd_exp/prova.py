@@ -299,7 +299,7 @@ np.random.shuffle(cls_temp_pos)
 
 cls_temp_pos = cls_temp_pos[:size_test]
 cls_temp_neg = cls_temp_neg[:size_test]
-
+print(cls_temp_neg.shape)
 
 
 
