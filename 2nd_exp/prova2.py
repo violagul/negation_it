@@ -259,28 +259,28 @@ all_cls_encodings = []
 #all_sent_list = template_sentences_neg
 #all_sent_list.extend(template_sentences_pos)
 for templ_list in [template_sentences_neg, template_sentences_pos]:
-    batch_encoded = tokenizer.batch_encode_plus(templ_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+  batch_encoded = tokenizer.batch_encode_plus(templ_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+  
+  # then extract only the outputs for each sentence
+  with torch.no_grad():
+    tokens_outputs = model(**batch_encoded )
 
-    # then extract only the outputs for each sentence
-    with torch.no_grad():
-        tokens_outputs = model(**batch_encoded )
-
-    # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
-    embeddings = tokens_outputs[0]
-    cls_encodings = embeddings[:,0,:]
+  # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
+  embeddings = tokens_outputs[0]
+  cls_encodings = embeddings[:,0,:]
 
   
 
-    cls_encodings = cls_encodings.cpu().numpy()
+  cls_encodings = cls_encodings.cpu().numpy()
     
     
    
    
-   if templ_list == template_sentences_neg:
-      cls_temp_neg = all_cls_encodings
-   elif templ_list == template_sentences_pos:
-      cls_temp_pos = all_cls_encodings
-   all_cls_encodings = []   
+  if templ_list == template_sentences_neg:
+    cls_temp_neg = all_cls_encodings
+  elif templ_list == template_sentences_pos:
+     cls_temp_pos = all_cls_encodings
+   
 
 
 
