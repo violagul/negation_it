@@ -260,9 +260,9 @@ all_cls_encodings = []
 m = 0
 for templ_list in [template_sentences_neg, template_sentences_pos]:
 
-   for sent_list in templ_list:
+   for sentence in templ_list:
     
-    sentence_encoded = tokenizer.encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+    sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
     # then extract only the outputs for each sentence
     with torch.no_grad():
@@ -275,10 +275,11 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
   
     m+=1
     cls_encodings = cls_encodings.cpu().numpy()
+    print(cls_encodings.shape)
     if m == 1:
-        print(cls_encodings.shape)
+        
         all_cls_encodings = cls_encodings
-    elif m > 1:
+    if m > 1:
         all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
     if m == 2 :
         print(all_cls_encodings.shape)
