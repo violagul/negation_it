@@ -258,6 +258,7 @@ print(f"Extracting CLS encoding for template sentences...")
 all_cls_encodings = []
 #all_sent_list = template_sentences_neg
 #all_sent_list.extend(template_sentences_pos)
+m = 0
 for templ_list in [template_sentences_neg, template_sentences_pos]:
 
    for sent_list in templ_list:
@@ -272,10 +273,11 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
     cls_encodings = embeddings[:,0,:]
 
   
-
+    m+=1
     cls_encodings = cls_encodings.cpu().numpy()
-    print(str(cls_encodings)[:300])
-    print(cls_encodings.shape)
+    if m == 1:
+        print(str(cls_encodings)[:300])
+        print(cls_encodings.shape)
     all_cls_encodings.append(cls_encodings)
     
    
