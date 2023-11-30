@@ -190,20 +190,28 @@ print(f"Extracting CLS encodings for PAISA sentences...")
 
 cls_encodings_neg = []
 cls_encodings_pos = []
+all_cls_encodings = []
+m = 0
 for sent_list in [sent_neg, sent_pos]:
-  batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+  for sentence in sent_list:
+    sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
-  # then extract only the outputs for each sentence
-  with torch.no_grad():
-    tokens_outputs = model(**batch_encoded)
+    # then extract only the outputs for each sentence
+    with torch.no_grad():
+      tokens_outputs = model(**batch_encoded)
 
-  # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
-  #print(tokens_outputs)
-  embeddings = tokens_outputs[0]
-  cls_encodings = embeddings[:, 0, :]
-  #print(cls_encodings.shape)
-  cls_encodings = cls_encodings.cpu().numpy()
-  
+
+    # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
+    embeddings = tokens_outputs[0]
+    cls_encodings = embeddings[:, 0, :]
+
+    m+=1
+    cls_encodings = cls_encodings.cpu().numpy()
+    if m == 1:
+        all_cls_encodings = cls_encodings
+    if m > 1:
+        all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
+   
 
   if sent_list == sent_neg:
     cls_encodings_neg = cls_encodings
