@@ -198,8 +198,7 @@ m = 0
 for sent_list in [sent_neg, sent_pos]:
   for sentence in sent_list:
     sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
-    if m == 0:
-      print(sentence)
+    print(sentence)
 
     # then extract only the outputs for each sentence
     with torch.no_grad():
@@ -212,9 +211,9 @@ for sent_list in [sent_neg, sent_pos]:
 
     m+=1
     cls_encodings = cls_encodings.cpu().numpy()
+    print(cls_encodings.shape)
     if m == 1:
         all_cls_encodings = cls_encodings
-        print(cls_encodings.shape)
     if m > 1:
         all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
    
