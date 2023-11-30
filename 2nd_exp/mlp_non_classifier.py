@@ -223,6 +223,7 @@ train = np.concatenate((cls_encodings_pos[:train_size], cls_encodings_neg[:train
 labels = np.concatenate((np.zeros(train_size), np.ones(train_size)))
 test = np.concatenate((cls_encodings_pos[train_size:], cls_encodings_neg[train_size:]), 0)
 test_size = int(size_test - train_size)
+print(test_size)
 test_lab = np.concatenate((np.zeros(test_size), np.ones(test_size)))
 
 
