@@ -262,6 +262,7 @@ m = 0
 for templ_list in [template_sentences_neg, template_sentences_pos]:
 
    for sent_list in templ_list:
+    print(sent_list)
     batch_encoded = tokenizer.batch_encode_plus(sent_list, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
     # then extract only the outputs for each sentence
