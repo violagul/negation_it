@@ -282,6 +282,7 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
         all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
     if m == 2 :
         print(all_cls_encodings.shape)
+        print(m)
     
    
    
