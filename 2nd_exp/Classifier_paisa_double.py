@@ -270,12 +270,12 @@ for n in range(1, 13):
    predicted = clf.predict(test_3)
    right_pred = clf.score(test_3, test_CnTp_lab)
    tn, fp, fn, tp = confusion_matrix(test_CnTp_lab, predicted).ravel()
-   CnTp_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\nScore : {right_pred}%\n\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}\n\n")
+   CnTp_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScore\t{right_pred}%\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
    predicted = clf.predict(test_4)
    right_pred = clf.score(test_4, test_CpTn_lab)
    tn, fp, fn, tp = confusion_matrix(test_CpTn_lab, predicted).ravel()
-   CpTn_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\nScore : {right_pred}\n\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}\n\n")
+   CpTn_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScore\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
 
 
