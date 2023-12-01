@@ -221,9 +221,9 @@ for sent_list in [sent_neg, sent_pos]:
    
 
   if sent_list == sent_neg:
-    cls_encodings_neg = cls_encodings
+    cls_encodings_neg = all_cls_encodings
   elif sent_list == sent_pos:
-    cls_encodings_pos = cls_encodings
+    cls_encodings_pos = all_cls_encodings
 
 
 
