@@ -150,7 +150,7 @@ for text in paisa_wiki:
       sent.append(elem)
   if len(sent)> size_test*100:
     break
-
+print(f"Frasi trovate : {len(sent)}")
 #print(f"Number of sentences: {len(sent)}")
 
 
@@ -169,11 +169,11 @@ for s in sent:
   else:
     sent_pos.append(s)
 
-
+print(f"Frasi positive : {len(sent_pos)} - Frasi negative : {len(sent_neg)}")
 
 
 size_test = min(size_test, len(sent_neg), len(sent_pos))
-
+print(f"Size test = {size_test}")
 
 shuffle(sent_neg)
 shuffle(sent_pos)
@@ -191,8 +191,10 @@ print(f"Extracting CLS encodings for PAISA sentences...")
 cls_encodings_neg = []
 cls_encodings_pos = []
 all_cls_encodings = []
-m = 0
+
 for sent_list in [sent_neg, sent_pos]:
+  m = 0
+  all_cls_encodings = []
   for sentence in sent_list:
     sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
     if m == 0:
@@ -214,6 +216,8 @@ for sent_list in [sent_neg, sent_pos]:
         print(cls_encodings.shape)
     if m > 1:
         all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
+    if m % 200 == 0:
+       print(f"Encoded: {m}")
    
 
   if sent_list == sent_neg:
@@ -230,8 +234,10 @@ for sent_list in [sent_neg, sent_pos]:
 # we use 90% of data as training and 10% as test
 train_size = round(size_test*0.9)
 train = np.concatenate((cls_encodings_pos[:train_size], cls_encodings_neg[:train_size]), 0) # shape num_sent x 768
+print(f"Train shape : {train.shape}")
 labels = np.concatenate((np.zeros(train_size), np.ones(train_size)))
 test = np.concatenate((cls_encodings_pos[train_size:], cls_encodings_neg[train_size:]), 0)
+print(f"Test shape : {test.shape}")
 test_size = int(size_test - train_size)
 test_lab = np.concatenate((np.zeros(test_size), np.ones(test_size)))
 
@@ -240,7 +246,7 @@ test_lab = np.concatenate((np.zeros(test_size), np.ones(test_size)))
 scaler = StandardScaler()
 scaler.fit(train)
 dati_scaled = scaler.transform(train)
-
+dump(scaler, f"../Inputs/scaler.joblib")
 
 X = dati_scaled 
 test = scaler.transform(test)
