@@ -184,41 +184,38 @@ for s in sent:
 size_batches = 8
 print(f"Extracting the CLS encodings from CpTn/CnTp sentences from PAISA...")
 # encode the CnTp ad CpTn sentences
+all_cls_encodings = []
 for sent_list in [CpTn, CnTp]:
+  m = 0
   for sent in sent_list:
-    batch_sent.append(sent)
-    if len(batch_sent) == size_batches:
-      batch_encoded = tokenizer.batch_encode_plus(batch_sent, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
-      # then extract only the outputs for each sentence
-      with torch.no_grad():
-        tokens_outputs = model(**batch_encoded )
+    sent_encoded = tokenizer.encode_plus(sent, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+    if m == 0:
+      print(sent)
 
-      # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
-      embeddings = tokens_outputs[0]
-      batch_cls = embeddings[:,0,:]
-      for elem in batch_cls:
-        cls_encodings.append(elem)
-      batch_sent = []
 
-  if len(batch_sent) > 0:
-    batch_encoded = tokenizer.batch_encode_plus(batch_sent, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
     # then extract only the outputs for each sentence
     with torch.no_grad():
-      tokens_outputs = model(**batch_encoded )
+      tokens_outputs = model(**sent_encoded )
 
     # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
     embeddings = tokens_outputs[0]
-    batch_cls = embeddings[:,0,:]
-    for elem in batch_cls:
-      cls_encodings.append(elem)
-    batch_sent = []
-
-  cls_encodings = cls_encodings.cpu().numpy()
+    cls_encodings = embeddings[:,0,:]
+    
+    m+=1
+    cls_encodings = cls_encodings.cpu().numpy()
+    if m == 1:
+      all_cls_encodings = cls_encodings
+      print(cls_encodings.shape)
+    if m > 1:
+      all_cls_encodings = np.vstack((all_cls_encodings, cls_encodings))
+    if m % 200 == 0:
+      print(f"Encoded : {m}")
+    
 
   if sent_list == CnTp:
-    cls_CnTp = cls_encodings
+    cls_CnTp = all_cls_encodings
   elif sent_list == CpTn:
-    cls_CpTn = cls_encodings
+    cls_CpTn = all_cls_encodings
 
 
 np.random.shuffle(cls_CnTp)
@@ -244,8 +241,7 @@ test_CpTn_lab = np.array(np.ones(size_test))
 
 
 # data normalization
-scaler = StandardScaler()
-scaler.fit(test_CnTp)
+scaler = load(f"../Inputs/scaler.joblib")
 test_3 = scaler.transform(test_CnTp)
 scaler.fit(test_CpTn)
 test_4 = scaler.transform(test_CpTn)
