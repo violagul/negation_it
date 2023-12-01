@@ -257,42 +257,34 @@ print(f"Extracting CLS encoding for template sentences...")
 batch_sent = []
 batch_cls = []
 cls_encodings = []
-for sent_list in [template_sentences_neg, template_sentences_pos]:
-  for sent in sent_list:
-    batch_sent.append(sent)
-    if len(batch_sent) == size_batches:
-      batch_encoded = tokenizer.batch_encode_plus(batch_sent, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
-      # then extract only the outputs for each sentence
-      with torch.no_grad():
-        tokens_outputs = model(**batch_encoded )
+for templ_list in [template_sentences_neg, template_sentences_pos]:
+  for sentence in templ_list: 
+    sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
-      # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
-      embeddings = tokens_outputs[0]
-      batch_cls = embeddings[:,0,:]
-      for elem in batch_cls:
-        cls_encodings.append(elem)
-      batch_sent = []
-
-  if len(batch_sent) > 0:
-    batch_encoded = tokenizer.batch_encode_plus(batch_sent, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
     # then extract only the outputs for each sentence
     with torch.no_grad():
-      tokens_outputs = model(**batch_encoded )
+        tokens_outputs = model(**sentence_encoded )
 
     # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
     embeddings = tokens_outputs[0]
-    batch_cls = embeddings[:,0,:]
-    for elem in batch_cls:
-      cls_encodings.append(elem)
-    batch_sent = []
+    cls_encodings = embeddings[:,0,:]
+
+  
+    m+=1
+    cls_encodings = cls_encodings.cpu().numpy()
+    if m == 1:
+        all_cls_encodings = cls_encodings
+    if m > 1:
+        all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
+   
     
-
-  cls_encodings = cls_encodings.cpu().numpy()
-
-  if sent_list == template_sentences_neg:
-    cls_temp_neg = cls_encodings
-  elif sent_list == template_sentences_pos:
-    cls_temp_pos = cls_encodings
+   
+   
+  if templ_list == template_sentences_neg:
+      cls_temp_neg = all_cls_encodings
+  elif templ_list == template_sentences_pos:
+      cls_temp_pos = all_cls_encodings
+     
 
 
 np.random.shuffle(cls_temp_neg)
@@ -332,8 +324,7 @@ test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
 
 
 #data normalization
-scaler = StandardScaler()
-scaler.fit(test_temp)
+scaler = load(f"../Inputs/scaler.joblib")
 test_2 = scaler.transform(test_temp)
 
 
@@ -356,7 +347,7 @@ for n in range(1, 13):
    predicted = clf.predict(test_2)
    right_pred = clf.score(test_2, test_temp_lab)
    tn, fp, fn, tp = confusion_matrix(test_temp_lab, predicted).ravel()
-   template_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n {right_pred}%\n\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}")
+   template_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\nScores : {right_pred}\n\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}\n\n")
 
 
 
