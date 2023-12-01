@@ -243,7 +243,6 @@ test_CpTn_lab = np.array(np.ones(size_test))
 # data normalization
 scaler = load(f"../Inputs/scaler.joblib")
 test_3 = scaler.transform(test_CnTp)
-scaler.fit(test_CpTn)
 test_4 = scaler.transform(test_CpTn)
 
 
@@ -276,7 +275,7 @@ for n in range(1, 13):
    predicted = clf.predict(test_4)
    right_pred = clf.score(test_4, test_CpTn_lab)
    tn, fp, fn, tp = confusion_matrix(test_CpTn_lab, predicted).ravel()
-   CpTn_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n {right_pred}%\n\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}")
+   CpTn_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n Score : {right_pred}\n\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}")
 
 
 
