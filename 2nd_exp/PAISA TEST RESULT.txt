@@ -1,102 +1,102 @@
-PAISA' TEST                                                                                                                                                                                                                                                               Method: adam                                                                                                                         Nb hidden layers: (350, 350)                                                                                                         Alpha: 1e-05                                                                                                                          0.5%                                                                                                                                True neg = 1                                                                                                                         False pos = 1                                                                                                                        False neg = 1                                                                                                                        True pos = 1                                                                                                                                                                                                                                                                                                                                                                                                   Method: sgd                                                                                                                          Nb hidden layers: (350, 350)                                                                                                         Alpha: 1e-05                                                                                                                          0.5%
-True neg = 1
-False pos = 1
-False neg = 1
-True pos = 1
+PAISA' TEST                                                                                                                 [92/1972]                                                                                                                                     Method: adam                                                                                                                         Nb hidden layers: (350, 350)                                                                                                         Alpha: 1e-05                                                                                                                         Score : 0.9015                                                                                                                       True neg = 898                                                                                                                       False pos = 102                                                                                                                      False neg = 95                                                                                                                       True pos = 905                                                                                                                                                                                                                                                                                                                                                                                                 Method: sgd                                                                                                                          Nb hidden layers: (350, 350)                                                                                                         Alpha: 1e-05                                                                                                                         Score : 0.899
+True neg = 899
+False pos = 101
+False neg = 101
+True pos = 899
 
 
 Method: adam
 Nb hidden layers: (350, 350)
 Alpha: 0.0001
- 0.5%
-True neg = 1
-False pos = 1
-False neg = 1
-True pos = 1                                                                                                                            [62/1984]
+Score : 0.9155
+True neg = 916
+False pos = 84
+False neg = 85
+True pos = 915
 
 Method: sgd
 Nb hidden layers: (350, 350)
 Alpha: 0.0001
- 0.5%
-True neg = 1
-False pos = 1
-False neg = 1
-True pos = 1
+Score : 0.8975
+True neg = 899
+False pos = 101
+False neg = 104
+True pos = 896
 
 
 Method: adam
 Nb hidden layers: (350, 350)
 Alpha: 0.001
- 0.5%
-True neg = 1
-False pos = 1
-False neg = 1
-True pos = 1
+Score : 0.909
+True neg = 918
+False pos = 82
+False neg = 100
+True pos = 900
 
 
 Method: sgd
 Nb hidden layers: (350, 350)
 Alpha: 0.001
- 0.5%
-True neg = 1
-False pos = 1
-False neg = 1
-True pos = 1
+Score : 0.8975
+True neg = 898
+False pos = 102
+False neg = 103
+True pos = 897
 
-Method: adam
+Method: adam                                                                                                                         Nb hidden layers: (40, 40)
+Alpha: 1e-05
+Score : 0.9065
+True neg = 910
+False pos = 90
+False neg = 97
+True pos = 903
+
+
+Method: sgd
 Nb hidden layers: (40, 40)
 Alpha: 1e-05
- 0.5%
-True neg = 1
-False pos = 1
-False neg = 1
-True pos = 1
-
-
-Method: sgd
-Nb hidden layers: (40, 40)
-Alpha: 1e-05
- 0.5%
-True neg = 1
-False pos = 1
-False neg = 1
-True pos = 1
+Score : 0.9025
+True neg = 901
+False pos = 99
+False neg = 96
+True pos = 904
 
 
 Method: adam
 Nb hidden layers: (40, 40)
 Alpha: 0.0001
- 0.5%
-True neg = 1
-False pos = 1
-False neg = 1
-True pos = 1
+Score : 0.9015
+True neg = 899
+False pos = 101
+False neg = 96
+True pos = 904
 
 Method: sgd
 Nb hidden layers: (40, 40)
 Alpha: 0.0001
- 0.5%
-True neg = 1
-False pos = 1
-False neg = 1
-True pos = 1
+Score : 0.9
+True neg = 897
+False pos = 103
+False neg = 97
+True pos = 903
 
 
 Method: adam
 Nb hidden layers: (40, 40)
 Alpha: 0.001
- 0.5%
-True neg = 1
-False pos = 1
-False neg = 1
-True pos = 1
+Score : 0.905
+True neg = 904
+False pos = 96
+False neg = 94
+True pos = 906
 
 
 Method: sgd
 Nb hidden layers: (40, 40)
 Alpha: 0.001
- 0.5%
-True neg = 1
-False pos = 1
-False neg = 1
-True pos = 1
+Score : 0.902
+True neg = 896
+False pos = 104
+False neg = 92
+True pos = 908
+
