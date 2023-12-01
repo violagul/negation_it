@@ -256,9 +256,10 @@ print(f"Extracting CLS encoding for template sentences...")
 # for each set of sentences, we encode each sentence
 batch_sent = []
 batch_cls = []
-cls_encodings = []
+all_cls_encodings = []
 for templ_list in [template_sentences_neg, template_sentences_pos]:
-  for sentence in templ_list: 
+  for sentence in templ_list:
+    m = 0 
     sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
     # then extract only the outputs for each sentence
@@ -347,7 +348,8 @@ for n in range(1, 13):
    predicted = clf.predict(test_2)
    right_pred = clf.score(test_2, test_temp_lab)
    tn, fp, fn, tp = confusion_matrix(test_temp_lab, predicted).ravel()
-   template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   template_result.append(f"Score\t{right_pred}%\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
 
 
