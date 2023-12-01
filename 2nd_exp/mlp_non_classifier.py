@@ -288,7 +288,7 @@ for hl in [(350,350),(40,40)]:
       predicted = clf.predict(test)
       right_pred = clf.score(test, test_lab)
       tn, fp, fn, tp = confusion_matrix(test_lab, predicted).ravel()
-      paisa_result.append(f"Method: {solv}\nNb hidden layers: {str(hl)}\nAlpha: {str(a)}\nScore : {right_pred}\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}\n\n")
+      paisa_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScore\t{right_pred}\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
      
       dump(clf, f"../Inputs/non_classifier_{n}.joblib")
