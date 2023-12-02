@@ -320,7 +320,7 @@ print(cls_temp_neg.shape)
 
 
 
-test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]))
+test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]), 0)
 print(test_temp.shape)
 
 test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
@@ -338,8 +338,6 @@ scaler = StandardScaler()
 scaler.fit(test_temp)
 test_2 = scaler.transform(test_temp)
 print(test_2.shape)
-test_temp_lab = scaler.transform(test_temp_lab)
-print(test_temp_lab)
 
 
 
