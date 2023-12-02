@@ -275,15 +275,11 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
   
     m+=1
     cls_encodings = cls_encodings.cpu().numpy()
-    print(cls_encodings.shape)
     if m == 1:
-        
         all_cls_encodings = cls_encodings
     if m > 1:
         all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
-    if m == 2 :
-        print(all_cls_encodings.shape)
-        print(m)
+    
     
    
    
@@ -328,6 +324,7 @@ test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]))
 print(test_temp.shape)
 
 test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
+print(test_temp_lab.shape)
 
 
 
@@ -340,7 +337,9 @@ test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
 scaler = StandardScaler()
 scaler.fit(test_temp)
 test_2 = scaler.transform(test_temp)
-
+print(test_2.shape)
+test_temp_lab = scaler.transform(test_temp_lab)
+print(test_temp_lab)
 
 
 
