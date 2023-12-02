@@ -297,9 +297,9 @@ np.random.shuffle(cls_temp_pos)
 #shuffle(cls_temp_pos)
 
 
-cls_temp_pos = cls_temp_pos[:size_test]
-cls_temp_neg = cls_temp_neg[:size_test]
-print(cls_temp_neg.shape)
+#cls_temp_pos = cls_temp_pos[:size_test]
+#cls_temp_neg = cls_temp_neg[:size_test]
+
 
 
 
@@ -321,10 +321,11 @@ print(cls_temp_neg.shape)
 
 
 test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]), 0)
-print(test_temp.shape)
+print(f"neg shape : {cls_temp_neg.shape}, pos shape : {cls_temp_pos}")
+print(f"test temp shape : {test_temp.shape}")
 
 test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
-print(test_temp_lab.shape)
+print(f"labels shape : {test_temp_lab.shape}")
 
 
 
@@ -337,7 +338,7 @@ print(test_temp_lab.shape)
 scaler = StandardScaler()
 scaler.fit(test_temp)
 test_2 = scaler.transform(test_temp)
-print(test_2.shape)
+print(f"test shape scaled : {test_2.shape}")
 
 
 
