@@ -319,9 +319,9 @@ np.random.shuffle(cls_temp_pos)
 #test_temp_lab = np.concatenate((np.zeros(test_size), np.ones(test_size)))
 
 
-
+size_test = 100
 test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]), 0)
-print(f"neg shape : {cls_temp_neg.shape}, pos shape : {cls_temp_pos}")
+print(f"neg shape : {cls_temp_neg.shape}, pos shape : {cls_temp_pos.shape}")
 print(f"test temp shape : {test_temp.shape}")
 
 test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
