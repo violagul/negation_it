@@ -335,8 +335,9 @@ print(f"labels shape : {test_temp_lab.shape}")
 
 
 #data normalization
-scaler = StandardScaler()
-scaler.fit(test_temp)
+#scaler = StandardScaler()
+#scaler.fit(test_temp)
+scaler = load(f"../Inputs/scaler.joblib")
 test_2 = scaler.transform(test_temp)
 print(f"test shape scaled : {test_2.shape}")
 
