@@ -319,9 +319,7 @@ test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
 print(test_temp_lab.shape)
 
 
-#scaler.fit(train_temp)
-#train = scaler.transform(train_temp)
-#test_2 = scaler.transform(test_temp)
+
 
 
 #data normalization
