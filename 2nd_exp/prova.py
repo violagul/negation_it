@@ -359,7 +359,7 @@ for n in range(1, 13):
    predicted = clf.predict(test_2)
    right_pred = clf.score(test_2, test_temp_lab)
    tn, fp, fn, tp = confusion_matrix(test_temp_lab, predicted).ravel()
-   template_result.append(f"Method: {solv}\tNb hidden layers: {str(hl)}\tAlpha: {str(a)}\n {right_pred}%\n\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}")
+   template_result.append(f"{right_pred}%\n\nTrue neg = {tn}\nFalse pos = {fp}\nFalse neg = {fn}\nTrue pos = {tp}")
 
 
 
