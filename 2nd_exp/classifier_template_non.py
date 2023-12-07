@@ -315,8 +315,11 @@ cls_temp_neg = cls_temp_neg[:size_test]
 
 
 test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]),0)
+print(f"neg shape : {cls_temp_neg.shape}, pos shape : {cls_temp_pos.shape}")
+print(f"test temp shape : {test_temp.shape}")
+
 test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
-print(test_temp_lab.shape)
+print(f"Labels shape : {test_temp_lab.shape}")
 
 
 
@@ -325,6 +328,7 @@ print(test_temp_lab.shape)
 #data normalization
 scaler = load(f"../Inputs/scaler.joblib")
 test_2 = scaler.transform(test_temp)
+print(f"test shape scaled : {test_2.shape}")
 
 
 
