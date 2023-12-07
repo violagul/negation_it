@@ -258,8 +258,9 @@ batch_sent = []
 batch_cls = []
 all_cls_encodings = []
 for templ_list in [template_sentences_neg, template_sentences_pos]:
+  m = 0 
   for sentence in templ_list:
-    m = 0 
+    
     sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
     # then extract only the outputs for each sentence
