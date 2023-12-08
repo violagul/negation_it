@@ -222,9 +222,10 @@ np.random.shuffle(cls_CnTp)
 np.random.shuffle(cls_CpTn)
 
 
-size_test = min(size_test, len(cls_CpTn), len(cls_CnTp))
-cls_CpTn = cls_CpTn[:size_test]
-cls_CnTp = cls_CnTp[:size_test]
+size_test_CpTn = min(size_test, len(cls_CpTn))
+size_test_CnTp = min(size_test, len(cls_CnTp))
+cls_CpTn = cls_CpTn[:size_test_CpTn]
+cls_CnTp = cls_CnTp[:size_test_CnTp]
 
 
 
@@ -238,8 +239,8 @@ cls_CnTp = cls_CnTp[:size_test]
 
 test_CnTp = np.array(cls_CnTp)
 test_CpTn = np.array(cls_CpTn)
-test_CnTp_lab = np.array(np.ones(size_test))
-test_CpTn_lab = np.array(np.ones(size_test))
+test_CnTp_lab = np.array(np.ones(size_test_CnTp))
+test_CpTn_lab = np.array(np.ones(size_test_CpTn))
 
 
 # data normalization
