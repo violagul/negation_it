@@ -183,7 +183,7 @@ for s in sent:
 
 
 
-size_batches = 8
+
 print(f"Extracting the CLS encodings from CpTn/CnTp sentences from PAISA...")
 # encode the CnTp ad CpTn sentences
 all_cls_encodings = []
@@ -223,6 +223,8 @@ for sent_list in [CpTn, CnTp]:
 np.random.shuffle(cls_CnTp)
 np.random.shuffle(cls_CpTn)
 
+
+size_test = min(size_test, len(cls_CpTn), len(cls_CnTp))
 cls_CpTn = cls_CpTn[:size_test]
 cls_CnTp = cls_CnTp[:size_test]
 
