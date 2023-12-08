@@ -171,7 +171,8 @@ for s in sent:
     if not double2:
       CpTn.append(elem)
 
-
+print(f"len CpTn = {len(CpTn)}")
+print(f"len CnTp = {len(CnTp)}")
 
 
 
@@ -181,7 +182,6 @@ for s in sent:
 
 
 
-size_batches = 8
 print(f"Extracting the CLS encodings from CpTn/CnTp sentences from PAISA...")
 # encode the CnTp ad CpTn sentences
 all_cls_encodings = []
@@ -221,6 +221,8 @@ for sent_list in [CpTn, CnTp]:
 np.random.shuffle(cls_CnTp)
 np.random.shuffle(cls_CpTn)
 
+
+size_test = min(size_test, len(cls_CpTn), len(cls_CnTp))
 cls_CpTn = cls_CpTn[:size_test]
 cls_CnTp = cls_CnTp[:size_test]
 
@@ -277,7 +279,7 @@ for n in range(1, 13):
    right_pred = clf.score(test_4, test_CpTn_lab)
    tn, fp, fn, tp = confusion_matrix(test_CpTn_lab, predicted).ravel()
    #CpTn_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScore\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
-   CnTp_result.append(f"Score\t{right_pred}%\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   CpTn_result.append(f"Score\t{right_pred}%\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
 
 
