@@ -1,0 +1,92 @@
+TEMPLATE TEST RESULTS
+
+Score   0.5035%                                                               
+
+True neg        70                                              
+False pos       9930
+False neg       0                                               
+True pos        10000
+                                                                                                                                                                         Score   0.50325%                                                                                                                
+
+True neg        65                                              
+False pos       9935
+False neg       0
+True pos        10000
+
+
+Score   0.50095%
+
+True neg        19
+False pos       9981
+False neg       0
+True pos        10000
+
+
+Score   0.5032%
+
+True neg        64
+False pos       9936
+False neg       0
+True pos        10000
+
+Score   0.5008%
+
+True neg        16
+False pos       9984
+False neg       0
+True pos        10000
+
+
+Score   0.5034%
+
+True neg        68
+False pos       9932
+False neg       0
+True pos        10000
+
+
+Score   0.50235%
+
+True neg        47
+False pos       9953
+False neg       0
+True pos        10000
+
+
+Score   0.5038%
+
+True neg        76
+False pos       9924
+False neg       0
+True pos        10000
+
+Score   0.5099%
+
+True neg        198
+False pos       9802
+False neg       0
+True pos        10000
+
+
+Score   0.5067%
+
+True neg        134
+False pos       9866
+False neg       0
+True pos        10000
+
+
+Score   0.5047%
+
+True neg        94
+False pos       9906
+False neg       0
+True pos        10000
+
+
+Score   0.5044%
+
+True neg        88
+False pos       9912
+False neg       0
+True pos        10000
