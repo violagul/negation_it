@@ -245,6 +245,7 @@ for sent in template_sentences_pos:
   sent_neg = sent
   for pair in pat_and_repl:
     sent_CnTn = re.sub(pair[0], pair[1], sent_neg)
+    print(sent_CnTn)
   template_sentences_CnTn.append(sent_CnTn)
 
   sent_CnTp = re.sub(pat_and_repl[0][0],pat_and_repl[0][1], sent_neg)
@@ -252,8 +253,7 @@ for sent in template_sentences_pos:
 
   for pair in pat_and_repl[1:]:
     sent_CpTn = re.sub(pair[0], pair[1], sent_neg)
-    print(sent_neg)
-    print(sent_CpTn)
+    
   template_sentences_CpTn.append(sent_CpTn)
 
 print(template_sentences_CpTn[:30])
