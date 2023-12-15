@@ -251,6 +251,9 @@ for sent in template_sentences_pos:
     template_sentences_CnTn.append(template_sentences_CnTn)
     template_sentences_CnTp.append(template_sentences_CnTp)
     template_sentences_CpTn.append(template_sentences_CpTn)
+    print(sent_CnTn)
+    print(sent_CnTp)
+    print(sent_CpTn)
 
 
 
