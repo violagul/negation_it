@@ -238,6 +238,7 @@ for pattern in list_good_patterns_model:
 template_sentences_CnTn = []
 template_sentences_CnTp = []
 template_sentences_CpTn = []
+template_sentences_neg = []
 
 pat_and_repl = [[r"che ha","che non ha"],[r" Lei ", " Lei non "],[r" Lui "," Lui non "]]
 
@@ -246,8 +247,27 @@ for sent in template_sentences_pos:
   for pair in pat_and_repl:
     sent_CnTn = re.sub(pair[0], pair[1], sent_neg)
     print(sent_CnTn)
-  template_sentences_CnTn.append(sent_CnTn)
+  template_sentences_neg.append(sent_CnTn)
 
+for sent in template_sentences_neg:
+    if pat_and_repl[0][1] in sent:
+        if pat_and_repl[1][1] in sent or pat_and_repl[2][1] in sent:
+            print("CnTn")
+            template_sentences_CnTn.append(sent)
+        else:
+            print("CnTp")
+            template_sentences_CnTp.append(sent)
+    else:
+        if pat_and_repl[1][1] in sent or pat_and_repl[2][1] in sent:
+            print("CpTn")
+            template_sentences_CpTn.append(sent)
+        else:
+            print("CpTp")
+            template_sentences_pos.append(sent)
+
+print(f"\nCpTp : {len(template_sentences_pos)}\nCnTp : {len(template_sentences_CnTp)}\nCpTn : {len(template_sentences_CpTn)}\nCnTn : {len(template_sentences_CnTn)}")
+
+'''
   sent_CnTp = re.sub(pat_and_repl[0][0],pat_and_repl[0][1], sent_neg)
   template_sentences_CnTp.append(sent_CnTp)
 
@@ -257,7 +277,7 @@ for sent in template_sentences_pos:
   template_sentences_CpTn.append(sent_CpTn)
 
 print(template_sentences_CpTn[:30])
-
+'''
   
 
 #############################
