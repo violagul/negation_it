@@ -272,7 +272,7 @@ print(f"Extracting CLS encoding for template sentences...")
 
 all_cls_encodings = []
 for templ_list in [template_sentences_CnTn, template_sentences_CnTp, template_sentences_CpTn, template_sentences_pos]:
-  print(templ_list[:2])
+  print(f"TEMPLATE LIST: {templ_list[:2]}")
   m = 0 
   for sentence in templ_list:
     print(sentence)
