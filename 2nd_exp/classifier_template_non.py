@@ -235,15 +235,28 @@ for pattern in list_good_patterns_model:
   template_sentences_pos.append(sent)
 
 # create the CnTn set
-template_sentences_neg = []
+template_sentences_CnTn = []
+template_sentences_CnTp = []
+template_sentences_CpTn = []
+
 pat_and_repl = [[r"che ha","che non ha"],[r" Lei ", " Lei non "],[r" Lui "," Lui non "]]
 
 for sent in template_sentences_pos:
-  sent_neg = sent
-  for pair in pat_and_repl:
-    sent_neg = re.sub(pair[0], pair[1], sent_neg)
-  template_sentences_neg.append(sent_neg)
-  
+    sent_neg = sent
+    sent_CnTp = re.sub(pat_and_repl[0][0], pat_and_repl[0][1], sent_neg)
+    sent_CpTn = re.sub(pat_and_repl[1][0], pat_and_repl[1][1], sent_neg)
+    sent_CpTn = re.sub(pat_and_repl[2][0], pat_and_repl[2][1], sent_CpTn)
+    sent_CnTn = re.sub(pat_and_repl[0][0], pat_and_repl[0][1], sent_CpTn)
+
+    template_sentences_CnTn.append(sent_CnTn)
+    template_sentences_CnTp.append(sent_CnTp)
+    template_sentences_CpTn.append(sent_CpTn)
+
+
+
+
+print(f"\nCpTp : {len(template_sentences_pos)}\nCnTp : {len(template_sentences_CnTp)}\nCpTn : {len(template_sentences_CpTn)}\nCnTn : {len(template_sentences_CnTn)}")
+
 
 #############################
 ### template set encoding ###
@@ -254,12 +267,12 @@ for sent in template_sentences_pos:
 print(f"Extracting CLS encoding for template sentences...")
 # extract CLS for each template sentence
 # for each set of sentences, we encode each sentence
-batch_sent = []
-batch_cls = []
+
 all_cls_encodings = []
-for templ_list in [template_sentences_neg, template_sentences_pos]:
+for templ_list in [template_sentences_CnTn, template_sentences_CnTp, template_sentences_CpTn, template_sentences_pos]:
   m = 0 
   for sentence in templ_list:
+    
     
     sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
@@ -282,18 +295,26 @@ for templ_list in [template_sentences_neg, template_sentences_pos]:
     
    
    
-  if templ_list == template_sentences_neg:
-      cls_temp_neg = all_cls_encodings
+  if templ_list == template_sentences_CnTn:
+      cls_temp_CnTn = all_cls_encodings
+  elif templ_list == template_sentences_CnTp:
+      cls_temp_CnTp = all_cls_encodings
+  elif templ_list == template_sentences_CpTn:
+      cls_temp_CpTn = all_cls_encodings
   elif templ_list == template_sentences_pos:
       cls_temp_pos = all_cls_encodings
      
 
 
-np.random.shuffle(cls_temp_neg)
+np.random.shuffle(cls_temp_CnTn)
+np.random.shuffle(cls_temp_CnTp)
+np.random.shuffle(cls_temp_CpTn)
 np.random.shuffle(cls_temp_pos)
 
 cls_temp_pos = cls_temp_pos[:size_test]
-cls_temp_neg = cls_temp_neg[:size_test]
+cls_temp_CnTn = cls_temp_CnTn[:size_test]
+cls_temp_CnTp = cls_temp_CnTp[:size_test]
+cls_temp_CpTn = cls_temp_CpTn[:size_test]
 
 
 
@@ -315,12 +336,16 @@ cls_temp_neg = cls_temp_neg[:size_test]
 
 
 
-test_temp = np.concatenate((cls_temp_pos[:size_test], cls_temp_neg[:size_test]),0)
-print(f"neg shape : {cls_temp_neg.shape}, pos shape : {cls_temp_pos.shape}")
-print(f"test temp shape : {test_temp.shape}")
+test_temp_pos = cls_temp_pos[:size_test]
+test_temp_CnTn = cls_temp_CnTn[:size_test]
+test_temp_CnTp = cls_temp_CnTp[:size_test]
+test_temp_CpTn = cls_temp_CpTn[:size_test]
 
-test_temp_lab = np.concatenate((np.zeros(size_test), np.ones(size_test)))
-print(f"Labels shape : {test_temp_lab.shape}")
+
+test_temp_lab_pos = np.zeros(size_test)
+test_temp_lab_CnTn = np.ones(size_test)
+test_temp_lab_CnTp = np.ones(size_test)
+test_temp_lab_CpTn = np.ones(size_test)
 
 
 
@@ -328,8 +353,10 @@ print(f"Labels shape : {test_temp_lab.shape}")
 
 #data normalization
 scaler = load(f"../Inputs/scaler.joblib")
-test_2 = scaler.transform(test_temp)
-print(f"test shape scaled : {test_2.shape}")
+test_2_pos = scaler.transform(test_temp_pos)
+test_2_CnTn = scaler.transform(test_temp_CnTn)
+test_2_CnTp = scaler.transform(test_temp_CnTp)
+test_2_CpTn = scaler.transform(test_temp_CpTn)
 
 
 
@@ -342,22 +369,58 @@ print(f"test shape scaled : {test_2.shape}")
 
 print("Testing with MLP classifiers...")
 
-template_result = []
+template_result_pos = []
+template_result_CnTn = []
+template_result_CnTp = []
+template_result_CpTn = []
 
 for n in range(1, 13):
    clf = load(f"../Inputs/non_classifier_{n}.joblib")
    
    
-   predicted = clf.predict(test_2)
-   right_pred = clf.score(test_2, test_temp_lab)
-   tn, fp, fn, tp = confusion_matrix(test_temp_lab, predicted).ravel()
+   predicted = clf.predict(test_2_pos)
+   right_pred = clf.score(test_2_pos, test_temp_lab_pos)
+   tn, fp, fn, tp = confusion_matrix(test_temp_lab_pos, predicted).ravel()
    #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
-   template_result.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   template_result_pos.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+
+   predicted = clf.predict(test_2_CnTn)
+   right_pred = clf.score(test_2_CnTn, test_temp_lab_CnTn)
+   tn, fp, fn, tp = confusion_matrix(test_temp_lab_CnTn, predicted).ravel()
+   #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   template_result_CnTn.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+
+   predicted = clf.predict(test_2_CnTp)
+   right_pred = clf.score(test_2_CnTp, test_temp_lab_CnTp)
+   tn, fp, fn, tp = confusion_matrix(test_temp_lab_CnTp, predicted).ravel()
+   #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   template_result_CnTp.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+
+   predicted = clf.predict(test_2_CpTn)
+   right_pred = clf.score(test_2_CpTn, test_temp_lab_CpTn)
+   tn, fp, fn, tp = confusion_matrix(test_temp_lab_CpTn, predicted).ravel()
+   #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   template_result_CpTn.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
 
 
 
 
-print("TEMPLATE TEST\n\n")
-for scores in template_result:
+print("TEMPLATE TEST POS\n\n")
+for scores in template_result_pos:
+   print(scores)
+
+
+print("TEMPLATE TEST CnTn\n\n")
+for scores in template_result_CnTn:
+   print(scores)
+
+
+print("TEMPLATE TEST CnTp\n\n")
+for scores in template_result_CnTp:
+   print(scores)
+
+
+print("TEMPLATE TEST CpTn\n\n")
+for scores in template_result_CpTn:
    print(scores)
