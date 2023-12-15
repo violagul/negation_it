@@ -259,18 +259,6 @@ for sent in template_sentences_pos:
 
 print(f"\nCpTp : {len(template_sentences_pos)}\nCnTp : {len(template_sentences_CnTp)}\nCpTn : {len(template_sentences_CpTn)}\nCnTn : {len(template_sentences_CnTn)}")
 
-'''
-  sent_CnTp = re.sub(pat_and_repl[0][0],pat_and_repl[0][1], sent_neg)
-  template_sentences_CnTp.append(sent_CnTp)
-
-  for pair in pat_and_repl[1:]:
-    sent_CpTn = re.sub(pair[0], pair[1], sent_neg)
-    
-  template_sentences_CpTn.append(sent_CpTn)
-
-print(template_sentences_CpTn[:30])
-'''
-  
 
 #############################
 ### template set encoding ###
@@ -281,12 +269,13 @@ print(template_sentences_CpTn[:30])
 print(f"Extracting CLS encoding for template sentences...")
 # extract CLS for each template sentence
 # for each set of sentences, we encode each sentence
-batch_sent = []
-batch_cls = []
+
 all_cls_encodings = []
 for templ_list in [template_sentences_CnTn, template_sentences_CnTp, template_sentences_CpTn, template_sentences_pos]:
+  print(templ_list[:2])
   m = 0 
   for sentence in templ_list:
+    print(sentence)
     
     sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
