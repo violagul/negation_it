@@ -254,6 +254,8 @@ for sent in template_sentences_pos:
     sent_CpTn = re.sub(pair[0], pair[1], sent_neg)
   template_sentences_CpTn.append(sent_CpTn)
 
+print(template_sentences_CpTn[:30])
+
   
 
 #############################
