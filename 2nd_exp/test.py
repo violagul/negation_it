@@ -248,13 +248,9 @@ for sent in template_sentences_pos:
     sent_CpTn = re.sub(pat_and_repl[2][0], pat_and_repl[2][1], sent_CpTn)
     sent_CnTn = re.sub(pat_and_repl[0][0], pat_and_repl[0][1], sent_CpTn)
 
-    template_sentences_CnTn.append(template_sentences_CnTn)
-    template_sentences_CnTp.append(template_sentences_CnTp)
-    template_sentences_CpTn.append(template_sentences_CpTn)
-    print(sent_CnTn)
-    print(sent_CnTp)
-    print(sent_CpTn)
-
+    template_sentences_CnTn.append(sent_CnTn)
+    template_sentences_CnTp.append(sent_CnTp)
+    template_sentences_CpTn.append(sent_CpTn)
 
 print(template_sentences_CnTn)
 print(template_sentences_CpTn)
