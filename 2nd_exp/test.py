@@ -256,6 +256,11 @@ for sent in template_sentences_pos:
     print(sent_CpTn)
 
 
+print(template_sentences_CnTn)
+print(template_sentences_CpTn)
+print(template_sentences_CnTp)
+
+
 
 print(f"\nCpTp : {len(template_sentences_pos)}\nCnTp : {len(template_sentences_CnTp)}\nCpTn : {len(template_sentences_CpTn)}\nCnTn : {len(template_sentences_CnTn)}")
 
