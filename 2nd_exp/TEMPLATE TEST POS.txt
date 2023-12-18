@@ -1,0 +1,91 @@
+TEMPLATE TEST POS
+
+Score   0.0046                                                                                                                  
+
+True neg        46                                              
+False pos       9954                                            
+False neg       0                                               
+True pos        0
+                                                                                                                                                                               
+Score   0.006                                                                                                                   
+
+True neg        60                                              
+False pos       9940                                            
+False neg       0                                               
+True pos        0                                                                                                                                                                               
+
+Score   0.0007                                                                                                                  
+
+True neg        7
+False pos       9993                                            
+False neg       0                                               
+True pos        0
+
+Score   0.0064
+
+True neg        64
+False pos       9936
+False neg       0
+True pos        0
+
+
+Score   0.0007
+
+True neg        7
+False pos       9993
+False neg       0
+True pos        0
+
+
+Score   0.0067
+
+True neg        67
+False pos       9933
+False neg       0
+True pos        0
+
+Score   0.0049
+
+True neg        49
+False pos       9951
+False neg       0
+True pos        0
+
+
+Score   0.0077
+
+True neg        77
+False pos       9923
+False neg       0
+True pos        0
+
+
+Score   0.0229
+
+True neg        229
+False pos       9771
+False neg       0
+True pos        0
+
+Score   0.0153
+
+True neg        153
+False pos       9847
+False neg       0
+True pos        0
+
+
+Score   0.0088
+
+True neg        88
+False pos       9912
+False neg       0
+True pos        0
+
+
+Score   0.0093
+
+True neg        93
+False pos       9907
+False neg       0
+True pos        0
