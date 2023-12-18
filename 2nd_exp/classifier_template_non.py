@@ -170,20 +170,20 @@ for gender in ["f", "m"]:
 
     name_arrays_available = name_arrays[gender]
     shuffle(name_arrays_available)
-    for name_available in name_arrays_available[:8]:
+    for name_available in name_arrays_available:
         batch_sentences = [] # batch of sentences to try in this cycle
         batch_verbs = [] # batch of verbs to try in this cycle
         
         professionsarray_available = professionsarray[gender]
         shuffle(professionsarray_available)
-        for profession_available in professionsarray_available[:8]:
+        for profession_available in professionsarray_available:
             
             current_list_verbs = list_verbs.copy()
             shuffle(current_list_verbs)
 
             found = False # to stop when a good verb is found
 
-            for verb_available in current_list_verbs[:20]:
+            for verb_available in current_list_verbs[:50]:
                 #print(f"current verb : {verb_available}")
                 #if not complete_check and found:
                 #    break
