@@ -158,7 +158,7 @@ pronouns_maj = {"f": "Lei", "m": "Lui"}
 
 
 # set up list for patterns that, for the CpTp setting, predict for the mask the same verb that was in the context
-list_good_patterns_model = []
+template_sentences_pos = []
 
 total_sentences = 0 # counts tried sentences
 tot_good_preds = 0 # counts sentences with repetition
@@ -196,7 +196,7 @@ for gender in ["f", "m"]:
                 #print(current_sentence)
                 #quit()
 
-                list_good_patterns_model.append(current_sentence)
+                template_sentences_pos.append(current_sentence)
                 total_sentences += 1
 
                 
