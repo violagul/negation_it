@@ -329,7 +329,7 @@ for templ_list in [template_sentences_CnTn, template_sentences_CnTp, template_se
         all_cls_encodings = cls_encodings
     if m > 1:
         all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
-    if m % 100 == 0:
+    if m % 50 == 0:
         print(str(m) + "\textracted")
    
     
