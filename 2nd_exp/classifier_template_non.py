@@ -377,7 +377,54 @@ template_result_CpTn = []
 for n in range(1, 13):
    clf = load(f"../Inputs/non_classifier_{n}.joblib")
    
+for n in range(1, 13):
+   clf = load(f"../Inputs/non_classifier_{n}.joblib")
    
+   
+   predicted = clf.predict(test_2_pos)
+   right_pred = clf.score(test_2_pos, test_temp_lab_pos)
+   if len(confusion_matrix(test_temp_lab_pos, predicted).ravel()) == 4:
+       tn, fp, fn, tp = confusion_matrix(test_temp_lab_pos, predicted).ravel()
+       template_result_pos.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   else:
+       conf_matr = confusion_matrix(test_temp_lab_pos, predicted).ravel()
+       template_result_pos.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
+   #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+
+
+
+   predicted = clf.predict(test_2_CnTn)
+   right_pred = clf.score(test_2_CnTn, test_temp_lab_CnTn)
+   if len(confusion_matrix(test_temp_lab_CnTn, predicted).ravel()) == 4:
+       tn, fp, fn, tp = confusion_matrix(test_temp_lab_CnTn, predicted).ravel()
+       template_result_CnTn.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   else:
+       conf_matr = confusion_matrix(test_temp_lab_CnTn, predicted).ravel()
+       template_result_CnTn.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
+
+
+
+   predicted = clf.predict(test_2_CnTp)
+   right_pred = clf.score(test_2_CnTp, test_temp_lab_CnTp)
+   if len(confusion_matrix(test_temp_lab_CnTp, predicted).ravel()) == 4:
+       tn, fp, fn, tp = confusion_matrix(test_temp_lab_CnTp, predicted).ravel()
+       template_result_CnTp.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   else:
+       conf_matr = confusion_matrix(test_temp_lab_CnTp, predicted).ravel()
+       template_result_CnTp.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
+   
+
+
+   predicted = clf.predict(test_2_CpTn)
+   right_pred = clf.score(test_2_CpTn, test_temp_lab_CpTn)
+   if len(confusion_matrix(test_temp_lab_CpTn, predicted).ravel()) == 4:
+       tn, fp, fn, tp = confusion_matrix(test_temp_lab_CpTn, predicted).ravel()
+       template_result_CpTn.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   else:
+       conf_matr = confusion_matrix(test_temp_lab_CpTn, predicted).ravel()
+       template_result_CpTn.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
+
+'''   
    predicted = clf.predict(test_2_pos)
    right_pred = clf.score(test_2_pos, test_temp_lab_pos)
    tn, fp, fn, tp = confusion_matrix(test_temp_lab_pos, predicted).ravel()
@@ -402,7 +449,7 @@ for n in range(1, 13):
    #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
    template_result_CpTn.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
-
+'''
 
 
 
