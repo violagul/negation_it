@@ -158,16 +158,54 @@ pronouns_maj = {"f": "Lei", "m": "Lui"}
 
 
 # set up list for patterns that, for the CpTp setting, predict for the mask the same verb that was in the context
-list_good_patterns_model = []
+template_sentences_pos = []
 
 total_sentences = 0 # counts tried sentences
 tot_good_preds = 0 # counts sentences with repetition
 detail_verbs = {v : 0 for v in list_verbs} # counts, for each verb, how many times it is repeated in the mask if present in context
 
 
-size_batches = 8
-
 for gender in ["f", "m"]:
+    current_pronouns_maj = pronouns_maj[gender]
+
+    name_arrays_available = name_arrays[gender]
+    shuffle(name_arrays_available)
+    for name_available in name_arrays_available[:8]:
+        batch_sentences = [] # batch of sentences to try in this cycle
+        batch_verbs = [] # batch of verbs to try in this cycle
+        
+        professionsarray_available = professionsarray[gender]
+        shuffle(professionsarray_available)
+        for profession_available in professionsarray_available[:8]:
+            
+            current_list_verbs = list_verbs.copy()
+            shuffle(current_list_verbs)
+
+            found = False # to stop when a good verb is found
+
+            for verb_available in current_list_verbs[:20]:
+                #print(f"current verb : {verb_available}")
+                #if not complete_check and found:
+                #    break
+
+                
+                current_sentence = build_masked_context(name_available, profession_available, verb_available, current_pronouns_maj, mask_token = verb_available)
+
+                #print(current_sentence)
+                #quit()
+
+                template_sentences_pos.append(current_sentence)
+                total_sentences += 1
+
+                
+                #if total_sentences % 5000 == 0:
+                if total_sentences % 100 == 0:
+                    print(f"current : {total_sentences}")
+                
+                if total_sentences > 300:
+                    break
+
+'''for gender in ["f", "m"]:
     current_pronouns_maj = pronouns_maj[gender]
 
     for name_available in name_arrays[gender]:
@@ -223,7 +261,7 @@ for gender in ["f", "m"]:
                 batch_verbs = []
                 for found_verb in found_verbs:
                     detail_verbs[found_verb] += 1
-
+'''
 
 print(f"Splitting template sentences in neg and pos...")
 # create the CpTp set
