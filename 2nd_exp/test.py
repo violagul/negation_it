@@ -136,7 +136,7 @@ mName_file = open(mName_file_path, "r")
 fProf_file = open(fProf_file_path, "r")
 mProf_file = open(mProf_file_path, "r")
 
-list_verbs = load(f"{path}/base_verbs.joblib")[:10]
+list_verbs = load(f"{path}/base_verbs.joblib")[:4]
 
 
 
@@ -252,9 +252,6 @@ for sent in template_sentences_pos:
     template_sentences_CnTp.append(sent_CnTp)
     template_sentences_CpTn.append(sent_CpTn)
 
-print(template_sentences_CnTn)
-print(template_sentences_CpTn)
-print(template_sentences_CnTp)
 
 
 
@@ -273,10 +270,9 @@ print(f"Extracting CLS encoding for template sentences...")
 
 all_cls_encodings = []
 for templ_list in [template_sentences_CnTn, template_sentences_CnTp, template_sentences_CpTn, template_sentences_pos]:
-  print(f"TEMPLATE LIST: {templ_list[:2]}")
   m = 0 
   for sentence in templ_list:
-    print(sentence)
+    
     
     sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
@@ -315,6 +311,8 @@ np.random.shuffle(cls_temp_CnTp)
 np.random.shuffle(cls_temp_CpTn)
 np.random.shuffle(cls_temp_pos)
 
+
+size_test = min(size_test, len(cls_temp_CnTn), len(cls_temp_CnTp), len(cls_temp_CpTn), len(cls_temp_pos))
 cls_temp_pos = cls_temp_pos[:size_test]
 cls_temp_CnTn = cls_temp_CnTn[:size_test]
 cls_temp_CnTp = cls_temp_CnTp[:size_test]
@@ -388,11 +386,15 @@ for n in range(1, 13):
    #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
    template_result_pos.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
+   print(f"CpTp {right_pred}, TN {tn} FP {fp} FN {fn} TP {tp}")
+
    predicted = clf.predict(test_2_CnTn)
    right_pred = clf.score(test_2_CnTn, test_temp_lab_CnTn)
    tn, fp, fn, tp = confusion_matrix(test_temp_lab_CnTn, predicted).ravel()
    #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
    template_result_CnTn.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+
+   print(f"CnTn {right_pred}, TN {tn} FP {fp} FN {fn} TP {tp}")
 
    predicted = clf.predict(test_2_CnTp)
    right_pred = clf.score(test_2_CnTp, test_temp_lab_CnTp)
@@ -400,11 +402,15 @@ for n in range(1, 13):
    #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
    template_result_CnTp.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
+   print(f"CnTp {right_pred}, TN {tn} FP {fp} FN {fn} TP {tp}")
+
    predicted = clf.predict(test_2_CpTn)
    right_pred = clf.score(test_2_CpTn, test_temp_lab_CpTn)
    tn, fp, fn, tp = confusion_matrix(test_temp_lab_CpTn, predicted).ravel()
    #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
    template_result_CpTn.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+
+   print(f"CpTn {right_pred}, TN {tn} FP {fp} FN {fn} TP {tp}")
 
 
 
