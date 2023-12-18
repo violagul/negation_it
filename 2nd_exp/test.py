@@ -185,7 +185,7 @@ for gender in ["f", "m"]:
 
             found = False # to stop when a good verb is found
 
-            for verb_available in current_list_verbs[20]:
+            for verb_available in current_list_verbs[:5]:
                 #print(f"current verb : {verb_available}")
                 #if not complete_check and found:
                 #    break
