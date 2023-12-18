@@ -171,15 +171,13 @@ for gender in ["f", "m"]:
     current_pronouns_maj = pronouns_maj[gender]
 
     name_arrays_available = name_arrays[gender]
-    print(type(name_arrays_available))
     shuffle(name_arrays_available)
-    print(name_arrays_available)
     for name_available in name_arrays_available[:4]:
         batch_sentences = [] # batch of sentences to try in this cycle
         batch_verbs = [] # batch of verbs to try in this cycle
         
         professionsarray_available = professionsarray[gender]
-        professionsarray_available = shuffle(professionsarray_available)
+        shuffle(professionsarray_available)
         for profession_available in professionsarray_available[:4]:
             
             current_list_verbs = list_verbs.copy()
