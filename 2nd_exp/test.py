@@ -171,7 +171,9 @@ for gender in ["f", "m"]:
     current_pronouns_maj = pronouns_maj[gender]
 
     name_arrays_available = name_arrays[gender]
+    print(name_arrays_available)
     name_arrays_available = shuffle(name_arrays_available)
+    print(name_arrays_available)
     for name_available in name_arrays_available[:4]:
         batch_sentences = [] # batch of sentences to try in this cycle
         batch_verbs = [] # batch of verbs to try in this cycle
