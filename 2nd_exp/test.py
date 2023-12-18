@@ -165,42 +165,48 @@ tot_good_preds = 0 # counts sentences with repetition
 detail_verbs = {v : 0 for v in list_verbs} # counts, for each verb, how many times it is repeated in the mask if present in context
 
 
-size_batches = 8
+
 
 for gender in ["f", "m"]:
     current_pronouns_maj = pronouns_maj[gender]
 
-    for name_available in name_arrays[gender]:
+    name_arrays_available = name_arrays[gender]
+    name_arrays_available = shuffle(name_arrays_available)
+    for name_available in name_arrays_available[:4]:
         batch_sentences = [] # batch of sentences to try in this cycle
         batch_verbs = [] # batch of verbs to try in this cycle
         
-        for profession_available in professionsarray[gender]:
+        professionsarray_available = professionsarray[gender]
+        professionsarray_available = shuffle(professionsarray_available)
+        for profession_available in professionsarray_available[:4]:
             
             current_list_verbs = list_verbs.copy()
             shuffle(current_list_verbs)
 
             found = False # to stop when a good verb is found
 
-            for verb_available in current_list_verbs:
+            for verb_available in current_list_verbs[20]:
                 #print(f"current verb : {verb_available}")
                 #if not complete_check and found:
                 #    break
 
                 
-                current_sentence = build_masked_context(name_available, profession_available, verb_available, current_pronouns_maj, mask_token = tokenizer.mask_token)
+                current_sentence = build_masked_context(name_available, profession_available, verb_available, current_pronouns_maj, mask_token = verb_available)
 
                 #print(current_sentence)
                 #quit()
 
-                batch_sentences.append(current_sentence)
-                batch_verbs.append(verb_available)
+                list_good_patterns_model.append(current_sentence)
                 total_sentences += 1
 
                 
                 #if total_sentences % 5000 == 0:
                 if total_sentences % 100 == 0:
-                    print(f"current : {total_sentences}, found : {len(list_good_patterns_model)}")
-
+                    print(f"current : {total_sentences}")
+                
+                if total_sentences > 300:
+                    break
+'''
                 # get the result at the end of the batch
                 if len(batch_sentences) == size_batches:
                     new_sentence, found, nb_good_pred, found_verbs = make_and_encode_batch(batch_sentences, tokenizer, model_mask, device, batch_verbs, name_available, profession_available, current_pronouns_maj, found) 
@@ -224,16 +230,11 @@ for gender in ["f", "m"]:
                 batch_verbs = []
                 for found_verb in found_verbs:
                     detail_verbs[found_verb] += 1
-
+'''
 
 print(f"Splitting template sentences in neg and pos...")
 # create the CpTp set
-template_sentences_pos =[]
-for pattern in list_good_patterns_model:
-  # build sentences putting the conjugated verb instead of the mask
-  sent = build_masked_context(pattern["name_available"], pattern["profession_available"],
-                               pattern["verb"], pattern["current_pronouns_maj"], pattern["masked_prediction"])
-  template_sentences_pos.append(sent)
+
 
 # create the CnTn set
 template_sentences_CnTn = []
@@ -255,24 +256,6 @@ for sent in template_sentences_pos:
 
 
 
-
-print("\nCpTp : ")
-for frase in template_sentences_pos[:5]:
-    print(frase)
-
-print("\nCpTn : ")
-for frase in template_sentences_CnTn[:5]:
-    print(frase)
-
-
-print("\nCnTp : ")
-for frase in template_sentences_CnTp[:5]:
-    print(frase)
-
-
-print("\nCnTn : ")
-for frase in template_sentences_CpTn[:5]:
-    print(frase)
 
 
 
