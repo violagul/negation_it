@@ -171,7 +171,7 @@ for gender in ["f", "m"]:
     current_pronouns_maj = pronouns_maj[gender]
 
     name_arrays_available = name_arrays[gender]
-    print(name_arrays_available)
+    print(type(name_arrays_available))
     name_arrays_available = shuffle(name_arrays_available)
     print(name_arrays_available)
     for name_available in name_arrays_available[:4]:
