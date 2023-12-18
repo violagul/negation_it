@@ -197,7 +197,8 @@ for gender in ["f", "m"]:
                 total_sentences += 1
 
                 
-                if total_sentences % 5000 == 0:
+                #if total_sentences % 5000 == 0:
+                if total_sentences % 10 == 0:
                     print(f"current : {total_sentences}, found : {len(list_good_patterns_model)}")
 
                 # get the result at the end of the batch
