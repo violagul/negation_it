@@ -266,12 +266,12 @@ for gender in ["f", "m"]:
 print(f"Splitting template sentences in neg and pos...")
 # create the CpTp set
 
-for pattern in template_sentences_pos:
+'''for pattern in template_sentences_pos:
   # build sentences putting the conjugated verb instead of the mask
   sent = build_masked_context(pattern["name_available"], pattern["profession_available"],
                                pattern["verb"], pattern["current_pronouns_maj"], pattern["masked_prediction"])
   template_sentences_pos.append(sent)
-
+'''
 # create the CnTn set
 template_sentences_CnTn = []
 template_sentences_CnTp = []
