@@ -1,0 +1,91 @@
+TEMPLATE TEST Cp
+
+Score   0.0377
+                                                                                                                  
+True neg        377                                             
+False pos       9623                                            
+False neg       0                                               
+True pos        0                                                                                                                                                                               
+
+Score   0.0113                                                                                                                  
+
+True neg        113                                             
+False pos       9887                                            
+False neg       0                                               
+True pos        0                                                                                                                                                                               
+
+Score   0.0149                                                                                                                  
+
+True neg        149
+False pos       9851
+False neg       0
+True pos        0
+
+Score   0.0176
+
+True neg        176
+False pos       9824
+False neg       0
+True pos        0
+
+
+Score   0.0119
+
+True neg        119
+False pos       9881
+False neg       0
+True pos        0
+
+
+Score   0.0176
+
+True neg        176
+False pos       9824
+False neg       0
+True pos        0
+
+Score   0.0514
+
+True neg        514
+False pos       9486
+False neg       0
+True pos        0
+
+
+Score   0.0651
+
+True neg        651
+False pos       9349
+False neg       0
+True pos        0
+
+
+Score   0.0303
+
+True neg        303
+False pos       9697
+False neg       0
+True pos        0
+
+Score   0.0619
+
+True neg        619
+False pos       9381
+False neg       0
+True pos        0
+
+
+Score   0.0644
+
+True neg        644
+False pos       9356
+False neg       0
+True pos        0
+
+
+Score   0.0559
+
+True neg        559
+False pos       9441
+False neg       0
+True pos        0
