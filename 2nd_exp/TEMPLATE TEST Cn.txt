@@ -1,0 +1,59 @@
+TEMPLATE TEST Cn
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
