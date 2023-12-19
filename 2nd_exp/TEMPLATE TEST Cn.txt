@@ -29,31 +29,49 @@ Score   1.0
 
 Confusion matrix : [10000]
 
-Score   1.0
+Score   0.9999                                                                                                                  
 
-Confusion matrix : [10000]
-
-
-Score   1.0
-
-Confusion matrix : [10000]
+True neg        0                                               
+False pos       0                                               
+False neg       1                                               
+True pos        9999                                                                                                                                                                            
 
 
-Score   1.0
+Score   0.9993                                                                                                                  
 
-Confusion matrix : [10000]
-
-
-Score   1.0
-
-Confusion matrix : [10000]
+True neg        0                                              
+ False pos       0                                               
+False neg       7                                               
+True pos        9993                                                                                                                                                                            
 
 
-Score   1.0
+Score   0.9995                                                                                                                  
 
-Confusion matrix : [10000]
+True neg        0                                               
+False pos       0                                               
+False neg       5                                               
+True pos        9995
 
 
-Score   1.0
+Score   0.9993
 
-Confusion matrix : [10000]
+True neg        0                                               
+False pos       0                                               
+False neg       7                                               
+True pos        9993
+
+
+Score   0.9999
+
+True neg        0                                               
+False pos       0                                               
+False neg       1                                               
+True pos        9999
+
+
+Score   0.9994
+
+True neg        0                                               
+False pos       0                                               
+False neg       6                                               
+True pos        9994
