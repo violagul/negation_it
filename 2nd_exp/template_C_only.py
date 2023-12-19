@@ -194,8 +194,8 @@ for gender in ["f", "m"]:
                 pattern_a = r"ACT"
                 #current_sentence = build_masked_context(name_available, profession_available, verb_available, current_pronouns_maj, mask_token = verb_available)
                 current_sentence = re.sub(pattern_n, name_available, template_Cp)
-                current_sentence = re.sub(pattern_p, profession_available, template_Cp)
-                current_sentence = re.sub(pattern_a, verb_available, template_Cp)
+                current_sentence = re.sub(pattern_p, profession_available, current_sentence)
+                current_sentence = re.sub(pattern_a, verb_available, current_sentence)
                 #print(current_sentence)
                 #quit()
 
