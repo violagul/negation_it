@@ -241,8 +241,8 @@ size_test_CnTn = min(size_test, len(cls_CnTn))
 size_test_CpTp = min(size_test, len(cls_CpTp))
 cls_CpTn = cls_CpTn[:size_test_CpTn]
 cls_CnTp = cls_CnTp[:size_test_CnTp]
-cls_CpTp = cls_CpTn[:size_test_CpTp]
-cls_CnTn = cls_CnTp[:size_test_CnTn]
+cls_CpTp = cls_CpTp[:size_test_CpTp]
+cls_CnTn = cls_CnTn[:size_test_CnTn]
 
 
 
@@ -261,7 +261,7 @@ test_CpTp = np.array(cls_CpTp)
 test_CnTp_lab = np.array(np.ones(size_test_CnTp))
 test_CpTn_lab = np.array(np.ones(size_test_CpTn))
 test_CnTn_lab = np.array(np.ones(size_test_CnTn))
-test_CpTp_lab = np.array(np.ones(size_test_CpTp))
+test_CpTp_lab = np.array(np.zeros(size_test_CpTp))
 
 
 # data normalization
