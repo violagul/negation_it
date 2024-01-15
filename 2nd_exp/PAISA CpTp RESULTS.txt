@@ -1,0 +1,94 @@
+PAISA CpTp RESULTS
+
+
+Score   0.706%
+
+True neg        7060                                            
+False pos       2940                                            
+False neg       0                                               
+True pos        0
+
+
+Score   0.6871%
+
+True neg        6871                                            
+False pos       3129                                            
+False neg       0                                               
+True pos        0
+
+
+Score   0.6944%
+
+True neg        6944                                            
+False pos       3056                                            
+False neg       0                                               
+True pos        0
+
+Score   0.6884%
+
+True neg        6884                                            
+False pos       3116                                            
+False neg       0                                               
+True pos        0
+
+
+Score   0.72%
+
+True neg        7200                                            
+False pos       2800                                            
+False neg       0                                               
+True pos        0
+
+
+Score   0.6893%
+
+True neg        6893                                            
+False pos       3107                                            
+False neg       0                                               
+True pos        0
+
+Score   0.6883%
+
+True neg        6883                                            
+False pos       3117                                            
+False neg       0                                               
+True pos        0
+
+
+Score   0.668%
+
+True neg        6680                                            
+False pos       3320                                            
+False neg       0                                               
+True pos        0
+
+
+Score   0.6615%
+
+True neg        6615                                            
+False pos       3385                                            
+False neg       0                                               
+True pos        0
+
+Score   0.6783%
+
+True neg        6783                                            
+False pos       3217                                            
+False neg       0                                               
+True pos        0
+
+
+Score   0.6951%
+
+True neg        6951                                            
+False pos       3049                                            
+False neg       0                                               
+True pos        0
+
+
+Score   0.6678%
+
+True neg        6678                                            
+False pos       3322                                            
+False neg       0                                               
+True pos        0
