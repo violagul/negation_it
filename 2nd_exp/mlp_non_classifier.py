@@ -127,7 +127,7 @@ tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 
 print(f"Uploading PAISA corpus...")
 # upload the Italian corpus
-with open(r"../data/paisa.raw.utf8", encoding='utf8') as infile:
+'''with open(r"../data/paisa.raw.utf8", encoding='utf8') as infile:
     paisa = infile.read()
 
 print(f"Extracting Wikipedia texts from PAISA...")
@@ -135,9 +135,12 @@ print(f"Extracting Wikipedia texts from PAISA...")
 wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n" 
 paisa_wiki = re.findall(wiki_pattern, paisa)
 dump(paisa_wiki, "../Inputs/paisa_wiki.joblib")
+'''
 #print(f"Number of texts from a site containing 'wiki' in their URL: {len(paisa_wiki)}")
 #paisa_wiki = paisa
 
+
+paisa_wiki = load("../Inputs/paisa_wiki.joblib")
 print(f"Extracting sentences from paisa_wiki...")
 # pattern for finding whole sentences in the texts (defined by the capital letter in the beginning, the period at the end and a minimum length)
 sent = []
