@@ -184,6 +184,10 @@ shuffle(sent_pos)
 sent_neg = sent_neg[:size_test]
 sent_pos = sent_pos[:size_test]
 
+dump(sent_neg, "../Inputs/paisa_sent_neg.joblib")
+dump(sent_pos, "../Inputs/paisa_sent_pos.joblib")
+
+
 print(f"Extracting CLS encodings for PAISA sentences...")
 ### extract CLS
 # for each set of sentences, we encode each sentence
