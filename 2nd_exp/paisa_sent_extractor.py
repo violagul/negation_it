@@ -165,6 +165,7 @@ for text in paisa_wiki:
          if verb in elem:
             sent.append(elem[:1])
             if len(sent)%1000 ==0:
+               print(elem[:1])
                print(f"{len(sent)} frasi trovate")
   if len(sent)> size_test*100:
     break
