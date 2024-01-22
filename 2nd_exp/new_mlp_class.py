@@ -145,8 +145,8 @@ shuffle(sent_pos)
 sent_neg = sent_neg[:size_test]
 sent_pos = sent_pos[:size_test]
 
-dump(sent_neg, "../Inputs/paisa_sent_neg.joblib")
-dump(sent_pos, "../Inputs/paisa_sent_pos.joblib")
+#dump(sent_neg, "../Inputs/paisa_sent_neg.joblib")
+#dump(sent_pos, "../Inputs/paisa_sent_pos.joblib")
 
 
 print(f"Extracting CLS encodings for PAISA sentences...")
@@ -211,7 +211,7 @@ test_lab = np.concatenate((np.zeros(test_size), np.ones(test_size)))
 scaler = StandardScaler()
 scaler.fit(train)
 dati_scaled = scaler.transform(train)
-dump(scaler, f"../Inputs/scaler.joblib")
+dump(scaler, f"../Inputs/scaler2.joblib")
 
 X = dati_scaled 
 test = scaler.transform(test)
