@@ -156,7 +156,7 @@ sent = []
 pattern = r"[.?!] [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. \b"  # finds kind of acceptable sentences
 
 
-for text in paisa_wiki[:100]:
+for text in paisa_wiki:
   found = re.findall(pattern, text)
   for elem in  found:
     if len(elem) > 40:
