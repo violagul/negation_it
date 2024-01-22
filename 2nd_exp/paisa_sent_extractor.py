@@ -15,7 +15,7 @@ from random import shuffle, seed
 #from sklearn.model_selection import train_test_split
 
 from tools.build_array import build_array, build_hypo, build_masked_context
-from tools.chech_conjug import check_conjugation
+from tools.chech_conjug import check_conjugation, get_conj
 
 #from tools.chech_conjug import check_conjugation
 
