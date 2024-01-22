@@ -165,7 +165,7 @@ for sent_list in [paisa_sent_neg, paisa_sent_pos]:
     mname_prof_sent = []
     for sent in sent_list:
         n+=1
-        if n%5 ==0:
+        if n%50==0:
             print(f"sent n. {n}")
 
         for state in states_list:
