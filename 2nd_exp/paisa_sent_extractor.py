@@ -161,7 +161,7 @@ for text in paisa_wiki:
   found = re.findall(pattern, text)
   for elem in  found:
     if len(elem) > 40:
-      for verb in list_verbs:
+      for verb in list_conj_vb:
          if verb in elem:
             sent.append(elem)
             if len(sent)%1000 ==0:
