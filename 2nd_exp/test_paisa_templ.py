@@ -195,7 +195,7 @@ for sent_list in [paisa_sent_neg, paisa_sent_pos]:
                     if prof in sent_w_fname:
                         fname_prof_sent.append(sent_w_fname)
         
-        print("Ricerca frasi con nomi + prof/stati")
+        
         for sent_w_mname in mname_sent:
             for state in states_list:
                 if len(mname_state_sent) < 20:
