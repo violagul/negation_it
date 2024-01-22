@@ -116,8 +116,10 @@ tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 
 
 print("Loading paisa_wiki sentences...")
-paisa_sent_neg = load("../Inputs/paisa_sent_neg.joblib")
-paisa_sent_pos = load("../Inputs/paisa_sent_pos.joblib")
+'''paisa_sent_neg = load("../Inputs/paisa_sent_neg.joblib")
+paisa_sent_pos = load("../Inputs/paisa_sent_pos.joblib")'''
+paisa_sent_neg = load("../Inputs/paisa_sent_neg2.joblib")
+paisa_sent_pos = load("../Inputs/paisa_sent_pos2.joblib")
 
 
 
