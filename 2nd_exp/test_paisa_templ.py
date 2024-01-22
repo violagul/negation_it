@@ -147,6 +147,7 @@ mnamearray = build_array(mName_file)
 
 negative_ex = []
 positive_ex = []
+m=0
 for sent_list in [paisa_sent_neg, paisa_sent_pos]:
     n=0
     if sent_list == paisa_sent_neg:
@@ -165,6 +166,8 @@ for sent_list in [paisa_sent_neg, paisa_sent_pos]:
     mname_prof_sent = []
     for sent in sent_list:
         n+=1
+        if len(sent) < 55:
+            m+=1
         if n%50==0:
             print(f"sent n. {n}")
 
@@ -176,7 +179,7 @@ for sent_list in [paisa_sent_neg, paisa_sent_pos]:
         for namelist in [[fnamearray, fname_sent], [mnamearray, mname_sent]]:
             for name in namelist[0]:
                 if name in sent:
-                    if len(namelist[1])<50:
+                    if len(namelist[1])<300:
                         namelist[1].append(sent)
         
         for proflist in [[fprofarray, fprof_sent],[mprofarray, mprof_sent]]:
@@ -245,3 +248,5 @@ print(positive_ex[5][:3], "\n")
 print(positive_ex[6][:3], "\n")
 print(positive_ex[7][:3], "\n")
 print(positive_ex[8][:3], "\n")
+
+print(m)
