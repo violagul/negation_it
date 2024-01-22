@@ -118,7 +118,8 @@ tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 path = r"../Inputs"
 list_verbs = load(f"{path}/base_verbs.joblib")
 
-
+list_conj_vb = [get_conj(verb) for verb in list_verbs]
+print(list_conj_vb[:10])
 
 
 
