@@ -139,7 +139,6 @@ dump(paisa_wiki, "../Inputs/paisa_wiki.joblib")
 #print(f"Number of texts from a site containing 'wiki' in their URL: {len(paisa_wiki)}")
 #paisa_wiki = paisa
 
-
 paisa_wiki = load("../Inputs/paisa_wiki.joblib")
 print(f"Extracting sentences from paisa_wiki...")
 # pattern for finding whole sentences in the texts (defined by the capital letter in the beginning, the period at the end and a minimum length)
