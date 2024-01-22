@@ -170,7 +170,7 @@ for sent_list in [paisa_sent_neg, paisa_sent_pos]:
         n+=1
         if len(sent) < 55:
             m+=1
-        if n%250==0:
+        if n%750==0:
             print(f"sent n. {n}")
 
         for state in states_list:
