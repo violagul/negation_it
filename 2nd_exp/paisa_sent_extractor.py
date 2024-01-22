@@ -161,6 +161,8 @@ for text in paisa_wiki:
             sent.append(elem)
   if len(sent)> size_test*100:
     break
+
+print(sent[0], sent[100], sent[1000])
 print(f"Frasi trovate : {len(sent)}")
 #print(f"Number of sentences: {len(sent)}")
 
@@ -189,7 +191,7 @@ print(f"Size test = {size_test}")
 shuffle(sent_neg)
 shuffle(sent_pos)
 
-
+print(sent_neg[0], sent_neg[100],sent_neg[1000],)
 
 # select a fixed numb of sentences to test
 sent_neg = sent_neg[:size_test]
