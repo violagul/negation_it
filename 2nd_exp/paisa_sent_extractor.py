@@ -115,6 +115,12 @@ tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 
 
 
+path = r"../Inputs"
+list_verbs = load(f"{path}/base_verbs.joblib")
+
+
+
+
 
 
 ##############################
@@ -145,7 +151,6 @@ print(f"Extracting sentences from paisa_wiki...")
 sent = []
 pattern = r"[.?!] [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. \b"  # finds kind of acceptable sentences
 
-list_verbs = load(f"{path}/base_verbs.joblib")
 
 for text in paisa_wiki:
   found = re.findall(pattern, text)
