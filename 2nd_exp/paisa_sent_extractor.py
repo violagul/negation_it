@@ -159,6 +159,8 @@ for text in paisa_wiki:
       for verb in list_verbs:
          if verb in elem:
             sent.append(elem)
+            if len(sent)%1000 ==0:
+               print(f"{len(sent)} frasi trovate")
   if len(sent)> size_test*100:
     break
 
@@ -179,6 +181,8 @@ for s in sent:
   matches = re.search(neg_patt, s)
   if matches:
     sent_neg.append(s)
+    if len(sent_neg)%500 ==0:
+       print(f"{len(sent_neg)} frasi neg")
   else:
     sent_pos.append(s)
 
