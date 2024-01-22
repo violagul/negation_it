@@ -123,7 +123,6 @@ list_conj_vb = []
 for verb in list_verbs:
    conj_vb = get_conj(verb)
    list_conj_vb.append(conj_vb)
-print(list_conj_vb[:10])
 
 
 
@@ -157,7 +156,7 @@ sent = []
 pattern = r"[.?!] [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. \b"  # finds kind of acceptable sentences
 
 
-for text in paisa_wiki[:10]:
+for text in paisa_wiki[:100]:
   found = re.findall(pattern, text)
   for elem in  found:
     if len(elem) > 40:
