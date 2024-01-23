@@ -134,3 +134,12 @@ pmprof_sent = load(, "../Inputs/pmprof.joblib")
 #pmname_state_sent = load(, "../Inputs/pmnamestate.joblib")
 #pfname_prof_sent = load(, "../Inputs/pfnameprof.joblib")
 #pmname_prof_sent = load(, "../Inputs/pmnameprof.joblib")
+
+n=0
+for sent_list in [nstate_sent, nfname_sent, nmname_sent, nfprof_sent, nmprof_sent, pfname_sent, pmname_sent, pfprof_sent, pmprof_sent]:
+    m=0
+    n+=1
+    print(f"\nLista {n}\n")
+    for sent in sent_list[:30]:
+        m+=1
+        print(f"{m} : {sent}")
