@@ -212,43 +212,90 @@ for sent_list in [paisa_sent_neg, paisa_sent_pos]:
                         mname_prof_sent.append(sent_w_mname)
 
     if sent_list == paisa_sent_neg:
-        negative_ex.append(state_sent)
-        negative_ex.append(fname_sent)
-        negative_ex.append(mname_sent)
-        negative_ex.append(fprof_sent)
-        negative_ex.append(mprof_sent)
-        negative_ex.append(fname_prof_sent)
-        negative_ex.append(mname_prof_sent)
-        negative_ex.append(fname_state_sent)
-        negative_ex.append(mname_state_sent)
+        nstate_sent = state_sent
+        nfname_sent = fname_sent
+        nmname_sent = mname_sent
+        nfprof_sent = fprof_sent
+        nmprof_sent = mprof_sent
+        nfname_prof_sent = fname_prof_sent
+        nmname_prof_sent = mname_prof_sent
+        nfname_state_sent = fname_state_sent
+        nmname_state_sent = mname_state_sent
     if sent_list == paisa_sent_pos:
-        positive_ex.append(state_sent)
-        positive_ex.append(fname_sent)
-        positive_ex.append(mname_sent)
-        positive_ex.append(fprof_sent)
-        positive_ex.append(mprof_sent)
-        positive_ex.append(fname_prof_sent)
-        positive_ex.append(mname_prof_sent)
-        positive_ex.append(fname_state_sent)
-        positive_ex.append(mname_state_sent)
+        pstate_sent = state_sent
+        pfname_sent = fname_sent
+        pmname_sent = mname_sent
+        pfprof_sent = fprof_sent
+        pmprof_sent = mprof_sent
+        pfname_prof_sent = fname_prof_sent
+        pmname_prof_sent = mname_prof_sent
+        pfname_state_sent = fname_state_sent
+        pmname_state_sent = mname_state_sent
+
+
+shuffle(nstate_sent)
+shuffle(nfname_sent)
+shuffle(nmname_sent)
+shuffle(nfprof_sent)
+shuffle(nmprof_sent)
+shuffle(nmname_prof_sent)
+shuffle(nfname_prof_sent)
+shuffle(nfname_state_sent)
+shuffle(nmname_state_sent)
+
+shuffle(pstate_sent)
+shuffle(pfname_sent)
+shuffle(pmname_sent)
+shuffle(pfprof_sent)
+shuffle(pmprof_sent)
+shuffle(pfname_state_sent)
+shuffle(pmname_state_sent)
+shuffle(pfname_prof_sent)
+shuffle(pmname_prof_sent)
+
+
+
 
 print("Negative:\n\n")
-print(f"State: {len(negative_ex[0])}\n{negative_ex[0][:3]}\n")
-print(f"f names: {len(negative_ex[1])}\n{negative_ex[1][:3]} \n")
-print(f"m names: {len(negative_ex[2])}\n{negative_ex[2][:3]} \n")
-print(f"f profs: {len(negative_ex[3])}\n{negative_ex[3][:3]} \n")
-print(f"m profs: {len(negative_ex[4])}\n{negative_ex[4][:3]} \n")
-print(f"f name + prof: {len(negative_ex[5])}\n{negative_ex[5][:3]} \n")
-print(f"m name + prof: {len(negative_ex[6])}\n{negative_ex[6][:3]} \n")
-print(f"f name + state: {len(negative_ex[7])}\n{negative_ex[7][:3]} \n")
-print(f"m name + state: {len(negative_ex[8])}\n{negative_ex[8][:3]} \n")
+print(f"State: {len(nstate_sent)}\n{nstate_sent[:3]}\n")
+print(f"f names: {len(nfname_sent)}\n{nfname_sent[:3]} \n")
+print(f"m names: {len(nmname_sent)}\n{nmname_sent[:3]} \n")
+print(f"f profs: {len(nfprof_sent)}\n{nfprof_sent[:3]} \n")
+print(f"m profs: {len(nmprof_sent)}\n{nmprof_sent[:3]} \n")
+print(f"f name + prof: {len(nfname_prof_sent)}\n{nfname_prof_sent[:3]} \n")
+print(f"m name + prof: {len(nmname_prof_sent)}\n{nmname_prof_sent[:3]} \n")
+print(f"f name + state: {len(nfname_state_sent)}\n{nfname_state_sent[:3]} \n")
+print(f"m name + state: {len(nmname_state_sent)}\n{nmname_state_sent[:3]} \n")
 print("\nPositive:\n\n")
-print(f"State: {len(positive_ex[0])}\n{positive_ex[0][:3]} \n")
-print(f"f names: {len(positive_ex[1])}\n{positive_ex[1][:3]} \n")
-print(f"m names: {len(positive_ex[2])}\n{positive_ex[2][:3]} \n")
-print(f"f profs: {len(positive_ex[3])}\n{positive_ex[3][:3]} \n")
-print(f"m profs: {len(positive_ex[4])}\n{positive_ex[4][:3]} \n")
-print(f"f name + prof: {len(positive_ex[5])}\n{positive_ex[5][:3]} \n")
-print(f"m name + prof: {len(positive_ex[6])}\n{positive_ex[6][:3]} \n")
-print(f"f name + state: {len(positive_ex[7])}\n{positive_ex[7][:3]} \n")
-print(f"m name + state: {len(positive_ex[8])}\n{positive_ex[8][:3]} \n")
+print(f"State: {len(pstate_sent)}\n{pstate_sent[:3]} \n")
+print(f"f names: {len(pfname_sent)}\n{pfname_sent[:3]} \n")
+print(f"m names: {len(pmname_sent)}\n{pmname_sent[:3]} \n")
+print(f"f profs: {len(pfprof_sent)}\n{pfprof_sent[:3]} \n")
+print(f"m profs: {len(pmprof_sent)}\n{pmprof_sent[:3]} \n")
+print(f"f name + prof: {len(pfname_prof_sent)}\n{pfname_prof_sent[:3]} \n")
+print(f"m name + prof: {len(pmname_prof_sent)}\n{pmname_prof_sent[:3]} \n")
+print(f"f name + state: {len(pfname_state_sent)}\n{pfname_state_sent[:3]} \n")
+print(f"m name + state: {len(pmname_state_sent)}\n{pmname_state_sent[:3]} \n")
+
+
+
+
+dump(nstate_sent, "../Inputs/nstate.joblib")
+dump(nfname_sent, "../Inputs/nfname.joblib")
+dump(nmname_sent, "../Inputs/nmname.joblib")
+dump(nfprof_sent, "../Inputs/nfprof.joblib")
+dump(nmprof_sent, "../Inputs/nmprof.joblib")
+dump(nmname_prof_sent, "../Inputs/nmnameprof.joblib")
+dump(nfname_prof_sent, "../Inputs/nfnameprof.joblib")
+dump(nfname_state_sent, "../Inputs/nfnamestate.joblib")
+dump(nmname_state_sent, "../Inputs/nmnamestate.joblib")
+
+dump(pstate_sent, "../Inputs/pstate.joblib")
+dump(pfname_sent, "../Inputs/pfname.joblib")
+dump(pmname_sent, "../Inputs/pmname.joblib")
+dump(pfprof_sent, "../Inputs/pfprof.joblib")
+dump(pmprof_sent, "../Inputs/pmprof.joblib")
+dump(pfname_state_sent, "../Inputs/pfnamestate.joblib")
+dump(pmname_state_sent, "../Inputs/pmnamestate.joblib")
+dump(pfname_prof_sent, "../Inputs/pfnameprof.joblib")
+dump(pmname_prof_sent, "../Inputs/pmnameprof.joblib")
