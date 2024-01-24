@@ -1,4 +1,5 @@
 # template context only tested with classifier to check if the classifier works better on a single sentence than on two consecutive sentences
+# old paisa sentences (not well-formed) and corresp old classifier are used
 
 
 
