@@ -167,7 +167,7 @@ for text in paisa_wiki:
             print(f"{len(sent)} frasi trovate")
   if num % 1000 == 0:
      print(f"{num} of {len(paisa_wiki)} texts analysed, found : {len(sent)}")
-     
+     print(sent[-1])
 
 
 
