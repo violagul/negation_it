@@ -361,7 +361,7 @@ for n in range(1, 13):
 
 
 
-'''
+
 print("PAISA CnTp TEST\n\n")
 for scores in CnTp_result:
    print(scores)
@@ -369,7 +369,6 @@ for scores in CnTp_result:
 print("PAISA CpTn TEST\n\n")
 for scores in CpTn_result:
    print(scores)
-'''
 
 
 print("PAISA CnTn TEST\n\n")
