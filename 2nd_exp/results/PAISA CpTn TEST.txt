@@ -1,0 +1,93 @@
+PAISA CpTn TEST
+
+Score   0.8025052192066806%
+
+True neg        0
+False pos       0
+False neg       473
+True pos        1922
+
+
+Score   0.8054279749478079%
+
+True neg        0
+False pos       0
+False neg       466
+True pos        1929
+
+
+Score   0.8146137787056368%
+
+True neg        0
+False pos       0
+False neg       444
+True pos        1951
+
+Score   0.8054279749478079%
+
+True neg        0
+False pos       0
+False neg       466
+True pos        1929
+
+
+Score   0.7803757828810021%
+
+True neg        0
+False pos       0
+False neg       526
+True pos        1869
+
+
+Score   0.8050104384133612%
+
+True neg        0
+False pos       0
+False neg       467
+True pos        1928
+
+Score   0.8050104384133612%
+
+True neg        0
+False pos       0
+False neg       467
+True pos        1928
+
+
+Score   0.8116910229645093%
+
+True neg        0
+False pos       0
+False neg       451
+True pos        1944
+
+
+Score   0.8271398747390397%
+
+True neg        0
+False pos       0
+False neg       414
+True pos        1981
+
+Score   0.8025052192066806%
+
+True neg        0
+False pos       0
+False neg       473
+True pos        1922
+
+
+Score   0.8045929018789144%
+
+True neg        0
+False pos       0
+False neg       468
+True pos        1927
+
+
+Score   0.8083507306889353%
+
+True neg        0
+False pos       0
+False neg       459
+True pos        1936

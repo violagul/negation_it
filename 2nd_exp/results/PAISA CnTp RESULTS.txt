@@ -1,0 +1,92 @@
+PAISA CnTp RESULTS
+
+Score   0.7460890493381468%
+                                                                                                    
+True neg        0
+False pos       0
+False neg       211
+True pos        620                                             
+
+Score   0.7509025270758123%
+
+True neg        0
+False pos       0
+False neg       207
+True pos        624
+
+
+Score   0.7509025270758123%
+
+True neg        0
+False pos       0
+False neg       207
+True pos        624
+
+Score   0.7472924187725631%
+
+True neg        0
+False pos       0
+False neg       210
+True pos        621
+
+
+Score   0.7148014440433214%
+
+True neg        0
+False pos       0
+False neg       237
+True pos        594
+
+
+Score   0.7484957882069796%
+
+True neg        0
+False pos       0
+False neg       209
+True pos        622
+
+Score   0.7268351383874849%
+
+True neg        0
+False pos       0
+False neg       227
+True pos        604
+
+
+Score   0.7521058965102286%
+
+True neg        0
+False pos       0
+False neg       206
+True pos        625
+
+
+Score   0.7653429602888087%
+
+True neg        0
+False pos       0
+False neg       195
+True pos        636
+
+Score   0.7424789410348978%
+
+True neg        0
+False pos       0
+False neg       214
+True pos        617
+
+
+Score   0.7196149217809867%
+
+True neg        0
+False pos       0
+False neg       233
+True pos        598
+
+
+Score   0.7484957882069796%
+
+True neg        0
+False pos       0
+False neg       209
+True pos        622
