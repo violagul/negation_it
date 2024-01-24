@@ -204,7 +204,7 @@ for lista in [pfname, nfname]:
 for lista in [pmname, nmname]:
     templates = []
     for nome in mnamearray:
-        mnames = re.sub("FNOM", nome)
+        mnames = re.sub("MNOM", nome)
         templates.append(mnames)
     if lista == pmname:
         nmnametempl = templates
@@ -217,7 +217,7 @@ for lista in [pmname, nmname]:
 for lista in [pfprof, nfprof]:
     templates = []
     for profs in fprofarray:
-        fprofs = re.sub("FNOM", profs)
+        fprofs = re.sub("FPROF", profs)
         templates.append(fprofs)
     if lista == pfprof:
         pfproftempl = templates
@@ -230,7 +230,7 @@ for lista in [pfprof, nfprof]:
 for lista in [pmprof, nmprof]:
     templates = []
     for profs in mprofarray:
-        mprofs = re.sub("FNOM", profs)
+        mprofs = re.sub("MPROF", profs)
         templates.append(mprofs)
     if lista == pmprof:
         pmproftempl = templates
