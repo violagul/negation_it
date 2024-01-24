@@ -1,0 +1,97 @@
+PAISA CnTn TEST
+
+
+Score   0.8895348837209303%                                                                                                     
+
+True neg        0                                               
+False pos       0                                               
+False neg       38                                              
+True pos        306                                                                                                                                                                             
+
+
+Score   0.8837209302325582%
+
+True neg        0                                               
+False pos       0                                               
+False neg       40                                              
+True pos        304
+
+
+Score   0.8808139534883721%
+
+True neg        0                                               
+False pos       0                                               
+False neg       41                                              
+True pos        303
+
+
+Score   0.8488372093023255%
+
+True neg        0                                               
+False pos       0                                               
+False neg       52                                              
+True pos        292
+
+
+Score   0.8953488372093024%
+
+True neg        0                                               
+False pos       0                                               
+False neg       36                                              
+True pos        308
+
+
+Score   0.8488372093023255%
+
+True neg        0                                               
+False pos       0                                               
+False neg       52                                              
+True pos        292
+
+
+Score   0.8895348837209303%
+
+True neg        0                                               
+False pos       0                                               
+False neg       38                                              
+True pos        306
+
+
+Score   0.8343023255813954%
+
+True neg        0                                               
+False pos       0                                               
+False neg       57                                              
+True pos        287
+
+
+Score   0.8662790697674418%
+
+True neg        0                                               
+False pos       0                                               
+False neg       46                                              
+True pos        298
+
+
+Score   0.8284883720930233%
+
+True neg        0                                               
+False pos       0                                               
+False neg       59                                              
+True pos        285
+
+
+Score   0.9098837209302325%
+
+True neg        0                                               
+False pos       0                                               
+False neg       31                                              
+True pos        313
+
+
+Score   0.8052325581395349%
+
+True neg        0                                               
+False pos       0                                               
+False neg       67                                              
+True pos        277

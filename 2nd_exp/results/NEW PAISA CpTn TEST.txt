@@ -1,0 +1,96 @@
+PAISA CpTn TEST
+
+Score   0.7133479212253829%
+
+True neg        0                                               
+False pos       0                                               
+False neg       524                                             
+True pos        1304
+
+
+Score   0.75054704595186%
+
+True neg        0                                               
+False pos       0                                               
+False neg       456                                            
+True pos        1372
+
+
+Score   0.7045951859956237%
+
+True neg        0                                               
+False pos       0                                               
+False neg       540                                             
+True pos        1288
+
+
+Score   0.7084245076586433%
+
+True neg        0                                               
+False pos       0                                               
+False neg       533                                             
+True pos        1295
+
+
+Score   0.7188183807439825%
+
+True neg        0                                               
+False pos       0                                               
+False neg       514                                             
+True pos        1314
+
+
+Score   0.7117067833698031%
+
+True neg        0                                               
+False pos       0                                               
+False neg       527                                             
+True pos        1301
+
+
+Score   0.6580962800875274%
+
+True neg        0                                               
+False pos       0                                               
+False neg       625                                             
+True pos        1203
+
+
+Score   0.6635667396061269%
+
+True neg        0                                               
+False pos       0                                               
+False neg       615                                             
+True pos        1213
+
+
+Score   0.6570021881838074%
+
+True neg        0                                               
+False pos       0                                               
+False neg       627                                             
+True pos        1201
+
+
+Score   0.6586433260393874%
+
+True neg        0                                               
+False pos       0                                               
+False neg       624                                             
+True pos        1204
+
+
+Score   0.6925601750547046%
+
+True neg        0                                               
+False pos       0                                               
+False neg       562                                             
+True pos        1266
+
+
+Score   0.6591903719912473%
+
+True neg        0                                               
+False pos       0                                               
+False neg       623                                             
+True pos        1205
