@@ -39,3 +39,7 @@ old code extracting paisa sent (not well-formed) + training and testing classifi
 10- new_templ_test.py
 
 template test but with new classifier (trained on well-formed paisa sent)
+
+11- new_paisa_double.py
+
+same as the paisa_double codes, extracts CpTp CpTn CnTp CnTn sentences from paisa and tests the new classifier on them
