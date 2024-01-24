@@ -242,13 +242,17 @@ for lista in [pmprof, nmprof]:
 
 
 neg_paisa_templates = nfnametempl + nmnametempl + nfproftempl + nmproftempl
+print(f"Templates negativi\t{len(neg_paisa_templates)}\n{neg_paisa_templates[0]}\n{neg_paisa_templates[-1]}\n\n")
 pos_paisa_templates = pfnametempl + pmnametempl + pfproftempl + pmproftempl
+print(f"Templates positivi\t{len(pos_paisa_templates)}\n{pos_paisa_templates[0]}\n{pos_paisa_templates[-1]}\n\n")
 
 size_test = min(3000, len(neg_paisa_templates))
+print(f"Size test neg: {size_test}")
 neg_paisa_templates = neg_paisa_templates[:size_test]
 neg_paisa_lab = np.ones(size_test)
 
 size_test = min(3000, len(pos_paisa_templates))
+print(f"Size test pos: {size_test}")
 pos_paisa_templates = pos_paisa_templates[:size_test]
 pos_paisa_lab = np.zeros(size_test)
 
@@ -296,10 +300,12 @@ np.random.shuffle(pos_paisa_cls)
 size_test = min(3000, len(neg_paisa_cls))
 neg_paisa_cls = neg_paisa_cls[:size_test]
 neg_paisa_lab = np.ones(size_test)
+print(f"Neg lab : {neg_paisa_lab[:6]} etc")
 
 size_test = min(3000, len(pos_paisa_cls))
 pos_paisa_cls = pos_paisa_cls[:size_test]
 pos_paisa_lab = np.zeros(size_test)
+print(f"Pos lab : {pos_paisa_lab[:6]} etc")
 
 
 
@@ -316,7 +322,7 @@ paisa_neg_res = []
 paisa_pos_res = []
 
 
-   
+print("Classifier working...")   
 for n in range(1, 13):
    clf = load(f"../Inputs/non_classifier2_{n}.joblib")
    
@@ -342,3 +348,13 @@ for n in range(1, 13):
        conf_matr = confusion_matrix(neg_paisa_lab, predicted).ravel()
        paisa_neg_res.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
 
+
+
+print("PAISA TEMPLATE TEST NEG\n\n")
+for scores in paisa_neg_res:
+   print(scores)
+
+
+print("PAISA TEMPLATE TEST POS\n\n")
+for scores in paisa_POS_res:
+   print(scores)
