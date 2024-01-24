@@ -160,7 +160,7 @@ nmname = ["MNOM vorrebbe parlare ma la ragazza ne ha voglia e ha fretta, e si fa
 nfprof = ["Egli sopporta questa situazione e considera la madre una FPROF mediocre.", 
           "Perfare un esempio una FPROF poteva comperare direttamente il tessuto, che era venduto esclusivamente dal fabbricante.", 
           "Le sue regole coincidono con quel mondo che si era immaginato ed erra alla ricerca di qualcosa che pensa di aver trovato in una FPROF."]
-nmprof = ["Sarebbe probabilmente divenuto un MPROF se la filosofia non fosse stata la sua innata passione.", 
+nmprof = ["Sarebbe probabilmente divenuto un MPROF se la filosofia fosse stata la sua innata passione.", 
           "Conoscendo il MPROF, i due pensarono che fosse un cantante e che fosse lui a cantare il brano.", 
           "Secondo il loro punto di vista un MPROF poteva rimanere legato a concetti obsoleti, ma doveva dare libero sfogo al proprio estro.", 
           "Fulci voleva un MPROF noto per quella parte.", 
