@@ -112,34 +112,233 @@ model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased
 model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 
 
-print("Downloading sentences...")
+# frasi positive rese negative da me
+pfname = ["FNOM non viene arrestata dai carabinieri sotto gli occhi delle amiche.", 
+          "FNOM comunque non lo ritiene una brava persona su cui poter fare affidamento.", 
+          "FNOM non riesce a sorprendere il pubblico e la giuria con la sua voce potente ed emozionante.", 
+          "FNOM non rimane incinta e decide di abortire.", 
+          "FNOM organizza alcuni espedienti e alla fine riesce a non farli riavvicinare.", 
+          "FNOM rifiuta di ascoltarlo ancora e non se ne va.", 
+          "FNOM ha degli strani malesseri e non pensa di essere incinta.", 
+          "FNOM non torna a casa e si prepara per la sua festa di compleanno."]
+pmname = ["MNOM non corre velocemente a vedere che succede.", 
+          "MNOM stesso non venne poco dopo assassinato.",
+          "MNOM non fece esiliare tutta la famiglia.",
+          "MNOM non viene arrestato e inizia un lungo processo.",
+          "MNOM non riprende gli studi raccogliendo successi e premi.",
+          "MNOM che non amava molto la figlia, decise di soddisfare le sue richieste.",
+          "MNOM non mostra una iniziale inclinazione per la filosofia.",
+          "MNOM decise di non sposare la sua ex amante.",
+          "MNOM non la comprende, e decide di lasciar stare.",
+          "MNOM non sarebbe stato assassinato dopo una messa."]
+pfprof = ["Ha un fratello e un giorno non spera di diventare una FPROF di successo."]
+pmprof = ["Accompagnato da un MPROF di fiducia non intraprese a piedi la sua escursione.", 
+          "Esitante a definirsi un MPROF, non preferisce pensarsi come un cantante.", 
+          "Barker, non fu arrestato per aver cercato di vendere un quarto di oncia di marijuana a un MPROF sotto copertura.", 
+          "Le sue pennellate sottili e incisive non hanno i caratteri inquieti di un MPROF alla ricerca di nuove soluzioni spaziali e formali." 
+          "Leonhard infatti non era probabilmente solo un MPROF.", 
+          "Altre leggende non fanno di lui un MPROF prima di diventare soldato."]
 
-#liste vuote commentate
-nstate_sent = load("../Inputs/nstate.joblib")
-nfname_sent = load("../Inputs/nfname.joblib")
-nmname_sent = load("../Inputs/nmname.joblib")
-nfprof_sent = load("../Inputs/nfprof.joblib")
-nmprof_sent = load("../Inputs/nmprof.joblib")
-#nmname_prof_sent = load("../Inputs/nmnameprof.joblib")
-#nfname_prof_sent = load("../Inputs/nfnameprof.joblib")
-#nfname_state_sent = load("../Inputs/nfnamestate.joblib")
-#nmname_state_sent = load("../Inputs/nmnamestate.joblib")
+# frasi negative rese positive da me
+nfname = ["FNOM porta avanti la sua seconda vita, ma si accorge che qualcuno la sta seguendo.", 
+          "FNOM cerca di stare vicina al marito, pur amandolo.", 
+          "FNOM crede che possa essere lui il ragazzo del suo primo vero bacio, che ha mai dato.", 
+          "FNOM ha lasciato alcun ritratto similare di qualsivoglia altro principe crociato.", 
+          "FNOM intano riesce a controllarsi e scarta tutti i regali di nozze.", 
+          "FNOM ha paura: affronta le apparizioni e le fa sparire con la sua determinata reazione.", 
+          "FNOM riabilita il suo nome ma prima di aver scoperto che essite una terza macchina che produce carte di credito false."]
+nmname = ["MNOM vorrebbe parlare ma la ragazza ne ha voglia e ha fretta, e si fa riaccompagnare al suo posto sulla strada.", 
+          "MNOM sostiene che gli importa egli vuole vivere bene e si fa domande su chi paghi.", 
+          "MNOM ebbe cura di tornare in patria in questo periodo, sapendo di essere indesiderato.", 
+          "MNOM si sarebbe mostrato reticente, pur lesinandogli denaro e rifornimenti.", 
+          "MNOM comprende il motivo che ha spinto la giovane a chiedergli una cosa simile.", 
+          "MNOM resta a vivere nella casa dove avevano abitato tutti assieme, rassegnandosi alla perdita della moglie.", 
+          "MNOM risponde di sapere chi sia e il giovane gli racconta la sua storia.", 
+          "MNOM fu fatto prigioniero e giustiziato: apparentemente le sue truppe opposero molta resistenza.", 
+          "MNOM inoltre parla nel sonno nella versione giapponese.", 
+          "MNOM invece, si era mosso celermente con il suo esercito impacciato e armato alla leggera."]
+nfprof = ["Egli sopporta questa situazione e considera la madre una FPROF mediocre.", 
+          "Perfare un esempio una FPROF poteva comperare direttamente il tessuto, che era venduto esclusivamente dal fabbricante.", 
+          "Le sue regole coincidono con quel mondo che si era immaginato ed erra alla ricerca di qualcosa che pensa di aver trovato in una FPROF."]
+nmprof = ["Sarebbe probabilmente divenuto un MPROF se la filosofia non fosse stata la sua innata passione.", 
+          "Conoscendo il MPROF, i due pensarono che fosse un cantante e che fosse lui a cantare il brano.", 
+          "Secondo il loro punto di vista un MPROF poteva rimanere legato a concetti obsoleti, ma doveva dare libero sfogo al proprio estro.", 
+          "Fulci voleva un MPROF noto per quella parte.", 
+          "Il primo era un MPROF e la seconda era americana: andavano quindi doppiati.", 
+          "Addirittura vennero mostrate in video le loro buste paga, che avrebbero dovuto confermare il fatto che questi guadagnassero gli stipendi di un MPROF."]
 
-#pstate_sent = load("../Inputs/pstate.joblib")
-pfname_sent = load("../Inputs/pfname.joblib")
-pmname_sent = load("../Inputs/pmname.joblib")
-pfprof_sent = load("../Inputs/pfprof.joblib")
-pmprof_sent = load("../Inputs/pmprof.joblib")
-#pfname_state_sent = load("../Inputs/pfnamestate.joblib")
-#pmname_state_sent = load("../Inputs/pmnamestate.joblib")
-#pfname_prof_sent = load("../Inputs/pfnameprof.joblib")
-#pmname_prof_sent = load("../Inputs/pmnameprof.joblib")
 
-n=0
-for sent_list in [nstate_sent, nfname_sent, nmname_sent, nfprof_sent, nmprof_sent, pfname_sent, pmname_sent, pfprof_sent, pmprof_sent]:
-    m=0
-    n+=1
-    print(f"\nLista {n}\n")
-    for sent in sent_list[:30]:
-        m+=1
-        print(f"{m} : {sent}")
+
+path = r"../Inputs"
+fName_file_path = f"{path}/100_names_f.txt"
+mName_file_path = f"{path}/100_names_m.txt"
+fProf_file_path = f"{path}/100_mestieri_f.txt"
+mProf_file_path = f"{path}/100_mestieri_m.txt"
+hypo_file_path = f"{path}/frasi_it.txt"
+
+fName_file = open(fName_file_path, "r")
+mName_file = open(mName_file_path, "r")
+fProf_file = open(fProf_file_path, "r")
+mProf_file = open(mProf_file_path, "r")
+
+fprofarray = build_array(fProf_file)
+mprofarray = build_array(mProf_file)
+fnamearray = build_array(fName_file)
+mnamearray = build_array(mName_file)
+
+
+
+for lista in [pfname, nfname]:
+    templates = []
+    for nome in fnamearray:
+        fnames = re.sub("FNOM", nome)
+        templates.append(fnames)
+    if lista == pfname:
+        nfnametempl = templates
+        # n perché il template è negativo, anche se derivato da frasi positive
+    if lista == nfname:
+        pfnametempl = templates
+        # n perché il template è positivo, anche se derivato da frasi negative
+
+
+for lista in [pmname, nmname]:
+    templates = []
+    for nome in mnamearray:
+        mnames = re.sub("FNOM", nome)
+        templates.append(mnames)
+    if lista == pmname:
+        nmnametempl = templates
+        # n perché il template è negativo, anche se derivato da frasi positive
+    if lista == nmname:
+        pmnametempl = templates
+        # n perché il template è positivo, anche se derivato da frasi negative
+
+
+for lista in [pfprof, nfprof]:
+    templates = []
+    for profs in fprofarray:
+        fprofs = re.sub("FNOM", profs)
+        templates.append(fprofs)
+    if lista == pfprof:
+        pfproftempl = templates
+        # n perché il template è negativo, anche se derivato da frasi positive
+    if lista == nfprof:
+        nfproftempl = templates
+        # n perché il template è positivo, anche se derivato da frasi negative
+
+
+for lista in [pmprof, nmprof]:
+    templates = []
+    for profs in mprofarray:
+        mprofs = re.sub("FNOM", profs)
+        templates.append(mprofs)
+    if lista == pmprof:
+        pmproftempl = templates
+        # n perché il template è negativo, anche se derivato da frasi positive
+    if lista == nmprof:
+        nmproftempl = templates
+        # n perché il template è positivo, anche se derivato da frasi negative
+
+
+
+neg_paisa_templates = nfnametempl + nmnametempl + nfproftempl + nmproftempl
+pos_paisa_templates = pfnametempl + pmnametempl + pfproftempl + pmproftempl
+
+size_test = min(3000, len(neg_paisa_templates))
+neg_paisa_templates = neg_paisa_templates[:size_test]
+neg_paisa_lab = np.ones(size_test)
+
+size_test = min(3000, len(pos_paisa_templates))
+pos_paisa_templates = pos_paisa_templates[:size_test]
+pos_paisa_lab = np.zeros(size_test)
+
+
+
+all_cls_encodings = []
+for templ_list in [neg_paisa_templates, pos_paisa_templates]:
+  m = 0 
+  for sentence in templ_list:
+    
+    
+    sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+
+    # then extract only the outputs for each sentence
+    with torch.no_grad():
+        tokens_outputs = model(**sentence_encoded )
+
+    # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
+    embeddings = tokens_outputs[0]
+    cls_encodings = embeddings[:,0,:]
+
+  
+    m+=1
+    cls_encodings = cls_encodings.cpu().numpy()
+    if m == 1:
+        all_cls_encodings = cls_encodings
+    if m > 1:
+        all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
+    if m % 50 == 0:
+        print(str(m) + "\textracted")
+   
+    
+   
+   
+  if templ_list == pos_paisa_templates:
+      pos_paisa_cls = all_cls_encodings
+  elif templ_list == neg_paisa_templates:
+      neg_paisa_cls = all_cls_encodings
+
+
+np.random.shuffle(neg_paisa_cls)
+np.random.shuffle(pos_paisa_cls)
+
+
+size_test = min(3000, len(neg_paisa_cls))
+neg_paisa_cls = neg_paisa_cls[:size_test]
+neg_paisa_lab = np.ones(size_test)
+
+size_test = min(3000, len(pos_paisa_cls))
+pos_paisa_cls = pos_paisa_cls[:size_test]
+pos_paisa_lab = np.zeros(size_test)
+
+
+
+
+
+#data normalization
+scaler = load(f"../Inputs/scaler.joblib")
+paisa_pos_templ_test = scaler.transform(pos_paisa_cls)
+paisa_neg_templ_test = scaler.transform(neg_paisa_cls)
+
+
+
+paisa_neg_res = []
+paisa_pos_res = []
+
+
+   
+for n in range(1, 13):
+   clf = load(f"../Inputs/non_classifier2_{n}.joblib")
+   
+   
+   predicted = clf.predict(paisa_pos_templ_test)
+   right_pred = clf.score(paisa_pos_templ_test, pos_paisa_lab)
+   if len(confusion_matrix(pos_paisa_lab, predicted).ravel()) == 4:
+       tn, fp, fn, tp = confusion_matrix(pos_paisa_lab, predicted).ravel()
+       paisa_pos_res.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   else:
+       conf_matr = confusion_matrix(pos_paisa_lab, predicted).ravel()
+       paisa_pos_res.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
+   #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+
+
+
+   predicted = clf.predict(paisa_neg_templ_test)
+   right_pred = clf.score(paisa_neg_templ_test, neg_paisa_lab)
+   if len(confusion_matrix(neg_paisa_lab, predicted).ravel()) == 4:
+       tn, fp, fn, tp = confusion_matrix(neg_paisa_lab, predicted).ravel()
+       paisa_neg_res.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+   else:
+       conf_matr = confusion_matrix(neg_paisa_lab, predicted).ravel()
+       paisa_neg_res.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
+
