@@ -1,3 +1,7 @@
+# template context only tested with classifier to check if the classifier works better on a single sentence than on two consecutive sentences
+
+
+
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = "0"
 
