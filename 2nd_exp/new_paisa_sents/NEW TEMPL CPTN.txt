@@ -1,0 +1,76 @@
+NEW TEMPL CPTN
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+Score   0.9968
+
+True neg        0
+False pos       0
+False neg       32
+True pos        9968
+
+
+Score   0.9095
+
+True neg        0
+False pos       0
+False neg       905
+True pos        9095
+
+
+Score   0.9731
+
+True neg        0
+False pos       0
+False neg       269
+True pos        9731
+
+Score   0.9121
+
+True neg        0
+False pos       0
+False neg       879
+True pos        9121
+
+
+Score   0.9976
+
+True neg        0
+False pos       0
+False neg       24
+True pos        9976
+
+
+Score   0.9188
+
+True neg        0
+False pos       0
+False neg       812
+True pos        9188
