@@ -1,0 +1,41 @@
+READ ME
+
+1- template_C_only.py
+
+test on context only, to re-do with new paisa-sent (well formed) i.e. with new classifier
+
+2- create_paisa_templ.py
+
+from new well formed paisa sentences create templates based on positive or negative sentences the polarity of which is inverted
+
+3- Classifier_paisa_double_CpTn_CnTp.py
+
+old not well-formed paisa sent and classifier, tests couples of consec sent from paisa distinguished in CnTp, CpTn to test if couples of sentences are inherently harder to classify for the classifier
+
+4- Classifier_paisa_double_CpTp_CnTn.py
+
+same as Classifier_paisa_double_CpTn_CnTp.py but for all-positive and all-negative settings
+
+5- new_paisa_sent.py
+
+create and save paisa sentences based on the new, well-formed regex giving better results
+
+6- new_mlp_class.py
+
+the same as classifier_neg_cls.py but using the new paisa sentences which are now well-formed
+
+7- classifier_template_non.py
+
+tests classifier on template sentences to find a "non" in them (CpTn etc)
+
+8- test_paisa_template.py
+
+takes the paisa sentences transformed into pos and neg templates by switching their polarity and changing either a name or a profession in the sentence, and tests the classifier accuracy on these generated sentences
+
+9- mlp_non_classifier.py
+
+old code extracting paisa sent (not well-formed) + training and testing classifier
+
+10- new_templ_test.py
+
+template test but with new classifier (trained on well-formed paisa sent)
