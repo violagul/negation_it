@@ -190,54 +190,58 @@ mnamearray = build_array(mName_file)
 
 for lista in [pfname, nfname]:
     templates = []
-    for nome in fnamearray:
-        fnames = re.sub("FNOM", nome)
-        templates.append(fnames)
-    if lista == pfname:
-        nfnametempl = templates
-        # n perché il template è negativo, anche se derivato da frasi positive
-    if lista == nfname:
-        pfnametempl = templates
-        # n perché il template è positivo, anche se derivato da frasi negative
+    for frase in lista:
+        for nome in fnamearray:
+            fnames = re.sub("FNOM", nome, frase)
+            templates.append(fnames)
+        if lista == pfname:
+            nfnametempl = templates
+            # n perché il template è negativo, anche se derivato da frasi positive
+        if lista == nfname:
+            pfnametempl = templates
+            # n perché il template è positivo, anche se derivato da frasi negative
 
 
 for lista in [pmname, nmname]:
     templates = []
-    for nome in mnamearray:
-        mnames = re.sub("MNOM", nome)
-        templates.append(mnames)
-    if lista == pmname:
-        nmnametempl = templates
-        # n perché il template è negativo, anche se derivato da frasi positive
-    if lista == nmname:
-        pmnametempl = templates
-        # n perché il template è positivo, anche se derivato da frasi negative
+    for frase in lista:
+        for nome in mnamearray:
+            mnames = re.sub("MNOM", nome, frase)
+            templates.append(mnames)
+        if lista == pmname:
+            nmnametempl = templates
+            # n perché il template è negativo, anche se derivato da frasi positive
+        if lista == nmname:
+            pmnametempl = templates
+            # n perché il template è positivo, anche se derivato da frasi negative
 
 
 for lista in [pfprof, nfprof]:
     templates = []
-    for profs in fprofarray:
-        fprofs = re.sub("FPROF", profs)
-        templates.append(fprofs)
-    if lista == pfprof:
-        pfproftempl = templates
-        # n perché il template è negativo, anche se derivato da frasi positive
-    if lista == nfprof:
-        nfproftempl = templates
-        # n perché il template è positivo, anche se derivato da frasi negative
+    for frase in lista:
+        for profs in fprofarray:
+            fprofs = re.sub("FPROF", profs, frase)
+            templates.append(fprofs)
+        if lista == pfprof:
+            pfproftempl = templates
+            # n perché il template è negativo, anche se derivato da frasi positive
+        if lista == nfprof:
+            nfproftempl = templates
+            # n perché il template è positivo, anche se derivato da frasi negative
 
 
 for lista in [pmprof, nmprof]:
     templates = []
-    for profs in mprofarray:
-        mprofs = re.sub("MPROF", profs)
-        templates.append(mprofs)
-    if lista == pmprof:
-        pmproftempl = templates
-        # n perché il template è negativo, anche se derivato da frasi positive
-    if lista == nmprof:
-        nmproftempl = templates
-        # n perché il template è positivo, anche se derivato da frasi negative
+    for frase in lista:
+        for profs in mprofarray:
+            mprofs = re.sub("MPROF", profs, frase)
+            templates.append(mprofs)
+        if lista == pmprof:
+            pmproftempl = templates
+            # n perché il template è negativo, anche se derivato da frasi positive
+        if lista == nmprof:
+            nmproftempl = templates
+            # n perché il template è positivo, anche se derivato da frasi negative
 
 
 
