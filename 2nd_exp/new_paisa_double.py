@@ -140,7 +140,7 @@ for verb in list_verbs:
 ###CnTp and CpTn sentences from paisa###
 ########################################
 
-
+'''
 print(f"Extracting couples of consecutive sentences from PAISA...")
 # pattern for couples of sentences
 double_sent = r"[.?!] [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\. [A-Z][a-z ]*[,:]?[a-z ]+[,:]?[a-z ][,:]?[a-z]+\.(?= \b)"
@@ -209,6 +209,15 @@ dump(CpTp, "../Inputs/paisa_CpTp.joblib")
 dump(CpTn, "../Inputs/paisa_CpTn.joblib")
 dump(CnTp, "../Inputs/paisa_CnTp.joblib")
 dump(CnTn, "../Inputs/paisa_CnTn.joblib")
+'''
+
+
+CpTp = load("../Inputs/paisa_CpTp.joblib")
+CpTn = load("../Inputs/paisa_CpTn.joblib")
+CnTp = load("../Inputs/paisa_CnTp.joblib")
+CnTn = load("../Inputs/paisa_CnTn.joblib")
+
+
 
 ################################
 ### CnTp - CpTn set encoding ###
