@@ -360,5 +360,5 @@ for scores in paisa_neg_res:
 
 
 print("PAISA TEMPLATE TEST POS\n\n")
-for scores in paisa_POS_res:
+for scores in paisa_pos_res:
    print(scores)
