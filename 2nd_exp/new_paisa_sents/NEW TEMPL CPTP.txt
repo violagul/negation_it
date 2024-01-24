@@ -1,0 +1,91 @@
+NEW TEMPL CPTP
+
+Score   0.0372                                                                                                                  True neg        372                                             
+False pos       9628                                            
+False neg       0                                               
+True pos        0
+
+
+Score   0.004
+
+True neg        40
+False pos       9960
+False neg       0
+True pos        0
+
+
+Score   0.0093
+
+True neg        93
+False pos       9907
+False neg       0
+True pos        0
+
+Score   0.0067
+
+True neg        67
+False pos       9933
+False neg       0
+True pos        0
+
+
+Score   0.0199
+
+True neg        199
+False pos       9801
+False neg       0
+True pos        0
+
+
+Score   0.0071
+
+True neg        71
+False pos       9929
+False neg       0
+True pos        0
+
+Score   0.2466
+
+True neg        2466
+False pos       7534
+False neg       0
+True pos        0
+
+
+Score   0.4332
+
+True neg        4332
+False pos       5668
+False neg       0
+True pos        0
+
+
+Score   0.3997
+
+True neg        3997
+False pos       6003
+False neg       0
+True pos        0
+
+Score   0.4236
+
+True neg        4236
+False pos       5764
+False neg       0
+True pos        0
+
+
+Score   0.1283
+
+True neg        1283
+False pos       8717
+False neg       0
+True pos        0
+
+
+Score   0.4163
+
+True neg        4163
+False pos       5837
+False neg       0
+True pos        0
