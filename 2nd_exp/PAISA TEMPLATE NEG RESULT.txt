@@ -1,0 +1,90 @@
+PAISA TEMPLATE NEG RESULT
+
+Score   0.7870370370370371
+
+True neg        0                                               
+False pos       0                                               
+False neg       575                                             
+True pos        2125                                            
+
+Score   0.7666666666666667                                                                                                      True neg        0                                               
+False pos       0
+False neg       630
+True pos        2070
+
+
+Score   0.7770370370370371
+
+True neg        0                                               
+False pos       0                                               
+False neg       602                                             
+True pos        2098
+
+Score   0.7614814814814815
+
+True neg        0                                               
+False pos       0                                               
+False neg       644                                             
+True pos        2056
+
+
+Score   0.7807407407407407
+
+True neg        0                                               
+False pos       0                                               
+False neg       592                                             
+True pos        2108
+
+
+Score   0.7622222222222222
+
+True neg        0                                               
+False pos       0                                               
+False neg       642                                             
+True pos        2058
+
+Score   0.7477777777777778
+
+True neg        0                                               
+False pos       0                                               
+False neg       681                                             
+True pos        2019
+
+
+Score   0.687037037037037
+
+True neg        0                                               
+False pos       0                                               
+False neg       845                                             
+True pos        1855
+
+
+Score   0.7222222222222222
+
+True neg        0                                               
+False pos       0                                               
+False neg       750                                             
+True pos        1950
+
+Score   0.6785185185185185
+
+True neg        0                                               
+False pos       0                                               
+False neg       868                                             
+True pos        1832
+
+
+Score   0.7140740740740741
+
+True neg        0                                               
+False pos       0                                               
+False neg       772                                             
+True pos        1928
+
+
+Score   0.6814814814814815
+
+True neg        0                                               
+False pos       0                                               
+False neg       860                                             
+True pos        1840
