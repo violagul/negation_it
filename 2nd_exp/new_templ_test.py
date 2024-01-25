@@ -199,7 +199,7 @@ for gender in ["f", "m"]:
 
                 
                 #if total_sentences % 5000 == 0:
-                if total_sentences % 100 == 0:
+                if total_sentences % 500 == 0:
                     print(f"current : {total_sentences}")
                 
                 if total_sentences > 300:
