@@ -285,7 +285,7 @@ for hl in [(350,350),(40,40)]:
     for solv in ["adam", "sgd"]:
       n+=1
       clf = MLPClassifier(solver = solv, alpha = a,
-                    hidden_layer_sizes=hl, random_state = 1)
+                    hidden_layer_sizes=hl, random_state = 1, max_iter=500)
 
       # train on data
       clf = clf.fit(X, y)
