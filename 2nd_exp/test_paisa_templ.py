@@ -253,6 +253,16 @@ for lista in [pmprof, nmprof]:
 
 
 print(nfnametempl)
+
+neg_paisa_templates = nmproftempl.copy()
+for dictionary in [nfproftempl, nmnametempl, nfnametempl]:
+    for key, value in dictionary:
+        neg_paisa_templates[key] = value
+
+pos_paisa_templates = pmproftempl.copy()
+for dictionary in [pfproftempl, pmnametempl, pfnametempl]:
+    for key, value in dictionary:
+        pos_paisa_templates[key] = value
 #neg_paisa_templates = nfnametempl + nmnametempl + nfproftempl + nmproftempl
 #print(f"Templates negativi\t{len(neg_paisa_templates)}\n{neg_paisa_templates[0]}\n{neg_paisa_templates[-1]}\n\n")
 #pos_paisa_templates = pfnametempl + pmnametempl + pfproftempl + pmproftempl
