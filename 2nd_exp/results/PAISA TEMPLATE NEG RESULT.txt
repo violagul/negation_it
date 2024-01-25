@@ -1,5 +1,6 @@
 PAISA TEMPLATE NEG RESULT
 
+
 Score   0.7870370370370371
 
 True neg        0                                               
@@ -7,7 +8,10 @@ False pos       0
 False neg       575                                             
 True pos        2125                                            
 
-Score   0.7666666666666667                                                                                                      True neg        0                                               
+
+Score   0.7666666666666667                                                                                                      
+
+True neg        0                                               
 False pos       0
 False neg       630
 True pos        2070
@@ -19,6 +23,7 @@ True neg        0
 False pos       0                                               
 False neg       602                                             
 True pos        2098
+
 
 Score   0.7614814814814815
 
@@ -43,6 +48,7 @@ False pos       0
 False neg       642                                             
 True pos        2058
 
+
 Score   0.7477777777777778
 
 True neg        0                                               
@@ -65,6 +71,7 @@ True neg        0
 False pos       0                                               
 False neg       750                                             
 True pos        1950
+
 
 Score   0.6785185185185185
 

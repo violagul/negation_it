@@ -71,6 +71,7 @@ False pos       1083
 False neg       0                                               
 True pos        0
 
+
 Score   0.4865217391304348
 
 True neg        1119                                            
@@ -81,9 +82,15 @@ True pos        0
 
 Score   0.4965217391304348
 
-True neg        1142                                            False pos       1158                                            False neg       0                                               True pos        0
+True neg        1142                                            
+False pos       1158                                            
+False neg       0                                               
+True pos        0
 
 
 Score   0.49391304347826087
 
-True neg        1136                                            False pos       1164                                            False neg       0                                               True pos        0
+True neg        1136                                            
+False pos       1164                                            
+False neg       0                                               
+True pos        0
