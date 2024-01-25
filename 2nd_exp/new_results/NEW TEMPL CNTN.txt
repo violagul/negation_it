@@ -1,9 +1,5 @@
 NEW TEMPL CNTN
 
-Score   1.0
-
-Confusion matrix : [10000]
-
 
 Score   1.0
 
@@ -24,49 +20,54 @@ Score   1.0
 
 Confusion matrix : [10000]
 
-Score   1.0
 
-Confusion matrix : [10000]
-
-Score   1.0
-
-Confusion matrix : [10000]
-
-
-Score   0.9909
+Score   0.9997
 
 True neg        0
 False pos       0
-False neg       91
-True pos        9909
+False neg       3
+True pos        9997
 
 
-Score   0.9986
+Score   1.0
 
-True neg        0
-False pos       0
-False neg       14
-True pos        9986
+Confusion matrix : [10000]
 
 
-Score   0.9899
+Score   1.0
 
-True neg        0
-False pos       0
-False neg       101
-True pos        9899
+Confusion matrix : [10000]
 
-Score   0.9999
+
+Score   0.9992
 
 True neg        0
 False pos       0
-False neg       1
-True pos        9999
+False neg       8
+True pos        9992
 
 
-Score   0.9905
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   0.9995
 
 True neg        0
 False pos       0
-False neg       95
-True pos        9905
+False neg       5
+True pos        9995
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   0.9994
+
+True neg        0
+False pos       0
+False neg       6
+True pos        9994

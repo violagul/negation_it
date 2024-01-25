@@ -1,18 +1,12 @@
 NEW TEMPL CNTP
 
-Score   1.0
 
-Confusion matrix : [10000]
+Score   0.9996
 
-
-Score   1.0
-
-Confusion matrix : [10000]
-
-
-Score   1.0
-
-Confusion matrix : [10000]
+True neg        0
+False pos       0
+False neg       4
+True pos        9996
 
 
 Score   1.0
@@ -20,57 +14,75 @@ Score   1.0
 Confusion matrix : [10000]
 
 
+Score   0.9996
+
+True neg        0
+False pos       0
+False neg       4
+True pos        9996
+
+
 Score   1.0
 
 Confusion matrix : [10000]
 
 
+Score   0.9914
+
+True neg        0
+False pos       0
+False neg       86
+True pos        9914
+
+
 Score   1.0
 
 Confusion matrix : [10000]
 
-Score   0.991
+
+Score   0.9998
 
 True neg        0
 False pos       0
-False neg       90
-True pos        9910
+False neg       2
+True pos        9998
 
 
-Score   0.9309
-
-True neg        0
-False pos       0
-False neg       691
-True pos        9309
-
-
-Score   0.9387
+Score   0.987
 
 True neg        0
 False pos       0
-False neg       613
-True pos        9387
-
-Score   0.9272
-
-True neg        0
-False pos       0
-False neg       728
-True pos        9272
+False neg       130
+True pos        9870
 
 
-Score   0.9983
+Score   0.9989
 
 True neg        0
 False pos       0
-False neg       17
-True pos        9983
+False neg       11
+True pos        9989
 
 
-Score   0.9276
+Score   0.9894
 
 True neg        0
 False pos       0
-False neg       724
-True pos        9276
+False neg       106
+True pos        9894
+
+
+Score   0.9984
+
+True neg        0
+False pos       0
+False neg       16
+True pos        9984
+
+
+Score   0.9898
+
+True neg        0
+False pos       0
+False neg       102
+True pos        9898

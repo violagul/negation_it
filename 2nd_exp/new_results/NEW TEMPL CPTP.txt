@@ -1,91 +1,85 @@
 NEW TEMPL CPTP
 
-Score   0.0372                                                                                                                  True neg        372                                             
-False pos       9628                                            
-False neg       0                                               
+
+Score   0.0538                                                                                                                  True neg        538                                             False pos       9462                                            False neg       0                                               True pos        0                                                                                                                                                                               Score   0.0119                                                                                                                  True neg        119                                             False pos       9881                                            False neg       0
 True pos        0
 
 
-Score   0.004
+Score   0.0596
 
-True neg        40
-False pos       9960
+True neg        596
+False pos       9404
 False neg       0
 True pos        0
 
 
-Score   0.0093
+Score   0.0115
 
-True neg        93
-False pos       9907
-False neg       0
-True pos        0
-
-Score   0.0067
-
-True neg        67
-False pos       9933
+True neg        115
+False pos       9885
 False neg       0
 True pos        0
 
 
-Score   0.0199
+Score   0.3364
 
-True neg        199
-False pos       9801
+True neg        3364
+False pos       6636
 False neg       0
 True pos        0
 
 
-Score   0.0071
+Score   0.0105
 
-True neg        71
-False pos       9929
-False neg       0
-True pos        0
-
-Score   0.2466
-
-True neg        2466
-False pos       7534
+True neg        105
+False pos       9895
 False neg       0
 True pos        0
 
 
-Score   0.4332
+Score   0.0341
 
-True neg        4332
-False pos       5668
+True neg        341
+False pos       9659
 False neg       0
 True pos        0
 
 
-Score   0.3997
+Score   0.1216
 
-True neg        3997
-False pos       6003
-False neg       0
-True pos        0
-
-Score   0.4236
-
-True neg        4236
-False pos       5764
+True neg        1216
+False pos       8784
 False neg       0
 True pos        0
 
 
-Score   0.1283
+Score   0.0937
 
-True neg        1283
-False pos       8717
+True neg        937
+False pos       9063
 False neg       0
 True pos        0
 
 
-Score   0.4163
+Score   0.0995
 
-True neg        4163
-False pos       5837
+True neg        995
+False pos       9005
+False neg       0
+True pos        0
+
+
+Score   0.0629
+
+True neg        629
+False pos       9371
+False neg       0
+True pos        0
+
+
+Score   0.1006
+
+True neg        1006
+False pos       8994
 False neg       0
 True pos        0
