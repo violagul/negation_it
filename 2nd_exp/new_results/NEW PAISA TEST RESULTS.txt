@@ -1,104 +1,112 @@
 NEW PAISA TEST RESULTS
 
-Method  adam                                                                                                                         Nb hidden layers        (350, 350)                                                                                                   Alpha   1e-05                                                                                                                        Score   0.942                                                                                                                        True neg        933                                                                                                                  False pos       67                                                                                                                   False neg       49                                                                                                                   True pos        951                                                                                                                                                                                                                                                                                                                                                                                            
+Method  adam                                                    Nb hidden layers        (350, 350)                              Alpha   1e-05                                                   Score   0.938                                                   True neg        921                                             False pos       79                                              False neg       45                                              True pos        955
 
-Method  sgd                                                                                                                          Nb hidden layers        (350, 350)                                                                                                   Alpha   1e-05                                                                                                                        Score   0.937                                                                                                                        True neg        926
-False pos       74
-False neg       52
-True pos        948
+
+Method  sgd
+Nb hidden layers        (350, 350)
+Alpha   1e-05
+Score   0.933
+True neg        917
+False pos       83
+False neg       51
+True pos        949
+
 
 Method  adam
 Nb hidden layers        (350, 350)
 Alpha   0.0001
-Score   0.9435
-True neg        934
-False pos       66
-False neg       47
-True pos        953
+Score   0.9415
+True neg        927
+False pos       73
+False neg       44
+True pos        956
 
-Method  sgd                                                     
+
+Method  sgd
 Nb hidden layers        (350, 350)
-Alpha   0.0001                                                  
-Score   0.9395                                                  
-True neg        931                                             
-False pos       69                                              
-False neg       52                                              
-True pos        948
-
-
-Method  adam                                                    
-Nb hidden layers        (350, 350)
-Alpha   0.001                                                   
-Score   0.9425                                                  
-True neg        935                                             
-False pos       65                                              
-False neg       50                                              
+Alpha   0.0001
+Score   0.9325
+True neg        915
+False pos       85
+False neg       50
 True pos        950
 
 
-Method  sgd                                                     
+Method  adam
 Nb hidden layers        (350, 350)
-Alpha   0.001                                                   
-Score   0.9395                                                  
-True neg        930                                             
-False pos       70                                              
-False neg       51                                              
-True pos        949 
-
-Method  adam                                                    
-Nb hidden layers        (40, 40)                                
-Alpha   1e-05                                                   
-Score   0.942                                                   
-True neg        930                                             
-False pos       70                                              
-False neg       46                                              
-True pos        954
+Alpha   0.001
+Score   0.9275
+True neg        909
+False pos       91
+False neg       54
+True pos        946
 
 
-Method  sgd                                                     
-Nb hidden layers        (40, 40)                                
-Alpha   1e-05                                                   
-Score   0.94                                                    
-True neg        921                                             
-False pos       79                                              
-False neg       41                                              
-True pos        959
-
-
-Method  adam                                                    
-Nb hidden layers        (40, 40)                                
-Alpha   0.0001                                                  
-Score   0.941                                                   
-True neg        924                                             
-False pos       76                                              
-False neg       42                                              
-True pos        958
-
-Method  sgd                                                     
-Nb hidden layers        (40, 40)                                
-Alpha   0.0001                                                  
-Score   0.9395                                                  
-True neg        920                                             
-False pos       80                                              
-False neg       41                                              
-True pos        959
-
-
-Method  adam                                                    
-Nb hidden layers        (40, 40)                                
-Alpha   0.001                                                   
-Score   0.9345                                                  
-True neg        918                                             
-False pos       82                                              
-False neg       49                                              
+Method  sgd
+Nb hidden layers        (350, 350)
+Alpha   0.001
+Score   0.934
+True neg        917
+False pos       83
+False neg       49
 True pos        951
 
 
-Method  sgd                                                     
-Nb hidden layers        (40, 40)                                
-Alpha   0.001                                                   
-Score   0.9385                                                  
-True neg        917                                             
-False pos       83                                              
-False neg       40                                              
-True pos        960 
+Method  adam                                                    Nb hidden layers        (40, 40)
+Alpha   1e-05
+Score   0.9285
+True neg        909
+False pos       91
+False neg       52
+True pos        948
+
+
+Method  sgd
+Nb hidden layers        (40, 40)
+Alpha   1e-05
+Score   0.9255
+True neg        894
+False pos       106
+False neg       43
+True pos        957
+
+
+Method  adam
+Nb hidden layers        (40, 40)
+Alpha   0.0001
+Score   0.931
+True neg        915
+False pos       85
+False neg       53
+True pos        947
+
+
+Method  sgd
+Nb hidden layers        (40, 40)
+Alpha   0.0001
+Score   0.9235
+True neg        892
+False pos       108
+False neg       45
+True pos        955
+
+
+Method  adam
+Nb hidden layers        (40, 40)
+Alpha   0.001
+Score   0.928
+True neg        909
+False pos       91
+False neg       53
+True pos        947
+
+
+Method  sgd
+Nb hidden layers        (40, 40)
+Alpha   0.001
+Score   0.925
+True neg        896
+False pos       104
+False neg       46
+True pos        954
