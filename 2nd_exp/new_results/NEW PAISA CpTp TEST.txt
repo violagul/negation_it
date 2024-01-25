@@ -1,96 +1,97 @@
 PAISA CpTp TEST
 
-Score   0.8276%
 
-True neg        8276                                            
-False pos       1724                                            
-False neg       0                                               
+Score   0.8421%
+
+True neg        8421
+False pos       1579
+False neg       0
 True pos        0
 
 
-Score   0.7851%
+Score   0.8211%
 
-True neg        7851                                            
-False pos       2149                                            
-False neg       0                                               
+True neg        8211
+False pos       1789
+False neg       0
 True pos        0
 
 
-Score   0.8431%
+Score   0.8357%
 
-True neg        8431                                            
-False pos       1569                                            
-False neg       0                                               
+True neg        8357
+False pos       1643
+False neg       0
 True pos        0
 
 
-Score   0.8159%
+Score   0.8249%
 
-True neg        8159                                            
-False pos       1841                                            
-False neg       0                                               
+True neg        8249
+False pos       1751
+False neg       0
 True pos        0
 
 
-Score   0.8218%
+Score   0.8479%
 
-True neg        8218                                            
-False pos       1782                                            
-False neg       0                                               
+True neg        8479
+False pos       1521
+False neg       0
 True pos        0
 
 
-Score   0.8157%
+Score   0.819%
 
-True neg        8157                                            
-False pos       1843                                            
-False neg       0                                               
+True neg        8190
+False pos       1810
+False neg       0
 True pos        0
 
 
-Score   0.8298%
+Score   0.759%
 
-True neg        8298                                            
-False pos       1702                                            
-False neg       0                                               
+True neg        7590
+False pos       2410
+False neg       0
 True pos        0
 
 
-Score   0.8106%
+Score   0.7881%
 
-True neg        8106                                            
-False pos       1894                                            
-False neg       0                                               
+True neg        7881
+False pos       2119
+False neg       0
 True pos        0
 
 
-Score   0.8305%
+Score   0.8328%
 
-True neg        8305                                            
-False pos       1695                                            
-False neg       0                                               
+True neg        8328
+False pos       1672
+False neg       0
 True pos        0
 
 
-Score   0.8048%
+Score   0.7732%
 
-True neg        8048                                            
-False pos       1952                                            
-False neg       0                                               
+True neg        7732
+False pos       2268
+False neg       0
 True pos        0
 
 
-Score   0.7901%
+Score   0.8141%
 
-True neg        7901                                            
-False pos       2099                                            
-False neg       0                                               
+True neg        8141
+False pos       1859
+False neg       0
 True pos        0
 
 
-Score   0.8056%
+Score   0.7852%
 
-True neg        8056                                            
-False pos       1944                                            
-False neg       0                                               
+True neg        7852
+False pos       2148
+False neg       0
 True pos        0
