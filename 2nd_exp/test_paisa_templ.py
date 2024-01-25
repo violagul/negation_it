@@ -189,25 +189,29 @@ mnamearray = build_array(mName_file)
 
 
 for lista in [pfname, nfname]:
-    templates = []
+    templates = {}
     for frase in lista:
+        exfrase = []
         for nome in fnamearray:
             fnames = re.sub("FNOM", nome, frase)
-            templates.append(fnames)
-        if lista == pfname:
-            nfnametempl = templates
-            # n perché il template è negativo, anche se derivato da frasi positive
-        if lista == nfname:
-            pfnametempl = templates
-            # n perché il template è positivo, anche se derivato da frasi negative
+            exfrase.append(fnames)
+        templates[frase] = exfrase
+    if lista == pfname:
+        nfnametempl = templates
+        # n perché il template è negativo, anche se derivato da frasi positive
+    if lista == nfname:
+        pfnametempl = templates
+        # n perché il template è positivo, anche se derivato da frasi negative
 
 
 for lista in [pmname, nmname]:
-    templates = []
+    templates = {}
     for frase in lista:
+        exfrase = []
         for nome in mnamearray:
             mnames = re.sub("MNOM", nome, frase)
-            templates.append(mnames)
+            exfrase.append(mnames)
+        templates[frase] = exfrase
         if lista == pmname:
             nmnametempl = templates
             # n perché il template è negativo, anche se derivato da frasi positive
@@ -217,39 +221,43 @@ for lista in [pmname, nmname]:
 
 
 for lista in [pfprof, nfprof]:
-    templates = []
+    templates = {}
     for frase in lista:
+        exfrase = []
         for profs in fprofarray:
             fprofs = re.sub("FPROF", profs, frase)
-            templates.append(fprofs)
-        if lista == pfprof:
-            pfproftempl = templates
-            # n perché il template è negativo, anche se derivato da frasi positive
-        if lista == nfprof:
-            nfproftempl = templates
-            # n perché il template è positivo, anche se derivato da frasi negative
+            exfrase.append(fprofs)
+        templates[frase] = exfrase
+    if lista == pfprof:
+        pfproftempl = templates
+        # n perché il template è negativo, anche se derivato da frasi positive
+    if lista == nfprof:
+        nfproftempl = templates
+        # n perché il template è positivo, anche se derivato da frasi negative
 
 
 for lista in [pmprof, nmprof]:
-    templates = []
+    templates = {}
     for frase in lista:
+        exfrase = []
         for profs in mprofarray:
             mprofs = re.sub("MPROF", profs, frase)
-            templates.append(mprofs)
-        if lista == pmprof:
-            pmproftempl = templates
-            # n perché il template è negativo, anche se derivato da frasi positive
-        if lista == nmprof:
-            nmproftempl = templates
-            # n perché il template è positivo, anche se derivato da frasi negative
+            exfrase.append(mprofs)
+        templates[frase] = exfrase
+    if lista == pmprof:
+        pmproftempl = templates
+        # n perché il template è negativo, anche se derivato da frasi positive
+    if lista == nmprof:
+        nmproftempl = templates
+        # n perché il template è positivo, anche se derivato da frasi negative
 
 
-
-neg_paisa_templates = nfnametempl + nmnametempl + nfproftempl + nmproftempl
-print(f"Templates negativi\t{len(neg_paisa_templates)}\n{neg_paisa_templates[0]}\n{neg_paisa_templates[-1]}\n\n")
-pos_paisa_templates = pfnametempl + pmnametempl + pfproftempl + pmproftempl
-print(f"Templates positivi\t{len(pos_paisa_templates)}\n{pos_paisa_templates[0]}\n{pos_paisa_templates[-1]}\n\n")
-
+print(nfnametempl)
+#neg_paisa_templates = nfnametempl + nmnametempl + nfproftempl + nmproftempl
+#print(f"Templates negativi\t{len(neg_paisa_templates)}\n{neg_paisa_templates[0]}\n{neg_paisa_templates[-1]}\n\n")
+#pos_paisa_templates = pfnametempl + pmnametempl + pfproftempl + pmproftempl
+#print(f"Templates positivi\t{len(pos_paisa_templates)}\n{pos_paisa_templates[0]}\n{pos_paisa_templates[-1]}\n\n")
+'''
 size_test = min(3000, len(neg_paisa_templates))
 print(f"Size test neg: {size_test}")
 neg_paisa_templates = neg_paisa_templates[:size_test]
@@ -362,3 +370,4 @@ for scores in paisa_neg_res:
 print("PAISA TEMPLATE TEST POS\n\n")
 for scores in paisa_pos_res:
    print(scores)
+'''
