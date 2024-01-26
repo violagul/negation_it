@@ -252,7 +252,7 @@ for lista in [pmprof, nmprof]:
         # n perché il template è positivo, anche se derivato da frasi negative
 
 
-print(nfnametempl)
+
 
 neg_paisa_templates = nmproftempl.copy()
 for dictionary in [nfproftempl, nmnametempl, nfnametempl]:
@@ -305,7 +305,7 @@ for templ_list in [neg_paisa_templates, pos_paisa_templates]:
             all_cls_encodings = cls_encodings
         if m > 1:
             all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
-        if m % 50 == 0:
+        if m % 200 == 0:
             print(str(m) + "\textracted")
    
     encodings_dict[templ_sent] = all_cls_encodings
