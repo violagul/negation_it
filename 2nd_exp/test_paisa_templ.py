@@ -379,7 +379,7 @@ paisa_pos_res = []
 for elem in paisa_neg_templ_test.keys():
     print(elem)
 
-'''
+
 print("Classifier working...")   
 for n in range(1, 13):
     clf = load(f"../Inputs/non_classifier2_{n}.joblib")
@@ -422,4 +422,3 @@ for scores in paisa_neg_res:
 print("PAISA TEMPLATE TEST POS\n\n")
 for scores in paisa_pos_res:
    print(scores)
-'''
