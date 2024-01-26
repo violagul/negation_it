@@ -381,10 +381,13 @@ for elem in paisa_neg_templ_test.keys():
 
 
 print("Classifier working...")   
-for n in range(1, 13):
-    clf = load(f"../Inputs/non_classifier2_{n}.joblib")
-   
-    for templ_sent, templ_list in paisa_neg_templ_test.items():
+for templ_sent, templ_list in paisa_neg_templ_test.items():
+
+    for n in range(1,13):
+        clf = load(f"../Inputs/non_classifier2_{n}.joblib")
+
+
+
         paisa_neg_res.append(str(n))
         paisa_neg_res.append(templ_sent)
         predicted = clf.predict(templ_list)
@@ -399,7 +402,9 @@ for n in range(1, 13):
 
 
    
-    for templ_sent, templ_list in paisa_pos_templ_test.items():
+for templ_sent, templ_list in paisa_pos_templ_test.items():
+    for n in range(1,13):
+        clf = load(f"../Inputs/non_classifier2_{n}.joblib")
         paisa_pos_res.append(str(n))
         paisa_pos_res.append(templ_sent)
         predicted = clf.predict(templ_list)
