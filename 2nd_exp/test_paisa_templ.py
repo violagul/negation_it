@@ -259,7 +259,7 @@ for dictionary in [nfproftempl, nmnametempl, nfnametempl]:
     for key, value in dictionary.items():
         neg_paisa_templates[key] = value
 
-print(f"{len(neg_paisa_templates.keys())} templates neg\nPrimo templ ha {len(neg_paisa_templates[neg_paisa_templates.keys()[0]])} frasi")
+print(f"{len(neg_paisa_templates.keys())} templates neg\nPrimo templ ha {len(neg_paisa_templates[list(neg_paisa_templates.keys())[0]])} frasi")
 
 pos_paisa_templates = pmproftempl.copy()
 for dictionary in [pfproftempl, pmnametempl, pfnametempl]:
@@ -267,7 +267,7 @@ for dictionary in [pfproftempl, pmnametempl, pfnametempl]:
         pos_paisa_templates[key] = value
 
 
-print(f"{len(pos_paisa_templates.keys())} templates pos\nPrimo templ ha {len(pos_paisa_templates[pos_paisa_templates.keys()[0]])} frasi")
+print(f"{len(pos_paisa_templates.keys())} templates pos\nPrimo templ ha {len(pos_paisa_templates[list(pos_paisa_templates.keys())[0]])} frasi")
 
 #neg_paisa_templates = nfnametempl + nmnametempl + nfproftempl + nmproftempl
 #print(f"Templates negativi\t{len(neg_paisa_templates)}\n{neg_paisa_templates[0]}\n{neg_paisa_templates[-1]}\n\n")
