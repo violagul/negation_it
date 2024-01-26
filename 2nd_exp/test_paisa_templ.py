@@ -290,10 +290,10 @@ pos_paisa_lab = np.zeros(size_test)
 
 all_cls_encodings = []
 for templ_list in [neg_paisa_templates, pos_paisa_templates]:
-  m = 0 
+  
   encodings_dict = {}
   for templ_sent, template_set in templ_list.items():
-    
+    m = 0 
     for sentence in template_set:
         sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
