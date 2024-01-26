@@ -334,10 +334,10 @@ for templ_sent, templ_list in pos_paisa_cls.items():
     pos_paisa_lab[templ_sent] = np.zeros(size_test)
 
 
-print(str(pos_paisa_cls)[:120])
-print(str(pos_paisa_lab)[:120])
-print(str(neg_paisa_cls)[:120])
-print(str(neg_paisa_lab)[:120])
+print(str(pos_paisa_cls)[:500])
+print(str(pos_paisa_lab)[:500])
+print(str(neg_paisa_cls)[:500])
+print(str(neg_paisa_lab)[:500])
 
 
 
