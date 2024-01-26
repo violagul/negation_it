@@ -342,11 +342,20 @@ print(str(neg_paisa_lab)[:500])
 
 
 
-'''
+
 #data normalization
 scaler = load(f"../Inputs/scaler.joblib")
-paisa_pos_templ_test = scaler.transform(pos_paisa_cls)
-paisa_neg_templ_test = scaler.transform(neg_paisa_cls)
+
+paisa_pos_templ_test = {}
+paisa_neg_templ_test = {}
+
+for templ_sent, templ_list in pos_paisa_cls.items():
+    scaled = scaler.transform(templ_list)
+    paisa_pos_templ_test[templ_sent] = scaled
+
+for templ_sent, templ_list in neg_paisa_cls.items():
+    scaled = scaler.transform(templ_list)
+    paisa_neg_templ_test[templ_sent] = scaled
 
 
 
@@ -356,29 +365,31 @@ paisa_pos_res = []
 
 print("Classifier working...")   
 for n in range(1, 13):
-   clf = load(f"../Inputs/non_classifier2_{n}.joblib")
+    clf = load(f"../Inputs/non_classifier2_{n}.joblib")
    
+    for templ_sent, templ_list in paisa_neg_res.items():
+        predicted = clf.predict(templ_list)
+        right_pred = clf.score(templ_list, neg_paisa_lab[templ_sent])
+        if len(confusion_matrix(neg_paisa_lab[templ_sent], predicted).ravel()) == 4:
+            tn, fp, fn, tp = confusion_matrix(neg_paisa_lab[templ_sent], predicted).ravel()
+            paisa_neg_res.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+        else:
+            conf_matr = confusion_matrix(neg_paisa_lab[templ_sent], predicted).ravel()
+            paisa_neg_res.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
+        #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+
+
    
-   predicted = clf.predict(paisa_pos_templ_test)
-   right_pred = clf.score(paisa_pos_templ_test, pos_paisa_lab)
-   if len(confusion_matrix(pos_paisa_lab, predicted).ravel()) == 4:
-       tn, fp, fn, tp = confusion_matrix(pos_paisa_lab, predicted).ravel()
-       paisa_pos_res.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
-   else:
-       conf_matr = confusion_matrix(pos_paisa_lab, predicted).ravel()
-       paisa_pos_res.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
-   #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
-
-
-
-   predicted = clf.predict(paisa_neg_templ_test)
-   right_pred = clf.score(paisa_neg_templ_test, neg_paisa_lab)
-   if len(confusion_matrix(neg_paisa_lab, predicted).ravel()) == 4:
-       tn, fp, fn, tp = confusion_matrix(neg_paisa_lab, predicted).ravel()
-       paisa_neg_res.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
-   else:
-       conf_matr = confusion_matrix(neg_paisa_lab, predicted).ravel()
-       paisa_neg_res.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
+    for templ_sent, templ_list in paisa_pos_res.items():
+        predicted = clf.predict(templ_list)
+        right_pred = clf.score(templ_list, pos_paisa_lab[templ_sent])
+        if len(confusion_matrix(pos_paisa_lab[templ_sent], predicted).ravel()) == 4:
+            tn, fp, fn, tp = confusion_matrix(pos_paisa_lab[templ_sent], predicted).ravel()
+            paisa_pos_res.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+        else:
+            conf_matr = confusion_matrix(pos_paisa_lab[templ_sent], predicted).ravel()
+            paisa_pos_res.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
+        #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
 
 
@@ -390,4 +401,3 @@ for scores in paisa_neg_res:
 print("PAISA TEMPLATE TEST POS\n\n")
 for scores in paisa_pos_res:
    print(scores)
-'''
