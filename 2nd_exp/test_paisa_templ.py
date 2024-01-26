@@ -323,6 +323,10 @@ for templ_list in [neg_paisa_templates, pos_paisa_templates]:
       neg_paisa_cls = encodings_dict
 
 
+print(f"{len(pos_paisa_cls.keys())} templates neg\nPrimo templ ha {len(pos_paisa_cls[list(neg_paisa_cls.keys())[0]])} frasi")
+
+print(f"{len(neg_paisa_cls.keys())} templates neg\nPrimo templ ha {len(neg_paisa_cls[list(neg_paisa_cls.keys())[0]])} frasi")
+
 
 neg_paisa_lab = {}
 for templ_sent, templ_list in neg_paisa_cls.items():
