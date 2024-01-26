@@ -413,18 +413,18 @@ for n in range(1, 13):
         #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
 
-with open(r"../Inputs/PAISA_TEMPLATE_TEST_NEG.txt", w) as file:
+with open(r"../Inputs/PAISA_TEMPLATE_TEST_NEG.txt", "w") as file:
     file.write("PAISA TEMPLATE TEST NEG\n\n")
 for scores in paisa_neg_res:
-    with open(r"../Inputs/PAISA_TEMPLATE_TEST_NEG.txt", a) as file:
+    with open(r"../Inputs/PAISA_TEMPLATE_TEST_NEG.txt", "a") as file:
         file.write(scores)
         file.write("\n")
 
 
-with open(r"../Inputs/PAISA_TEMPLATE_TEST_POS.txt", w) as file:
+with open(r"../Inputs/PAISA_TEMPLATE_TEST_POS.txt", "w") as file:
     file.write("PAISA TEMPLATE TEST POS\n\n")
 for scores in paisa_pos_res:
-    with open(r"../Inputs/PAISA_TEMPLATE_TEST_POS.txt", a) as file:
+    with open(r"../Inputs/PAISA_TEMPLATE_TEST_POS.txt", "a") as file:
         file.write(scores)
         file.write("\n")
 
