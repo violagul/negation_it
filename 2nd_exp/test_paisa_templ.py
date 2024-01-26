@@ -312,7 +312,7 @@ for templ_list in [neg_paisa_templates, pos_paisa_templates]:
             all_cls_encodings = cls_encodings
         if m > 1:
             all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
-        if m % 200 == 0:
+        if m % 30 == 0:
             print(str(m) + "\textracted")
    
     encodings_dict[templ_sent] = all_cls_encodings
