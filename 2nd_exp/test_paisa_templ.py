@@ -327,9 +327,9 @@ for templ_list in [neg_paisa_templates, pos_paisa_templates]:
 print(f"{len(pos_paisa_cls.keys())} templates neg")
 print(f"{len(neg_paisa_cls.keys())} templates neg")
 
-print(f"\nPrimo templ ha {len(pos_paisa_cls[list(pos_paisa_cls.keys())[0]])} frasi")
+print(f"\nPrimo templ ha {len(pos_paisa_cls[list(pos_paisa_cls.keys())[1]])} frasi")
 
-print(f"\nPrimo templ ha {len(neg_paisa_cls[list(neg_paisa_cls.keys())[0]])} frasi")
+print(f"\nPrimo templ ha {len(neg_paisa_cls[list(neg_paisa_cls.keys())[1]])} frasi")
 
 
 neg_paisa_lab = {}
