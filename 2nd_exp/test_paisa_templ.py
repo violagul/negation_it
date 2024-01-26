@@ -368,6 +368,7 @@ for n in range(1, 13):
     clf = load(f"../Inputs/non_classifier2_{n}.joblib")
    
     for templ_sent, templ_list in paisa_neg_templ_test.items():
+        paisa_neg_res.append(templ_sent)
         predicted = clf.predict(templ_list)
         right_pred = clf.score(templ_list, neg_paisa_lab[templ_sent])
         if len(confusion_matrix(neg_paisa_lab[templ_sent], predicted).ravel()) == 4:
@@ -381,6 +382,7 @@ for n in range(1, 13):
 
    
     for templ_sent, templ_list in paisa_pos_templ_test.items():
+        paisa_pos_res.append(templ_sent)
         predicted = clf.predict(templ_list)
         right_pred = clf.score(templ_list, pos_paisa_lab[templ_sent])
         if len(confusion_matrix(pos_paisa_lab[templ_sent], predicted).ravel()) == 4:
