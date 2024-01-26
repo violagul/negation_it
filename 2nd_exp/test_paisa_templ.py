@@ -322,7 +322,7 @@ neg_paisa_lab = {}
 for templ_sent, templ_list in neg_paisa_cls.items():
     np.random.shuffle(templ_list)
     size_test = min(3000, len(templ_list))
-    neg_paisa_cls[templ_sent] = templ_list[size_test]
+    neg_paisa_cls[templ_sent] = templ_list[:size_test]
     neg_paisa_lab[templ_sent] = np.ones(size_test)
 
 
@@ -330,7 +330,7 @@ pos_paisa_lab = {}
 for templ_sent, templ_list in pos_paisa_cls.items():
     np.random.shuffle(templ_list)
     size_test = min(3000, len(templ_list))
-    pos_paisa_cls[templ_sent] = templ_list[size_test]
+    pos_paisa_cls[templ_sent] = templ_list[:size_test]
     pos_paisa_lab[templ_sent] = np.zeros(size_test)
 
 
