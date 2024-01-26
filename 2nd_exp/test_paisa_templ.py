@@ -277,62 +277,72 @@ size_test = min(3000, len(pos_paisa_templates))
 print(f"Size test pos: {size_test}")
 pos_paisa_templates = pos_paisa_templates[:size_test]
 pos_paisa_lab = np.zeros(size_test)
+'''
+
 
 
 
 all_cls_encodings = []
 for templ_list in [neg_paisa_templates, pos_paisa_templates]:
   m = 0 
-  for sentence in templ_list:
-    
-    
-    sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+  for templ_sent, template_set in templ_list.items():
+    encodings_dict = {}
+    for sentence in template_set:
+        sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
 
-    # then extract only the outputs for each sentence
-    with torch.no_grad():
-        tokens_outputs = model(**sentence_encoded )
+        # then extract only the outputs for each sentence
+        with torch.no_grad():
+            tokens_outputs = model(**sentence_encoded )
 
-    # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
-    embeddings = tokens_outputs[0]
-    cls_encodings = embeddings[:,0,:]
+        # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
+        embeddings = tokens_outputs[0]
+        cls_encodings = embeddings[:,0,:]
 
   
-    m+=1
-    cls_encodings = cls_encodings.cpu().numpy()
-    if m == 1:
-        all_cls_encodings = cls_encodings
-    if m > 1:
-        all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
-    if m % 50 == 0:
-        print(str(m) + "\textracted")
+        m+=1
+        cls_encodings = cls_encodings.cpu().numpy()
+        if m == 1:
+            all_cls_encodings = cls_encodings
+        if m > 1:
+            all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
+        if m % 50 == 0:
+            print(str(m) + "\textracted")
    
-    
+    encodings_dict[templ_sent] = all_cls_encodings
    
    
   if templ_list == pos_paisa_templates:
-      pos_paisa_cls = all_cls_encodings
+      pos_paisa_cls = encodings_dict
   elif templ_list == neg_paisa_templates:
-      neg_paisa_cls = all_cls_encodings
-
-
-np.random.shuffle(neg_paisa_cls)
-np.random.shuffle(pos_paisa_cls)
-
-
-size_test = min(3000, len(neg_paisa_cls))
-neg_paisa_cls = neg_paisa_cls[:size_test]
-neg_paisa_lab = np.ones(size_test)
-print(f"Neg lab : {neg_paisa_lab[:6]} etc")
-
-size_test = min(3000, len(pos_paisa_cls))
-pos_paisa_cls = pos_paisa_cls[:size_test]
-pos_paisa_lab = np.zeros(size_test)
-print(f"Pos lab : {pos_paisa_lab[:6]} etc")
+      neg_paisa_cls = encodings_dict
 
 
 
+neg_paisa_lab = {}
+for templ_sent, templ_list in neg_paisa_cls.items():
+    np.random.shuffle(templ_list)
+    size_test = min(3000, len(templ_list))
+    neg_paisa_cls[templ_sent] = templ_list[size_test]
+    neg_paisa_lab[templ_sent] = np.ones(size_test)
 
 
+pos_paisa_lab = {}
+for templ_sent, templ_list in pos_paisa_cls.items():
+    np.random.shuffle(templ_list)
+    size_test = min(3000, len(templ_list))
+    pos_paisa_cls[templ_sent] = templ_list[size_test]
+    pos_paisa_lab[templ_sent] = np.zeros(size_test)
+
+
+print(str(pos_paisa_cls)[:120])
+print(str(pos_paisa_lab)[:120])
+print(str(neg_paisa_cls)[:120])
+print(str(neg_paisa_lab)[:120])
+
+
+
+
+'''
 #data normalization
 scaler = load(f"../Inputs/scaler.joblib")
 paisa_pos_templ_test = scaler.transform(pos_paisa_cls)
