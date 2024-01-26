@@ -395,7 +395,7 @@ for templ_sent, templ_list in paisa_neg_templ_test.items():
         else:
             conf_matr = confusion_matrix(neg_paisa_lab[templ_sent], predicted).ravel()
             #paisa_neg_res.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
-            paisa_neg_res.append(f"Score\t{right_pred}\n\n")
+            paisa_neg_res.append(f"Score\t{right_pred}")
         #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
 
@@ -413,7 +413,7 @@ for templ_sent, templ_list in paisa_pos_templ_test.items():
         else:
             conf_matr = confusion_matrix(pos_paisa_lab[templ_sent], predicted).ravel()
             #paisa_pos_res.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
-            paisa_pos_res.append(f"Score\t{right_pred}\n\n")
+            paisa_pos_res.append(f"Score\t{right_pred}")
         #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
 
