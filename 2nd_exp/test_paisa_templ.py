@@ -229,10 +229,10 @@ for lista in [pfprof, nfprof]:
             exfrase.append(fprofs)
         templates[frase] = exfrase
     if lista == pfprof:
-        pfproftempl = templates
+        nfproftempl = templates
         # n perché il template è negativo, anche se derivato da frasi positive
     if lista == nfprof:
-        nfproftempl = templates
+        pfproftempl = templates
         # n perché il template è positivo, anche se derivato da frasi negative
 
 
@@ -245,10 +245,10 @@ for lista in [pmprof, nmprof]:
             exfrase.append(mprofs)
         templates[frase] = exfrase
     if lista == pmprof:
-        pmproftempl = templates
+        nmproftempl = templates
         # n perché il template è negativo, anche se derivato da frasi positive
     if lista == nmprof:
-        nmproftempl = templates
+        pmproftempl = templates
         # n perché il template è positivo, anche se derivato da frasi negative
 
 
