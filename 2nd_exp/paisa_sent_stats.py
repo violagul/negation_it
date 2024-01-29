@@ -175,12 +175,12 @@ mn = stat.mean(pos_tok_size)
 pyplot.bar(list(pos_tok_size_dict.keys()), list(pos_tok_size_dict.values()))
 matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("positive")
-pyplot.savefig("plot_pos.png")
+pyplot.savefig("plot_pos_mn.png")
 '''
 pyplot.bar(list(neg_tok_size_dict.keys()), list(neg_tok_size_dict.values()))
 matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("negative")
-pyplot.savefig("plot_neg.png")
+pyplot.savefig("plot_neg_mn.png")
 
 
 
