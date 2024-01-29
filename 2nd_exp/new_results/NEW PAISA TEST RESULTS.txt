@@ -1,6 +1,13 @@
 NEW PAISA TEST RESULTS
 
-Method  adam                                                    Nb hidden layers        (350, 350)                              Alpha   1e-05                                                   Score   0.938                                                   True neg        921                                             False pos       79                                              False neg       45                                              True pos        955
+Method  adam                                                    
+Nb hidden layers        (350, 350)                              
+Alpha   1e-05                                                   
+Score   0.938                                                   
+True neg        921                                             
+False pos       79                                              
+False neg       45                                              
+True pos        955
 
 
 Method  sgd
@@ -53,7 +60,8 @@ False neg       49
 True pos        951
 
 
-Method  adam                                                    Nb hidden layers        (40, 40)
+Method  adam                                                    
+Nb hidden layers        (40, 40)
 Alpha   1e-05
 Score   0.9285
 True neg        909
