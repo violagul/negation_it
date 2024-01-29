@@ -204,8 +204,9 @@ for elem in range(39, 393):
 mn = stat.mean(neg_len)
 
 
-#pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
-#pyplot.savefig("plot_neg_len.png")
-pyplot.bar(list(pos_len_dict.keys()), list(pos_len_dict.values()))
+pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
 matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
-pyplot.savefig("plot_pos_len_mn.png")
+pyplot.savefig("plot_neg_len.png")
+#pyplot.bar(list(pos_len_dict.keys()), list(pos_len_dict.values()))
+#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+#pyplot.savefig("plot_pos_len_mn.png")
