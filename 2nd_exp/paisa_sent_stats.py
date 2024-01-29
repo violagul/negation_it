@@ -138,8 +138,6 @@ pos_tok_size = []
 for tok in pos_tok:
     pos_tok_size.append(len(tok))
 
-print(pos_tok_size[:5])
-print(neg_tok_size[:5])
 
 
 
