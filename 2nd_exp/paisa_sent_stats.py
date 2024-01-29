@@ -118,6 +118,7 @@ print("Loading paisa sentences...")
 sent_neg = load("../Inputs/paisa_sent_neg2.joblib")
 sent_pos = load("../Inputs/paisa_sent_pos2.joblib")
 
+'''
 print("Tokenization...")
 neg_tok = []
 for sent in sent_neg:
@@ -141,13 +142,12 @@ for tok in pos_tok:
 
 
 
-
 pos_tok_size_dict = {}
 neg_tok_size_dict = {}
 
-'''print(max(pos_tok_size))
+print(max(pos_tok_size))
 print(min(pos_tok_size))
-'''
+
 
 for elem in range(5,57):
     m=0
@@ -156,7 +156,7 @@ for elem in range(5,57):
             m+=1
     pos_tok_size_dict[elem] = m
 #print(pos_tok_size_dict)
-'''
+
 for elem in range(5,57):
     m=0
     for size in neg_tok_size:
@@ -164,9 +164,23 @@ for elem in range(5,57):
             m+=1
     neg_tok_size_dict[elem] = m
 #print(neg_tok_size_dict)
-'''
+
 
 pyplot.bar(list(pos_tok_size_dict.keys()), list(pos_tok_size_dict.values()))
 pyplot.savefig("plot_pos.png")
-'''pyplot.bar(list(neg_tok_size_dict.keys()), list(neg_tok_size_dict.values()))
+pyplot.bar(list(neg_tok_size_dict.keys()), list(neg_tok_size_dict.values()))
 pyplot.savefig("plot_neg.png")'''
+
+
+
+neg_len = []
+pos_len = []
+
+for sent in sent_neg:
+    neg_len.append(len(sent))
+
+for sent in sent_pos:
+    pos_len.append(len(sent))
+
+print(f"neg: max {max(neg_len)} min {min(neg_len)}")
+print(f"pos: max {max(pos_len)} min {min(pos_len)}")
