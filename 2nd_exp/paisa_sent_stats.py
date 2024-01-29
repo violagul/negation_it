@@ -117,7 +117,7 @@ print("Loading paisa sentences...")
 sent_neg = load("../Inputs/paisa_sent_neg2.joblib")
 sent_pos = load("../Inputs/paisa_sent_pos2.joblib")
 
-
+print("Tokenization...")
 neg_tok = []
 for sent in sent_neg:
     tok_sent = tokenizer.tokenize(sent)
@@ -139,3 +139,20 @@ for tok in pos_tok:
 
 print(pos_tok_size[:5])
 print(neg_tok_size[:5])
+
+
+
+
+pos_tok_size_dict = {}
+n = 0
+nb = []
+for tok in pos_tok_size:
+    n += 1
+    nb.append(n)
+
+
+pos_tok_size_dict["idx"] = nb
+pos_tok_size_dict["size"] = pos_tok_size
+
+
+plot(nb, pos_tok_size)
