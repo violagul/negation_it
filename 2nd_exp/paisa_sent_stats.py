@@ -113,7 +113,7 @@ tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 
 
 
-
+print("Loading paisa sentences...")
 sent_neg = load("../Inputs/paisa_sent_neg2.joblib")
 sent_pos = load("../Inputs/paisa_sent_pos2.joblib")
 
@@ -123,5 +123,19 @@ for sent in sent_neg:
     tok_sent = tokenizer.tokenize(sent)
     neg_tok.append(tok_sent)
 
-for tok in neg_tok[:3]:
-    print(tok)
+neg_tok_size = []
+for tok in neg_tok:
+    neg_tok_size.append(len(tok))
+
+
+pos_tok = []
+for sent in sent_pos:
+    tok_sent = tokenizer.tokenize(sent)
+    pos_tok.append(tok_sent)
+
+pos_tok_size = []
+for tok in pos_tok:
+    pos_tok_size.append(len(tok))
+
+print(pos_tok_size[:5])
+print(neg_tok_size[:5])
