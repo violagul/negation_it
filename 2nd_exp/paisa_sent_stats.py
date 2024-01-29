@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils import shuffle as skshuffle
 import re
 from random import shuffle, seed
-import matplotlib
+import matplotlib.pyplot as pyplot
 
 #from sklearn.model_selection import train_test_split
 
@@ -156,4 +156,5 @@ pos_tok_size_dict["idx"] = nb
 pos_tok_size_dict["size"] = pos_tok_size
 
 
-plot(nb, pos_tok_size)
+pyplot.plot(nb, pos_tok_size)
+pyplot.show()
