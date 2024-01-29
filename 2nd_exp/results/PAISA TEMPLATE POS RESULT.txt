@@ -1,96 +1,324 @@
-PAISA TEMPLATE POS RESULT
-
-Score   0.43826086956521737                                                                                                     
-
-True neg        1008                                            
-False pos       1292                                            
-False neg       0                                               
-True pos        0                                                                                                                                                                               
+PAISA TEMPLATE POS RESULTS
 
 
-Score   0.4443478260869565                                                                                                      
+Accompagnato da un MPROF di fiducia non intraprese a piedi la sua escursione.
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
 
-True neg        1022                                            
-False pos       1278                                            
-False neg       0                                               
-True pos        0
+Esitante a definirsi un MPROF, non preferisce pensarsi come un cantante.
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
 
+Barker, non fu arrestato per aver cercato di vendere un quarto di oncia di marijuana a un MPROF sotto copertura.
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
 
-Score   0.4008695652173913
+Le sue pennellate sottili e incisive non hanno i caratteri inquieti di un MPROF alla ricerca di nuove soluzioni spaziali e formali.Leonhard infatti non era probabilmente solo un MPROF.
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.01
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.03
 
-True neg        922                                             
-False pos       1378                                            
-False neg       0                                               
-True pos        0
+Altre leggende non fanno di lui un MPROF prima di diventare soldato.
+Score   0.0
+Score   0.02
+Score   0.0
+Score   0.02
+Score   0.06
+Score   0.02
+Score   0.03
+Score   0.03
+Score   0.0
+Score   0.03
+Score   0.02
+Score   0.03
 
+Ha un fratello e un giorno non spera di diventare una FPROF di successo.
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
+Score   0.0
 
-Score   0.4473913043478261
+MNOM vorrebbe parlare ma la ragazza ne ha voglia e ha fretta, e si fa riaccompagnare al suo posto sulla strada.
+Score   0.7
+Score   0.67
+Score   0.62
+Score   0.69
+Score   0.6
+Score   0.67
+Score   0.85
+Score   0.94
+Score   0.89
+Score   0.93
+Score   0.62
+Score   0.9
 
-True neg        1029                                            
-False pos       1271                                            
-False neg       0                                               
-True pos        0
+MNOM sostiene che gli importa egli vuole vivere bene e si fa domande su chi paghi.
+Score   0.69
+Score   0.74
+Score   0.69
+Score   0.74
+Score   0.74
+Score   0.71
+Score   0.36
+Score   0.23
+Score   0.43
+Score   0.25
+Score   0.31
+Score   0.26
 
+MNOM ebbe cura di tornare in patria in questo periodo, sapendo di essere indesiderato.
+Score   0.73
+Score   0.74
+Score   0.84
+Score   0.73
+Score   0.93
+Score   0.71
+Score   0.91
+Score   0.89
+Score   0.94
+Score   0.87
+Score   0.93
+Score   0.87
 
-Score   0.39565217391304347
+MNOM si sarebbe mostrato reticente, pur lesinandogli denaro e rifornimenti.
+Score   0.83
+Score   0.83
+Score   0.76
+Score   0.83
+Score   0.46
+Score   0.91
+Score   0.46
+Score   0.75
+Score   0.5
+Score   0.66
+Score   0.28
+Score   0.66
 
-True neg        910                                             
-False pos       1390                                            
-False neg       0                                               
-True pos        0
+MNOM comprende il motivo che ha spinto la giovane a chiedergli una cosa simile.
+Score   0.24
+Score   0.5
+Score   0.32
+Score   0.5
+Score   0.53
+Score   0.48
+Score   0.19
+Score   0.74
+Score   0.26
+Score   0.73
+Score   0.33
+Score   0.76
 
+MNOM resta a vivere nella casa dove avevano abitato tutti assieme, rassegnandosi alla perdita della moglie.
+Score   0.61
+Score   0.24
+Score   0.41
+Score   0.24
+Score   0.63
+Score   0.24
+Score   0.37
+Score   0.55
+Score   0.58
+Score   0.55
+Score   0.59
+Score   0.53
 
-Score   0.44869565217391305
+MNOM risponde di sapere chi sia e il giovane gli racconta la sua storia.
+Score   0.33
+Score   0.52
+Score   0.19
+Score   0.49
+Score   0.53
+Score   0.54
+Score   0.24
+Score   0.63
+Score   0.59
+Score   0.67
+Score   0.57
+Score   0.67
 
-True neg        1032                                            
-False pos       1268                                            
-False neg       0                                               
-True pos        0
+MNOM fu fatto prigioniero e giustiziato: apparentemente le sue truppe opposero molta resistenza.
+Score   1.0
+Score   0.9
+Score   0.99
+Score   0.9
+Score   1.0
+Score   0.91
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   0.97
+Score   1.0
 
+MNOM inoltre parla nel sonno nella versione giapponese.
+Score   0.99
+Score   0.98
+Score   0.97
+Score   0.98
+Score   0.99
+Score   0.98
+Score   0.94
+Score   1.0
+Score   0.9
+Score   1.0
+Score   0.99
+Score   1.0
 
-Score   0.49782608695652175
+MNOM invece, si era mosso celermente con il suo esercito impacciato e armato alla leggera.
+Score   0.99
+Score   1.0
+Score   0.91
+Score   1.0
+Score   0.94
+Score   1.0
+Score   0.97
+Score   0.99
+Score   1.0
+Score   0.98
+Score   0.92
+Score   0.99
 
-True neg        1145                                            
-False pos       1155                                            
-False neg       0                                               
-True pos        0
+FNOM porta avanti la sua seconda vita, ma si accorge che qualcuno la sta seguendo.
+Score   0.94
+Score   0.65
+Score   0.9
+Score   0.66
+Score   0.83
+Score   0.65
+Score   0.55
+Score   0.99
+Score   0.62
+Score   0.98
+Score   0.9
+Score   0.96
 
+FNOM cerca di stare vicina al marito, pur amandolo.
+Score   0.84
+Score   0.75
+Score   0.86
+Score   0.75
+Score   0.92
+Score   0.73
+Score   0.64
+Score   0.84
+Score   0.72
+Score   0.84
+Score   0.87
+Score   0.86
 
-Score   0.4973913043478261
+FNOM crede che possa essere lui il ragazzo del suo primo vero bacio, che ha mai dato.
+Score   0.36
+Score   0.36
+Score   0.21
+Score   0.34
+Score   0.18
+Score   0.34
+Score   0.17
+Score   0.68
+Score   0.43
+Score   0.63
+Score   0.29
+Score   0.67
 
-True neg        1144                                            
-False pos       1156                                            
-False neg       0                                               
-True pos        0
+FNOM ha lasciato alcun ritratto similare di qualsivoglia altro principe crociato.
+Score   0.0
+Score   0.01
+Score   0.0
+Score   0.01
+Score   0.0
+Score   0.01
+Score   0.0
+Score   0.03
+Score   0.02
+Score   0.03
+Score   0.0
+Score   0.03
 
+FNOM intano riesce a controllarsi e scarta tutti i regali di nozze.
+Score   0.68
+Score   0.9
+Score   0.67
+Score   0.91
+Score   0.92
+Score   0.85
+Score   0.89
+Score   0.86
+Score   0.93
+Score   0.82
+Score   0.95
+Score   0.85
 
-Score   0.5291304347826087
+FNOM ha paura: affronta le apparizioni e le fa sparire con la sua determinata reazione.
+Score   0.17
+Score   0.22
+Score   0.24
+Score   0.22
+Score   0.43
+Score   0.24
+Score   0.01
+Score   0.53
+Score   0.04
+Score   0.44
+Score   0.03
+Score   0.48
 
-True neg        1217                                            
-False pos       1083                                            
-False neg       0                                               
-True pos        0
-
-
-Score   0.4865217391304348
-
-True neg        1119                                            
-False pos       1181                                            
-False neg       0                                               
-True pos        0
-
-
-Score   0.4965217391304348
-
-True neg        1142                                            
-False pos       1158                                            
-False neg       0                                               
-True pos        0
-
-
-Score   0.49391304347826087
-
-True neg        1136                                            
-False pos       1164                                            
-False neg       0                                               
-True pos        0
+FNOM riabilita il suo nome ma prima di aver scoperto che essite una terza macchina che produce carte di credito false.
+Score   0.37
+Score   0.95
+Score   0.28
+Score   0.96
+Score   0.84
+Score   0.85
+Score   0.52
+Score   0.35
+Score   0.61
+Score   0.37
+Score   0.57
+Score   0.35
