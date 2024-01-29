@@ -150,9 +150,11 @@ for tok in pos_tok_size:
     nb.append(n)
 
 
-pos_tok_size_dict["idx"] = nb
-pos_tok_size_dict["size"] = pos_tok_size
 
+print(max(pos_tok_size))
+print(min(pos_tok_size))
 
+'''
 pyplot.plot(pos_tok_size, nb)
 pyplot.savefig("plot.png")
+'''
