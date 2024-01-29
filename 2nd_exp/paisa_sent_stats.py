@@ -155,4 +155,4 @@ pos_tok_size_dict["size"] = pos_tok_size
 
 
 pyplot.plot(nb, pos_tok_size)
-pyplot.show()
+pyplot.savefig("plot.png")
