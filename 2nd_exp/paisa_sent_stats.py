@@ -200,5 +200,7 @@ for elem in range(39, 393):
 
 
 
-pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
-pyplot.savefig("plot_neg_len.png")
+#pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
+#pyplot.savefig("plot_neg_len.png")
+pyplot.bar(list(pos_len_dict.keys()), list(pos_len_dict.values()))
+pyplot.savefig("plot_pos_len.png")
