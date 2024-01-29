@@ -148,6 +148,9 @@ neg_tok_size_dict = {}
 
 print(max(pos_tok_size))
 print(min(pos_tok_size))
+print(max(neg_tok_size))
+print(min(neg_tok_size))
+
 
 '''
 for elem in range(5,57):
