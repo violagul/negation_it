@@ -154,6 +154,15 @@ for tok in pos_tok_size:
 print(max(pos_tok_size))
 print(min(pos_tok_size))
 
+
+for elem in range(5,57):
+    m=0
+    for size in pos_tok_size:
+        if size == elem:
+            m+=1
+    pos_tok_size_dict[size] = m
+print(pos_tok_size_dict)
+
 '''
 pyplot.plot(pos_tok_size, nb)
 pyplot.savefig("plot.png")
