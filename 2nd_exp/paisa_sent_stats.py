@@ -11,8 +11,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils import shuffle as skshuffle
 import re
 from random import shuffle, seed
-pip3 install matplotlib
-
 import matplotlib
 
 #from sklearn.model_selection import train_test_split
