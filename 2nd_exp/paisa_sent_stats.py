@@ -161,7 +161,7 @@ for elem in range(5,57):
         if size == elem:
             m+=1
     pos_tok_size_dict[size] = m
-#print(pos_tok_size_dict)
+print(pos_tok_size_dict)
 
 
 pyplot.bar(list(pos_tok_size_dict.keys()), list(pos_tok_size_dict.values()))
