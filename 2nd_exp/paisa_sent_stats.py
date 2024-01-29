@@ -164,7 +164,7 @@ for elem in range(5,57):
 mn = stat.mean(pos_tok_size)
 '''
 
-for elem in range(5,57):
+for elem in range(6,75):
     m=0
     for size in neg_tok_size:
         if size == elem:
