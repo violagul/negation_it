@@ -182,5 +182,23 @@ for sent in sent_neg:
 for sent in sent_pos:
     pos_len.append(len(sent))
 
-print(f"neg: max {max(neg_len)} min {min(neg_len)}")
-print(f"pos: max {max(pos_len)} min {min(pos_len)}")
+pos_len_dict = {}
+for elem in range(39, 306):
+    m = 0
+    for num in pos_len:
+        if num == elem:
+            m += 1
+    pos_len_dict[elem] = m
+
+neg_len_dict = {}
+for elem in range(39, 393):
+    m = 0
+    for num in neg_len:
+        if num == elem:
+            m += 1
+    neg_len_dict[elem] = m
+
+
+
+pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
+pyplot.savefig("plot_neg_len.png")
