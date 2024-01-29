@@ -1,7 +1,18 @@
 NEW TEMPL CPTP
 
 
-Score   0.0538                                                                                                                  True neg        538                                             False pos       9462                                            False neg       0                                               True pos        0                                                                                                                                                                               Score   0.0119                                                                                                                  True neg        119                                             False pos       9881                                            False neg       0
+Score   0.0538
+                                                                                                                  
+True neg        538                                             
+False pos       9462                                            
+False neg       0                                               
+True pos        0                                                                                                                                                                               
+
+Score   0.0119
+                                                                                                                  
+True neg        119                                             
+False pos       9881                                            
+False neg       0
 True pos        0
 
 
