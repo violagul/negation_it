@@ -143,13 +143,7 @@ for tok in pos_tok:
 
 
 pos_tok_size_dict = {}
-n = 0
-nb = []
-for tok in pos_tok_size:
-    n += 1
-    nb.append(n)
-
-
+neg_tok_size_dict = {}
 
 '''print(max(pos_tok_size))
 print(min(pos_tok_size))
@@ -161,8 +155,18 @@ for elem in range(5,57):
         if size == elem:
             m+=1
     pos_tok_size_dict[elem] = m
-print(pos_tok_size_dict)
+#print(pos_tok_size_dict)
+
+for elem in range(5,57):
+    m=0
+    for size in neg_tok_size:
+        if size == elem:
+            m+=1
+    neg_tok_size_dict[elem] = m
+#print(neg_tok_size_dict)
 
 
 pyplot.bar(list(pos_tok_size_dict.keys()), list(pos_tok_size_dict.values()))
-pyplot.savefig("plot.png")
+pyplot.savefig("plot_pos.png")
+pyplot.bar(list(neg_tok_size_dict.keys()), list(neg_tok_size_dict.values()))
+pyplot.savefig("plot_neg.png")
