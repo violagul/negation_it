@@ -120,7 +120,6 @@ print("Loading paisa sentences...")
 sent_neg = load("../Inputs/paisa_sent_neg2.joblib")
 sent_pos = load("../Inputs/paisa_sent_pos2.joblib")
 
-'''
 print("Tokenization...")
 neg_tok = []
 for sent in sent_neg:
@@ -150,7 +149,7 @@ neg_tok_size_dict = {}
 print(max(pos_tok_size))
 print(min(pos_tok_size))
 
-
+'''
 for elem in range(5,57):
     m=0
     for size in pos_tok_size:
@@ -158,6 +157,9 @@ for elem in range(5,57):
             m+=1
     pos_tok_size_dict[elem] = m
 #print(pos_tok_size_dict)
+
+mn = stat.mean(pos_tok_size)
+'''
 
 for elem in range(5,57):
     m=0
@@ -167,14 +169,22 @@ for elem in range(5,57):
     neg_tok_size_dict[elem] = m
 #print(neg_tok_size_dict)
 
+mn = stat.mean(pos_tok_size)
 
+'''
 pyplot.bar(list(pos_tok_size_dict.keys()), list(pos_tok_size_dict.values()))
+matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+matplotlib.pyplot.title("positive")
 pyplot.savefig("plot_pos.png")
+'''
 pyplot.bar(list(neg_tok_size_dict.keys()), list(neg_tok_size_dict.values()))
-pyplot.savefig("plot_neg.png")'''
+matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+matplotlib.pyplot.title("negative")
+pyplot.savefig("plot_neg.png")
 
 
 
+'''
 neg_len = []
 pos_len = []
 
@@ -183,7 +193,7 @@ for sent in sent_neg:
 
 for sent in sent_pos:
     pos_len.append(len(sent))
-'''
+
 pos_len_dict = {}
 for elem in range(39, 306):
     m = 0
@@ -193,7 +203,7 @@ for elem in range(39, 306):
     pos_len_dict[elem] = m
 
 mn = stat.mean(pos_len)
-'''
+
 neg_len_dict = {}
 for elem in range(39, 393):
     m = 0
@@ -203,12 +213,12 @@ for elem in range(39, 393):
     neg_len_dict[elem] = m
 
 mn = stat.mean(neg_len)
+'''
 
-
-pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
-matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
-matplotlib.pyplot.title("negative")
-pyplot.savefig("plot_neg_len_mn.png")
+#pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
+#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+#matplotlib.pyplot.title("negative")
+#pyplot.savefig("plot_neg_len_mn.png")
 
 #pyplot.bar(list(pos_len_dict.keys()), list(pos_len_dict.values()))
 #matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
