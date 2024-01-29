@@ -1,131 +1,89 @@
 PAISA TEMPLATE NEG RESULTS
 
 
-Sarebbe probabilmente divenuto un MPROF se la filosofia fosse stata la sua innata passione.
-Score   0.24
-Score   0.51
-Score   0.24
-Score   0.52
-Score   0.06
-Score   0.49
-Score   0.27
-Score   0.09
-Score   0.33
-Score   0.14
-Score   0.47
-Score   0.22
-
-Conoscendo il MPROF, i due pensarono che fosse un cantante e che fosse lui a cantare il brano.
-Score   0.96
-Score   0.18
-Score   0.96
-Score   0.17
-Score   0.88
-Score   0.16
-Score   0.49
-Score   0.03
-Score   0.81
-Score   0.03
-Score   0.66
-Score   0.04
-
-Secondo il loro punto di vista un MPROF poteva rimanere legato a concetti obsoleti, ma doveva dare libero sfogo al proprio estro.
-Score   0.97
-Score   0.97
-Score   0.96
-Score   0.96
+Accompagnato da un MPROF di fiducia non intraprese a piedi la sua escursione.
 Score   1.0
-Score   0.96
-Score   0.75
-Score   0.39
-Score   0.53
-Score   0.35
-Score   0.61
-Score   0.35
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
 
-Fulci voleva un MPROF noto per quella parte.
-Score   0.0
-Score   0.0
-Score   0.0
-Score   0.0
-Score   0.0
-Score   0.0
-Score   0.0
-Score   0.07
-Score   0.0
-Score   0.08
-Score   0.0
-Score   0.07
+Esitante a definirsi un MPROF, non preferisce pensarsi come un cantante.
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
 
-Il primo era un MPROF e la seconda era americana: andavano quindi doppiati.
-Score   0.73
-Score   0.67
-Score   0.82
-Score   0.67
-Score   0.5
-Score   0.67
-Score   0.67
-Score   0.38
-Score   0.66
-Score   0.45
-Score   0.5
-Score   0.43
+Barker, non fu arrestato per aver cercato di vendere un quarto di oncia di marijuana a un MPROF sotto copertura.
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
 
-Addirittura vennero mostrate in video le loro buste paga, che avrebbero dovuto confermare il fatto che questi guadagnassero gli stipendi di un MPROF.
-Score   0.23
-Score   0.17
-Score   0.64
-Score   0.18
-Score   0.27
-Score   0.22
-Score   0.12
-Score   0.01
-Score   0.07
-Score   0.02
-Score   0.21
-Score   0.02
-
-Egli sopporta questa situazione e considera la madre una FPROF mediocre.
-Score   0.22
-Score   0.28
-Score   0.22
-Score   0.29
-Score   0.21
-Score   0.28
-Score   0.28
-Score   0.08
-Score   0.25
-Score   0.09
-Score   0.27
-Score   0.05
-
-Perfare un esempio una FPROF poteva comperare direttamente il tessuto, che era venduto esclusivamente dal fabbricante.
-Score   0.87
-Score   0.74
-Score   0.89
-Score   0.74
-Score   0.91
-Score   0.72
-Score   0.75
-Score   0.67
-Score   0.59
-Score   0.65
-Score   0.74
-Score   0.66
-
-Le sue regole coincidono con quel mondo che si era immaginato ed erra alla ricerca di qualcosa che pensa di aver trovato in una FPROF.
+Le sue pennellate sottili e incisive non hanno i caratteri inquieti di un MPROF alla ricerca di nuove soluzioni spaziali e formali.Leonhard infatti non era probabilmente solo un MPROF.
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
 Score   0.99
-Score   0.94
-Score   0.96
-Score   0.94
-Score   0.91
+Score   1.0
+Score   1.0
+Score   1.0
+Score   0.97
+
+Altre leggende non fanno di lui un MPROF prima di diventare soldato.
+Score   1.0
 Score   0.98
-Score   0.92
-Score   0.77
-Score   0.58
-Score   0.8
+Score   1.0
+Score   0.98
 Score   0.94
-Score   0.81
+Score   0.98
+Score   0.97
+Score   0.97
+Score   1.0
+Score   0.97
+Score   0.98
+Score   0.97
+
+Ha un fratello e un giorno non spera di diventare una FPROF di successo.
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
+Score   1.0
 
 MNOM non corre velocemente a vedere che succede.
 Score   1.0
@@ -183,6 +141,8 @@ Score   0.99
 Score   0.93
 Score   1.0
 
+mean	0,78
+
 MNOM non riprende gli studi raccogliendo successi e premi.
 Score   1.0
 Score   1.0
@@ -211,6 +171,8 @@ Score   0.37
 Score   0.83
 Score   0.39
 
+mean	0.78
+
 MNOM non mostra una iniziale inclinazione per la filosofia.
 Score   1.0
 Score   1.0
@@ -238,6 +200,8 @@ Score   0.27
 Score   0.15
 Score   0.23
 Score   0.22
+
+mean	0.23
 
 MNOM non la comprende, e decide di lasciar stare.
 Score   1.0
@@ -295,6 +259,8 @@ Score   0.72
 Score   0.94
 Score   0.8
 
+mean	0.85
+
 FNOM non riesce a sorprendere il pubblico e la giuria con la sua voce potente ed emozionante.
 Score   0.99
 Score   1.0
@@ -337,6 +303,8 @@ Score   0.81
 Score   0.79
 Score   0.83
 
+mean	0.86
+
 FNOM rifiuta di ascoltarlo ancora e non se ne va.
 Score   1.0
 Score   1.0
@@ -378,3 +346,5 @@ Score   0.77
 Score   0.62
 Score   0.79
 Score   0.63
+
+mean 	0.82
