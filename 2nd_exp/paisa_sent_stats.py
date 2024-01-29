@@ -160,7 +160,7 @@ for elem in range(5,57):
     for size in pos_tok_size:
         if size == elem:
             m+=1
-    pos_tok_size_dict[size] = m
+    pos_tok_size_dict[elem] = m
 print(pos_tok_size_dict)
 
 
