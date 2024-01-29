@@ -12,6 +12,7 @@ from sklearn.utils import shuffle as skshuffle
 import re
 from random import shuffle, seed
 import matplotlib.pyplot as pyplot
+import statistics as stat
 
 #from sklearn.model_selection import train_test_split
 
@@ -181,7 +182,7 @@ for sent in sent_neg:
 
 for sent in sent_pos:
     pos_len.append(len(sent))
-
+'''
 pos_len_dict = {}
 for elem in range(39, 306):
     m = 0
@@ -190,6 +191,8 @@ for elem in range(39, 306):
             m += 1
     pos_len_dict[elem] = m
 
+mn = stat.mean(pos_len)
+'''
 neg_len_dict = {}
 for elem in range(39, 393):
     m = 0
@@ -198,9 +201,11 @@ for elem in range(39, 393):
             m += 1
     neg_len_dict[elem] = m
 
+mn = stat.mean(neg_len)
 
 
 #pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
 #pyplot.savefig("plot_neg_len.png")
 pyplot.bar(list(pos_len_dict.keys()), list(pos_len_dict.values()))
-pyplot.savefig("plot_pos_len.png")
+matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+pyplot.savefig("plot_pos_len_mn.png")
