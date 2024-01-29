@@ -154,5 +154,5 @@ pos_tok_size_dict["idx"] = nb
 pos_tok_size_dict["size"] = pos_tok_size
 
 
-pyplot.plot(nb, pos_tok_size)
+pyplot.plot(pos_tok_size, nb)
 pyplot.savefig("plot.png")
