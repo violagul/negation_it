@@ -12,6 +12,7 @@ from sklearn.utils import shuffle as skshuffle
 import re
 from random import shuffle, seed
 import matplotlib.pyplot as pyplot
+import matplotlib
 import statistics as stat
 
 #from sklearn.model_selection import train_test_split
