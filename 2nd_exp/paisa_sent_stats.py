@@ -167,6 +167,6 @@ for elem in range(5,57):
 '''
 
 pyplot.bar(list(pos_tok_size_dict.keys()), list(pos_tok_size_dict.values()))
-pyplot.savefig("plot_pos.png")'''
-pyplot.bar(list(neg_tok_size_dict.keys()), list(neg_tok_size_dict.values()))
+pyplot.savefig("plot_pos.png")
+'''pyplot.bar(list(neg_tok_size_dict.keys()), list(neg_tok_size_dict.values()))
 pyplot.savefig("plot_neg.png")'''
