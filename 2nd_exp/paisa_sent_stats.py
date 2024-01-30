@@ -198,7 +198,7 @@ for sent in sent_neg:
 
 for sent in sent_pos:
     pos_len.append(len(sent))
-'''
+
 pos_len_dict = {}
 for elem in range(39, 306):
     m = 0
@@ -218,8 +218,8 @@ for elem in range(39, 393):
     neg_len_dict[elem] = m
 
 mn = stat.mean(neg_len)
-
-
+'''
+'''
 pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
 #matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("negative")
@@ -228,8 +228,7 @@ pyplot.savefig("plot_neg_len.png")
 
 '''
 pyplot.bar(list(pos_len_dict.keys()), list(pos_len_dict.values()))
-#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("positive")
 pyplot.savefig("plot_pos_len_mn.png")
 #pyplot.savefig("plot_pos_len.png")
-'''
