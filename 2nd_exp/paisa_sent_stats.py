@@ -228,7 +228,7 @@ pyplot.savefig("plot_neg_len.png")
 
 '''
 pyplot.bar(list(pos_len_dict.keys()), list(pos_len_dict.values()))
-matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("positive")
 pyplot.savefig("plot_pos_len_mn.png")
 #pyplot.savefig("plot_pos_len.png")
