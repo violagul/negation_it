@@ -152,7 +152,7 @@ print(max(neg_tok_size))
 print(min(neg_tok_size))
 
 
-'''
+
 for elem in range(5,57):
     m=0
     for size in pos_tok_size:
@@ -162,7 +162,7 @@ for elem in range(5,57):
 
 #print(pos_tok_size_dict)
 
-#mn = stat.mean(pos_tok_size)
+mn = stat.mean(pos_tok_size)
 '''
 
 for elem in range(6,75):
@@ -174,10 +174,10 @@ for elem in range(6,75):
 #print(neg_tok_size_dict)
 
 mn = stat.mean(neg_tok_size)
-
 '''
+
 pyplot.bar(list(pos_tok_size_dict.keys()), list(pos_tok_size_dict.values()))
-#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("positive")
 pyplot.savefig("plot_pos_mn.png")
 '''
@@ -185,7 +185,7 @@ pyplot.bar(list(neg_tok_size_dict.keys()), list(neg_tok_size_dict.values()))
 matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("negative")
 pyplot.savefig("plot_neg_mn.png")
-
+'''
 
 
 '''
