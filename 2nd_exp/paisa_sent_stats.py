@@ -176,12 +176,12 @@ mn = stat.mean(neg_tok_size)
 
 
 pyplot.bar(list(pos_tok_size_dict.keys()), list(pos_tok_size_dict.values()))
-matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("positive")
 pyplot.savefig("plot_pos_mn.png")
 '''
 pyplot.bar(list(neg_tok_size_dict.keys()), list(neg_tok_size_dict.values()))
-matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("negative")
 pyplot.savefig("plot_neg_mn.png")
 '''
@@ -216,14 +216,15 @@ for elem in range(39, 393):
     neg_len_dict[elem] = m
 
 mn = stat.mean(neg_len)
+
+
+pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
+#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+matplotlib.pyplot.title("negative")
+pyplot.savefig("plot_neg_len_mn.png")
+
+pyplot.bar(list(pos_len_dict.keys()), list(pos_len_dict.values()))
+#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+matplotlib.pyplot.title("positive")
+pyplot.savefig("plot_pos_len_mn.png")
 '''
-
-#pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
-#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
-#matplotlib.pyplot.title("negative")
-#pyplot.savefig("plot_neg_len_mn.png")
-
-#pyplot.bar(list(pos_len_dict.keys()), list(pos_len_dict.values()))
-#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
-#matplotlib.pyplot.title("positive")
-#pyplot.savefig("plot_pos_len_mn.png")
