@@ -221,10 +221,10 @@ mn = stat.mean(neg_len)
 
 
 pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
-matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("negative")
-pyplot.savefig("plot_neg_len_mn.png")
-#pyplot.savefig("plot_neg_len.png")
+#pyplot.savefig("plot_neg_len_mn.png")
+pyplot.savefig("plot_neg_len.png")
 
 '''
 pyplot.bar(list(pos_len_dict.keys()), list(pos_len_dict.values()))
