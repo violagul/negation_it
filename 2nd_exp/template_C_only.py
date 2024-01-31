@@ -381,7 +381,8 @@ test_temp_lab_Cn = np.ones(size_test)
 
 
 #data normalization
-scaler = load(f"../Inputs/scaler.joblib")
+#scaler = load(f"../Inputs/scaler.joblib")
+scaler = load(f"../Inputs/scaler2.joblib")
 test_2_pos = scaler.transform(test_temp_pos)
 test_2_Cn = scaler.transform(test_temp_Cn)
 
@@ -399,11 +400,11 @@ print("Testing with MLP classifiers...")
 template_result_pos = []
 template_result_Cn = []
 
-for n in range(1, 13):
-   clf = load(f"../Inputs/non_classifier_{n}.joblib")
+
    
 for n in range(1, 13):
-   clf = load(f"../Inputs/non_classifier_{n}.joblib")
+   #clf = load(f"../Inputs/non_classifier_{n}.joblib")
+   clf = load(f"../Inputs/non_classifier2_{n}.joblib")
    
    
    predicted = clf.predict(test_2_pos)
