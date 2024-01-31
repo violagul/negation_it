@@ -1,0 +1,82 @@
+NEW TEMPLATE Cn RESULTS
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   0.9971
+
+True neg        0
+False pos       0
+False neg       29
+True pos        9971
+
+
+Score   1.0
+
+Confusion matrix : [10000]
+
+
+Score   0.9987
+
+True neg        0
+False pos       0
+False neg       13
+True pos        9987
+
+
+Score   0.9837
+
+True neg        0
+False pos       0
+False neg       163
+True pos        9837
+
+
+Score   0.9968
+
+True neg        0
+False pos       0
+False neg       32
+True pos        9968
+
+
+Score   0.9851
+
+True neg        0
+False pos       0
+False neg       149
+True pos        9851
+
+
+Score   0.9963
+
+True neg        0
+False pos       0
+False neg       37
+True pos        9963
+
+
+Score   0.9849
+
+True neg        0
+False pos       0
+False neg       151
+True pos        984

@@ -1,0 +1,97 @@
+NEW TEMPLATE Cp RESULTS
+
+
+Score   0.2586
+
+True neg        2586
+False pos       7414
+False neg       0
+True pos        0
+
+
+Score   0.1291
+
+True neg        1291
+False pos       8709
+False neg       0
+True pos        0
+
+
+Score   0.2189
+
+True neg        2189
+False pos       7811
+False neg       0
+True pos        0
+
+
+Score   0.1218
+
+True neg        1218
+False pos       8782
+False neg       0
+True pos        0
+
+
+Score   0.7793
+
+True neg        7793
+False pos       2207
+False neg       0
+True pos        0
+
+
+Score   0.1129
+
+True neg        1129
+False pos       8871
+False neg       0
+True pos        0
+
+
+Score   0.1708
+
+True neg        1708
+False pos       8292
+False neg       0
+True pos        0
+
+
+Score   0.3616
+
+True neg        3616
+False pos       6384
+False neg       0
+True pos        0
+
+
+Score   0.3205
+
+True neg        3205
+False pos       6795
+False neg       0
+True pos        0
+
+
+Score   0.3362
+
+True neg        3362
+False pos       6638
+False neg       0
+True pos        0
+
+
+Score   0.4129
+
+True neg        4129
+False pos       5871
+False neg       0
+True pos        0
+
+
+Score   0.3484
+
+True neg        3484
+False pos       6516
+False neg       0
+True pos        0
