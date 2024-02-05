@@ -175,7 +175,8 @@ for elem in range(6,75):
     for size in neg_tok_size:
         if size == elem:
             m+=1
-    neg_tok_size_dict[elem] = m
+    if m != 0:
+        neg_tok_size_dict[elem] = m
 #print(neg_tok_size_dict)
 
 mn = stat.mean(neg_tok_size)
