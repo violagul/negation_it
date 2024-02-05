@@ -207,7 +207,7 @@ for n in list(neg_tok_size_dict.values()):
         log(n)
     except:
         print(n)
-#val = [log(n) for n in list(neg_tok_size_dict.values())]
+val = [log(n) for n in list(neg_tok_size_dict.values())]
 pyplot.bar(list(neg_tok_size_dict.keys()), val)
 #matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("negative")
