@@ -194,7 +194,7 @@ matplotlib.pyplot.title("negative")
 #pyplot.savefig("plot_neg_mn.png")
 pyplot.savefig("plot_neg.png")
 '''
-'''
+
 ### log normal distrib
 val = [log(n) for n in list(pos_tok_size_dict.keys())]
 pyplot.bar(val, list(pos_tok_size_dict.values()))
@@ -202,11 +202,7 @@ pyplot.bar(val, list(pos_tok_size_dict.values()))
 matplotlib.pyplot.title("positive")
 pyplot.savefig("plot_pos_log.png")
 
-for n in list(neg_tok_size_dict.values()):
-    try:
-        log(n)
-    except:
-        print(n)
+'''
 val = [log(n) for n in list(neg_tok_size_dict.keys())]
 pyplot.bar(val, list(neg_tok_size_dict.values()))
 #matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
@@ -269,10 +265,11 @@ pyplot.bar(val, list(neg_len_dict.values()))
 #matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("negative")
 pyplot.savefig("plot_neg_len_log.png")
-'''
+
 
 val = [log(n) for n in list(pos_len_dict.keys())]
 pyplot.bar(val, list(pos_len_dict.values()))
 #matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("positive")
 pyplot.savefig("plot_pos_len_log.png")
+'''
