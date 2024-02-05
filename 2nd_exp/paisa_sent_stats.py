@@ -266,13 +266,13 @@ pyplot.savefig("plot_pos_len_mn.png")
 '''
 val = [log(n) for n in list(neg_len_dict.values())]
 pyplot.bar(list(neg_len_dict.keys()), val)
-matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("negative")
 pyplot.savefig("plot_neg_len_log.png")
 '''
 
 val = [log(n) for n in list(pos_len_dict.values())]
 pyplot.bar(list(pos_len_dict.keys()), val)
-matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
+#matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("positive")
 pyplot.savefig("plot_pos_len_log.png")
