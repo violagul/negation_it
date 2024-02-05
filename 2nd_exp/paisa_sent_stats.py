@@ -201,7 +201,7 @@ pyplot.bar(list(pos_tok_size_dict.keys()), val)
 #matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("positive")
 pyplot.savefig("plot_pos_log.png")
-'''
+
 for n in list(neg_tok_size_dict.values()):
     try:
         log(n)
@@ -212,7 +212,7 @@ pyplot.bar(list(neg_tok_size_dict.keys()), val)
 #matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("negative")
 pyplot.savefig("plot_neg_log.png")
-
+'''
 neg_len = []
 pos_len = []
 
@@ -228,7 +228,8 @@ for elem in range(39, 306):
     for num in pos_len:
         if num == elem:
             m += 1
-    pos_len_dict[elem] = m
+    if m!=0:
+        pos_len_dict[elem] = m
 
 mn = stat.mean(pos_len)
 print(f"pos len mean {mn}, median {stat.median(pos_len)}, mode {stat.mode(pos_len)}")
@@ -239,7 +240,8 @@ for elem in range(39, 393):
     for num in neg_len:
         if num == elem:
             m += 1
-    neg_len_dict[elem] = m
+    if m != 0:
+        neg_len_dict[elem] = m
 
 mn = stat.mean(neg_len)
 print(f"neg len mean {mn}, median {stat.median(neg_len)}, mode {stat.mode(neg_len)}")
@@ -261,13 +263,13 @@ pyplot.savefig("plot_pos_len_mn.png")
 
 
 ### log norm distr
-'''
+
 val = [log(n) for n in list(neg_len_dict.values())]
 pyplot.bar(list(neg_len_dict.keys()), val)
 matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("negative")
 pyplot.savefig("plot_neg_len_log.png")
-
+'''
 
 val = [log(n) for n in list(pos_len_dict.values())]
 pyplot.bar(list(pos_len_dict.keys()), val)
