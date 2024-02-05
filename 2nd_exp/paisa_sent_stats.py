@@ -145,12 +145,12 @@ for tok in pos_tok:
 
 pos_tok_size_dict = {}
 neg_tok_size_dict = {}
-
+'''
 print(max(pos_tok_size))
 print(min(pos_tok_size))
 print(max(neg_tok_size))
 print(min(neg_tok_size))
-
+'''
 
 
 for elem in range(5,57):
@@ -162,7 +162,7 @@ for elem in range(5,57):
 
 #print(pos_tok_size_dict)
 
-#mn = stat.mean(pos_tok_size)
+mn = stat.mean(pos_tok_size)
 print(f"pos len in tok mean {mn}")
 
 
