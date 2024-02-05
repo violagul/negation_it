@@ -263,7 +263,7 @@ pyplot.savefig("plot_pos_len_mn.png")
 
 
 ### log norm distr
-
+'''
 val = [log(n) for n in list(neg_len_dict.values())]
 pyplot.bar(list(neg_len_dict.keys()), val)
 matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
@@ -276,4 +276,3 @@ pyplot.bar(list(pos_len_dict.keys()), val)
 matplotlib.pyplot.axvline(x=mn, linestyle ="--", color = "purple")
 matplotlib.pyplot.title("positive")
 pyplot.savefig("plot_pos_len_log.png")
-'''
