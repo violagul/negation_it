@@ -163,7 +163,7 @@ for elem in range(5,57):
 #print(pos_tok_size_dict)
 
 mn = stat.mean(pos_tok_size)
-print(f"pos len in tok mean {mn}, median {stat.median(pos_tok_size)}")
+print(f"pos len in tok mean {mn}, median {stat.median(pos_tok_size)}, mode {stat.mode(pos_tok_size)}")
 
 
 
@@ -176,7 +176,7 @@ for elem in range(6,75):
 #print(neg_tok_size_dict)
 
 mn = stat.mean(neg_tok_size)
-print(f"neg len in tok mean {mn}, median {stat.median(neg_tok_size)}")
+print(f"neg len in tok mean {mn}, median {stat.median(neg_tok_size)}, mode {stat.mode(neg_tok_size)}")
 '''
 
 pyplot.bar(list(pos_tok_size_dict.keys()), list(pos_tok_size_dict.values()))
@@ -212,7 +212,7 @@ for elem in range(39, 306):
     pos_len_dict[elem] = m
 
 mn = stat.mean(pos_len)
-print(f"pos len mean {mn}, median {stat.median(pos_len)}")
+print(f"pos len mean {mn}, median {stat.median(pos_len)}, mode {stat.mode(pos_len)}")
 
 neg_len_dict = {}
 for elem in range(39, 393):
@@ -223,7 +223,7 @@ for elem in range(39, 393):
     neg_len_dict[elem] = m
 
 mn = stat.mean(neg_len)
-print(f"neg len mean {mn}, median {stat.median(neg_len)}")
+print(f"neg len mean {mn}, median {stat.median(neg_len)}, mode {stat.mode(neg_len)}")
 
 '''
 pyplot.bar(list(neg_len_dict.keys()), list(neg_len_dict.values()))
