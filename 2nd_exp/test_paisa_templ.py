@@ -410,6 +410,8 @@ for templ_sent, template_set in paisa_pos_temp.items():
 
 
 print(f"{len(paisa_cls.keys())} templates")
+for key, val in paisa_cls.items():
+    print(len(val)+"\n")
 
 
 '''
