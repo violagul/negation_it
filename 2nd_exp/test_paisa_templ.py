@@ -367,15 +367,15 @@ for key, val in paisa_pos_temp.items():
 #pos_paisa_templates = pfnametempl + pmnametempl + pfproftempl + pmproftempl
 #print(f"Templates positivi\t{len(pos_paisa_templates)}\n{pos_paisa_templates[0]}\n{pos_paisa_templates[-1]}\n\n")
 
-size_test = min(3000, len(neg_paisa_templates))
-print(f"Size test neg: {size_test}")
-neg_paisa_templates = neg_paisa_templates[:size_test]
-neg_paisa_lab = np.ones(size_test)
+#size_test = min(3000, len(neg_paisa_templates))
+#print(f"Size test neg: {size_test}")
+#neg_paisa_templates = neg_paisa_templates[:size_test]
+#neg_paisa_lab = np.ones(size_test)
 
-size_test = min(3000, len(pos_paisa_templates))
-print(f"Size test pos: {size_test}")
-pos_paisa_templates = pos_paisa_templates[:size_test]
-pos_paisa_lab = np.zeros(size_test)
+#size_test = min(3000, len(pos_paisa_templates))
+#print(f"Size test pos: {size_test}")
+#pos_paisa_templates = pos_paisa_templates[:size_test]
+#pos_paisa_lab = np.zeros(size_test)
 '''
 
 all_cls_encodings = []
