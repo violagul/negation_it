@@ -161,13 +161,13 @@ pmname = ["MNOM non corre velocemente a vedere che succede.",
           "MNOM decise di non sposare la sua ex amante.",
           "MNOM non la comprende, e decide di lasciar stare.",
           "MNOM non sarebbe stato assassinato dopo una messa."]
-pfprof = ["Ha un fratello e un giorno non spera di diventare una FPROF di successo."]
-pmprof = ["Accompagnato da un MPROF di fiducia non intraprese a piedi la sua escursione.", 
-          "Esitante a definirsi un MPROF, non preferisce pensarsi come un cantante.", 
-          "Barker, non fu arrestato per aver cercato di vendere un quarto di oncia di marijuana a un MPROF sotto copertura.", 
-          "Le sue pennellate sottili e incisive non hanno i caratteri inquieti di un MPROF alla ricerca di nuove soluzioni spaziali e formali." 
-          "Leonhard infatti non era probabilmente solo un MPROF.", 
-          "Altre leggende non fanno di lui un MPROF prima di diventare soldato."]
+pfprof = ["Ha un fratello e un giorno non spera di diventare FPROF di successo."]
+pmprof = ["Accompagnato da MPROF di fiducia non intraprese a piedi la sua escursione.", 
+          "Esitante a definirsi MPROF, non preferisce pensarsi come un cantante.", 
+          "Barker, non fu arrestato per aver cercato di vendere un quarto di oncia di marijuana a MPROF sotto copertura.", 
+          "Le sue pennellate sottili e incisive non hanno i caratteri inquieti di MPROF alla ricerca di nuove soluzioni spaziali e formali." 
+          "Leonhard infatti non era probabilmente solo MPROF.", 
+          "Altre leggende non fanno di lui MPROF prima di diventare soldato."]
 
 # frasi negative rese positive da me
 nfname = ["FNOM porta avanti la sua seconda vita, ma si accorge che qualcuno la sta seguendo.", 
