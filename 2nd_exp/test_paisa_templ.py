@@ -417,10 +417,6 @@ for key, val in paisa_cls.items():
 
 
 
-for templ_sent, templ_list in paisa_cls.items():
-    np.random.shuffle(templ_list)
-    paisa_cls[templ_sent] = templ_list
-    print(templ_list[0])
 
 '''
 all_cls_encodings = []
@@ -467,6 +463,20 @@ print(f"\nPrimo templ ha {len(pos_paisa_cls[list(pos_paisa_cls.keys())[1]])} fra
 print(f"\nPrimo templ ha {len(neg_paisa_cls[list(neg_paisa_cls.keys())[1]])} frasi")
 
 
+
+
+'''
+
+for templ_sent, templ_list in paisa_cls.items():
+    np.random.shuffle(templ_list)
+    paisa_cls[templ_sent] = templ_list
+    
+
+'''
+
+
+
+
 neg_paisa_lab = {}
 for templ_sent, templ_list in neg_paisa_cls.items():
     np.random.shuffle(templ_list)
@@ -488,12 +498,23 @@ print(str(pos_paisa_lab)[:500])
 print(str(neg_paisa_cls)[:500])
 print(str(neg_paisa_lab)[:500])
 
-
-
+'''
 
 
 #data normalization
-scaler = load(f"../Inputs/scaler.joblib")
+scaler = load(f"../Inputs/scaler2.joblib")
+
+paisa_templ_test = {}
+for templ_sent, templ_list in paisa_cls.items():
+    scaled = scaler.transform(templ_list)
+    paisa_templ_test[templ_sent] = scaled
+
+
+
+'''
+
+
+
 
 paisa_pos_templ_test = {}
 paisa_neg_templ_test = {}
@@ -505,6 +526,50 @@ for templ_sent, templ_list in pos_paisa_cls.items():
 for templ_sent, templ_list in neg_paisa_cls.items():
     scaled = scaler.transform(templ_list)
     paisa_neg_templ_test[templ_sent] = scaled
+
+
+    
+
+'''
+
+
+paisa_res = []
+
+#for elem in paisa_templ_test.keys():
+#    print(elem)
+
+
+print("Classifier working...")   
+for templ_sent, templ_list in paisa_templ_test.items():
+    paisa_res.append(templ_sent)
+    for n in range(1,13):
+        clf = load(f"../Inputs/non_classifier2_{n}.joblib")
+        
+        predicted = clf.predict(templ_list)
+        right_pred = clf.score(templ_list, pos_labs[templ_sent])
+        if len(confusion_matrix(pos_labs[templ_sent], predicted).ravel()) == 4:
+            tn, fp, fn, tp = confusion_matrix(pos_labs[templ_sent], predicted).ravel()
+            #paisa_neg_res.append(f"Score\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+            paisa_res.append(f"Score\t{right_pred}")
+        else:
+            conf_matr = confusion_matrix(pos_labs[templ_sent], predicted).ravel()
+            #paisa_neg_res.append(f"Score\t{right_pred}\n\nConfusion matrix : {conf_matr}\n\n")
+            paisa_res.append(f"Score\t{right_pred}")
+        #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+
+
+
+print("PAISA TEMPLATE TEST NEG\n\n")
+for scores in paisa_res:
+   print(scores)
+
+
+
+
+
+'''
+
+
 
 
 
