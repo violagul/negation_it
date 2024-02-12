@@ -130,13 +130,13 @@ mname = ["MNOM corre velocemente a vedere che succede.",
           "MNOM decise di sposare la sua ex amante.",
           "MNOM la comprende, e decide di lasciar stare.",
           "MNOM sarebbe stato assassinato dopo una messa."]
-fprof =["Ha un fratello e un giorno spera di diventare una FPROF di successo."]
-mprof = ["Accompagnato da un MPROF di fiducia intraprese a piedi la sua escursione.", 
-          "Esitante a definirsi un MPROF, preferisce pensarsi come un cantante.", 
-          "Barker, fu arrestato per aver cercato di vendere un quarto di oncia di marijuana a un MPROF sotto copertura.", 
-          "Le sue pennellate sottili e incisive hanno i caratteri inquieti di un MPROF alla ricerca di nuove soluzioni spaziali e formali." 
-          "Leonhard infatti era probabilmente solo un MPROF.", 
-          "Altre leggende fanno di lui un MPROF prima di diventare soldato."]
+fprof =["Ha un fratello e un giorno spera di diventare FPROF di successo."]
+mprof = ["Accompagnato da MPROF di fiducia intraprese a piedi la sua escursione.", 
+          "Esitante a definirsi MPROF, preferisce pensarsi come un cantante.", 
+          "Barker, fu arrestato per aver cercato di vendere un quarto di oncia di marijuana a MPROF sotto copertura.", 
+          "Le sue pennellate sottili e incisive hanno i caratteri inquieti di MPROF alla ricerca di nuove soluzioni spaziali e formali." 
+          "Leonhard infatti era probabilmente solo MPROF.", 
+          "Altre leggende fanno di lui MPROF prima di diventare soldato."]
 
 
 
@@ -187,15 +187,15 @@ nmname = ["MNOM vorrebbe parlare ma la ragazza ne ha voglia e ha fretta, e si fa
           "MNOM fu fatto prigioniero e giustiziato: apparentemente le sue truppe opposero molta resistenza.", 
           "MNOM inoltre parla nel sonno nella versione giapponese.", 
           "MNOM invece, si era mosso celermente con il suo esercito impacciato e armato alla leggera."]
-nfprof = ["Egli sopporta questa situazione e considera la madre una FPROF mediocre.", 
-          "Perfare un esempio una FPROF poteva comperare direttamente il tessuto, che era venduto esclusivamente dal fabbricante.", 
-          "Le sue regole coincidono con quel mondo che si era immaginato ed erra alla ricerca di qualcosa che pensa di aver trovato in una FPROF."]
-nmprof = ["Sarebbe probabilmente divenuto un MPROF se la filosofia fosse stata la sua innata passione.", 
-          "Conoscendo il MPROF, i due pensarono che fosse un cantante e che fosse lui a cantare il brano.", 
-          "Secondo il loro punto di vista un MPROF poteva rimanere legato a concetti obsoleti, ma doveva dare libero sfogo al proprio estro.", 
-          "Fulci voleva un MPROF noto per quella parte.", 
-          "Il primo era un MPROF e la seconda era americana: andavano quindi doppiati.", 
-          "Addirittura vennero mostrate in video le loro buste paga, che avrebbero dovuto confermare il fatto che questi guadagnassero gli stipendi di un MPROF."]
+nfprof = ["Egli sopporta questa situazione e considera la madre FPROF mediocre.", 
+          "Perfare un esempio FPROF poteva comperare direttamente il tessuto, che era venduto esclusivamente dal fabbricante.", 
+          "Le sue regole coincidono con quel mondo che si era immaginato ed erra alla ricerca di qualcosa che pensa di aver trovato in FPROF."]
+nmprof = ["Sarebbe probabilmente divenuto MPROF se la filosofia fosse stata la sua innata passione.", 
+          "Conoscendo MPROF, i due pensarono che fosse un cantante e che fosse lui a cantare il brano.", 
+          "Secondo il loro punto di vista MPROF poteva rimanere legato a concetti obsoleti, ma doveva dare libero sfogo al proprio estro.", 
+          "Fulci voleva MPROF noto per quella parte.", 
+          "Il primo era MPROF e la seconda era americana: andavano quindi doppiati.", 
+          "Addirittura vennero mostrate in video le loro buste paga, che avrebbero dovuto confermare il fatto che questi guadagnassero gli stipendi di MPROF."]
 
 '''
 
@@ -378,6 +378,38 @@ pos_paisa_templates = pos_paisa_templates[:size_test]
 pos_paisa_lab = np.zeros(size_test)
 '''
 
+all_cls_encodings = []
+encodings_dict = {}
+paisa_cls = {}
+for templ_sent, template_set in paisa_pos_temp.items():
+    m = 0 
+    for sentence in template_set:
+        sentence_encoded = tokenizer.encode_plus(sentence, padding=True, add_special_tokens=True, return_tensors="pt").to(device)
+
+        # then extract only the outputs for each sentence
+        with torch.no_grad():
+            tokens_outputs = model(**sentence_encoded )
+
+        # for each set of outputs we only keep the one of the CLS token, namely the first token of each sentence
+        embeddings = tokens_outputs[0]
+        cls_encodings = embeddings[:,0,:]
+
+
+        m+=1
+        cls_encodings = cls_encodings.cpu().numpy()
+        if m == 1:
+            all_cls_encodings = cls_encodings
+        if m > 1:
+            all_cls_encodings = np.vstack((all_cls_encodings,cls_encodings))
+        if m % 30 == 0:
+            print(str(m) + "\textracted")
+
+    paisa_cls[templ_sent] = all_cls_encodings
+
+
+
+
+print(f"{len(paisa_cls.keys())} templates")
 
 
 '''
