@@ -111,6 +111,36 @@ tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 
+#frasi positive
+fname = ["FNOM viene arrestata dai carabinieri sotto gli occhi delle amiche.", 
+          "FNOM comunque lo ritiene una brava persona su cui poter fare affidamento.", 
+          "FNOM riesce a sorprendere il pubblico e la giuria con la sua voce potente ed emozionante.", 
+          "FNOM rimane incinta e decide di abortire.", 
+          "FNOM organizza alcuni espedienti e alla fine riesce a farli riavvicinare.", 
+          "FNOM rifiuta di ascoltarlo ancora e se ne va.", 
+          "FNOM ha degli strani malesseri e pensa di essere incinta.", 
+          "FNOM torna a casa e si prepara per la sua festa di compleanno."]
+mname = ["MNOM corre velocemente a vedere che succede.", 
+          "MNOM stesso venne poco dopo assassinato.",
+          "MNOM fece esiliare tutta la famiglia.",
+          "MNOM viene arrestato e inizia un lungo processo.",
+          "MNOM riprende gli studi raccogliendo successi e premi.",
+          "MNOM che amava molto la figlia, decise di soddisfare le sue richieste.",
+          "MNOM mostra una iniziale inclinazione per la filosofia.",
+          "MNOM decise di sposare la sua ex amante.",
+          "MNOM la comprende, e decide di lasciar stare.",
+          "MNOM sarebbe stato assassinato dopo una messa."]
+fprof =["Ha un fratello e un giorno spera di diventare una FPROF di successo."]
+mprof = ["Accompagnato da un MPROF di fiducia intraprese a piedi la sua escursione.", 
+          "Esitante a definirsi un MPROF, preferisce pensarsi come un cantante.", 
+          "Barker, fu arrestato per aver cercato di vendere un quarto di oncia di marijuana a un MPROF sotto copertura.", 
+          "Le sue pennellate sottili e incisive hanno i caratteri inquieti di un MPROF alla ricerca di nuove soluzioni spaziali e formali." 
+          "Leonhard infatti era probabilmente solo un MPROF.", 
+          "Altre leggende fanno di lui un MPROF prima di diventare soldato."]
+
+
+
+'''
 
 # frasi positive rese negative da me
 pfname = ["FNOM non viene arrestata dai carabinieri sotto gli occhi delle amiche.", 
@@ -167,7 +197,7 @@ nmprof = ["Sarebbe probabilmente divenuto un MPROF se la filosofia fosse stata l
           "Il primo era un MPROF e la seconda era americana: andavano quindi doppiati.", 
           "Addirittura vennero mostrate in video le loro buste paga, che avrebbero dovuto confermare il fatto che questi guadagnassero gli stipendi di un MPROF."]
 
-
+'''
 
 path = r"../Inputs"
 fName_file_path = f"{path}/100_names_f.txt"
@@ -187,6 +217,49 @@ fnamearray = build_array(fName_file)
 mnamearray = build_array(mName_file)
 
 
+
+fnametemplates = {}
+for frase in fname:
+    exfrase = []
+    for nome in fnamearray:
+        fnames = re.sub("FNOM", nome, frase)
+        exfrase.append(fnames)
+    fnametemplates[frase] = exfrase
+
+
+
+
+mnametemplates = {}
+for frase in mname:
+    exfrase = []
+    for nome in mnamearray:
+        mnames = re.sub("MNOM", nome, frase)
+        exfrase.append(mnames)
+    mnametemplates[frase] = exfrase
+
+
+
+fproftemplates = {}
+for frase in fprof:
+    exfrase = []
+    for nome in fprofarray:
+        fprofs = re.sub("FPROF", nome, frase)
+        exfrase.append(fprofs)
+    fproftemplates[frase] = exfrase
+
+
+
+mproftemplates = {}
+for frase in mprof:
+    exfrase = []
+    for nome in mprofarray:
+        mprofs = re.sub("MPROF", nome, frase)
+        exfrase.append(mprofs)
+    mproftemplates[frase] = exfrase
+
+
+
+'''
 
 for lista in [pfname, nfname]:
     templates = {}
@@ -268,6 +341,26 @@ for dictionary in [pfproftempl, pmnametempl, pfnametempl]:
 
 
 print(f"{len(pos_paisa_templates.keys())} templates pos\nSecondo templ ha {len(pos_paisa_templates[list(pos_paisa_templates.keys())[1]])} frasi")
+'''
+
+
+paisa_pos_temp = {}
+for diz in [fnametemplates, mnametemplates, fproftemplates, mproftemplates]:
+    for frase, elem in diz.items():
+        paisa_pos_temp[frase] = elem
+
+for key, val in paisa_pos_temp.items():
+    print(f"{key}\t{val[1]}")
+
+
+pos_labs = {}
+for key, val in paisa_pos_temp.items():
+    pos_labs[key] = np.zeros(len(val))
+
+
+
+
+
 
 #neg_paisa_templates = nfnametempl + nmnametempl + nfproftempl + nmproftempl
 #print(f"Templates negativi\t{len(neg_paisa_templates)}\n{neg_paisa_templates[0]}\n{neg_paisa_templates[-1]}\n\n")
@@ -287,7 +380,7 @@ pos_paisa_lab = np.zeros(size_test)
 
 
 
-
+'''
 all_cls_encodings = []
 for templ_list in [neg_paisa_templates, pos_paisa_templates]:
   
@@ -416,23 +509,23 @@ for templ_sent, templ_list in paisa_pos_templ_test.items():
             paisa_pos_res.append(f"Score\t{right_pred}")
         #template_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScores\t{right_pred}\n\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
-'''
-with open(r"../Inputs/PAISA_TEMPLATE_TEST_NEG.txt", "w") as file:
-    file.write("PAISA TEMPLATE TEST NEG\n\n")
-for scores in paisa_neg_res:
-    with open(r"../Inputs/PAISA_TEMPLATE_TEST_NEG.txt", "a") as file:
-        file.write(scores)
-        file.write("\n")
+
+#with open(r"../Inputs/PAISA_TEMPLATE_TEST_NEG.txt", "w") as file:
+#    file.write("PAISA TEMPLATE TEST NEG\n\n")
+#for scores in paisa_neg_res:
+#    with open(r"../Inputs/PAISA_TEMPLATE_TEST_NEG.txt", "a") as file:
+#        file.write(scores)
+#        file.write("\n")
 
 
-with open(r"../Inputs/PAISA_TEMPLATE_TEST_POS.txt", "w") as file:
-    file.write("PAISA TEMPLATE TEST POS\n\n")
-for scores in paisa_pos_res:
-    with open(r"../Inputs/PAISA_TEMPLATE_TEST_POS.txt", "a") as file:
-        file.write(scores)
-        file.write("\n")
+#with open(r"../Inputs/PAISA_TEMPLATE_TEST_POS.txt", "w") as file:
+#    file.write("PAISA TEMPLATE TEST POS\n\n")
+#for scores in paisa_pos_res:
+#    with open(r"../Inputs/PAISA_TEMPLATE_TEST_POS.txt", "a") as file:
+#        file.write(scores)
+#        file.write("\n")
 
-'''
+
 
 print("PAISA TEMPLATE TEST NEG\n\n")
 for scores in paisa_neg_res:
@@ -442,3 +535,4 @@ for scores in paisa_neg_res:
 print("PAISA TEMPLATE TEST POS\n\n")
 for scores in paisa_pos_res:
    print(scores)
+'''
