@@ -411,10 +411,18 @@ for templ_sent, template_set in paisa_pos_temp.items():
 
 print(f"{len(paisa_cls.keys())} templates")
 for key, val in paisa_cls.items():
-    print(len(val)+"\n")
+    print(len(val))
+    print("\n")
 
 
 '''
+
+for templ_sent, templ_list in paisa_cls.items():
+    np.random.shuffle(templ_list)
+    paisa_cls[templ_sent] = templ_list
+    print(templ_list[0])
+
+
 all_cls_encodings = []
 for templ_list in [neg_paisa_templates, pos_paisa_templates]:
   
