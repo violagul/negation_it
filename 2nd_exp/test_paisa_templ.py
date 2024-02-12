@@ -110,6 +110,7 @@ print(f"Downloading models...")
 tokenizer = AutoTokenizer.from_pretrained('dbmdz/bert-base-italian-cased')
 model_mask = AutoModelForMaskedLM.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
 model = AutoModel.from_pretrained('dbmdz/bert-base-italian-cased').to(device)
+'''
 
 #frasi positive
 fname = ["FNOM viene arrestata dai carabinieri sotto gli occhi delle amiche.", 
@@ -137,7 +138,6 @@ mprof = ["Accompagnato da MPROF di fiducia intraprese a piedi la sua escursione.
           "Le sue pennellate sottili e incisive hanno i caratteri inquieti di MPROF alla ricerca di nuove soluzioni spaziali e formali." 
           "Leonhard infatti era probabilmente solo MPROF.", 
           "Altre leggende fanno di lui MPROF prima di diventare soldato."]
-
 
 
 '''
@@ -197,7 +197,7 @@ nmprof = ["Sarebbe probabilmente divenuto MPROF se la filosofia fosse stata la s
           "Il primo era MPROF e la seconda era americana: andavano quindi doppiati.", 
           "Addirittura vennero mostrate in video le loro buste paga, che avrebbero dovuto confermare il fatto che questi guadagnassero gli stipendi di MPROF."]
 
-'''
+
 
 path = r"../Inputs"
 fName_file_path = f"{path}/100_names_f.txt"
@@ -217,7 +217,7 @@ fnamearray = build_array(fName_file)
 mnamearray = build_array(mName_file)
 
 
-
+'''
 fnametemplates = {}
 for frase in fname:
     exfrase = []
@@ -257,9 +257,9 @@ for frase in mprof:
         exfrase.append(mprofs)
     mproftemplates[frase] = exfrase
 
-
-
 '''
+
+
 
 for lista in [pfname, nfname]:
     templates = {}
@@ -341,9 +341,9 @@ for dictionary in [pfproftempl, pmnametempl, pfnametempl]:
 
 
 print(f"{len(pos_paisa_templates.keys())} templates pos\nSecondo templ ha {len(pos_paisa_templates[list(pos_paisa_templates.keys())[1]])} frasi")
+
+
 '''
-
-
 paisa_pos_temp = {}
 for diz in [fnametemplates, mnametemplates, fproftemplates, mproftemplates]:
     for frase, elem in diz.items():
@@ -358,7 +358,7 @@ for key, val in paisa_pos_temp.items():
     pos_labs[key] = np.zeros(len(val))
 
 
-
+'''
 
 
 
@@ -366,7 +366,7 @@ for key, val in paisa_pos_temp.items():
 #print(f"Templates negativi\t{len(neg_paisa_templates)}\n{neg_paisa_templates[0]}\n{neg_paisa_templates[-1]}\n\n")
 #pos_paisa_templates = pfnametempl + pmnametempl + pfproftempl + pmproftempl
 #print(f"Templates positivi\t{len(pos_paisa_templates)}\n{pos_paisa_templates[0]}\n{pos_paisa_templates[-1]}\n\n")
-'''
+
 size_test = min(3000, len(neg_paisa_templates))
 print(f"Size test neg: {size_test}")
 neg_paisa_templates = neg_paisa_templates[:size_test]
@@ -414,11 +414,11 @@ for key, val in paisa_cls.items():
     print(len(val))
     print("\n")
 
-
-
-
-
 '''
+
+
+
+
 all_cls_encodings = []
 for templ_list in [neg_paisa_templates, pos_paisa_templates]:
   
@@ -498,12 +498,12 @@ print(str(pos_paisa_lab)[:500])
 print(str(neg_paisa_cls)[:500])
 print(str(neg_paisa_lab)[:500])
 
-'''
+
 
 
 #data normalization
 scaler = load(f"../Inputs/scaler2.joblib")
-
+'''
 paisa_templ_test = {}
 for templ_sent, templ_list in paisa_cls.items():
     scaled = scaler.transform(templ_list)
@@ -642,4 +642,3 @@ for scores in paisa_neg_res:
 print("PAISA TEMPLATE TEST POS\n\n")
 for scores in paisa_pos_res:
    print(scores)
-'''
