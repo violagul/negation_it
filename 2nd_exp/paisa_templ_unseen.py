@@ -97,7 +97,7 @@ def encode_batch(current_batch, tokenizer, model, device):
     return predicted_tokens
 
 
-
+'''
 
 
 
@@ -228,4 +228,17 @@ for frase in sent_pos:
 print(f"pos unseen {len(test_sent_pos)}")
 
 dump(test_sent_neg, "../Inputs/paisa_neg_unseen.joblib")
-dump(test_sent_pos, "../Inputs/paisa_pos_unseen.joblib")
+dump(test_sent_pos, "../Inputs/paisa_pos_unseen.joblib")'''
+
+
+
+unseen_neg = load("../Inputs/paisa_neg_unseen.joblib")
+unseen_pos = load("../Inputs/paisa_pos_unseen.joblib")
+
+print("\n\nPOSITIVE\n")
+for sent in unseen_pos[:30]:
+    print(f"\n{sent}")
+
+print("\n\nNEGATIVE\n")
+for sent in unseen_neg[:30]:
+    print(f"\n{sent}")
