@@ -137,15 +137,15 @@ for verb in list_verbs:
 
 print(f"Uploading PAISA corpus...")
 # upload the Italian corpus
-'''with open(r"../data/paisa.raw.utf8", encoding='utf8') as infile:
-    paisa = infile.read()
+#with open(r"../data/paisa.raw.utf8", encoding='utf8') as infile:
+    #paisa = infile.read()
 
-print(f"Extracting Wikipedia texts from PAISA...")
+#print(f"Extracting Wikipedia texts from PAISA...")
 # from the corpus, select all texts containing "wiki" in their tag's url
-wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n" 
-paisa_wiki = re.findall(wiki_pattern, paisa)
-dump(paisa_wiki, "../Inputs/paisa_wiki.joblib")
-'''
+#wiki_pattern = r"<text.*wiki.*(?:\n.*)+?\n</text>\n" 
+#paisa_wiki = re.findall(wiki_pattern, paisa)
+#dump(paisa_wiki, "../Inputs/paisa_wiki.joblib")
+
 #print(f"Number of texts from a site containing 'wiki' in their URL: {len(paisa_wiki)}")
 #paisa_wiki = paisa
 
