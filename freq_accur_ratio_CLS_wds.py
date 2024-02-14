@@ -20,6 +20,6 @@ from math import log
 freq = [1829124, 1352772, 1169009, 757341, 667545]
 accur = [91.35, 90.45, 87.5, 83.0, 72.8]
 #pyplot.bar(list(pos_tok_size_dict.keys()), list(pos_tok_size_dict.values()))
-pyplot.bar(freq, accur)
+pyplot.bar(log(freq), accur)
 matplotlib.pyplot.title("Variation of accuracy as a function of frequence")
 pyplot.savefig("plot_classifier.png")
