@@ -2,7 +2,7 @@ import os
 os.environ['CUDA_VISIBLE_DEVICES'] = "0"
 
 
-#import torch
+import torch
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import confusion_matrix
 import numpy as np
