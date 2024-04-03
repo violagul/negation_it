@@ -93,6 +93,7 @@ for v in vbs_oneperc:
       neg_embs.append(1)
 
 print(neg_lab)
+print(neg_embs)
 
 
 
