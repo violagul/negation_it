@@ -87,10 +87,10 @@ pos_lab = []
 for v in vbs_oneperc:
    for elem in embs[v][1]:
       pos_embs.append(elem)
-      pos_embs.append(0)
+      pos_lab.append(0)
    for elem in embs[v][0]:
       neg_embs.append(elem)
-      neg_embs.append(1)
+      neg_lab.append(1)
 
 print(neg_lab[:200])
 
