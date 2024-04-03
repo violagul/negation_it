@@ -19,7 +19,7 @@ import matplotlib.pyplot as pyplot
 #device = torch.device("cuda") if torch.cuda.is_available() else torch.devide("cpu")
 
 
-embs = torch.load(r"embeddings990000")
+embs = torch.load(r"/data/vgullace/embeddings990000")
 # dictionary
 # keys = verb; velues = list of lists (list of negative embeddings [0], list of positive embeddings [0])
 
