@@ -102,10 +102,14 @@ for v in vbs_oneperc:
 train_data = [neg_embs.append(emb) for emb in pos_embs]
 train_labs = [neg_lab.append(lab) for lab in pos_lab]
 
-print(len(train_data))
-print(len(train_labs))
 
 train_data = np.array(train_data)
+train_labs = np.concatenate(np.zeros(len(pos_embs), np.ones(len(neg_embs))))
+print(train_data.shape)
+
+
+
+
 print("Data normalization...")
 # data normalization
 scaler = StandardScaler()
