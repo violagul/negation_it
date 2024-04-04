@@ -106,6 +106,7 @@ train_labs = [neg_lab.append(lab) for lab in pos_lab]
 train_data = np.array(train_data)
 train_labs = np.concatenate(np.zeros(len(pos_embs), np.ones(len(neg_embs))))
 print(train_data.shape)
+print(train_labs.shape)
 
 
 
