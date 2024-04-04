@@ -18,12 +18,6 @@ import matplotlib.pyplot as pyplot
 
 #device = torch.device("cuda") if torch.cuda.is_available() else torch.devide("cpu")
 
-print("Loading embeddings...")
-embs = torch.load(r"/data/vgullace/embeddings990000")
-# dictionary
-# keys = verb; velues = list of lists (list of negative embeddings [0], list of positive embeddings [0])
-
-
 
 print("Loading verb stats...")
 verb_stats = pd.read_csv("new_database.csv")
@@ -79,6 +73,16 @@ pyplot.show()'''
 # scaler
 # train classifier
 # prendere altri gruppi, scaler e testare
+
+
+
+
+print("Loading embeddings...")
+embs = torch.load(r"/data/vgullace/embeddings990000")
+# dictionary
+# keys = verb; velues = list of lists (list of negative embeddings [0], list of positive embeddings [0])
+
+
 
 print("Training on verbs with > 0.1 neg perc")
 vbs_oneperc = [v for v in vb_perc_mx.keys() if vb_perc_mx[v]>=0.1]
