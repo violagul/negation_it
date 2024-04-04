@@ -106,7 +106,7 @@ train_size = round(len(neg_embs)*0.9)
 
 train_data = np.concatenate((neg_embs[:train_size], pos_embs[:train_size]), 0)
 
-train_labs = np.concatenate(np.zeros(train_size), np.ones(len(train_size)))
+train_labs = np.concatenate(np.zeros(train_size), np.ones(train_size))
 print(train_data.shape)
 print(train_labs.shape)
 
