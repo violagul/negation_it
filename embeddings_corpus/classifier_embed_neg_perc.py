@@ -105,7 +105,7 @@ train_labs = [neg_lab.append(lab) for lab in pos_lab]
 print(len(train_data))
 print(len(train_labs))
 
-
+train_data = np.array(train_data)
 print("Data normalization...")
 # data normalization
 scaler = StandardScaler()
