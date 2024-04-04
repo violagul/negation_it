@@ -79,6 +79,8 @@ pyplot.show()'''
 
 print("Loading embeddings...")
 embs = torch.load(r"/data/vgullace/embeddings990000")
+print(type(embs))
+print(type(embs[v][0]))
 # dictionary
 # keys = verb; values = list of lists (list of negative embeddings [0], list of positive embeddings [0])
 
