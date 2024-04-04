@@ -82,7 +82,6 @@ embs = torch.load(r"/data/vgullace/embeddings990000")
 # dictionary
 # keys = verb; values = list of lists (list of negative embeddings [0], list of positive embeddings [0])
 
-{v1 : [[], []], v2 : [[],[]]}
 
 print("Training on verbs with > 0.1 neg perc")
 vbs_oneperc = [v for v in vb_perc_mx.keys() if vb_perc_mx[v]>=0.1]
