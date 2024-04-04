@@ -99,14 +99,12 @@ for v in vbs_oneperc:
       neg_embs.append(elem)
       neg_lab.append(1)
 
-train_data = [neg_embs.append(emb) for emb in pos_embs]
-train_labs = [neg_lab.append(lab) for lab in pos_lab]
 
 train_size = round(len(neg_embs)*0.9)
 
 train_data = np.concatenate((neg_embs[:train_size], pos_embs[:train_size]), 0)
 
-train_labs = np.concatenate(np.zeros(train_size), np.ones(train_size))
+train_labs = np.concatenate(np.zeros(train_size), np.ones(train_size), 0)
 print(train_data.shape)
 print(train_labs.shape)
 
