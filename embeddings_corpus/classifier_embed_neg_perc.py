@@ -18,11 +18,14 @@ import matplotlib.pyplot as pyplot
 
 #device = torch.device("cuda") if torch.cuda.is_available() else torch.devide("cpu")
 
-
+print("Loading embeddings...")
 embs = torch.load(r"/data/vgullace/embeddings990000")
 # dictionary
 # keys = verb; velues = list of lists (list of negative embeddings [0], list of positive embeddings [0])
 
+
+
+print("Loading verb stats...")
 verb_stats = pd.read_csv("new_database.csv")
 # dataframe 2054 vbs w "lemma", "total occ", "num non neg", "num neg", "perc neg"
 
@@ -77,7 +80,7 @@ pyplot.show()'''
 # train classifier
 # prendere altri gruppi, scaler e testare
 
-
+print("Training on verbs with > 0.1 neg perc")
 vbs_oneperc = [v for v in vb_perc_mx.keys() if vb_perc_mx[v]>=0.1]
 
 neg_embs = []
@@ -99,7 +102,7 @@ print(len(train_data))
 print(len(train_labs))
 
 
-
+print("Data normalization...")
 # data normalization
 scaler = StandardScaler()
 scaler.fit(train_data)
