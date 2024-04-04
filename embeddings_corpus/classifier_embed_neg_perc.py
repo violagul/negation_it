@@ -92,15 +92,38 @@ for v in vbs_oneperc:
       neg_embs.append(elem)
       neg_lab.append(1)
 
-print(neg_lab[:200])
+train_data = [neg_embs.append(emb) for emb in pos_embs]
+train_labs = [neg_lab.append(lab) for lab in pos_lab]
+
+print(len(train_data))
+print(len(train_labs))
+
+
+
+# data normalization
+scaler = StandardScaler()
+scaler.fit(train_data)
+dati_scaled = scaler.transform(train_data)
+dump(scaler, f"../scaler.joblib")
+
+    
+train_data, train_labs = skshuffle(train_data, train_labs, random_state=42)
+
+X = train_data[:len(train_data)*0.8]
+y = train_labs[:len(train_labs)*0.8]
+test_X = train_data[len(train_data)*0.8:]
+test_y = train_labs[len(train_labs)*0.8:]
 
 
 
 
 
 
-'''
-paisa_result =[]
+
+
+
+
+emb_result =[]
 
 print(f"Training and testing MLP...")
 # set up the MLP classifier
@@ -119,15 +142,15 @@ for hl in [(350,350),(40,40)]:
       clf = clf.fit(X, y)
 
       # see predictions on the dataset
-      predicted = clf.predict(test)
-      right_pred = clf.score(test, test_lab)
-      tn, fp, fn, tp = confusion_matrix(test_lab, predicted).ravel()
-      paisa_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScore\t{right_pred}\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+      predicted = clf.predict(test_X)
+      right_pred = clf.score(test_X, test_y)
+      tn, fp, fn, tp = confusion_matrix(test_y, predicted).ravel()
+      emb_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScore\t{right_pred}\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
      
       dump(clf, f"../Inputs/non_classifier_{n}.joblib")
     
 
 print("PAISA' TEST\n")
-for scores in paisa_result:
-   print(scores)'''
+for scores in emb_result:
+   print(scores)
