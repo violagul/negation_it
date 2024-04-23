@@ -1,0 +1,73 @@
+1955--2054 ranks
+Score	0.5005020080321285
+True neg	2
+False pos	994
+False neg	1
+True pos	995
+
+Score	0.5
+True neg	1
+False pos	995
+False neg	1
+True pos	995
+
+Score	0.5005020080321285
+True neg	2
+False pos	994
+False neg	1
+True pos	995
+
+Score	0.5
+True neg	1
+False pos	995
+False neg	1
+True pos	995
+
+Score	0.5005020080321285
+True neg	2
+False pos	994
+False neg	1
+True pos	995
+
+Score	0.5
+True neg	1
+False pos	995
+False neg	1
+True pos	995
+
+Score	0.501004016064257
+True neg	8
+False pos	988
+False neg	6
+True pos	990
+
+Score	0.5015060240963856
+True neg	12
+False pos	984
+False neg	9
+True pos	987
+
+Score	0.501004016064257
+True neg	8
+False pos	988
+False neg	6
+True pos	990
+
+Score	0.5015060240963856
+True neg	12
+False pos	984
+False neg	9
+True pos	987
+
+Score	0.501004016064257
+True neg	8
+False pos	988
+False neg	6
+True pos	990
+
+Score	0.5015060240963856
+True neg	12
+False pos	984
+False neg	9
+True pos	987
+

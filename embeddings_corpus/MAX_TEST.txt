@@ -1,0 +1,73 @@
+MAX TEST
+Score	0.625
+True neg	28
+False pos	8
+False neg	19
+True pos	17
+
+Score	0.6111111111111112
+True neg	27
+False pos	9
+False neg	19
+True pos	17
+
+Score	0.6111111111111112
+True neg	27
+False pos	9
+False neg	19
+True pos	17
+
+Score	0.6111111111111112
+True neg	27
+False pos	9
+False neg	19
+True pos	17
+
+Score	0.6111111111111112
+True neg	27
+False pos	9
+False neg	19
+True pos	17
+
+Score	0.6111111111111112
+True neg	27
+False pos	9
+False neg	19
+True pos	17
+
+Score	0.6666666666666666
+True neg	31
+False pos	5
+False neg	19
+True pos	17
+
+Score	0.6666666666666666
+True neg	31
+False pos	5
+False neg	19
+True pos	17
+
+Score	0.6666666666666666
+True neg	30
+False pos	6
+False neg	18
+True pos	18
+
+Score	0.6805555555555556
+True neg	31
+False pos	5
+False neg	18
+True pos	18
+
+Score	0.6805555555555556
+True neg	31
+False pos	5
+False neg	18
+True pos	18
+
+Score	0.6805555555555556
+True neg	31
+False pos	5
+False neg	18
+True pos	18
+

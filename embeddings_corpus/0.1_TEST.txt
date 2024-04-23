@@ -1,0 +1,74 @@
+EMB 0.1 TEST
+
+Score	0.9892517569243489
+True neg	14353
+False pos	125
+False neg	31
+True pos	5
+
+Score	0.996486151302191
+True neg	14462
+False pos	16
+False neg	35
+True pos	1
+
+Score	0.9856690092324653
+True neg	14305
+False pos	173
+False neg	35
+True pos	1
+
+Score	0.9965550502962657
+True neg	14463
+False pos	15
+False neg	35
+True pos	1
+
+Score	0.9883560700013779
+True neg	14342
+False pos	136
+False neg	33
+True pos	3
+
+Score	0.9965550502962657
+True neg	14463
+False pos	15
+False neg	35
+True pos	1
+
+Score	0.9960038583436682
+True neg	14453
+False pos	25
+False neg	33
+True pos	3
+
+Score	0.9906986357999173
+True neg	14376
+False pos	102
+False neg	33
+True pos	3
+
+Score	0.9952459694088466
+True neg	14442
+False pos	36
+False neg	33
+True pos	3
+
+Score	0.990767534793992
+True neg	14377
+False pos	101
+False neg	33
+True pos	3
+
+Score	0.996486151302191
+True neg	14460
+False pos	18
+False neg	33
+True pos	3
+
+Score	0.990767534793992
+True neg	14377
+False pos	101
+False neg	33
+True pos	3
+

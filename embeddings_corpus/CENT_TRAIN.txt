@@ -1,0 +1,120 @@
+CENT TEST
+
+Method  adam
+Nb hidden layers        (350, 350)
+Alpha   1e-05
+Score   0.6893203883495146
+True neg        45
+False pos       58
+False neg       6
+True pos        97
+
+
+Method  sgd
+Nb hidden layers        (350, 350)
+Alpha   1e-05
+Score   0.6213592233009708
+True neg        32
+False pos       71
+False neg       7
+True pos        96
+
+
+Method  adam
+Nb hidden layers        (350, 350)
+Alpha   0.0001
+Score   0.6796116504854369
+True neg        42
+False pos       61
+False neg       5
+True pos        98
+
+
+Method  sgd
+Nb hidden layers        (350, 350)
+Alpha   0.0001
+Score   0.6213592233009708
+True neg        32
+False pos       71
+False neg       7
+True pos        96
+
+
+Method  adam
+Nb hidden layers        (350, 350)
+Alpha   0.001
+Score   0.6844660194174758
+True neg        43
+False pos       60
+False neg       5
+True pos        98
+
+
+Method  sgd
+Nb hidden layers        (350, 350)
+Alpha   0.001
+Score   0.6213592233009708
+True neg        32
+False pos       71
+False neg       7
+True pos        96
+
+
+Method  adam
+Nb hidden layers        (40, 40)
+Alpha   1e-05
+Score   0.7281553398058253
+True neg        53
+False pos       50
+False neg       6
+True pos        97
+
+
+Method  sgd
+Nb hidden layers        (40, 40)
+Alpha   1e-05
+Score   0.7135922330097088
+True neg        50
+False pos       53
+False neg       6
+True pos        97
+
+
+Method  adam
+Nb hidden layers        (40, 40)
+Alpha   0.0001
+Score   0.7718446601941747
+True neg        62
+False pos       41
+False neg       6
+True pos        97
+
+
+Method  sgd
+Nb hidden layers        (40, 40)
+Alpha   0.0001
+Score   0.7135922330097088
+True neg        50
+False pos       53
+False neg       6
+True pos        97
+
+
+Method  adam
+Nb hidden layers        (40, 40)
+Alpha   0.001
+Score   0.7087378640776699
+True neg        49
+False pos       54
+False neg       6
+True pos        97
+
+
+Method  sgd
+Nb hidden layers        (40, 40)
+Alpha   0.001
+Score   0.7135922330097088
+True neg        50
+False pos       53
+False neg       6
+True pos        97

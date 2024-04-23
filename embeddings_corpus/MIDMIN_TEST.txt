@@ -1,0 +1,74 @@
+MIN TEST
+
+Score	0.6293969849246231
+True neg	116
+False pos	282
+False neg	13
+True pos	385
+
+Score	0.6331658291457286
+True neg	128
+False pos	270
+False neg	22
+True pos	376
+
+Score	0.6293969849246231
+True neg	117
+False pos	281
+False neg	14
+True pos	384
+
+Score	0.6331658291457286
+True neg	128
+False pos	270
+False neg	22
+True pos	376
+
+Score	0.628140703517588
+True neg	115
+False pos	283
+False neg	13
+True pos	385
+
+Score	0.6331658291457286
+True neg	128
+False pos	270
+False neg	22
+True pos	376
+
+Score	0.6457286432160804
+True neg	127
+False pos	271
+False neg	11
+True pos	387
+
+Score	0.6042713567839196
+True neg	93
+False pos	305
+False neg	10
+True pos	388
+
+Score	0.6482412060301508
+True neg	129
+False pos	269
+False neg	11
+True pos	387
+
+Score	0.6042713567839196
+True neg	93
+False pos	305
+False neg	10
+True pos	388
+
+Score	0.6457286432160804
+True neg	127
+False pos	271
+False neg	11
+True pos	387
+
+Score	0.6042713567839196
+True neg	93
+False pos	305
+False neg	10
+True pos	388
+

@@ -1,0 +1,108 @@
+EMB 0.1 TRAINMethod	adam
+Nb hidden layers	(350, 350)
+Alpha	1e-05
+Score	0.9339449541284404
+True neg	450
+False pos	22
+False neg	14
+True pos	59
+
+Method	sgd
+Nb hidden layers	(350, 350)
+Alpha	1e-05
+Score	0.9321100917431193
+True neg	455
+False pos	17
+False neg	20
+True pos	53
+
+Method	adam
+Nb hidden layers	(350, 350)
+Alpha	0.0001
+Score	0.9321100917431193
+True neg	451
+False pos	21
+False neg	16
+True pos	57
+
+Method	sgd
+Nb hidden layers	(350, 350)
+Alpha	0.0001
+Score	0.9321100917431193
+True neg	455
+False pos	17
+False neg	20
+True pos	53
+
+Method	adam
+Nb hidden layers	(350, 350)
+Alpha	0.001
+Score	0.9357798165137615
+True neg	453
+False pos	19
+False neg	16
+True pos	57
+
+Method	sgd
+Nb hidden layers	(350, 350)
+Alpha	0.001
+Score	0.9321100917431193
+True neg	455
+False pos	17
+False neg	20
+True pos	53
+
+Method	adam
+Nb hidden layers	(40, 40)
+Alpha	1e-05
+Score	0.9284403669724771
+True neg	450
+False pos	22
+False neg	17
+True pos	56
+
+Method	sgd
+Nb hidden layers	(40, 40)
+Alpha	1e-05
+Score	0.926605504587156
+True neg	453
+False pos	19
+False neg	21
+True pos	52
+
+Method	adam
+Nb hidden layers	(40, 40)
+Alpha	0.0001
+Score	0.9284403669724771
+True neg	450
+False pos	22
+False neg	17
+True pos	56
+
+Method	sgd
+Nb hidden layers	(40, 40)
+Alpha	0.0001
+Score	0.926605504587156
+True neg	453
+False pos	19
+False neg	21
+True pos	52
+
+Method	adam
+Nb hidden layers	(40, 40)
+Alpha	0.001
+Score	0.9321100917431193
+True neg	452
+False pos	20
+False neg	17
+True pos	56
+
+Method	sgd
+Nb hidden layers	(40, 40)
+Alpha	0.001
+Score	0.926605504587156
+True neg	453
+False pos	19
+False neg	21
+True pos	52
+

@@ -1,0 +1,73 @@
+MIDMAX TEST
+Score	0.5336564351103931
+True neg	149
+False pos	1708
+False neg	24
+True pos	1833
+
+Score	0.5325794291868605
+True neg	140
+False pos	1717
+False neg	19
+True pos	1838
+
+Score	0.5336564351103931
+True neg	149
+False pos	1708
+False neg	24
+True pos	1833
+
+Score	0.5325794291868605
+True neg	140
+False pos	1717
+False neg	19
+True pos	1838
+
+Score	0.5347334410339257
+True neg	153
+False pos	1704
+False neg	24
+True pos	1833
+
+Score	0.5325794291868605
+True neg	140
+False pos	1717
+False neg	19
+True pos	1838
+
+Score	0.5312331717824448
+True neg	150
+False pos	1707
+False neg	34
+True pos	1823
+
+Score	0.5301561658589122
+True neg	148
+False pos	1709
+False neg	36
+True pos	1821
+
+Score	0.531502423263328
+True neg	151
+False pos	1706
+False neg	34
+True pos	1823
+
+Score	0.5301561658589122
+True neg	148
+False pos	1709
+False neg	36
+True pos	1821
+
+Score	0.5309639203015617
+True neg	150
+False pos	1707
+False neg	35
+True pos	1822
+
+Score	0.5301561658589122
+True neg	148
+False pos	1709
+False neg	36
+True pos	1821
+

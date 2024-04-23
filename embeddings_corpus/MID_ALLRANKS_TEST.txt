@@ -1,0 +1,1242 @@
+MID ALL-RANKS TEST
+1-100 ranks
+Score	0.4305555555555556
+True neg	2
+False pos	34
+False neg	7
+True pos	29
+
+Score	0.4583333333333333
+True neg	2
+False pos	34
+False neg	5
+True pos	31
+
+Score	0.4305555555555556
+True neg	2
+False pos	34
+False neg	7
+True pos	29
+
+Score	0.4583333333333333
+True neg	2
+False pos	34
+False neg	5
+True pos	31
+
+Score	0.4305555555555556
+True neg	2
+False pos	34
+False neg	7
+True pos	29
+
+Score	0.4583333333333333
+True neg	2
+False pos	34
+False neg	5
+True pos	31
+
+Score	0.4583333333333333
+True neg	4
+False pos	32
+False neg	7
+True pos	29
+
+Score	0.4583333333333333
+True neg	3
+False pos	33
+False neg	6
+True pos	30
+
+Score	0.4444444444444444
+True neg	4
+False pos	32
+False neg	8
+True pos	28
+
+Score	0.4583333333333333
+True neg	3
+False pos	33
+False neg	6
+True pos	30
+
+Score	0.4583333333333333
+True neg	4
+False pos	32
+False neg	7
+True pos	29
+
+Score	0.4583333333333333
+True neg	3
+False pos	33
+False neg	6
+True pos	30
+
+101-200 ranks
+Score	0.9553571428571429
+True neg	56
+False pos	0
+False neg	5
+True pos	51
+
+Score	0.9375
+True neg	54
+False pos	2
+False neg	5
+True pos	51
+
+Score	0.9553571428571429
+True neg	56
+False pos	0
+False neg	5
+True pos	51
+
+Score	0.9375
+True neg	54
+False pos	2
+False neg	5
+True pos	51
+
+Score	0.9553571428571429
+True neg	56
+False pos	0
+False neg	5
+True pos	51
+
+Score	0.9375
+True neg	54
+False pos	2
+False neg	5
+True pos	51
+
+Score	0.9375
+True neg	55
+False pos	1
+False neg	6
+True pos	50
+
+Score	0.9196428571428571
+True neg	54
+False pos	2
+False neg	7
+True pos	49
+
+Score	0.9375
+True neg	55
+False pos	1
+False neg	6
+True pos	50
+
+Score	0.9196428571428571
+True neg	54
+False pos	2
+False neg	7
+True pos	49
+
+Score	0.9285714285714286
+True neg	55
+False pos	1
+False neg	7
+True pos	49
+
+Score	0.9196428571428571
+True neg	54
+False pos	2
+False neg	7
+True pos	49
+
+201-300 ranks
+Score	0.8434065934065934
+True neg	137
+False pos	45
+False neg	12
+True pos	170
+
+Score	0.8021978021978022
+True neg	122
+False pos	60
+False neg	12
+True pos	170
+
+Score	0.8626373626373627
+True neg	144
+False pos	38
+False neg	12
+True pos	170
+
+Score	0.8021978021978022
+True neg	122
+False pos	60
+False neg	12
+True pos	170
+
+Score	0.8626373626373627
+True neg	144
+False pos	38
+False neg	12
+True pos	170
+
+Score	0.8021978021978022
+True neg	122
+False pos	60
+False neg	12
+True pos	170
+
+Score	0.804945054945055
+True neg	123
+False pos	59
+False neg	12
+True pos	170
+
+Score	0.7747252747252747
+True neg	114
+False pos	68
+False neg	14
+True pos	168
+
+Score	0.7994505494505495
+True neg	122
+False pos	60
+False neg	13
+True pos	169
+
+Score	0.771978021978022
+True neg	113
+False pos	69
+False neg	14
+True pos	168
+
+Score	0.7884615384615384
+True neg	118
+False pos	64
+False neg	13
+True pos	169
+
+Score	0.771978021978022
+True neg	113
+False pos	69
+False neg	14
+True pos	168
+
+301-400 ranks
+Score	0.6209677419354839
+True neg	31
+False pos	93
+False neg	1
+True pos	123
+
+Score	0.6370967741935484
+True neg	35
+False pos	89
+False neg	1
+True pos	123
+
+Score	0.6129032258064516
+True neg	30
+False pos	94
+False neg	2
+True pos	122
+
+Score	0.6370967741935484
+True neg	35
+False pos	89
+False neg	1
+True pos	123
+
+Score	0.5967741935483871
+True neg	27
+False pos	97
+False neg	3
+True pos	121
+
+Score	0.6370967741935484
+True neg	35
+False pos	89
+False neg	1
+True pos	123
+
+Score	0.6129032258064516
+True neg	32
+False pos	92
+False neg	4
+True pos	120
+
+Score	0.6693548387096774
+True neg	46
+False pos	78
+False neg	4
+True pos	120
+
+Score	0.6330645161290323
+True neg	37
+False pos	87
+False neg	4
+True pos	120
+
+Score	0.6653225806451613
+True neg	45
+False pos	79
+False neg	4
+True pos	120
+
+Score	0.6048387096774194
+True neg	30
+False pos	94
+False neg	4
+True pos	120
+
+Score	0.6653225806451613
+True neg	45
+False pos	79
+False neg	4
+True pos	120
+
+401-500 ranks
+Score	0.8204787234042553
+True neg	259
+False pos	117
+False neg	18
+True pos	358
+
+Score	0.7460106382978723
+True neg	199
+False pos	177
+False neg	14
+True pos	362
+
+Score	0.824468085106383
+True neg	262
+False pos	114
+False neg	18
+True pos	358
+
+Score	0.7460106382978723
+True neg	199
+False pos	177
+False neg	14
+True pos	362
+
+Score	0.8191489361702128
+True neg	258
+False pos	118
+False neg	18
+True pos	358
+
+Score	0.7460106382978723
+True neg	199
+False pos	177
+False neg	14
+True pos	362
+
+Score	0.8789893617021277
+True neg	305
+False pos	71
+False neg	20
+True pos	356
+
+Score	0.8643617021276596
+True neg	294
+False pos	82
+False neg	20
+True pos	356
+
+Score	0.875
+True neg	303
+False pos	73
+False neg	21
+True pos	355
+
+Score	0.8643617021276596
+True neg	294
+False pos	82
+False neg	20
+True pos	356
+
+Score	0.8776595744680851
+True neg	304
+False pos	72
+False neg	20
+True pos	356
+
+Score	0.8643617021276596
+True neg	294
+False pos	82
+False neg	20
+True pos	356
+
+501-600 ranks
+Score	0.7055961070559611
+True neg	186
+False pos	225
+False neg	17
+True pos	394
+
+Score	0.732360097323601
+True neg	204
+False pos	207
+False neg	13
+True pos	398
+
+Score	0.7116788321167883
+True neg	191
+False pos	220
+False neg	17
+True pos	394
+
+Score	0.732360097323601
+True neg	204
+False pos	207
+False neg	13
+True pos	398
+
+Score	0.7055961070559611
+True neg	185
+False pos	226
+False neg	16
+True pos	395
+
+Score	0.732360097323601
+True neg	204
+False pos	207
+False neg	13
+True pos	398
+
+Score	0.6873479318734793
+True neg	176
+False pos	235
+False neg	22
+True pos	389
+
+Score	0.7262773722627737
+True neg	201
+False pos	210
+False neg	15
+True pos	396
+
+Score	0.6885644768856448
+True neg	176
+False pos	235
+False neg	21
+True pos	390
+
+Score	0.7287104622871047
+True neg	203
+False pos	208
+False neg	15
+True pos	396
+
+Score	0.6861313868613139
+True neg	173
+False pos	238
+False neg	20
+True pos	391
+
+Score	0.7287104622871047
+True neg	203
+False pos	208
+False neg	15
+True pos	396
+
+601-700 ranks
+Score	0.4985549132947977
+True neg	18
+False pos	328
+False neg	19
+True pos	327
+
+Score	0.49710982658959535
+True neg	15
+False pos	331
+False neg	17
+True pos	329
+
+Score	0.4985549132947977
+True neg	19
+False pos	327
+False neg	20
+True pos	326
+
+Score	0.49710982658959535
+True neg	15
+False pos	331
+False neg	17
+True pos	329
+
+Score	0.4956647398843931
+True neg	18
+False pos	328
+False neg	21
+True pos	325
+
+Score	0.49710982658959535
+True neg	15
+False pos	331
+False neg	17
+True pos	329
+
+Score	0.5289017341040463
+True neg	46
+False pos	300
+False neg	26
+True pos	320
+
+Score	0.5361271676300579
+True neg	46
+False pos	300
+False neg	21
+True pos	325
+
+Score	0.5260115606936416
+True neg	46
+False pos	300
+False neg	28
+True pos	318
+
+Score	0.5361271676300579
+True neg	46
+False pos	300
+False neg	21
+True pos	325
+
+Score	0.5303468208092486
+True neg	47
+False pos	299
+False neg	26
+True pos	320
+
+Score	0.5361271676300579
+True neg	46
+False pos	300
+False neg	21
+True pos	325
+
+701-800 ranks
+Score	0.5012406947890818
+True neg	24
+False pos	379
+False neg	23
+True pos	380
+
+Score	0.49255583126550867
+True neg	10
+False pos	393
+False neg	16
+True pos	387
+
+Score	0.5012406947890818
+True neg	24
+False pos	379
+False neg	23
+True pos	380
+
+Score	0.49255583126550867
+True neg	10
+False pos	393
+False neg	16
+True pos	387
+
+Score	0.5049627791563276
+True neg	25
+False pos	378
+False neg	21
+True pos	382
+
+Score	0.49255583126550867
+True neg	10
+False pos	393
+False neg	16
+True pos	387
+
+Score	0.5198511166253101
+True neg	41
+False pos	362
+False neg	25
+True pos	378
+
+Score	0.5173697270471465
+True neg	44
+False pos	359
+False neg	30
+True pos	373
+
+Score	0.5173697270471465
+True neg	39
+False pos	364
+False neg	25
+True pos	378
+
+Score	0.5173697270471465
+True neg	44
+False pos	359
+False neg	30
+True pos	373
+
+Score	0.5210918114143921
+True neg	43
+False pos	360
+False neg	26
+True pos	377
+
+Score	0.5173697270471465
+True neg	44
+False pos	359
+False neg	30
+True pos	373
+
+1201-1300 ranks
+Score	0.5213730569948186
+True neg	48
+False pos	724
+False neg	15
+True pos	757
+
+Score	0.5362694300518135
+True neg	72
+False pos	700
+False neg	16
+True pos	756
+
+Score	0.5213730569948186
+True neg	49
+False pos	723
+False neg	16
+True pos	756
+
+Score	0.5362694300518135
+True neg	72
+False pos	700
+False neg	16
+True pos	756
+
+Score	0.5239637305699482
+True neg	52
+False pos	720
+False neg	15
+True pos	757
+
+Score	0.5362694300518135
+True neg	72
+False pos	700
+False neg	16
+True pos	756
+
+Score	0.5453367875647669
+True neg	88
+False pos	684
+False neg	18
+True pos	754
+
+Score	0.5382124352331606
+True neg	80
+False pos	692
+False neg	21
+True pos	751
+
+Score	0.5446891191709845
+True neg	87
+False pos	685
+False neg	18
+True pos	754
+
+Score	0.538860103626943
+True neg	81
+False pos	691
+False neg	21
+True pos	751
+
+Score	0.5479274611398963
+True neg	91
+False pos	681
+False neg	17
+True pos	755
+
+Score	0.538860103626943
+True neg	81
+False pos	691
+False neg	21
+True pos	751
+
+1301-1400 ranks
+Score	0.6213842975206612
+True neg	251
+False pos	717
+False neg	16
+True pos	952
+
+Score	0.6260330578512396
+True neg	263
+False pos	705
+False neg	19
+True pos	949
+
+Score	0.6244834710743802
+True neg	257
+False pos	711
+False neg	16
+True pos	952
+
+Score	0.6260330578512396
+True neg	263
+False pos	705
+False neg	19
+True pos	949
+
+Score	0.625
+True neg	257
+False pos	711
+False neg	15
+True pos	953
+
+Score	0.6260330578512396
+True neg	263
+False pos	705
+False neg	19
+True pos	949
+
+Score	0.6849173553719008
+True neg	375
+False pos	593
+False neg	17
+True pos	951
+
+Score	0.6988636363636364
+True neg	407
+False pos	561
+False neg	22
+True pos	946
+
+Score	0.6947314049586777
+True neg	394
+False pos	574
+False neg	17
+True pos	951
+
+Score	0.6978305785123967
+True neg	405
+False pos	563
+False neg	22
+True pos	946
+
+Score	0.6921487603305785
+True neg	388
+False pos	580
+False neg	16
+True pos	952
+
+Score	0.6978305785123967
+True neg	405
+False pos	563
+False neg	22
+True pos	946
+
+1401-1500 ranks
+Score	0.6025974025974026
+True neg	349
+False pos	1191
+False neg	33
+True pos	1507
+
+Score	0.5746753246753247
+True neg	258
+False pos	1282
+False neg	28
+True pos	1512
+
+Score	0.6035714285714285
+True neg	353
+False pos	1187
+False neg	34
+True pos	1506
+
+Score	0.5746753246753247
+True neg	258
+False pos	1282
+False neg	28
+True pos	1512
+
+Score	0.6055194805194806
+True neg	358
+False pos	1182
+False neg	33
+True pos	1507
+
+Score	0.5746753246753247
+True neg	258
+False pos	1282
+False neg	28
+True pos	1512
+
+Score	0.6152597402597403
+True neg	393
+False pos	1147
+False neg	38
+True pos	1502
+
+Score	0.6100649350649351
+True neg	377
+False pos	1163
+False neg	38
+True pos	1502
+
+Score	0.6201298701298701
+True neg	410
+False pos	1130
+False neg	40
+True pos	1500
+
+Score	0.6100649350649351
+True neg	377
+False pos	1163
+False neg	38
+True pos	1502
+
+Score	0.6185064935064936
+True neg	403
+False pos	1137
+False neg	38
+True pos	1502
+
+Score	0.6100649350649351
+True neg	377
+False pos	1163
+False neg	38
+True pos	1502
+
+1501-1600 ranks
+Score	0.6051797040169133
+True neg	220
+False pos	726
+False neg	21
+True pos	925
+
+Score	0.5998942917547568
+True neg	209
+False pos	737
+False neg	20
+True pos	926
+
+Score	0.6057082452431289
+True neg	220
+False pos	726
+False neg	20
+True pos	926
+
+Score	0.5998942917547568
+True neg	209
+False pos	737
+False neg	20
+True pos	926
+
+Score	0.6009513742071881
+True neg	210
+False pos	736
+False neg	19
+True pos	927
+
+Score	0.5998942917547568
+True neg	209
+False pos	737
+False neg	20
+True pos	926
+
+Score	0.6051797040169133
+True neg	219
+False pos	727
+False neg	20
+True pos	926
+
+Score	0.5993657505285412
+True neg	219
+False pos	727
+False neg	31
+True pos	915
+
+Score	0.6088794926004228
+True neg	226
+False pos	720
+False neg	20
+True pos	926
+
+Score	0.5998942917547568
+True neg	220
+False pos	726
+False neg	31
+True pos	915
+
+Score	0.607293868921776
+True neg	224
+False pos	722
+False neg	21
+True pos	925
+
+Score	0.6004228329809725
+True neg	220
+False pos	726
+False neg	30
+True pos	916
+
+1601-1700 ranks
+Score	0.6028901734104046
+True neg	188
+False pos	677
+False neg	10
+True pos	855
+
+Score	0.6063583815028901
+True neg	203
+False pos	662
+False neg	19
+True pos	846
+
+Score	0.6040462427745664
+True neg	190
+False pos	675
+False neg	10
+True pos	855
+
+Score	0.6063583815028901
+True neg	203
+False pos	662
+False neg	19
+True pos	846
+
+Score	0.599421965317919
+True neg	182
+False pos	683
+False neg	10
+True pos	855
+
+Score	0.6063583815028901
+True neg	203
+False pos	662
+False neg	19
+True pos	846
+
+Score	0.6184971098265896
+True neg	217
+False pos	648
+False neg	12
+True pos	853
+
+Score	0.615606936416185
+True neg	217
+False pos	648
+False neg	17
+True pos	848
+
+Score	0.6150289017341041
+True neg	211
+False pos	654
+False neg	12
+True pos	853
+
+Score	0.6150289017341041
+True neg	216
+False pos	649
+False neg	17
+True pos	848
+
+Score	0.6196531791907515
+True neg	219
+False pos	646
+False neg	12
+True pos	853
+
+Score	0.6150289017341041
+True neg	216
+False pos	649
+False neg	17
+True pos	848
+
+1701-1800 ranks
+Score	0.5791873963515755
+True neg	408
+False pos	2004
+False neg	26
+True pos	2386
+
+Score	0.5698590381426202
+True neg	360
+False pos	2052
+False neg	23
+True pos	2389
+
+Score	0.5789800995024875
+True neg	408
+False pos	2004
+False neg	27
+True pos	2385
+
+Score	0.5698590381426202
+True neg	360
+False pos	2052
+False neg	23
+True pos	2389
+
+Score	0.5766998341625207
+True neg	397
+False pos	2015
+False neg	27
+True pos	2385
+
+Score	0.5698590381426202
+True neg	360
+False pos	2052
+False neg	23
+True pos	2389
+
+Score	0.5968076285240465
+True neg	490
+False pos	1922
+False neg	23
+True pos	2389
+
+Score	0.5986733001658375
+True neg	494
+False pos	1918
+False neg	18
+True pos	2394
+
+Score	0.5978441127694859
+True neg	495
+False pos	1917
+False neg	23
+True pos	2389
+
+Score	0.5984660033167496
+True neg	493
+False pos	1919
+False neg	18
+True pos	2394
+
+Score	0.5959784411276948
+True neg	485
+False pos	1927
+False neg	22
+True pos	2390
+
+Score	0.5982587064676617
+True neg	492
+False pos	1920
+False neg	18
+True pos	2394
+
+1801-1900 ranks
+Score	0.5354477611940298
+True neg	108
+False pos	1232
+False neg	13
+True pos	1327
+
+Score	0.530223880597015
+True neg	97
+False pos	1243
+False neg	16
+True pos	1324
+
+Score	0.5365671641791044
+True neg	113
+False pos	1227
+False neg	15
+True pos	1325
+
+Score	0.530223880597015
+True neg	97
+False pos	1243
+False neg	16
+True pos	1324
+
+Score	0.5358208955223881
+True neg	110
+False pos	1230
+False neg	14
+True pos	1326
+
+Score	0.530223880597015
+True neg	97
+False pos	1243
+False neg	16
+True pos	1324
+
+Score	0.5496268656716418
+True neg	149
+False pos	1191
+False neg	16
+True pos	1324
+
+Score	0.567910447761194
+True neg	196
+False pos	1144
+False neg	14
+True pos	1326
+
+Score	0.5511194029850747
+True neg	153
+False pos	1187
+False neg	16
+True pos	1324
+
+Score	0.5675373134328359
+True neg	195
+False pos	1145
+False neg	14
+True pos	1326
+
+Score	0.5507462686567164
+True neg	151
+False pos	1189
+False neg	15
+True pos	1325
+
+Score	0.5675373134328359
+True neg	195
+False pos	1145
+False neg	14
+True pos	1326
+
+1901-2000 ranks
+Score	0.5672514619883041
+True neg	376
+False pos	2360
+False neg	8
+True pos	2728
+
+Score	0.5542763157894737
+True neg	305
+False pos	2431
+False neg	8
+True pos	2728
+
+Score	0.5672514619883041
+True neg	377
+False pos	2359
+False neg	9
+True pos	2727
+
+Score	0.5542763157894737
+True neg	305
+False pos	2431
+False neg	8
+True pos	2728
+
+Score	0.5656067251461988
+True neg	365
+False pos	2371
+False neg	6
+True pos	2730
+
+Score	0.5542763157894737
+True neg	305
+False pos	2431
+False neg	8
+True pos	2728
+
+Score	0.5705409356725146
+True neg	397
+False pos	2339
+False neg	11
+True pos	2725
+
+Score	0.5782163742690059
+True neg	448
+False pos	2288
+False neg	20
+True pos	2716
+
+Score	0.5720029239766082
+True neg	407
+False pos	2329
+False neg	13
+True pos	2723
+
+Score	0.5782163742690059
+True neg	448
+False pos	2288
+False neg	20
+True pos	2716
+
+Score	0.5712719298245614
+True neg	401
+False pos	2335
+False neg	11
+True pos	2725
+
+Score	0.5782163742690059
+True neg	448
+False pos	2288
+False neg	20
+True pos	2716
+
+1955-2054 ranks
+Score	0.5522088353413654
+True neg	106
+False pos	890
+False neg	2
+True pos	994
+
+Score	0.5507028112449799
+True neg	104
+False pos	892
+False neg	3
+True pos	993
+
+Score	0.5522088353413654
+True neg	106
+False pos	890
+False neg	2
+True pos	994
+
+Score	0.5507028112449799
+True neg	104
+False pos	892
+False neg	3
+True pos	993
+
+Score	0.5512048192771084
+True neg	104
+False pos	892
+False neg	2
+True pos	994
+
+Score	0.5507028112449799
+True neg	104
+False pos	892
+False neg	3
+True pos	993
+
+Score	0.5461847389558233
+True neg	96
+False pos	900
+False neg	4
+True pos	992
+
+Score	0.5471887550200804
+True neg	102
+False pos	894
+False neg	8
+True pos	988
+
+Score	0.5486947791164659
+True neg	101
+False pos	895
+False neg	4
+True pos	992
+
+Score	0.5471887550200804
+True neg	102
+False pos	894
+False neg	8
+True pos	988
+
+Score	0.5456827309236948
+True neg	95
+False pos	901
+False neg	4
+True pos	992
+
+Score	0.5471887550200804
+True neg	102
+False pos	894
+False neg	8
+True pos	988
+
