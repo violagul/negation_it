@@ -1,0 +1,109 @@
+WORDNET TRAIN
+Method	adam
+Nb hidden layers	(350, 350)
+Alpha	1e-05
+Score	0.8883333333333333
+True neg	556
+False pos	50
+False neg	84
+True pos	510
+
+Method	sgd
+Nb hidden layers	(350, 350)
+Alpha	1e-05
+Score	0.8825
+True neg	542
+False pos	64
+False neg	77
+True pos	517
+
+Method	adam
+Nb hidden layers	(350, 350)
+Alpha	0.0001
+Score	0.8925
+True neg	551
+False pos	55
+False neg	74
+True pos	520
+
+Method	sgd
+Nb hidden layers	(350, 350)
+Alpha	0.0001
+Score	0.8816666666666667
+True neg	542
+False pos	64
+False neg	78
+True pos	516
+
+Method	adam
+Nb hidden layers	(350, 350)
+Alpha	0.001
+Score	0.8891666666666667
+True neg	554
+False pos	52
+False neg	81
+True pos	513
+
+Method	sgd
+Nb hidden layers	(350, 350)
+Alpha	0.001
+Score	0.8825
+True neg	542
+False pos	64
+False neg	77
+True pos	517
+
+Method	adam
+Nb hidden layers	(40, 40)
+Alpha	1e-05
+Score	0.8758333333333334
+True neg	540
+False pos	66
+False neg	83
+True pos	511
+
+Method	sgd
+Nb hidden layers	(40, 40)
+Alpha	1e-05
+Score	0.875
+True neg	532
+False pos	74
+False neg	76
+True pos	518
+
+Method	adam
+Nb hidden layers	(40, 40)
+Alpha	0.0001
+Score	0.8791666666666667
+True neg	540
+False pos	66
+False neg	79
+True pos	515
+
+Method	sgd
+Nb hidden layers	(40, 40)
+Alpha	0.0001
+Score	0.8758333333333334
+True neg	533
+False pos	73
+False neg	76
+True pos	518
+
+Method	adam
+Nb hidden layers	(40, 40)
+Alpha	0.001
+Score	0.8708333333333333
+True neg	534
+False pos	72
+False neg	83
+True pos	511
+
+Method	sgd
+Nb hidden layers	(40, 40)
+Alpha	0.001
+Score	0.8766666666666667
+True neg	534
+False pos	72
+False neg	76
+True pos	518
+
