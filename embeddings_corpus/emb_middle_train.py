@@ -161,7 +161,7 @@ print(f"Training and testing MLP...")
 # solver : adam or sgd
 # hidden_layer_sizes : 40,40 or 350,350
 # alpha : between 1e-5 and 1e-3
-n=0
+'''n=0
 for hl in [(350,350),(40,40)]:
   for a in [1e-5, 1e-4, 1e-3]:
     for solv in ["adam", "sgd"]:
@@ -180,8 +180,23 @@ for hl in [(350,350),(40,40)]:
       emb_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScore\t{right_pred}\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
 
      
-      dump(clf, f"classifiers/classifier_cent_{n}.joblib")
-    
+      dump(clf, f"classifiers/classifier_cent_{n}.joblib")'''
+
+for rand_st in [1, 42, 700]:
+    clf = MLPClassifier(solver = solv, alpha = a,
+                        hidden_layer_sizes=hl, random_state = rand_st, max_iter=500)
+    clf = clf.fit(train_data, train_labs)
+
+    # see predictions on the dataset
+    predicted = clf.predict(test_data)
+    right_pred = clf.score(test_data, test_labs)
+    tn, fp, fn, tp = confusion_matrix(test_labs, predicted).ravel()
+    emb_result.append(f"Method\t{solv}\nNb hidden layers\t{str(hl)}\nAlpha\t{str(a)}\nScore\t{right_pred}\nTrue neg\t{tn}\nFalse pos\t{fp}\nFalse neg\t{fn}\nTrue pos\t{tp}\n\n")
+
+     
+    dump(clf, f"classifiers/classifier_cent_rs{rand_st}.joblib")
+
+  
 '''with open(f"CENT_TRAIN.txt", "w") as res_file:
     res_file.write("CENT TRAIN\n")
 with open(f"CENT_TRAIN.txt", "a") as res_file:
