@@ -3,12 +3,15 @@ os.environ['CUDA_VISIBLE_DEVICES'] = "0"
 
 import json
 import torch
+import pandas as pd
 from get_data import get_data, adapt_text
 from transformers import BertTokenizer, AutoModelForMaskedLM
-from extract_top_pred import extract_top_tokens, detokenize, extract_logits
+from extract_top_pred import extract_top_tokens, detokenize, extract_logits, extract_token_rank
 from joblib import dump, load
 import torch.nn.functional as F
 import torch.nn as nn
+import numpy as np
+from statistics import mean
 kl_loss = nn.KLDivLoss(reduction="batchmean")
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.devide("cpu")
@@ -16,15 +19,18 @@ device = torch.device("cuda") if torch.cuda.is_available() else torch.devide("cp
 '''preds = load(r"predict_lists.joblib")
 print(preds)'''
 
+print(f">>> load kl scores")
 kl_scores = load(r"kl_scores.joblib")
-print(len(kl_scores))
+'''print(len(kl_scores))
 print(len(kl_scores["be"]))
 print(str(kl_scores)[:300])
+'''
 
-
+print(f">>> data David")
 data = load(r"/data/dkletz/data/final_data.joblib")
 #print(data)
 
+print(f">>> load sentences")
 path = r"/data/dkletz/data/wiki20k_negated_withref_UL_pregenerated/epoch_0.json" # usare verbdata.joblib o qlcs di simile
 tokenizer = BertTokenizer.from_pretrained("bert-base-cased")
 model = AutoModelForMaskedLM.from_pretrained("bert-base-cased").to(device)
@@ -53,6 +59,7 @@ print(f"Each dictionary contains {len(list(sent_data[0].keys()))} sentences ({li
 # extract the top k predictions for that token
 # compare the affirm and neg top predictions
 
+print(">>> masking...")
 sent_data_masked = []
 mask_token = "[MASK]"
 for sent_set in data:
@@ -61,9 +68,11 @@ for sent_set in data:
     ok = True
     for polarity in ["sent_1", "sent_2"]:
         if to_mask in sent_set[polarity]:
+            sent_set_masked[f'{polarity}_token'] = to_mask
             sent_set_masked[polarity] = [mask_token if x == to_mask else x for x in sent_set[polarity]]
         else:
             if sent_set["inifintive"] in sent_set[polarity]:
+                sent_set_masked[f"{polarity}_token"] = sent_set["inifintive"]
                 sent_set_masked[polarity] = [mask_token if x == sent_set["inifintive"] else x for x in sent_set[polarity]]
             else:
                 ok = False
@@ -76,15 +85,133 @@ for sent_set in data:
 
 print("masked")
 
-predictions = []
+
+
+print(f">>> load verb stats")
+verb_stats = pd.read_csv(f"../new_database.csv")
+
+verb_stats = verb_stats.sort_values(by = "perc neg", ascending = False, ignore_index = True)
+
+ranges = [(l, l+99) for l in range(0,2000, 100)]
+ranges.append((2000, 2054))
+
+lemmas = verb_stats["lemma"]
+perc_neg = verb_stats["perc neg"]
+
+print(f">>> extracting rank differences")
+list_for_boxplot = []
+list_percneg_perrank = []
+for current_range in ranges:
+    current_vb_list = []
+    current_negperc_list = []
+    for n in range(current_range[0], current_range[1]):
+    #for n in range(range_2[0], range_2[1]):
+        #if n<15:
+            #print(n)
+        current_vb_list.append(lemmas[n])
+        current_negperc_list.append(perc_neg[n])
+        #print(lemmas[n])
+
+    list_percneg_perrank.append(current_negperc_list)
+    masked_vbs = []
+
+    for dicts in sent_data_masked:
+        masked_vbs.append(dicts["infinitive"])
+
+
+    '''print("Predicting...")   
+    n=0
+    predictions = []
+    for vb in current_vb_list:
+        #print(vb)
+        if vb not in masked_vbs:
+            continue
+        else:
+            #print("yes")
+            for sent_set in sent_data_masked:
+                if sent_set["infinitive"] == vb:
+                    pred_dict = {}
+                    n+=1 ## counter
+                    ## affirmatives
+                    pred_dict["sent"] = sent_set["sent_2"]
+                    sent = detokenize(sent_set["sent_1"])
+                    top_id = extract_top_tokens(sent, 10, tokenizer, model, device)
+                    top_aff = [tokenizer.convert_ids_to_tokens(id) for id in top_id]
+                    pred_dict["aff"] = top_aff
+                    ## negatives
+                    sent = detokenize(sent_set["sent_2"])
+                    top_id = extract_top_tokens(sent, 10, tokenizer, model, device)
+                    top_neg = [tokenizer.convert_ids_to_tokens(id) for id in top_id]
+                    pred_dict["neg"] = top_neg
+                    ## add the masked token to the dict
+                    pred_dict["original"] = sent_set["negated_verb"]
+                    predictions.append(pred_dict)
+                    if n%50 == 0:
+                        print(n)
+                
+
+    
+    print(f"PREDICTIONS:")
+    for dicts in predictions:
+        print(dicts)'''
+
+
+
+
+    token_ranks_diff = {}
+    for vb in current_vb_list:
+        token_ranks_diff[vb] = []
+        #print(vb)
+        if vb not in masked_vbs:
+            continue
+        else:
+            #print("yes")
+            for sent_set in sent_data_masked:
+                if sent_set["infinitive"] == vb:
+                    ### affirm
+                    rk_aff = extract_token_rank(sent_set["sent_1"], tokenizer, model, device, sent_set["sent_1_token"])
+                    ### negat
+                    rk_neg = extract_token_rank(sent_set["sent_2"], tokenizer, model, device, sent_set["sent_2_token"])
+                    token_ranks_diff[vb].append(rk_neg-rk_aff)
+    print(current_range)
+    #print(token_ranks_diff)
+
+    list_diff = []
+    for elem in token_ranks_diff:
+        list_diff.extend(token_ranks_diff[elem])
+
+    '''print(f"mean {np.mean(list_diff)}")
+    print(f"num esempi: {[len(list_diff)]}")
+    print(f"std {np.std(list_diff)}")'''
+
+    list_for_boxplot.append(list_diff)
+    
+print([mean(x) for x in list_percneg_perrank])
+#print(list_for_boxplot)
+
+
+exit()
+
+
+
+sent = detokenize(sent_set["sent_1"])
+top_id = extract_top_tokens(sent, 10, tokenizer, model, device)
+top_aff = [tokenizer.convert_ids_to_tokens(id) for id in top_id]
+
+
+
+
+
+
+'''predictions = []
 n=0
-'''print("Predicting...")
+print("Predicting...")
 for sent_set in sent_data_masked:
     n+=1 ## counter
     pred_dict = {}
     ## affirmatives
     sent = detokenize(sent_set["sent_1"])
-    top_id = extract_top_tokens(sent, 30, tokenizer, model, device)
+    top_id = extract_top_tokens(sent, 10, tokenizer, model, device)
     top_aff = [tokenizer.convert_ids_to_tokens(id) for id in top_id]
     pred_dict["aff"] = top_aff
     ## negatives
