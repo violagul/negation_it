@@ -57,9 +57,17 @@ plt.boxplot(diffs, flierprops={'marker': '.', 'markersize': 2})
 plt.title("Rank-differences of the original verb in masked\n position depending on the ranking by neg prop")
 plt.savefig(r"rank_diffs_plot.jpg")'''
 
-#plt.plot(mean_percneg_perrank, neg_diffs_perrank, label = "negative differences")
-#plt.plot(mean_percneg_perrank, pos_diffs_perrank, label = "positive differences")
-plt.plot(mean_percneg_perrank, pos2neg_diff_ratio)
-plt.title("Positive-to-negative ratio of values of rank differences")
+plt.plot(mean_percneg_perrank, neg_diffs_perrank, label = "negative differences")
+plt.plot(mean_percneg_perrank, pos_diffs_perrank, label = "positive differences")
+plt.xlabel("Mean proportion of negated occurrences in the training corpus")
+plt.ylabel("Rank difference values for the original verb")
+plt.legend()
+plt.title("Values of rank difference of the main verb\nfor affirmed and negated sentences")
+plt.savefig(r"neg_pos_diffs_compar.jpg")
 
-plt.savefig(r"neg_pos_diffs.jpg")
+'''plt.plot(mean_percneg_perrank, pos2neg_diff_ratio)
+plt.xlabel("Mean proportion of negated occurrences in the training corpus")
+plt.ylabel("Ratio of rank difference values (positive to\nnegative) for the original verb")
+plt.title("Positive-to-negative ratio of values of rank differences")'''
+
+#plt.savefig(r"neg_pos_diffs_ratio.jpg")
